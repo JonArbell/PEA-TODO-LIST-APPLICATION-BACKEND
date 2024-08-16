@@ -61,7 +61,7 @@
 
 
                     <div id="profile-modal">
-                        <a href="/pea/${username}">${username}</a>
+                        <a id="profile-modal-username" href="/pea/${username}">${username}</a>
 
                         <!-- <form method="post" action="/pea/logout">
 
@@ -70,6 +70,7 @@
                         </form> -->
                         <a href="/pea/logout">Log Out</a>
 
+                        <footer>PEA &copy; 2024 Made with &hearts; by Jon Arbell De Ocampo</footer>
                     </div>
 
                 </li>
