@@ -7,11 +7,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>P E A </title>
 
-    <link rel="icon" href="<%= request.getContextPath() %>/images/checklist.ico" type="icon">
+    <link rel="icon" href="<%= request.getContextPath() %>/images/checklist.ico" type="icon"/>
 
     <link href="${pageContext.request.contextPath}/css/authenticated/homePage.css" rel="stylesheet"/>
 
@@ -19,6 +19,36 @@
 <body>
 
     <div id="prompt-message">
+
+    </div>
+
+    <div class="view-details">
+        <span class="closeContainer">
+            <p>&times;</p>
+        </span>
+        
+        <h2 id="view-details-title"></h2>
+
+        <div id="view-details-done">
+            <h3>Completed:</h3>
+            <p></p>
+        </div>
+
+        <div id="view-details-description">
+            <h3>Description:</h3>
+            <p></p>
+        </div>
+
+        <div id="view-details-list">
+            <h3>List:</h3>
+            <p></p>
+        </div>
+        
+        <div id="view-details-target-date">
+            <h3>Target Date:</h3>
+            <p></p>
+        </div>
+        
 
     </div>
 
@@ -182,43 +212,13 @@
                             <h3 id="to-do-list">TO-DO LIST:</h3>
                             <c:forEach items="${todos}" var="todo">
 
-                                <div id="view-details">
-                                    <span id="closeContainer">&times;</span>
-                                    
-                                    <h3>Title: ${todo.title}</h3>
 
-                                    <div id="view-details-description">
-                                        <h3>Description:</h3>
-                                        <c:choose>
-                                            <c:when test="${empty todo.shortDescription}">
-                                                <p>No Description</p>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <p>${todo.shortDescription}</p>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </div>
-
-                                    <div>
-                                        <h3>List:</h3>
-                                        <p>${todo.lists.listName}</p>
-                                    </div>
-                                    
-                                    <div id="view-details-target-date">
-                                        <h3>Target Date:</h3>
-                                        <p>${todo.formattedDate}</p>
-                                    </div>
-                                    
-
-                                </div>
-
-                        
                                 <div id="todo-${todo.id}" class="task-container">
 
                                     <div>
-                                        <a href="/pea/todo/${todo.id}">
+                                        <span onclick="view(`${todo.title}`,`${todo.done}`,`${todo.shortDescription}`,`${todo.lists.listName}`,`${todo.formattedDate}`)">
                                             <h2>View Details</h2>
-                                        </a>
+                                        </span>
                                         
                                     </div>
                                     
@@ -395,6 +395,8 @@
     <script src="${pageContext.request.contextPath}/js/authenticated/dynamicallyProgress/script.js"></script>
 
     <script src="${pageContext.request.contextPath}/js/authenticated/dateTime/script.js"></script>
+
+    <script src="${pageContext.request.contextPath}/js/authenticated/viewTodoModal/script.js"></script>
 
 
 </body>

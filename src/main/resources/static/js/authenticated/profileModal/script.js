@@ -44,6 +44,7 @@ function openProfileModalContainer(container){
 function closeProfileModalContainer(container){
     container.style.display = 'none';
     isProfileClicked = false;
+    console.log( container.style.display == 'none');
 }
 
 document.addEventListener('mousedown',addBounceClickProfile);

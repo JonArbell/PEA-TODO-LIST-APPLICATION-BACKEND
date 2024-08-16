@@ -350,31 +350,42 @@ header div ul li h1{
     width: 85%;
 }
 
-#view-details{
+.view-details{
     background-color: #ece6d0;
     position: fixed;
     border-radius: 12px;
-    height: 30%;
+    height: 35%;
     width:30%;
     display: none;
     align-items: flex-start;
     flex-direction: column;
     z-index: 100;
-    gap: 3%;
     box-shadow: 0 5px 7px black;
-    right: 39%;
+    right: 35%;
+    top: 25%;
 }
 
-#view-details div,#view-details > h3{
+.view-details > div ,#view-details-title{
     margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
-#closeContainer{
+.task-container span{
+    cursor: pointer;
+}
+.closeContainer{
     cursor: pointer;
     display: block;
     font-size: 25px;
     align-self: flex-end;
     margin-right: 7px;
+    position: fixed;
+    color: #254336;
+}
+
+.closeContainer:hover{
+    color: rgb(56, 0, 0);
 }
 
 #donut div{

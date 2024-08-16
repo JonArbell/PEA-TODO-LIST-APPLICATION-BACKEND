@@ -63,9 +63,7 @@ function handleDiscard(){
     closeCreateNewEditItemContainer();
 }
 
-function closeCreateNewEditItemContainer(){
-    document.querySelector('#add-edit-task-container').style.display = 'none';
-
+function removeBlur(){
     const body = document.querySelector('body');
     body.style.backgroundColor = '#d0cab5';
     body.querySelectorAll('div').forEach(div =>{
@@ -80,9 +78,19 @@ function closeCreateNewEditItemContainer(){
                 div.querySelectorAll('a').forEach(aTag =>{
                     aTag.removeEventListener('click',preventClick);
                 });
+
+                document.removeEventListener('mouseup',preventProfileLogoClick);
+
+                
             }
         });
     });
+}
+
+function closeCreateNewEditItemContainer(){
+    document.querySelector('#add-edit-task-container').style.display = 'none';
+
+    removeBlur();
 
     document.querySelector('#date-and-time-progress-display-container').style.display = 'flex';
     document.querySelector('#add-edit-list-container').style.display = 'none';

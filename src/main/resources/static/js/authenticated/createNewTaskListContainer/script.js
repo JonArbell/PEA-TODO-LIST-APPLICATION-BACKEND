@@ -27,10 +27,13 @@ function createNewTask(dateTimeProgressContainer,title){
 const preventClick = (event) => {
     event.preventDefault();
 };
-function createNewList(){
-    document.querySelector('#add-edit-list-container').style.display = 'flex';
+
+function blur(){
+
     const body = document.querySelector('body');
+
     body.style.backgroundColor = 'rgb(173 169 155)';
+
     body.querySelectorAll('div').forEach(div =>{
         div.classList.forEach(className =>{
             if(className == 'dim'){
@@ -43,13 +46,34 @@ function createNewList(){
                 div.querySelectorAll('a').forEach(aTag =>{
                     aTag.addEventListener('click',preventClick);
                 });
+                
+
+                document.addEventListener('mouseup',preventProfileLogoClick);
+
+
             }
         });
     });
 
-    document.querySelectorAll('.add-edit-title')[1].textContent = 'Add List:';
+}
 
-    console.log('Type : '+document.querySelector('#add-edit-list-container form').action);
+function preventProfileLogoClick(event){
+    const logo = document.querySelector('#profile-logo');
+    if(logo.contains(event.target)){
+
+        const container = document.querySelector('#profile-modal');
+        closeProfileModalContainer(container);
+
+    }
+
+}
+
+function createNewList(){
+    document.querySelector('#add-edit-list-container').style.display = 'flex';
+
+    blur();
+
+    document.querySelectorAll('.add-edit-title')[1].textContent = 'Add List:';
 
     resetAllInformation();
     handleSubmit();
