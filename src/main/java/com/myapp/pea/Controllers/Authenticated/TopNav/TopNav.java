@@ -51,7 +51,7 @@ public class TopNav {
         map.addAttribute("username",userService.getUsername());
         map.addAttribute("todo",new Todo());
         map.addAttribute("lists",getLists.allListsDateModified());
-        
+
         double completedTask = getTasks.allTodoDateModified().stream().filter(Todo::isDone).toList().size();
         double divide = completedTask / getTasks.allTodoTargetDate().size();
         int average = (int)(divide * 100);

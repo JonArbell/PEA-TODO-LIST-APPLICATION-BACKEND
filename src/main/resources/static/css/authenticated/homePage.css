@@ -350,6 +350,32 @@ header div ul li h1{
     width: 85%;
 }
 
+#view-details{
+    background-color: #ece6d0;
+    position: fixed;
+    border-radius: 12px;
+    height: 30%;
+    width:30%;
+    display: none;
+    align-items: flex-start;
+    flex-direction: column;
+    z-index: 100;
+    gap: 3%;
+    box-shadow: 0 5px 7px black;
+    right: 39%;
+}
+
+#view-details div,#view-details > h3{
+    margin-left: 10px;
+}
+
+#closeContainer{
+    cursor: pointer;
+    display: block;
+    font-size: 25px;
+    align-self: flex-end;
+    margin-right: 7px;
+}
 
 #donut div{
     display: flex;

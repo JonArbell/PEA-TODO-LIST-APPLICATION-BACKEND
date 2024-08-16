@@ -22,7 +22,6 @@
 
     </div>
 
-
     <header>
         <div class="dim">
 
@@ -153,7 +152,6 @@
                     </c:when>
 
                     <c:otherwise>
-                        
 
                         <div id="title">
                             <div id="total-pending-tasks">
@@ -184,6 +182,37 @@
                             <h3 id="to-do-list">TO-DO LIST:</h3>
                             <c:forEach items="${todos}" var="todo">
 
+                                <div id="view-details">
+                                    <span id="closeContainer">&times;</span>
+                                    
+                                    <h3>Title: ${todo.title}</h3>
+
+                                    <div id="view-details-description">
+                                        <h3>Description:</h3>
+                                        <c:choose>
+                                            <c:when test="${empty todo.shortDescription}">
+                                                <p>No Description</p>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <p>${todo.shortDescription}</p>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </div>
+
+                                    <div>
+                                        <h3>List:</h3>
+                                        <p>${todo.lists.listName}</p>
+                                    </div>
+                                    
+                                    <div id="view-details-target-date">
+                                        <h3>Target Date:</h3>
+                                        <p>${todo.formattedDate}</p>
+                                    </div>
+                                    
+
+                                </div>
+
+                        
                                 <div id="todo-${todo.id}" class="task-container">
 
                                     <div>
