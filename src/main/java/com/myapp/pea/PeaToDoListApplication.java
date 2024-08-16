@@ -10,5 +10,13 @@ public class PeaToDoListApplication {
 		SpringApplication.run(PeaToDoListApplication.class, args);
 
 	}
-
+/*
+*
+* Group 		: 	com.myapp
+* Artifact 		: 	PeaTodoListApplication
+* Name			: 	PEA TO-DO LIST APPLICATION
+* Description	:	My First Web Application
+* Package name  :	com.myapp.pea
+* 
+*/
 }
