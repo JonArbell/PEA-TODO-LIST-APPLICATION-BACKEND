@@ -250,9 +250,9 @@ header div ul li h1{
 #edit-delete-list-container{
     position: fixed;
 }
-#delete-list-button{
-    /* background-color: ; */
-}
+
+
+
 #edit-delete-list-container form button{
     height: 50px;
     width: 50%;
@@ -369,6 +369,11 @@ header div ul li h1{
     margin-left: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+#view-details-title{
+    align-self: center;
+    margin-bottom: 10px;
 }
 
 .task-container span{
