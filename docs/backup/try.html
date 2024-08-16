@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent{
+
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: black;
+            overflow-y: auto;
+        }
+
+        .child{
+            height: 50px;
+            background-color: aqua;
+            width: 50em;
+            margin: 10%;
+        }
+
+        button{
+            position: fixed;
+            right: 0;
+            width: 100px;
+            top: 50%;
+        }
+
+        .removeMe{
+            position: fixed;
+            top:  0;
+            width: 100px;
+        }
+
+        .lopit{
+            height: 250px;
+            width: 100vw;
+            background-color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="lopit">
+        <
+    </div>
+    
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+
+    <button onclick="clickMe()">Click me</button>
+    <button class="removeMe" onclick="removeMe()">Remove</button>
+    <script>
+
+        function clickMe(){
+            const parent = document.querySelector('.parent');
+            const child = document.createElement('div');
+            child.classList.add('child');
+            parent.appendChild(child);
+
+        }
+
+        function removeMe(){
+            const parent = document.querySelector('.parent');
+            
+            
+
+        }
+
+    </script>
+</body>
+</html>

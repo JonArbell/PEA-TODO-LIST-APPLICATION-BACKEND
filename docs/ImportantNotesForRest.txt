@@ -1,0 +1,25 @@
+1) Make a class for Exception handler using @ControllerAdvice annotation for a class and @ExceptionHandler annotation
+for a methods
+
+Ex: @ControllerAdvice
+    public class ExceptionHandler{
+
+        @ExceptionHandler(MethodArgumentNotValidException.class)
+        public ResponseEntity<?> handleMethodArgumentNotValidException(MethodArgumentNotValidException exp){
+
+            var errors = new HashMap<String,String>(); //This hashmap is for storing errorMessages and fieldNames
+            because the Valid annotation in a Model class has many fields.
+
+            exp.getBindingResult().getAllErrors()
+            .forEach( error -> {
+
+                var fieldName = ((FieldError) error).getField(); //Casting error into FieldError to get the field.
+                var errorMessage = error.getDefaultMessage();
+
+                errors.put(fieldName,errorMessage);
+
+            });
+            return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
+        }
+
+    }

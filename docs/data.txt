@@ -1,0 +1,17 @@
+insert into users(email,first_name,last_name,password,username)
+values('arbell@gmail.com','Jon Arbell','De Ocampo','arbellpogi','arbell_panis');
+
+insert into todos(date,date_modified,formatted_date,done,user_id,description)
+values('2024-11-29',NOW(),'11-29-2024',false,1,'A arn Full Stack Web Development');
+
+insert into todos(date,date_modified,formatted_date,done,user_id,description)
+values('2024-10-29',NOW(),'10-29-2024',false,1,'B Learn Springboot');
+
+insert into todos(date,date_modified,formatted_date,done,user_id,description)
+values('2024-12-12',NOW(),'12-12-2024',false,1,'C Learn AWS');
+
+insert into users(email,first_name,last_name,password,username)
+values('arbellpogi@gmail.com','Pogi','Panis','arbellpanis','arbell_lopit');
+
+
+select * from users;

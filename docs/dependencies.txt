@@ -1,0 +1,5 @@
+//Use this dependency for see the html file using JSP view
+<dependency>
+	<groupId>org.apache.tomcat.embed</groupId>
+	<artifactId>tomcat-embed-jasper</artifactId>
+</dependency>
