@@ -17,9 +17,6 @@
 </head>
 <body>
 
-    <div id="prompt-message">
-
-    </div>
 
     <header>
         <div>
@@ -298,5 +295,6 @@
 
     <script src="${pageContext.request.contextPath}/js/authenticated/dateTime/script.js"></script>
 
+    
 </body>
 </html>

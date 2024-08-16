@@ -21,6 +21,36 @@
 
     </div>
 
+    <div class="view-details">
+        <span class="closeContainer">
+            <p>&times;</p>
+        </span>
+        
+        <h2 id="view-details-title"></h2>
+
+        <div id="view-details-done">
+            <h3>Completed:</h3>
+            <p></p>
+        </div>
+
+        <div id="view-details-description">
+            <h3>Description:</h3>
+            <p></p>
+        </div>
+
+        <div id="view-details-list">
+            <h3>List:</h3>
+            <p></p>
+        </div>
+        
+        <div id="view-details-target-date">
+            <h3>Target Date:</h3>
+            <p></p>
+        </div>
+        
+
+    </div>
+
     <header>
         <div class="dim">
 
@@ -180,9 +210,9 @@
                                 <div id="todo.id" class="task-container">
 
                                     <div>
-                                        <a href="">
+                                        <span onclick="view(`${todo.title}`,`${todo.done}`,`${todo.shortDescription}`,`${todo.lists.listName}`,`${todo.formattedDate}`)">
                                             <h2>View Details</h2>
-                                        </a>
+                                        </span>
                                         
                                     </div>
                                     
@@ -304,8 +334,8 @@
 
 
                     <div class="add-edit-task-buttons">
-                        <input onmouseup="handleDiscard()" value="Discard Changes" type="reset"/>
-                        <input onmouseup="handleSubmit()" value="Save Changes" type="submit"/>
+                        <input id="add-edit-task-reset" onmouseup="handleDiscard()" value="" type="reset"/>
+                        <input id="add-edit-task-submit" onmouseup="handleSubmit()" value="" type="submit"/>
                     </div>
                     
                 </form:form>
@@ -358,6 +388,8 @@
     <script src="${pageContext.request.contextPath}/js/authenticated/dynamicallyProgress/script.js"></script>
 
     <script src="${pageContext.request.contextPath}/js/authenticated/dateTime/script.js"></script>
+
+    <script src="${pageContext.request.contextPath}/js/authenticated/viewTodoModal/script.js"></script>
 
 </body>
 </html>
