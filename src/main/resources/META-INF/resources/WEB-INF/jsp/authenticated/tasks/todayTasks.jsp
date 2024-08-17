@@ -194,33 +194,35 @@
 
                     <c:otherwise>
 
-                        <div id="title">
-                            <div id="total-pending-tasks">
-                                <h2>Today's Tasks:</h2>
-                                <div>
-                                    <h2>${totalOfPending}</h2>
-                                </div>
+                    <div id="title">
+                        <div id="total-pending-tasks">
+                            <h2>Today's Tasks:</h2>
+                            <div>
+                                <h2>${todaysTotalOfPending}</h2>
                             </div>
+                        </div>
 
-                            
+                        <div id="sort-todo-list-container">
+                            <h3 id="to-do-list">TO-DO LIST:</h3>
                             <form id="sort-container">
-                                <label>Sort By:</label>
+                                <label>Sort by:</label>
                                 <select onchange="sortBy()" id="sort">
                                     <option value="1">Date Modified</option>
                                     <option value="2">Title</option>
                                     <option value="3">Target Date</option>
                                 </select>
                             </form>
-
-
+                            
                         </div>
+
+                        
+                    </div>
 
                         <div id="middle-hr-container">
                             <hr/>
                         </div>
                         
                         <div id="todo-lists-container">
-                            <h3 id="to-do-list">TO-DO LIST:</h3>
                             <c:forEach items="${todaysTask}" var="todo">
 
                                 <div id="todo.id" class="task-container">

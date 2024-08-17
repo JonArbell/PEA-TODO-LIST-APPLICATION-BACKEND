@@ -56,7 +56,7 @@ public class TodoSortedByDateModified {
         myCustomModelMap.modelMap(map,
                 todayTask,
                 "todaysTask",
-                "totalOfPending",
+                "todaysTotalOfPending",
                 request.getRequestURI());
 
         return "authenticated/tasks/todayTasks";

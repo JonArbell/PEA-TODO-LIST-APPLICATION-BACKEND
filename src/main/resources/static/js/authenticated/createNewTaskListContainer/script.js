@@ -49,7 +49,7 @@ function blur(){
                 
 
                 document.addEventListener('mouseup',preventProfileLogoClick);
-
+                document.addEventListener('onchange',removeListenerForSort);
 
             }
         });
@@ -64,6 +64,15 @@ function preventProfileLogoClick(event){
         const container = document.querySelector('#profile-modal');
         closeProfileModalContainer(container);
 
+    }
+
+}
+
+function removeListenerForSort(event){
+    const select = document.querySelector('#sort-container select');
+    
+    if(select.contains(event.target)){
+        event.preventDefault();
     }
 
 }
