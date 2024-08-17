@@ -24,14 +24,6 @@ body{
     color: rgb(102, 117, 99);
 }
 
-#tago{
-    position: fixed;
-    top:0;
-    height: 10%;
-    width: 100vw;
-    background-color: #1e362c;
-}
-
 header{
     height: 10vh;
     transition: 0.5s ease;
@@ -40,11 +32,8 @@ header div ul{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    z-index: 50;
     box-shadow: 0 3.5px 5px rgb(32, 32, 32);
-    top: 0;
     width: 100vw;
-    position: fixed;
     height: 10vh;
     background-color: #254336;
     
@@ -251,8 +240,6 @@ header div ul li h1{
     position: fixed;
 }
 
-
-
 #edit-delete-list-container form button{
     height: 50px;
     width: 50%;
@@ -269,8 +256,7 @@ header div ul li h1{
 #profile-modal{
     position: fixed;
     background-color: #DAD3BE;
-    width: 20%;
-    height: 23%;
+    width: 21.7%;
     display: none;
     flex-direction: column;
     align-items: center;
@@ -284,34 +270,44 @@ header div ul li h1{
 
 #profile-modal *{
     color: #1e362c;
-    font-size: 25px;
-    padding: 15px;
-    width: 91%;
-    text-align: center;
-    margin: 10px;
+    font-size: 21px;
+    padding: 12px;
     text-decoration: none;
     transition: 0.1s ease;
 }
 
-#profile-modal a[href="/pea/logout"]:hover{
-    background-color: rgb(56, 0, 0);
+#profile-modal a{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 12px;
+    margin-top: 10px;
 }
+#profile-modal-username{
+    color: #DAD3BE;
+}
+
+#profile-modal a[href="/pea/logout"]:hover{
+    background-color: rgb(82, 0, 0);
+}
+
+#profile-modal hr{
+    background-color: #254336;
+    width: 90%;
+    height: 1.5px;
+    padding: 0;
+}
+
 #profile-modal-username{
     background-color: #293b49;
 }
-#profile-modal-username,#profile-modal a[href="/pea/logout"]:hover{
+#profile-modal-username:hover{
+    background-color: #202d38;
+}
+#profile-modal-username span,#profile-modal a[href="/pea/logout"]:hover span{
     color: #DAD3BE;
 }
-#profile-modal a[href="/pea/logout"]{
-    color: #254336;
-}
-#profile-modal a{
-    border-radius: 12px;
-}
-#profile-modal-username:hover{
-    background-color: #22303c;
-}
-
 .task-progress section{
     width: 100%;
 }
@@ -364,6 +360,10 @@ header div ul li h1{
     right: 35%;
     top: 25%;
 }
+header .dim{
+    z-index: 100;
+    position: sticky;
+}
 
 .view-details > div ,#view-details-title{
     margin-left: 10px;
@@ -389,7 +389,7 @@ header div ul li h1{
     color: #254336;
 }
 
-.closeContainer:hover{
+.closeContainer p:hover{
     color: rgb(56, 0, 0);
 }
 
@@ -420,14 +420,16 @@ h2,h3,h1{
     position: fixed;
 }
 
-#middle-container #title{
+#title{
     font-size: 20px;
     height:15%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
     
 }
+
 #middle-hr-container{
     width: 100%;
     display: flex;
@@ -491,12 +493,6 @@ header div ul li:hover{
         text-decoration: underline;
     }
 }
-/* header div ul li h2:hover{
-    color: lightgreen;
-    text-decoration: underline;
-    
-} */
-
 
 header div ul form input{
     cursor: text;
@@ -509,10 +505,23 @@ header div ul form input{
     text-shadow: 0 0 0 black !important;
 }
 
-header div ul img{
+#profile-logo,#pea-logo-icon{
     height: 50px;
     width: 50px;
+    padding: 0;
 }
+
+#profile-modal a[href="/settings"]:hover{
+    background-color: #9d9d9d;
+}
+
+#profile-logo-href,#logout-img,#settings-logo{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    padding: 0;
+}
+
 .list-no-hover{
     height: auto;
     width: auto;
@@ -641,12 +650,7 @@ main{
     text-align: center;
 }
 
-#to-do-list{
-    position: fixed;
-    z-index: 150;
-    margin-left: 1%;
-    margin-top: -1.5%;
-}
+
 #task-buttons,#task-buttons form{
     width: 100%;
     display: flex;
@@ -704,7 +708,6 @@ main{
     display: flex;
     align-items: center;
     width: 100%;
-    margin-left: 2%;
     gap: 2%;
 }
 #total-pending-tasks div{
@@ -782,11 +785,9 @@ main{
 
 
 #sort-container{
-    position: fixed;
-    width: 5.75%;
-    height: 5.7%;
-    right: 33%;
-    margin-top: 3%;
+
+    align-self: flex-end;
+    height: 24%;
 }
 
 

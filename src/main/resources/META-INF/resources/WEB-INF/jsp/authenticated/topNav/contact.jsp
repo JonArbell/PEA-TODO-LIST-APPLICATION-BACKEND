@@ -61,15 +61,31 @@
 
 
                     <div id="profile-modal">
-                        <a id="profile-modal-username" href="/pea/${username}">${username}</a>
+                        
+                           
+                        <a id="profile-modal-username" href="/pea/${username}">
+                            <img class="nav-button" id="profile-logo-href" src="<%= request.getContextPath() %>/images/try_profile_logo.ico"/>
+                            <span>${username}</span>
 
-                        <!-- <form method="post" action="/pea/logout">
+                        </a>
+                    
+                        <a href="/settings">
+                            <img class="nav-button" id="settings-logo" src="<%= request.getContextPath() %>/images/settings.png"/>
+                            <span> Settings</span>
+                        </a>
 
-                            <button type="submit">Log Out</button>
+                        <a  href="/pea/logout">
+                            <!-- <form method="post" action="/pea/logout">
 
-                        </form> -->
-                        <a href="/pea/logout">Log Out</a>
+                                <button type="submit">Log Out</button>
 
+                            </form> -->
+
+                            <img class="nav-button" id="logout-img" src="<%= request.getContextPath() %>/images/logout.png"/>
+
+                            <span>Log Out</span>
+                        </a>
+                        
                         <footer>PEA &copy; 2024 Made with &hearts; by Jon Arbell De Ocampo</footer>
                     </div>
 

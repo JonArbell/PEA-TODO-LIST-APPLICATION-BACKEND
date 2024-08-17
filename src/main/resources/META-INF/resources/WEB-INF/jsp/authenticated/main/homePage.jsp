@@ -61,7 +61,7 @@
                 </li>
 
                 <li onclick="goHome()" class="list-no-hover">
-                    <img src="<%= request.getContextPath() %>/images/checklist.png"/>
+                    <img id="pea-logo-icon" src="<%= request.getContextPath() %>/images/checklist.png"/>
                 </li>
 
                 <li id="list-search">
@@ -96,15 +96,31 @@
 
 
                     <div id="profile-modal">
-                        <a id="profile-modal-username" href="/pea/${username}">${username}</a>
+                        
+                           
+                        <a id="profile-modal-username" href="/pea/${username}">
+                            <img class="nav-button" id="profile-logo-href" src="<%= request.getContextPath() %>/images/try_profile_logo.ico"/>
+                            <span>${username}</span>
 
-                        <!-- <form method="post" action="/pea/logout">
+                        </a>
+                    
+                        <a href="/settings">
+                            <img class="nav-button" id="settings-logo" src="<%= request.getContextPath() %>/images/settings.png"/>
+                            <span> Settings</span>
+                        </a>
 
-                            <button type="submit">Log Out</button>
+                        <a  href="/pea/logout">
+                            <!-- <form method="post" action="/pea/logout">
 
-                        </form> -->
-                        <a href="/pea/logout">Log Out</a>
+                                <button type="submit">Log Out</button>
 
+                            </form> -->
+
+                            <img class="nav-button" id="logout-img" src="<%= request.getContextPath() %>/images/logout.png"/>
+
+                            <span>Log Out</span>
+                        </a>
+                        <hr/>
                         <footer>PEA &copy; 2024 Made with &hearts; by Jon Arbell De Ocampo</footer>
                     </div>
 
@@ -191,7 +207,6 @@
                                 </div>
                             </div>
 
-                            
                             <form id="sort-container">
                                 <label>Sort By:</label>
                                 <select onchange="sortBy()" id="sort">
@@ -200,7 +215,7 @@
                                     <option value="3">Target Date</option>
                                 </select>
                             </form>
-
+                            <h3 id="to-do-list">TO-DO LIST:</h3>
                         </div>
 
 
@@ -209,7 +224,7 @@
                         </div>
                         
                         <div id="todo-lists-container">
-                            <h3 id="to-do-list">TO-DO LIST:</h3>
+                            
                             <c:forEach items="${todos}" var="todo">
 
 
