@@ -67,12 +67,6 @@ header div ul li h1{
     margin-bottom: 5%;
 }
 
-@media (width: 1000px) and (width:1200px){
-    h1{
-        font-size: 1500px;
-    }
-}
-
 .select-list-date{
     display: flex !important;
     flex-direction: row !important;
@@ -498,7 +492,6 @@ h2,h3,h1{
 
 header div ul li:hover{
     h2{
-        color: lightgreen !important;
         text-decoration: underline;
     }
 }
