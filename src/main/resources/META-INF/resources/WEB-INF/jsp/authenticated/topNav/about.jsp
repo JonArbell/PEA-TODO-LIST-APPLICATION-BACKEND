@@ -86,7 +86,7 @@
 
                             <span>Log Out</span>
                         </a>
-                        
+                        <hr/>
                         <footer>PEA &copy; 2024 Made with &hearts; by Jon Arbell De Ocampo</footer>
                     </div>
 
