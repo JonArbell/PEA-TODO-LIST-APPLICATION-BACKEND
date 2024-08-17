@@ -18,7 +18,7 @@
 <body>
 
     <header>
-        <div>
+        <div class="dim">
 
             <ul>
                 <li class="list-no-hover">
@@ -26,7 +26,7 @@
                 </li>
 
                 <li onclick="goHome()" class="list-no-hover">
-                    <img src="<%= request.getContextPath() %>/images/checklist.png"/>
+                    <img id="pea-logo-icon" src="<%= request.getContextPath() %>/images/checklist.png"/>
                 </li>
 
                 <li id="list-search">

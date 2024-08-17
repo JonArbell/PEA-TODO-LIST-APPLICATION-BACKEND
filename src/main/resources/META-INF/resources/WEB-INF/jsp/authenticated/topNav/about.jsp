@@ -19,7 +19,7 @@
 
 
     <header>
-        <div>
+        <div class="dim">
 
             <ul>
                 <li class="list-no-hover">
@@ -27,7 +27,7 @@
                 </li>
 
                 <li onclick="goHome()" class="list-no-hover">
-                    <img src="<%= request.getContextPath() %>/images/checklist.png"/>
+                    <img id="pea-logo-icon" src="<%= request.getContextPath() %>/images/checklist.png"/>
                 </li>
 
                 <li id="list-search">
@@ -99,7 +99,7 @@
 
     <main>
         
-        <div id="left-container" class="containers">
+        <div id="left-container" class="containers dim">
             <h2>Menu</h2>
             <hr/>
             <div>
@@ -124,13 +124,17 @@
                 <h3>Lists</h3>
                 <ul>
                     <c:forEach items="${lists}" var="list">
+
                         <a href="/pea/list/${list.id}">
                             <li>${list.listName}</li>
                         </a>
+                        
                     </c:forEach>
                 </ul>
             </div>
+
             <hr/>
+
             <footer>PEA &copy; 2024</footer>
         </div>
 

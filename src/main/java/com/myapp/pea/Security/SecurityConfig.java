@@ -30,8 +30,9 @@ public class SecurityConfig {
                                         "/pea/todays-tasks/**",
                                         "/pea/all-tasks/**",
                                         "/pea/completed-tasks/**",
-                                        "/pea/about-us",
-                                        "/pea/contact-us",
+                                        "/about-us",
+                                        "/contact-us",
+                                        "/settings",
                                         "/pea/todo/**",
                                         "/pea/list/**")
                                 .authenticated()

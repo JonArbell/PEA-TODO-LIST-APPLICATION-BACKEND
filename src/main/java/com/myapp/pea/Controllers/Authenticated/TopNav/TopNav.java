@@ -28,9 +28,6 @@ public class TopNav {
     @GetMapping("/about-us")
     public String aboutUs(ModelMap map){
 
-        if(!userService.isUserAuthenticated()){
-            return "redirect:/pea";
-        }
         modelMap(map);
         return "authenticated/topNav/about";
     }
@@ -38,12 +35,15 @@ public class TopNav {
     @GetMapping("/contact-us")
     public String contactUs(ModelMap map){
 
-        if(!userService.isUserAuthenticated()){
-            return "redirect:/pea";
-        }
-
         modelMap(map);
         return "authenticated/topNav/contact";
+    }
+
+    @GetMapping("/settings")
+    public String settings(ModelMap map){
+
+        modelMap(map);
+        return "authenticated/topNav/settings";
     }
 
     public void modelMap(ModelMap map){
