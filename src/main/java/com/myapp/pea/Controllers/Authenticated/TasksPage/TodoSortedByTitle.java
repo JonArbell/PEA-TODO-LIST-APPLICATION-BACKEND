@@ -25,9 +25,6 @@ public class TodoSortedByTitle {
     @GetMapping("/home/sort-by-title")
     public String home(ModelMap map, HttpServletRequest request) {
 
-        if(!userService.isUserAuthenticated()){
-            return "redirect:/pea";
-        }
         List<Todo> allTodo = getTasks
                 .allTodoTitle()
                 .stream().filter(todo -> !todo.isDone())
@@ -45,10 +42,6 @@ public class TodoSortedByTitle {
 
     @GetMapping("/todays-tasks/sort-by-title")
     public String todayTasks(ModelMap map, HttpServletRequest request){
-
-        if(!userService.isUserAuthenticated()){
-            return "redirect:/pea";
-        }
 
         List<Todo> todayTask = getTasks.allTodoTitle()
                 .stream()
@@ -68,10 +61,6 @@ public class TodoSortedByTitle {
     @GetMapping("/completed-tasks/sort-by-title")
     public String completedTasks(ModelMap map,HttpServletRequest request){
 
-        if(!userService.isUserAuthenticated()){
-            return "redirect:/pea";
-        }
-
         List<Todo> completedTasks = getTasks.allTodoTitle()
                 .stream()
                 .filter(Todo::isDone)
@@ -89,16 +78,7 @@ public class TodoSortedByTitle {
     @GetMapping("/all-tasks/sort-by-title")
     public String allTasks(ModelMap map,HttpServletRequest request){
 
-        if(!userService.isUserAuthenticated()){
-            return "redirect:/pea";
-        }
         List<Todo> allTasks = getTasks.allTodoTitle();
-
-//        modelMap(map,
-//                allTasks,
-//                "allTasks",
-//                "totalOfAllTask",
-//                request.getRequestURI());
 
         myCustomModelMap.modelMap(map,
                 allTasks,
@@ -107,24 +87,5 @@ public class TodoSortedByTitle {
                 request.getRequestURI());
         return "authenticated/tasks/allTasks";
     }
-
-//    public void modelMap(ModelMap map,
-//                         List<Todo> todo,
-//                         String typeOfTask,
-//                         String typeOfTotal,
-//                         String request){
-//
-//        map.addAttribute(typeOfTask,todo);
-//        map.addAttribute(typeOfTotal,todo.size());
-//        map.addAttribute("username",userService.getUsername());
-//        map.addAttribute("fullname",userService.getFirstName()+" "+userService.getLastName());
-//        map.addAttribute("todo",new Todo());
-//
-//        map.addAttribute("lists",getLists.allListsDateModified());
-//
-//        sortedByDateModified.currentUrl.delete(0,sortedByDateModified.currentUrl.length());
-//        sortedByDateModified.currentUrl.append(request);
-//
-//    }
 
 }

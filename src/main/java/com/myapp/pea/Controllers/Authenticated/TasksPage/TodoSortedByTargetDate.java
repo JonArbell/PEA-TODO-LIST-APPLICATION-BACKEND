@@ -26,9 +26,6 @@ public class TodoSortedByTargetDate {
     @GetMapping("/home/sort-by-target-date")
     public String home(ModelMap map, HttpServletRequest request) {
 
-        if(!userService.isUserAuthenticated()){
-            return "redirect:/pea";
-        }
         List<Todo> allTodo = getTasks
                 .allTodoTargetDate()
                 .stream().filter(todo -> !todo.isDone())
@@ -36,7 +33,6 @@ public class TodoSortedByTargetDate {
 
         map.addAttribute("todos",allTodo);
 
-//        modelMap(map,allTodo,"todos","totalOfPending",request.getRequestURI());
         myCustomModelMap.modelMap(map,allTodo,"todos","totalOfPending",request.getRequestURI());
 
         return "authenticated/main/homePage" ;
@@ -46,22 +42,12 @@ public class TodoSortedByTargetDate {
     @GetMapping("/todays-tasks/sort-by-target-date")
     public String todayTasks(ModelMap map, HttpServletRequest request){
 
-        if(!userService.isUserAuthenticated()){
-            return "redirect:/pea";
-        }
-
         List<Todo> todayTask = getTasks
                 .allTodoTargetDate()
                 .stream()
                 .filter(todo -> LocalDate.now().isEqual(todo.getDate()))
                 .filter(todo -> !todo.isDone())
                 .toList();
-
-//        modelMap(map,
-//                todayTask,
-//                "todaysTask",
-//                "totalOfPending",
-//                request.getRequestURI());
 
         myCustomModelMap.modelMap(map,todayTask,"todaysTask","totalOfPending",request.getRequestURI());
         return "authenticated/tasks/todayTasks";
@@ -70,21 +56,11 @@ public class TodoSortedByTargetDate {
     @GetMapping("/completed-tasks/sort-by-target-date")
     public String completedTasks(ModelMap map,HttpServletRequest request){
 
-        if(!userService.isUserAuthenticated()){
-            return "redirect:/pea";
-        }
-
         List<Todo> completedTasks = getTasks
                 .allTodoTargetDate()
                 .stream()
                 .filter(Todo::isDone)
                 .toList();
-
-//        modelMap(map,
-//                completedTasks,
-//                "completedTasks",
-//                "totalOfCompleted",
-//                request.getRequestURI());
 
         myCustomModelMap.modelMap(map,completedTasks,"completedTasks","totalOfCompleted",request.getRequestURI());
         return "authenticated/tasks/completedTasks";
@@ -93,38 +69,10 @@ public class TodoSortedByTargetDate {
     @GetMapping("/all-tasks/sort-by-target-date")
     public String allTasks(ModelMap map,HttpServletRequest request){
 
-        if(!userService.isUserAuthenticated()){
-            return "redirect:/pea";
-        }
         List<Todo> allTasks = getTasks.allTodoTargetDate();
-
-//        modelMap(map,
-//                allTasks,
-//                "allTasks",
-//                "totalOfAllTask",
-//                request.getRequestURI());
 
         myCustomModelMap.modelMap(map,allTasks,"allTasks","totalOfAllTask",request.getRequestURI());
         return "authenticated/tasks/allTasks";
     }
 
-//    public void modelMap(ModelMap map,
-//                         List<Todo> todo,
-//                         String typeOfTask,
-//                         String typeOfTotal,
-//                         String request){
-//
-//        map.addAttribute(typeOfTask,todo);
-//        map.addAttribute(typeOfTotal,todo.size());
-//        map.addAttribute("username",userService.getUsername());
-//        map.addAttribute("fullname",userService.getFirstName()+" "+userService.getLastName());
-//        map.addAttribute("todo",new Todo());
-//
-//        map.addAttribute("lists",getLists.allListsDateModified());
-//
-//        sortedByDateModified.currentUrl.delete(0,sortedByDateModified.currentUrl.length());
-//        sortedByDateModified.currentUrl.append(request);
-//
-//
-//    }
 }

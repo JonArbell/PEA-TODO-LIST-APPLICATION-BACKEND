@@ -25,9 +25,6 @@ public class TodoSortedByDateModified {
     @GetMapping("/home")
     public String home(ModelMap map, HttpServletRequest request) {
 
-        if(!userService.isUserAuthenticated()){
-            return "redirect:/pea";
-        }
         List<Todo> allTodo = getTasks
                 .allTodoDateModified()
                 .stream().filter(todo -> !todo.isDone())
@@ -42,10 +39,6 @@ public class TodoSortedByDateModified {
 
     @GetMapping("/todays-tasks")
     public String todayTasks(ModelMap map, HttpServletRequest request){
-
-        if(!userService.isUserAuthenticated()){
-            return "redirect:/pea";
-        }
 
         List<Todo> todayTask = getTasks.allTodoDateModified()
                 .stream()
@@ -64,10 +57,6 @@ public class TodoSortedByDateModified {
 
     @GetMapping("/completed-tasks")
     public String completedTasks(ModelMap map,HttpServletRequest request){
-
-        if(!userService.isUserAuthenticated()){
-            return "redirect:/pea";
-        }
 
         List<Todo> completedTasks = getTasks.allTodoDateModified()
                 .stream()
