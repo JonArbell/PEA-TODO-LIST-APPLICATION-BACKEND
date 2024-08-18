@@ -24,6 +24,44 @@ body{
     color: rgb(102, 117, 99);
 }
 
+#edit-delete-list-container-modal{
+    background-color: #DAD3BE;
+    position: fixed;
+    border-radius: 12px;
+    height: 20%;
+    width: 15% !important;
+    text-align: center;
+    box-shadow: 0 2px 7px black;
+    bottom: 7%;
+    left: 15%;
+    display: none;
+
+}
+#edit-delete-list-container-modal div button{
+    height: 45%;
+    width: 45%;
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: #293b49;
+    color: #ece6d0;
+    border: 1.5px solid #19232c;
+}
+
+#delete-button-list-container-modal{
+    border: 1.5px solid rgb(29, 0, 0) !important;
+    background-color: rgb(56, 0, 0) !important;
+}
+
+#edit-delete-list-container-modal div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60%;
+    width: 100% !important;
+    gap: 5%;
+}
+
 header{
     height: 10vh;
     transition: 0.5s ease;
@@ -61,12 +99,28 @@ header div ul li h1{
     font-size: 55px;
     margin-right: 730px;
 }
-#left-container div{
+
+#left-container > div{
     width: 90%;
-    margin-top: 12.3%;
-    margin-bottom: 5%;
+    margin-top: 5%;
+    margin-bottom: 2.8%;
 }
 
+#manage-list-container button{
+    height: 100%;
+    width: 100%;
+    background-color: #d0cab5;
+    border-radius: 12px;
+    color: #254336;
+    cursor: pointer;
+    font-size: 150%;
+    transition: 0.1s ease;
+    border: 1.5px solid #162720;
+}
+
+#manage-list-container{
+    height: 7%;
+}
 .select-list-date{
     display: flex !important;
     flex-direction: row !important;
@@ -162,7 +216,7 @@ header div ul li h1{
     bottom: 3.7%;
 }
 #lists-container ul{
-    height: 208.875px;
+    height: 234px;
     overflow-y: scroll;
 }
 
@@ -200,6 +254,11 @@ header div ul li h1{
 #left-container h2,#left-container hr{
     margin-top: 7.9%;
 }
+
+#last-left-hr{
+    margin-top: 1px !important;
+}
+
 #right-container div h2{
     margin: 5.1px;
 }
@@ -479,7 +538,7 @@ h2,h3,h1{
     font-size: 12px;
 }
 
-#left-container h2,#right-container h2{
+#left-container > h2,#right-container h2{
     font-size: 45px;
     text-align: center;
 }

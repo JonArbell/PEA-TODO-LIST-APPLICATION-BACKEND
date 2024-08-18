@@ -1,13 +1,10 @@
 package com.myapp.pea.Services.AccountService;
 
-
-import com.myapp.pea.Models.User;
 import com.myapp.pea.Models.UserPrincipal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
 @Service

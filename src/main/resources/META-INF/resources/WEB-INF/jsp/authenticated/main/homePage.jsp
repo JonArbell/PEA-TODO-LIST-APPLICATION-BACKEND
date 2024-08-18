@@ -135,7 +135,9 @@
         
         <div id="left-container" class="containers dim">
             <h2>Menu</h2>
+
             <hr/>
+
             <div>
                 <h3>Tasks</h3>
                 <ul>
@@ -167,7 +169,22 @@
                 </ul>
             </div>
 
-            <hr/>
+            <div id="edit-delete-list-container-modal">
+
+                <h2>Manage your lists:</h2>
+                
+                <div>
+                    <button>Edit list name</button>
+                    <button id="delete-button-list-container-modal">Delete list</button>
+                </div>
+
+            </div>
+
+            <div id="manage-list-container">
+                <button>Manage List</button>
+            </div>
+
+            <hr id="last-left-hr"/>
 
             <footer>PEA &copy; 2024</footer>
         </div>
@@ -188,7 +205,6 @@
                     </div>
                     
                 </div>
-
 
                 <c:choose>
                     <c:when test="${empty todos}">
@@ -418,6 +434,7 @@
 
     <script src="${pageContext.request.contextPath}/js/authenticated/viewTodoModal/script.js"></script>
 
+    <script src="${pageContext.request.contextPath}/js/authenticated/manageListButton/script.js"></script>
 
 </body>
 </html>

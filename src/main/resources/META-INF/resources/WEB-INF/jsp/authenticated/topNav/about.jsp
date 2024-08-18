@@ -133,7 +133,11 @@
                 </ul>
             </div>
 
-            <hr/>
+            <div id="manage-list-container">
+                <button>Manage List</button>
+            </div>
+
+            <hr id="last-left-hr"/>
 
             <footer>PEA &copy; 2024</footer>
         </div>
