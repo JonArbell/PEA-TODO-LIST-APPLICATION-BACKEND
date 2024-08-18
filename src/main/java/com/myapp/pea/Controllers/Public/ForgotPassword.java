@@ -1,4 +1,4 @@
-package com.myapp.pea.Controllers;
+package com.myapp.pea.Controllers.Public;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

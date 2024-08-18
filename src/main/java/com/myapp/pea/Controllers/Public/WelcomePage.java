@@ -1,8 +1,8 @@
-package com.myapp.pea.Controllers;
+package com.myapp.pea.Controllers.Public;
 
 import com.myapp.pea.Models.User;
-import com.myapp.pea.Services.UserService;
-import com.myapp.pea.Services.CreateAccountService;
+import com.myapp.pea.Services.AccountService.UserService;
+import com.myapp.pea.Services.AccountService.CreateAccountService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;

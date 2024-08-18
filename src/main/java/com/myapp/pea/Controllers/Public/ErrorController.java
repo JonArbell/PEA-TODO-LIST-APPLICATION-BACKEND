@@ -1,4 +1,4 @@
-package com.myapp.pea.Controllers;
+package com.myapp.pea.Controllers.Public;
 
 import com.myapp.pea.Models.User;
 import org.springframework.stereotype.Controller;

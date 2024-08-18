@@ -1,4 +1,4 @@
-package com.myapp.pea.Services;
+package com.myapp.pea.Services.AccountService;
 
 import org.springframework.stereotype.Service;
 

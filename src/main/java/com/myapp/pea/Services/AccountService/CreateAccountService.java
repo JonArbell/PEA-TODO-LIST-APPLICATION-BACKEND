@@ -1,14 +1,14 @@
-package com.myapp.pea.Services;
+package com.myapp.pea.Services.AccountService;
 
 import com.myapp.pea.Exceptions.PasswordTooShortException;
 import com.myapp.pea.Models.Lists;
 import com.myapp.pea.Models.User;
+import com.myapp.pea.Repository.ListsRepo;
 import com.myapp.pea.Repository.UsersRepo;
-import com.myapp.pea.Services.Lists.ListsOperation;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 
 @Service
@@ -16,8 +16,8 @@ import java.time.LocalDateTime;
 public class CreateAccountService {
 
     private final UsersRepo usersRepo;
-    private final ListsOperation listsOperation;
-    private final PasswordEncoder passwordEncoder;
+    private final ListsRepo listsRepo;
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
 
     public boolean checkUsername(String username) throws Exception{
 
@@ -66,7 +66,7 @@ public class CreateAccountService {
                         usersRepo.save(user);
 
                         User searchUser = usersRepo.findByUsername(user.getUsername());
-
+                        System.out.println("Search user : "+searchUser);
                         Lists personal = Lists
                                 .builder()
                                 .userId(searchUser.getId())
@@ -81,8 +81,8 @@ public class CreateAccountService {
                                 .listName("Work")
                                 .build();
 
-                        listsOperation.createNewList(personal);
-                        listsOperation.createNewList(work);
+                        listsRepo.save(personal);
+                        listsRepo.save(work);
 
                     }
                 }

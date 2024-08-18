@@ -4,7 +4,7 @@ import com.myapp.pea.Models.Todo;
 import com.myapp.pea.Models.User;
 import com.myapp.pea.Services.Lists.GetLists;
 import com.myapp.pea.Services.TodoService.GetTasks;
-import com.myapp.pea.Services.UserService;
+import com.myapp.pea.Services.AccountService.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

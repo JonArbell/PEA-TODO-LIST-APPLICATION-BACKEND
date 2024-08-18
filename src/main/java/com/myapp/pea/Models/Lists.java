@@ -19,11 +19,11 @@ public class Lists {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long userId;
-
     @Column(nullable = false)
     @Size(max = 25, message = "List name must be at most 25 characters long.")
     private String listName;
+
+    private Long userId;
 
     @Column(nullable = false)
     private LocalDateTime date;

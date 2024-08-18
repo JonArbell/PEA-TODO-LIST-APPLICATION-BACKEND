@@ -1,14 +1,10 @@
 package com.myapp.pea.Services.Lists;
 
-import com.myapp.pea.Exceptions.TodoListNotFoundException;
 import com.myapp.pea.Models.Lists;
 import com.myapp.pea.Repository.ListsRepo;
-import com.myapp.pea.Services.UserService;
+import com.myapp.pea.Services.AccountService.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 

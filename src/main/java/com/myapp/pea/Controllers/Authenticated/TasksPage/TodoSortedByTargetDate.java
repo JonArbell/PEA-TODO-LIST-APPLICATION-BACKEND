@@ -3,7 +3,7 @@ package com.myapp.pea.Controllers.Authenticated.TasksPage;
 import com.myapp.pea.Controllers.CustomComponent.MyCustomModelMap;
 import com.myapp.pea.Models.Todo;
 import com.myapp.pea.Services.TodoService.GetTasks;
-import com.myapp.pea.Services.UserService;
+import com.myapp.pea.Services.AccountService.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
