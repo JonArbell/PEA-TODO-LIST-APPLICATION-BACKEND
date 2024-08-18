@@ -94,6 +94,10 @@
                 <li class="list-no-hover" id="list-profile-logo">
                     <img class="nav-button" id="profile-logo" src="<%= request.getContextPath() %>/images/try_profile_logo.ico"/>
 
+                    <div id="account-modal">
+                        <p>Account</p>
+                    </div>
+
 
                     <div id="profile-modal">
                         
