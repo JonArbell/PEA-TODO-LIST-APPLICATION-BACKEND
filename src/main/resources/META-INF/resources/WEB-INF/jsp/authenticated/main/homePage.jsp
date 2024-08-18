@@ -178,7 +178,7 @@
                 <h2>Manage your lists:</h2>
                 
                 <div>
-                    <button>Edit list name</button>
+                    <button id="edit-button-list-container-modal">Edit list name</button>
                     <button id="delete-button-list-container-modal">Delete list</button>
                 </div>
 

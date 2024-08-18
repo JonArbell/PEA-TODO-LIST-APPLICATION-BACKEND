@@ -1,4 +1,4 @@
-
+//This is for show Manage list Modal
 document.addEventListener('mouseup',showManageListModal);
 let isClicked = false;
 function showManageListModal(event){
@@ -49,28 +49,23 @@ function addClickBounceManageListButton(event){
 
 }
 
-document.addEventListener('mouseover',manageListHover);
-
-function manageListHover(event){
+manageListHover();
+function manageListHover(){
     const button = document.querySelector('#manage-list-container button');
 
 
-    if(button.contains(event.target)){
-        manageListHovered(button);
-    }else{
-        manageListNotclicked(button);
-    }
+    button.addEventListener('mouseover',(event)=>{
+        if(button.contains(event.target)){
+            manageListHovered(button);
+        }
+    });
 
-}
-document.addEventListener('mouseout',manageListRemoveHovered);
-
-function manageListRemoveHovered(event){
-
-    const button = document.querySelector('#manage-list-container button');
-
-    if(button.contains(event.target)){
-        manageListNotHovered(button);
-    }
+    button.addEventListener('mouseout',(event)=>{
+        if(button.contains(event.target)){
+            manageListNotHovered(button);
+            manageListNotclicked(button);
+        }
+    });
 
 }
 
@@ -96,4 +91,60 @@ function manageListClicked(button){
 function manageListNotclicked(button){
     button.style.transform = '';
     button.style.filter = '';
+}
+
+
+//This is for buttons in manage list modal
+addHoverEditListName();
+function addHoverEditListName(){
+    const button = document.querySelector('#edit-delete-list-container-modal div button');
+
+    button.addEventListener('mouseover',(event)=>{
+        if(button.contains(event.target)){
+            editListNameHovered(button);
+        }
+    });
+
+    button.addEventListener('mouseout',(event)=>{
+        if(button.contains(event.target)){
+            editListNameNotHovered(button);
+            
+        }
+    });
+
+}
+
+function editListNameHovered(button){
+    button.style.backgroundColor = '#19232c';
+}
+function editListNameNotHovered(button){
+    button.style.backgroundColor = '#293b49';
+}
+
+
+
+addHoverDeleteList();
+function addHoverDeleteList(){
+    const button = document.querySelector('#delete-button-list-container-modal');
+
+    button.addEventListener('mouseover',(event)=>{
+        if(button.contains(event.target)){
+            deleteListHovered(button);
+        }
+    });
+
+    button.addEventListener('mouseout',(event)=>{
+        if(button.contains(event.target)){
+            deleteListNotHovered(button);
+            
+        }
+    });
+
+}
+
+function deleteListHovered(button){
+    button.style.backgroundColor = 'rgb(29, 0, 0)';
+}
+function deleteListNotHovered(button){
+    button.style.backgroundColor = 'rgb(56, 0, 0)';
 }

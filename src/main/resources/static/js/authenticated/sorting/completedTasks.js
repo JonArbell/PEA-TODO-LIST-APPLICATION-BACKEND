@@ -1,3 +1,4 @@
+//This function is for sorting completed task
 function sortBy(){
 
     const select = document.querySelector('#sort');

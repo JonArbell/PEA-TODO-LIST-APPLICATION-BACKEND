@@ -1,3 +1,4 @@
+//This function is for sorting by date modified
 function sortBy(){
 
     const select = document.querySelector('#sort');

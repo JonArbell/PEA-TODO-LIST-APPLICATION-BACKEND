@@ -1,3 +1,4 @@
+//These functions are for view and close the todo details
 let isViewClick = false;
 function view(todoTitle,todoDone,todoDescription,todoListName,todoDate){
 

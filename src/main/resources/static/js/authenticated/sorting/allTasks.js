@@ -1,3 +1,4 @@
+//This function is for sorting by all tasks
 function sortBy(){
 
     const select = document.querySelector('#sort');

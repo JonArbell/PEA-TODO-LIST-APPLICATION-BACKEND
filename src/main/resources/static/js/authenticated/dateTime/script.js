@@ -1,3 +1,4 @@
+//Function to get date and time to display in right container
 function date(){
 
     const date = new Date();

@@ -1,3 +1,4 @@
+//This function is for sorting by today's tasks
 function sortBy(){
 
     const select = document.querySelector('#sort');

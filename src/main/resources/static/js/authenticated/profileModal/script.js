@@ -62,17 +62,19 @@ function addBounceClickProfile(event){
 addHoverLogoProfile();
 function addHoverLogoProfile(){
     const logo = document.querySelector('#profile-logo');
-
+    const modalAccount = document.querySelector('#account-modal');
     logo.addEventListener('mouseover',(event)=>{
         if(logo.contains(event.target)){
             logo.style.filter = 'brightness(85%)';
+            modalAccount.style.display = 'flex';
         }
     });
 
     logo.addEventListener('mouseout',(event)=>{
         if(logo.contains(event.target)){
-            logo.style.transform = 'scale(1)';
-            logo.style.filter = 'brightness(100%)';
+            logo.style.transform = '';
+            logo.style.filter = '';
+            modalAccount.style.display = 'none';
         }
     });
 

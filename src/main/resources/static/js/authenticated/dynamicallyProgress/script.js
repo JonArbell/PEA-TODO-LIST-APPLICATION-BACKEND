@@ -1,3 +1,4 @@
+//This function is for dynamically display the progress
 document.addEventListener("DOMContentLoaded", function() {
     const average = document.querySelector('#donut').dataset.average;
 
