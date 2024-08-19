@@ -33,6 +33,16 @@ function close(event){
     const close = document.querySelector('.closeContainer');
 
     if(close.contains(event.target)){
+
+        document.querySelector('#view-details-title').textContent = '';
+
+        document.querySelector('#view-details-description p').textContent = '';
+
+        document.querySelector('#view-details-list p').textContent = '';
+
+        document.querySelector('#view-details-target-date p').textContent = '';
+
+        document.querySelector('#view-details-done p').textContent = '' ;
         
         document.querySelector('.view-details').style.display = 'none';
         removeBlur();
