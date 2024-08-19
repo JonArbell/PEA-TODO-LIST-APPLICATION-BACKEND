@@ -189,6 +189,9 @@
                     <li>
                         <strong>Adding Notifications:</strong> Implementing a notification system to keep users informed and engaged with their tasks.
                     </li>
+                    <li>
+                        <strong>Real-Time Displaying and Submitting Data:</strong> Implementing real-time updates for displaying and submitting data to ensure a more dynamic and responsive user experience.
+                    </li>
                     </ul>
                 </div>
         
