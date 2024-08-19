@@ -2,7 +2,7 @@ package com.myapp.pea.Controllers.Authenticated.TopNav;
 
 import com.myapp.pea.Models.Todo;
 import com.myapp.pea.Models.User;
-import com.myapp.pea.Services.Lists.GetLists;
+import com.myapp.pea.Services.ListsService.GetLists;
 import com.myapp.pea.Services.TodoService.GetTasks;
 import com.myapp.pea.Services.AccountService.UserService;
 import lombok.AllArgsConstructor;

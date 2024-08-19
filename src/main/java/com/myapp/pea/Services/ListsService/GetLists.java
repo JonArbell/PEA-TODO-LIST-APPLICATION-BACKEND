@@ -1,4 +1,4 @@
-package com.myapp.pea.Services.Lists;
+package com.myapp.pea.Services.ListsService;
 
 import com.myapp.pea.Models.Lists;
 import com.myapp.pea.Repository.ListsRepo;

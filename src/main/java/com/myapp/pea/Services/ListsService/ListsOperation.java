@@ -1,4 +1,4 @@
-package com.myapp.pea.Services.Lists;
+package com.myapp.pea.Services.ListsService;
 
 import com.myapp.pea.Exceptions.TodoItemNotFoundException;
 import com.myapp.pea.Exceptions.TodoListNotFoundException;
@@ -36,25 +36,31 @@ public class ListsOperation {
         listsRepo.save(create);
     }
 
-    public void deleteList(Long id) throws TodoListNotFoundException {
+    public void deleteList(Long id,boolean deleteTasks) throws TodoListNotFoundException {
 
         List<Lists> searchList = getLists.allListsDateModified();
 
         boolean isDelete = false;
 
-        for(Lists currentList : searchList){
+        for(Lists list : getLists.allListsDateModified()){
 
-            if(currentList.getId().equals(id)){
-                isDelete = true;
+            if(list.getId().equals(id)){
 
-                for(Todo todo : getTasks.allTodoTargetDate()){
+                for(Todo todo : getTasks.allTodoDateModified()){
 
-                    if(todo.getLists().getId().equals(id)){
+                    if(todo.getLists() != null && todo.getLists().getId().equals(id)){
                         todo.setLists(null);
                         todoRepo.save(todo);
+
+                        if(deleteTasks){
+                            todoRepo.deleteById(todo.getId());
+                        }
+
                     }
                 }
+
                 listsRepo.deleteById(id);
+                isDelete = true;
                 break;
             }
 

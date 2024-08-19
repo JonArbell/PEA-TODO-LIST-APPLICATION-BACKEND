@@ -1,14 +1,13 @@
 package com.myapp.pea.Controllers.Authenticated.ListOperation;
 
 import com.myapp.pea.Models.Lists;
-import com.myapp.pea.Services.Lists.ListsOperation;
+import com.myapp.pea.Services.ListsService.ListsOperation;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.util.Objects;
 
 @Controller
@@ -34,10 +33,12 @@ public class CRUDList {
     }
 
     @PostMapping("/list/delete/{id}")
-    public String deleteList(Long id,
+    public String deleteList(@PathVariable Long id,
+                            boolean deleteTasks,
                              RedirectAttributes reMap){
+
         try{
-            listsOperation.deleteList(id);
+            listsOperation.deleteList(id,deleteTasks);
             reMap.addFlashAttribute("deleteListMessage","success");
         }catch (Exception e){
             System.out.println("Error : "+e);

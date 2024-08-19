@@ -178,9 +178,56 @@
                 <h2>Manage your lists:</h2>
                 
                 <div>
-                    <button id="edit-button-list-container-modal">Edit list name</button>
-                    <button id="delete-button-list-container-modal">Delete list</button>
+                    <button id="edit-button-list-container-modal">Edit List Name</button>
+                    <button id="delete-button-list-container-modal" onmouseup="clickedDelete()">Delete List</button>
                 </div>
+
+            </div>
+
+            <!-- <div id="edit-list-container-modal">
+                <form>
+                    <select>
+                        <c:forEach items="${lists}" var="list">
+                            <option>${list.listName}</option>
+                        </c:forEach>
+                    </select>
+                </form>
+            </div> -->
+
+            <div id="delete-list-container-modal">
+
+                <div id="delete-select-list-container">
+                    <h2>Select List to delete:</h2>
+                    <select id="listSelectDelete">
+                        <c:forEach items="${lists}" var="list">
+
+                            <c:if test="${list.listName != 'Personal' && list.listName != 'Work'}">
+                                <option value="${list.id}" data-name="${list.listName}" >${list.listName}</option>
+                            </c:if>
+
+                        </c:forEach>
+                    </select>
+
+                    <div>
+
+                        <p>Also delete all tasks within this list: </p>
+                        <input id="check-all-tasks" type="checkbox"/>
+                    </div>
+                    
+                    <button onmouseup="deleteList()">Delete</button>
+                </div>
+                
+               <div id="delete-form-container">
+
+                    <h2></h2>
+
+                    <form method="post">
+                        <input type="hidden" name="deleteTasks"/>
+                        <button type="reset">Discard</button>
+                        <button type="submit" onmouseup="deleteListSubmit()">Delete</button>
+                        
+                    </form>
+               </div>
 
             </div>
 
@@ -439,6 +486,8 @@
     <script src="${pageContext.request.contextPath}/js/authenticated/viewTodoModal/script.js"></script>
 
     <script src="${pageContext.request.contextPath}/js/authenticated/manageListButton/script.js"></script>
+
+    <script src="${pageContext.request.contextPath}/js/authenticated/editDeleteList/script.js"></script>
 
 </body>
 </html>

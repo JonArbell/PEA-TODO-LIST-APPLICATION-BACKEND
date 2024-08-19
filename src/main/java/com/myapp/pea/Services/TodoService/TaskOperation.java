@@ -6,7 +6,7 @@ import com.myapp.pea.Exceptions.TodoListNotFoundException;
 import com.myapp.pea.Models.Lists;
 import com.myapp.pea.Models.Todo;
 import com.myapp.pea.Repository.TodoRepo;
-import com.myapp.pea.Services.Lists.GetLists;
+import com.myapp.pea.Services.ListsService.GetLists;
 import com.myapp.pea.Services.AccountService.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

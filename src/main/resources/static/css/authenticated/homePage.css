@@ -66,6 +66,28 @@ body{
     transition: 0.2s ease;
 }
 
+#edit-list-container-modal,#delete-list-container-modal{
+    z-index: 150;
+    background-color: #ece6d0;
+    position: fixed;
+    width: 20% !important;
+    border-radius: 12px;
+    flex-direction: column;
+    bottom: 20%;
+    left: 20%;
+    height: 20%;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 2px 7px black;
+
+}
+
+#delete-form-container,#edit-list-container-modal,#delete-list-container-modal,#delete-select-list-container{
+    display: none;
+}
+
+
+
 #delete-button-list-container-modal{
     border: 1.5px solid rgb(29, 0, 0) !important;
     background-color: rgb(56, 0, 0);
