@@ -189,9 +189,7 @@
                     <li>
                         <strong>Adding Notifications:</strong> Implementing a notification system to keep users informed and engaged with their tasks.
                     </li>
-                    <li>
-                        <strong>Real-Time Displaying and Submitting Data:</strong> Implementing real-time updates for displaying and submitting data to ensure a more dynamic and responsive user experience.
-                    </li>
+                   
                     </ul>
                 </div>
         
@@ -208,6 +206,10 @@
                         <li><strong>Strengthening Security:</strong> Upgrading our security measures to protect your data and ensure a reliable experience.</li>
 
                         <li><strong>Introducing Real-Time Search:</strong> Adding real-time search for to-do items to streamline task management and boost productivity.</li>
+
+                        <li>
+                            <strong>Real-Time Displaying and Submitting Data:</strong> Implementing real-time updates for displaying and submitting data to ensure a more dynamic and responsive user experience.
+                        </li>
 
                     </ul>
                     
