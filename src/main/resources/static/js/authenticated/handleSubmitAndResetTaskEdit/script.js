@@ -63,34 +63,14 @@ function handleDiscard(){
     closeCreateNewEditItemContainer();
 }
 
-function removeBlur(){
-    const body = document.querySelector('body');
-    body.style.backgroundColor = '#d0cab5';
-    body.querySelectorAll('div').forEach(div =>{
-        div.classList.forEach(className =>{
-            if(className == 'dim'){
-                div.style.filter = '';
-                
-                div.querySelectorAll('button').forEach(button =>{
-                    button.disabled = false;
-                });
-
-                div.querySelectorAll('a').forEach(aTag =>{
-                    aTag.removeEventListener('click',preventClick);
-                });
-
-                document.removeEventListener('mouseup',preventProfileLogoClick);
-
-                
-            }
-        });
-    });
+function removeDim(){
+    document.querySelector('#dim-panis').style.display = 'none';
 }
 
 function closeCreateNewEditItemContainer(){
     document.querySelector('#add-edit-task-container').style.display = 'none';
 
-    removeBlur();
+    removeDim();
 
     document.querySelector('#date-and-time-progress-display-container').style.display = 'flex';
     document.querySelector('#add-edit-list-container').style.display = 'none';

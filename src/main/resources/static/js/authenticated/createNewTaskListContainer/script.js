@@ -24,63 +24,15 @@ function createNewTask(dateTimeProgressContainer,title){
 }
 
 
-const preventClick = (event) => {
-    event.preventDefault();
-};
-
-function blur(){
-
-    const body = document.querySelector('body');
-
-    body.style.backgroundColor = 'rgb(173 169 155)';
-
-    body.querySelectorAll('div').forEach(div =>{
-        div.classList.forEach(className =>{
-            if(className == 'dim'){
-                div.style.filter = 'brightness(90%) blur(3px)';
-                
-                div.querySelectorAll('button').forEach(button =>{
-                    button.disabled = true;
-                });
-
-                div.querySelectorAll('a').forEach(aTag =>{
-                    aTag.addEventListener('click',preventClick);
-                });
-                
-
-                document.addEventListener('mouseup',preventProfileLogoClick);
-                document.addEventListener('onchange',removeListenerForSort);
-
-            }
-        });
-    });
-
+function dim(){
+    document.querySelector('#dim-panis').style.display = 'block';
 }
 
-function preventProfileLogoClick(event){
-    const logo = document.querySelector('#profile-logo');
-    if(logo.contains(event.target)){
-
-        const container = document.querySelector('#profile-modal');
-        closeProfileModalContainer(container);
-
-    }
-
-}
-
-function removeListenerForSort(event){
-    const select = document.querySelector('#sort-container select');
-    
-    if(select.contains(event.target)){
-        event.preventDefault();
-    }
-
-}
 
 function createNewList(){
     document.querySelector('#add-edit-list-container').style.display = 'flex';
 
-    blur();
+    dim();
 
     document.querySelectorAll('.add-edit-title')[1].textContent = 'Add List:';
 

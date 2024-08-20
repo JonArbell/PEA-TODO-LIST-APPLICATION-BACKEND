@@ -7,6 +7,8 @@ function view(todoTitle,todoDone,todoDescription,todoListName,todoDate){
         return;
     }
 
+    document.querySelector('#delete-list-container-modal').style.display = 'none';
+
     document.querySelector(`.view-details`).style.display = 'flex';
     
     document.querySelector('#view-details-title').textContent = `Title : ${todoTitle}`;
@@ -19,11 +21,10 @@ function view(todoTitle,todoDone,todoDescription,todoListName,todoDate){
 
     document.querySelector('#view-details-done p').textContent = todoDone == 'false' ? 'No' : 'Yes' ;
 
-    blur();
+    dim();
 
     isViewClick = true;
 }
-
 
 
 document.addEventListener('mousedown',close);
@@ -45,7 +46,7 @@ function close(event){
         document.querySelector('#view-details-done p').textContent = '' ;
         
         document.querySelector('.view-details').style.display = 'none';
-        removeBlur();
+        removeDim();
         isViewClick = false;
     }
 

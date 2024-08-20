@@ -52,6 +52,10 @@
 
     </div>
 
+    <div id="dim-panis">
+
+    </div>
+
     <header>
         <div class="dim">
 
@@ -94,6 +98,10 @@
                 <li class="list-no-hover" id="list-profile-logo">
                     <img class="nav-button" id="profile-logo" src="<%= request.getContextPath() %>/images/try_profile_logo.ico"/>
 
+                    <div id="account-modal">
+                        <p>Account</p>
+                    </div>
+
 
                     <div id="profile-modal">
                         
@@ -135,7 +143,9 @@
         
         <div id="left-container" class="containers dim">
             <h2>Menu</h2>
+
             <hr/>
+
             <div>
                 <h3>Tasks</h3>
                 <ul>
@@ -165,6 +175,68 @@
                         
                     </c:forEach>
                 </ul>
+            </div>
+
+            <div id="edit-delete-list-container-modal">
+
+                <h2>Manage your lists:</h2>
+                
+                <div>
+                    <button id="edit-button-list-container-modal">Edit List Name</button>
+                    <button id="delete-button-list-container-modal" onmouseup="clickedDelete()">Delete List</button>
+                </div>
+
+            </div>
+
+            <!-- <div id="edit-list-container-modal">
+                <form>
+                    <select>
+                        <c:forEach items="${lists}" var="list">
+                            <option>${list.listName}</option>
+                        </c:forEach>
+                    </select>
+                </form>
+            </div> -->
+
+            <div id="delete-list-container-modal">
+
+                <span class="closeContainer">
+                    <p>&times;</p>
+                </span>
+
+                <div id="delete-select-list-container">
+                    <h2>Select List to delete:</h2>
+                    <select id="listSelectDelete">
+                        <c:forEach items="${lists}" var="list">
+
+                            <c:if test="${list.listName != 'Personal' && list.listName != 'Work'}">
+                                <option value="${list.id}" data-name="${list.listName}" >${list.listName}</option>
+                            </c:if>
+
+                        </c:forEach>
+                    </select>
+
+                    <div>
+
+                        <p>Also delete all tasks within this list: </p>
+                        <input id="check-all-tasks" type="checkbox"/>
+                    </div>
+                    
+                    <button onmouseup="deleteList()">Delete</button>
+                </div>
+                
+               <div id="delete-form-container">
+
+                    <h2></h2>
+
+                    <form method="post">
+                        <input type="hidden" name="deleteTasks"/>
+                        <button type="reset">Discard</button>
+                        <button type="submit" onmouseup="deleteListSubmit()">Delete</button>
+                        
+                    </form>
+               </div>
+
             </div>
 
             <div id="manage-list-container">

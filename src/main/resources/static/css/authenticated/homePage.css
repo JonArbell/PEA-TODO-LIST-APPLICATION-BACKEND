@@ -86,8 +86,42 @@ body{
     display: none;
 }
 
+#delete-select-list-container{
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+#delete-select-list-container > h2{
+    margin-top: 3.5% !important
+}
+#delete-select-list-container button{
+    padding: 10px;
+    border-radius: 12px;
+    background: #3f0202;
+    color: #ece6d0;
+    width: 100%;
+}
+
+#dim-panis{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.57);
+    z-index: 999;
+}
 
 
+#delete-select-list-container *{
+    margin: 4.5px;
+}
+#delete-select-list-container > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 #delete-button-list-container-modal{
     border: 1.5px solid rgb(29, 0, 0) !important;
     background-color: rgb(56, 0, 0);
@@ -155,7 +189,7 @@ header div ul li h1{
     color: #254336;
     cursor: pointer;
     font-size: 150%;
-    transition: 0.1s ease;
+    transition: 0.2s ease;
     border: 1.5px solid #162720;
 }
 
@@ -458,7 +492,7 @@ header div ul li h1{
     display: none;
     align-items: flex-start;
     flex-direction: column;
-    z-index: 100;
+    z-index: 1000;
     box-shadow: 0 5px 7px black;
     right: 35%;
     top: 25%;
@@ -720,10 +754,19 @@ main{
     width: 20%;
     border-radius: 12px;
     background-color: #ece6d0;
-    z-index: 100;
+    z-index: 1000;
     right: 40%;
     bottom: 40%;
     box-shadow: 0 3px 4px black;
+}
+#listSelectDelete{
+    border-radius: 12px;
+    padding: 5px;
+    background-color: #293b49;
+}
+
+#listSelectDelete *,#listSelectDelete{
+    color: #ece6d0;
 }
 
 #add-edit-list-container form,#add-edit-list-container{

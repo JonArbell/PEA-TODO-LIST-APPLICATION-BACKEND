@@ -52,6 +52,10 @@
 
     </div>
 
+    <div id="dim-panis">
+
+    </div>
+
     <header>
         <div class="dim">
 
@@ -195,6 +199,10 @@
             </div> -->
 
             <div id="delete-list-container-modal">
+
+                <span class="closeContainer">
+                    <p>&times;</p>
+                </span>
 
                 <div id="delete-select-list-container">
                     <h2>Select List to delete:</h2>
