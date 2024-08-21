@@ -242,21 +242,21 @@
         
         
                       <li>
-                        <a href="https://www.linkedin.com/in/jon-arbell-donor-de-ocampo-134083284/">LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/jon-arbell-donor-de-ocampo-134083284/" target="_blank">LinkedIn</a>
                       </li>
         
         
                       <li>
-                        <a href="https://github.com/JonArbell" >GitHub</a>
+                        <a href="https://github.com/JonArbell" target="_blank">GitHub</a>
                       </li>
                     
                       
                       <li>
-                        <a href="https://web.facebook.com/j.arbelldeocampo">Facebook</a>
+                        <a href="https://web.facebook.com/j.arbelldeocampo" target="_blank">Facebook</a>
                       </li>
                 
                       <li>
-                        <a href="https://www.instagram.com/j.arbelldeocampo/">Instagram</a>
+                        <a href="https://www.instagram.com/j.arbelldeocampo/" target="_blank">Instagram</a>
                       </li>
         
                       
