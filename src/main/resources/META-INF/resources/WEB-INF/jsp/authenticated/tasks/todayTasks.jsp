@@ -156,6 +156,10 @@
                         <li>Completed Tasks</li>
                     </a>
 
+                    <a href="/pea/overdue-tasks">
+                        <li>Overdue Tasks</li>
+                    </a>
+
                     <a href="/pea/all-tasks">
                         <li>All Tasks</li>
                     </a>

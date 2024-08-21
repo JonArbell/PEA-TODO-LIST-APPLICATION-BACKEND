@@ -29,6 +29,7 @@ public class SecurityConfig {
                                         "/pea/todays-tasks/**",
                                         "/pea/all-tasks/**",
                                         "/pea/completed-tasks/**",
+                                        "/pea/overdue-tasks/**",
                                         "/about-us",
                                         "/contact-us",
                                         "/settings",

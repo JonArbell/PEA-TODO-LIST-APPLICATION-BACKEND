@@ -75,9 +75,6 @@ public class TodoSortedByDateModified {
     @GetMapping("/all-tasks")
     public String allTasks(ModelMap map,HttpServletRequest request){
 
-        if(!userService.isUserAuthenticated()){
-            return "redirect:/pea";
-        }
         List<Todo> allTasks = getTasks.allTodoDateModified();
 
         myCustomModelMap.modelMap(map,
@@ -86,6 +83,25 @@ public class TodoSortedByDateModified {
                 "totalOfAllTask",
                 request.getRequestURI());
         return "authenticated/tasks/allTasks";
+    }
+
+    @GetMapping("/overdue-tasks")
+    public String overDue(ModelMap map,HttpServletRequest request){
+
+        List<Todo> overDue = getTasks
+                .allTodoDateModified()
+                .stream()
+                .filter(todo -> !todo.isDone())
+                .filter(todo -> LocalDate.now().isAfter(todo.getDate()))
+                .toList();
+
+        myCustomModelMap.modelMap(map,
+                overDue,
+                "overDue",
+                "totalOfOverDueTasks",
+                request.getRequestURI());
+
+        return"authenticated/tasks/overDueTasks";
     }
 
 }
