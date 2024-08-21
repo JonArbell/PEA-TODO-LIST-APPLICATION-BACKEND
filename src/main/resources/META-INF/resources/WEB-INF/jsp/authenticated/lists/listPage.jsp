@@ -70,7 +70,7 @@
 
                 <li id="list-search">
                     <form method="get" action="/search">
-
+                        <sec:csrfInput/>
                         <input type="search" name="query" id="" placeholder="Search..."/>
         
                     </form>
@@ -234,6 +234,7 @@
                     <h2></h2>
 
                     <form method="post">
+                        <sec:csrfInput/>
                         <input type="hidden" name="deleteTasks"/>
                         <button type="reset">Discard</button>
                         <button type="submit" onmouseup="deleteListSubmit()">Delete</button>
@@ -295,6 +296,7 @@
                         <div id="sort-todo-list-container">
                             <h3 id="to-do-list">TO-DO LIST:</h3>
                             <form id="sort-container">
+                                <sec:csrfInput/>
                                 <label>Sort by:</label>
                                 <select onchange="sortBy()" id="sort">
                                     <option value="1">Date Modified</option>
@@ -360,6 +362,7 @@
 
                                     <div id="task-buttons">
                                         <form id="form-${todo.id}" action="">
+                                            <sec:csrfInput/>
                                             <button onmouseup="deleteTodoItem(`${todo.id}`)" id="task-delete-button">Delete</button>
 
                                             <c:if test="${!todo.done}">
@@ -451,6 +454,7 @@
                         <h4>List [Optional]</h4>
 
                         <form:select path="lists">
+                            
                             <form:option value="0">None</form:option>
 
                             <c:forEach items="${lists}" var="list">

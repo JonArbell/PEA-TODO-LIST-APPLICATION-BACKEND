@@ -31,6 +31,7 @@
 
                 <li id="list-search">
                     <form method="get" action="/search">
+                        <sec:csrfInput/>
 
                         <input type="search" name="query" id="" placeholder="Search..."/>
         
@@ -195,6 +196,7 @@
                     <h2></h2>
 
                     <form method="post">
+                        <sec:csrfInput/>
                         <input type="hidden" name="deleteTasks"/>
                         <button type="reset">Discard</button>
                         <button type="submit" onmouseup="deleteListSubmit()">Delete</button>
@@ -278,6 +280,7 @@
                     <h2>Feedback Form [Optional]</h2>
                    
                     <form>
+                        <sec:csrfInput/>
                         <label for="full-name">Full name: </label>
                         <input id="full-name" type="text" placeholder="Enter your full name">
                         <br/>

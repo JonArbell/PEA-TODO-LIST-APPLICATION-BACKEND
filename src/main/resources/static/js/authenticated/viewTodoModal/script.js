@@ -15,7 +15,7 @@ function view(todoTitle,todoDone,todoDescription,todoListName,todoDate){
 
     document.querySelector('#view-details-description p').textContent = todoDescription != '' ? `${todoDescription}` : 'No Description';
 
-    document.querySelector('#view-details-list p').textContent = `${todoListName}`;
+    document.querySelector('#view-details-list p').textContent = todoListName === '' ? 'No list' : `${todoListName}`;
 
     document.querySelector('#view-details-target-date p').textContent = `${todoDate}`;
 

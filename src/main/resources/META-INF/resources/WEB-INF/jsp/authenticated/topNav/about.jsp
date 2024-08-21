@@ -36,7 +36,7 @@
 
                 <li id="list-search">
                     <form method="get" action="/search">
-
+                        <sec:csrfInput/>
                         <input type="search" name="query" id="" placeholder="Search..."/>
         
                     </form>
@@ -200,6 +200,7 @@
                     <h2></h2>
 
                     <form method="post">
+                        <sec:csrfInput/>
                         <input type="hidden" name="deleteTasks"/>
                         <button type="reset">Discard</button>
                         <button type="submit" onmouseup="deleteListSubmit()">Delete</button>
