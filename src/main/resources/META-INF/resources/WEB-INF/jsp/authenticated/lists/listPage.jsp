@@ -523,5 +523,9 @@
     <script src="${pageContext.request.contextPath}/js/authenticated/dateTime/script.js"></script>
 
     <script src="${pageContext.request.contextPath}/js/authenticated/viewTodoModal/script.js"></script>
+
+    <script src="${pageContext.request.contextPath}/js/authenticated/manageListButton/script.js"></script>
+
+    <script src="${pageContext.request.contextPath}/js/authenticated/editDeleteList/script.js"></script>
 </body>
 </html>
