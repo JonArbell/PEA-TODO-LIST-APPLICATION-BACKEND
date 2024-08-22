@@ -435,8 +435,7 @@ header div ul li h1{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 95%;
-    margin-left: 2.5%;
+    width: 90%;
 }
 
 #profile-modal-username{
@@ -564,8 +563,8 @@ h2,h3,h1{
     font-size: 20px;
     height: 15%;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     
 }
@@ -595,14 +594,15 @@ h2,h3,h1{
     width: 90% !important;
 }
 
-
 #middle-container #title h2{
     font-size: 45px !important;
 }
+
 #todo-lists-container{
     overflow-y: scroll;
-    height: 86.5%;
+    height: 84.7%;
 }
+
 #tasks-display-container{
     height: 100%;
 }
@@ -820,7 +820,7 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 4.15% 0 5% 0;
+    margin: 4.5% 0 4.5% 0;
     margin-left: 13.5%;
     gap: 8.7%;
     background-color: #DAD3BE;
@@ -855,11 +855,10 @@ main{
 #total-pending-tasks{
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 90%;
     gap: 2%;
     margin-top: 1.5%;
     margin-bottom: 2.5%;
-    margin-left: 2.5%;
 }
 #total-pending-tasks div{
     box-shadow: 0 0 3px rgb(41, 41, 41);
