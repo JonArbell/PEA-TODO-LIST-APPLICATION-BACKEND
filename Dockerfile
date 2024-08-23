@@ -4,12 +4,17 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 
+# Use an official OpenJDK runtime as a parent image
+FROM openjdk:21-jdk-slim
+
 # Set the working directory in the container
 WORKDIR /app
 
-FROM openjdk:21-jdk-slim
-COPY /target/PeaTodoListApplication-0.0.1-SNAPSHOT.jar /app/PeaTodoListApplication.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","PeaTodoListApplication.jar"]
+# Copy the JAR file from the target directory in the build context to the container
+COPY target/PeaTodoListApplication-0.0.1-SNAPSHOT.jar /app/PeaTodoListApplication.jar
+
+# Set the command to run the JAR file
+CMD ["java", "-jar", "PeaTodoListApplication.jar"]
+
 
 
