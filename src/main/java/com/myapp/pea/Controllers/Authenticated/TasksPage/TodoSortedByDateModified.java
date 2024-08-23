@@ -97,11 +97,11 @@ public class TodoSortedByDateModified {
 
         myCustomModelMap.modelMap(map,
                 overDue,
-                "overDue",
+                "overDueTask",
                 "totalOfOverDueTasks",
                 request.getRequestURI());
 
-        return"authenticated/tasks/overDueTasks";
+        return"authenticated/tasks/overdueTasks";
     }
 
 }
