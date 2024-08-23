@@ -83,17 +83,18 @@
                             <span> Settings</span>
                         </a>
 
-                        <a  href="/pea/logout">
-                            <!-- <form method="post" action="/pea/logout">
+                        <form method="post" action="/pea/logout">
 
-                                <button type="submit">Log Out</button>
+                            <sec:csrfInput/>
 
-                            </form> -->
+                            <button type="submit">
+                                <img class="nav-button" id="logout-img" src="<%= request.getContextPath() %>/images/logout.png"/>
+                                <span>Log out</span>
+                                
+                            </button>
 
-                            <img class="nav-button" id="logout-img" src="<%= request.getContextPath() %>/images/logout.png"/>
-
-                            <span>Log Out</span>
-                        </a>
+                        </form>
+                        
                         <hr/>
                         <footer>PEA &copy; 2024 Made with &hearts; by Jon Arbell De Ocampo</footer>
                     </div>

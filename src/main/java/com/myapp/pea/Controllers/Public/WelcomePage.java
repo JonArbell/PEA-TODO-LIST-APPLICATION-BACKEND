@@ -22,6 +22,16 @@ public class WelcomePage {
     private final CreateAccountService createAccountService;
     private final UserService userService;
 
+    @GetMapping("/logout")
+    public String getLogout(){
+        return logout();
+    }
+
+    @PostMapping("/logout")
+    public String logout(){
+        return "redirect:/pea";
+    }
+
     @GetMapping("")
     public String welcomePage(ModelMap map){
 

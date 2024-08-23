@@ -412,14 +412,28 @@ header div ul li h1{
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    border-radius: 12px;
     margin-top: 10px;
 }
+#profile-modal form{
+    width: 95%;
+}
+#profile-modal a,#profile-modal form,#profile-modal form button{
+    border-radius: 12px;
+}
+
+#profile-modal form button{
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: #DAD3BE;
+}
+
 #profile-modal-username{
     color: #DAD3BE;
 }
 
-#profile-modal a[href="/pea/logout"]:hover{
+#profile-modal form button:hover{
     background-color: rgb(82, 0, 0);
 }
 
@@ -444,12 +458,15 @@ header div ul li h1{
 #profile-modal-username:hover{
     background-color: #202d38;
 }
-#profile-modal-username span,#profile-modal a[href="/pea/logout"]:hover span{
+
+#profile-modal-username span,#profile-modal form button:hover span{
     color: #DAD3BE;
 }
+
 .task-progress section{
     width: 100%;
 }
+
 .task-progress section div{
     margin: 1%;
     width: 100% !important;
