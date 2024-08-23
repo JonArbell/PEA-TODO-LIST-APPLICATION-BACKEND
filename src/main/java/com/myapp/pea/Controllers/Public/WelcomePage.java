@@ -21,7 +21,7 @@ public class WelcomePage {
 
     private final CreateAccountService createAccountService;
     private final UserService userService;
-    
+
     @GetMapping("")
     public String welcomePage(ModelMap map){
 

@@ -18,6 +18,7 @@ function showManageListModal(event){
 
         showModal(container);
         manageListNotclicked(button);
+        deleteEditListDiscard();
     }else{
         removeModal(container);
     }

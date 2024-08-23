@@ -25,18 +25,21 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     const select = document.querySelector('#sort');
 
-    switch(window.location.href){
-        case 'http://localhost:8080/pea/todays-tasks':
-            select.value = '1';
-            break;
-        case 'http://localhost:8080/pea/todays-tasks/sort-by-title':
-            select.value = '2';
-            break;
-        case 'http://localhost:8080/pea/todays-tasks/sort-by-target-date':
-            select.value = '3';
-            break;
-        default:
+    if(select !== null){
+        switch(window.location.href){
+            case 'http://localhost:8080/pea/todays-tasks':
+                select.value = '1';
+                break;
+            case 'http://localhost:8080/pea/todays-tasks/sort-by-title':
+                select.value = '2';
+                break;
+            case 'http://localhost:8080/pea/todays-tasks/sort-by-target-date':
+                select.value = '3';
+                break;
+            default:
+        }
     }
+
 
 });
 

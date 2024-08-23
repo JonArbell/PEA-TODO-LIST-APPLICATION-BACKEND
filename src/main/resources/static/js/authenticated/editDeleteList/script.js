@@ -1,8 +1,14 @@
 
 function clickedDelete(){
-    document.querySelector('#delete-list-container-modal').style.display ='flex';
-    document.querySelector('#delete-select-list-container').style.display ='block';
+
+    const mainContainer = document.querySelector('#delete-list-container-modal');
+    const deleteSelect = document.querySelector('#delete-select-list-container');
+
+    mainContainer.style.display = 'flex';
+    deleteSelect.style.display = 'block';
+    isDeleteClicked = true;
     removeModal(document.querySelector('#edit-delete-list-container-modal'));
+
 }
 
 
@@ -33,6 +39,30 @@ function deleteListSubmit(){
 }
 
 
-function deleteListDiscard(){
+function deleteEditListDiscard(){
 
+    const listSelected = document.querySelector('#listSelectDelete');
+    const listName = listSelected.options[listSelected.selectedIndex].dataset.name;
+
+    listName.value = '';
+
+    const confirm = document.querySelector('#delete-form-container h2');
+
+    confirm.textContent ='';
+
+    document.querySelector('#delete-form-container').style.display = 'none';
+    document.querySelector('#delete-list-container-modal').style.display = 'none';
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

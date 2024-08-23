@@ -149,7 +149,7 @@
                 <h2>Manage your lists:</h2>
                 
                 <div>
-                    <button id="edit-button-list-container-modal">Edit List Name</button>
+                    <button id="edit-button-list-container-modal" onmouseup="clickedEdit()">Edit List Name</button>
                     <button id="delete-button-list-container-modal" onmouseup="clickedDelete()">Delete List</button>
                 </div>
 
@@ -167,7 +167,7 @@
 
             <div id="delete-list-container-modal">
 
-                <span class="closeContainer">
+                <span onmouseup="deleteEditListDiscard()" class="closeContainer">
                     <p>&times;</p>
                 </span>
 
@@ -194,14 +194,19 @@
                 
                <div id="delete-form-container">
 
-                    <h2></h2>
-
                     <form method="post">
-                        <sec:csrfInput/>
+                        <h2></h2>
+
                         <input type="hidden" name="deleteTasks"/>
-                        <button type="reset">Discard</button>
-                        <button type="submit" onmouseup="deleteListSubmit()">Delete</button>
-                        
+
+                        <div id="delete-form-buttons-container">
+
+                            <button type="reset" onmouseup="deleteEditListDiscard()">Discard</button>
+
+                            <sec:csrfInput/>
+
+                            <button type="submit" onmouseup="deleteListSubmit()">Delete</button>
+                        </div>
                     </form>
                </div>
 
