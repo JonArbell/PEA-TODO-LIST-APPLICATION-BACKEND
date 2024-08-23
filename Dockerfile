@@ -1,3 +1,4 @@
+
 FROM eclipse-temurin:21-jdk
 COPY . .
 RUN mvn clean package -DskipTests
