@@ -17,4 +17,3 @@ COPY target/PeaTodoListApplication-0.0.1-SNAPSHOT.jar /app/PeaTodoListApplicatio
 ENTRYPOINT ["java", "-jar", "PeaTodoListApplication.jar"]
 
 
-
