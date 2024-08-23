@@ -25,7 +25,3 @@ EXPOSE 8080
 # Set the command to run the JAR file
 ENTRYPOINT ["java", "-jar", "PeaTodoListApplication.jar"]
 
-
-ENV SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/pea_db
-ENV SPRING_DATASOURCE_USERNAME=arbellOwner
-ENV SPRING_DATASOURCE_PASSWORD=$2a$10$uDdEvKlDjhgyJGPmDFMl6.JGGJmXi3asxaLOEo4qWrE2cs.d8rdAq
