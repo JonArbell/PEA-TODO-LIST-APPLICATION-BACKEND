@@ -74,7 +74,7 @@ public class ListsOperation {
 
     }
 
-    public void updateList(Lists update) throws TodoListNotFoundException {
+    public void updateListName(Lists update) throws TodoListNotFoundException {
 
         List<Lists> searchList = getLists.allListsDateModified();
 

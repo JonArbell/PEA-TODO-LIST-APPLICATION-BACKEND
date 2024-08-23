@@ -278,7 +278,7 @@
 
                 <c:choose>
                     <c:when test="${empty overDueTask}">
-                        <h1 class="empty">No today's tasks! Click on 'Create New' to get started!</h1>
+                        <h1 class="empty">No overdue tasks! You're all caught up. Click 'Create New' to add a new task.</h1>
 
 
                     </c:when>
