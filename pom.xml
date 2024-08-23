@@ -11,7 +11,7 @@
 	<groupId>com.myapp</groupId>
 	<artifactId>PeaTodoListApplication</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>PEA TO-DO LIST APPLICATION</name>
+	<name>PeaTodoListApplication</name>
 	<description>My First Web Application</description>
 	<url/>
 	<licenses>

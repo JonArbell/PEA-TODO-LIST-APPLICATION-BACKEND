@@ -35,7 +35,7 @@ public class PeaToDoListApplication {
 *
 * Group 		: 	com.myapp
 * Artifact 		: 	PeaTodoListApplication
-* Name			: 	PEA TO-DO LIST APPLICATION
+* Name			: 	PeaTodoListApplication
 * Description	:	My First Web Application
 * JDK version	:	21.0.1
 * Package name  :	com.myapp.pea
