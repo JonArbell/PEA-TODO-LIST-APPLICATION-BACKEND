@@ -1,9 +1,5 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head>
         <meta charset="UTF-8">
 
@@ -11,9 +7,9 @@
 
         <title>P E A - log in or sign up</title>
 
-        <link rel="icon" href="<%= request.getContextPath() %>/images/checklist.ico" type="icon">
+        <link rel="icon" type="icon" th:href="@{/images/checklist.ico}" />
 
-        <link href="${pageContext.request.contextPath}/css/public/index.css" rel="stylesheet"/>
+        <link rel="stylesheet" th:href="@{/css/public/index.css}" />
 
     </head>
     <body>
@@ -33,17 +29,19 @@
         
                 <div id="login-page">
 
-                    <form:form modelAttribute="user" action="/pea/login" method="post">
+                    <form th:object="${user}" th:action="@{/pea/login}" method="post" sec:csrf="true">
 
-                        <form:input path="username" required="required" class="login-input" type="text" placeholder="Username"/>
+                        <input th:field="*{username}" required="required" class="login-input" type="text" placeholder="Username"/>
 
                         <div class="login-input" id="password-container">
-                            <form:input oninput="onInputPassword(event,'show-password-image','password')" id="password" required="required" path="password" type="password" placeholder="Password"/>
-                            <img style="height: 15px; width: 15px;" id="show-password-image" src="<%= request.getContextPath() %>/images/showPassword/close.png" alt="Toggle Password"/>
+                            <input oninput="onInputPassword(event,'show-password-image','password')" id="password"
+                                   required="required" th:field="*{password}" type="password" placeholder="Password"/>
+                            <img style="height: 15px; width: 15px;" id="show-password-image"
+                                 th:src="@{/images/showPassword/close.png}" alt="Toggle Password"/>
                         </div>
                         
                         <button id="login-button" class="buttons" type="submit">LOG IN</button>
-                    </form:form>
+                    </form>
 
                     <div id="forgot-password-container">
                         <a href="/forgot-password">Forgot password?</a>
@@ -72,18 +70,20 @@
             
             <hr/>
 
-            <form:form modelAttribute="user" action="/pea/create-account" method="post">
+            <form th:object="${user}" th:action="@{/pea/create-account}" method="post" sec:csrf="true">
 
                 <div id="create-new-account-names">
-                    <form:input maxlength="35" required="required"  path="firstName" type="text" placeholder="First name"/>
-                    <form:input maxlength="35" required="required"  path="lastName" type="text" placeholder="Last name"/>
+                    <input maxlength="35" required="required"  th:field="*{firstName}" type="text"
+                           placeholder="First name"/>
+                    <input maxlength="35" required="required"  th:field="*{lastName}" type="text" placeholder="Last name"/>
                 </div>
                 
-                <form:input required="required"  path="email" type="email" placeholder="Enter your email address"/>
-                <form:input maxlength="25" required="required"  path="username" type="text" placeholder="Create a username"/>
+                <input required="required"  th:field="*{email}" type="email" placeholder="Enter your email address"/>
+                <input maxlength="25" required="required"  th:field="*{username}" type="text" placeholder="Create a username"/>
                 
                 <div id="create-account-password-container">
-                    <form:input minlength="8" id="create-new-password" oninput="onInputPassword(event,'show-password-image-create-account','create-new-password')" required="required"  path="password" type="password" placeholder="Create a new password"/>
+                    <input minlength="8" id="create-new-password"
+                           oninput="onInputPassword(event,'show-password-image-create-account','create-new-password')" required="required"  th:field="*{password}" type="password" placeholder="Create a new password"/>
                     <img style="height: 15px; width: 15px;" id="show-password-image-create-account" src="<%= request.getContextPath() %>/images/showPassword/close.png" alt="Toggle Password"/>
                 </div>
 
@@ -96,12 +96,10 @@
                 </div>
 
                 <button id="sign-up-button" onclick="createAccountPasswordValidation(event)">Sign Up</button>
-            </form:form>
+            </form>
 
-            
         </div>
-
         <footer class="container" >PEA &copy; 2024</footer>
-        <script src="${pageContext.request.contextPath}/js/public/index.js"></script>
+        <script th:src="@{/js/public/index.js}"></script>
     </body>
 </html>

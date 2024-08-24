@@ -32,8 +32,7 @@ public class TodoSortedByDateModified {
 
         myCustomModelMap.modelMap(map,allTodo,"todos","totalOfPending",request.getRequestURI());
 
-
-        return "authenticated/main/homePage" ;
+        return "authenticated/main/homePage";
 
     }
 
