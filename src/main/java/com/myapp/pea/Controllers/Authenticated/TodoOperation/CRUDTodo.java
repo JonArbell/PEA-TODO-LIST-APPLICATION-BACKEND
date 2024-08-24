@@ -44,7 +44,7 @@ public class CRUDTodo {
     @PostMapping("/todo/delete/{id}")
     public String deleteTodo(@PathVariable Long id,
                              RedirectAttributes map){
-
+        System.out.println("ID delete : "+id);
         try{
             taskOperation.deleteTodo(id);
             map.addFlashAttribute("deleteTodoMessage","delete");
