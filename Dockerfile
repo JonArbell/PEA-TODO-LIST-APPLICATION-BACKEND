@@ -23,5 +23,5 @@ COPY --from=build /app/target/PeaTodoListApplication-0.0.1-SNAPSHOT.jar PeaTodoL
 EXPOSE 8080
 
 # Set the command to run the JAR file
-ENTRYPOINT ["java", "-jar", "PeaTodoListApplication.jar"]
+CMD ["java", "-jar", "PeaTodoListApplication.jar"]
 
