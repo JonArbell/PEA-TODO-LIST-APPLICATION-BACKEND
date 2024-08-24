@@ -297,12 +297,25 @@
 
                         <div id="todo-lists-container">
 
-                                <div th:each="todo : ${todos}" id="todo-[[${todo.id}]]" class="task-container">
+                                <div th:each="todo : ${todos}" th:id="'todo-' + ${todo.id}" class="task-container">
 
                                     <div>
-                                        <span th:onclick="view(' + ${todo.title} + ',' + ${todo.done} + ',' + ${todo.shortDescription} + ',' + ${todo.lists.listName} + ',' + ${todo.formattedDate} + ')">
+                                        <span 
+                                            th:data-title="${todo.title}"
+                                            th:data-done="${todo.done ? 'Yes' : 'No'}"
+                                            th:data-sd="${todo.shortDescription == null ? 'No Description' : todo.shortDescription}"
+                                            th:data-list="${todo.lists == null ? 'No list' : todo.lists.listName}"
+                                            th:data-formattedDate="${todo.formattedDate}"
+                                            th:onclick="view(
+                                                this.getAttribute('data-title'),
+                                                this.getAttribute('data-done'),
+                                                this.getAttribute('data-sd'),
+                                                this.getAttribute('data-list'),
+                                                this.getAttribute('data-formattedDate')
+                                            )">
                                             <h2>View Details</h2>
                                         </span>
+
 
                                     </div>
 
@@ -322,14 +335,30 @@
 
                                     <div id="task-buttons">
 
-                                        <button th:onmouseup="deleteTodoItem('${todo.id}')" id="task-delete-button">Delete
-                                        </button>
-
                                         <form th:id="'form-' + ${todo.id}" sec:csrf="true">
 
-                                            <button th:onmouseup="markAsCompleteItem(' + ${todo.id} + ')" id="task-mark-as-complete-button">Mark as complete</button>
+                                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 
-                                            <button type="button" th:onmouseup="handleEditTodoItem(' + ${todo.id} + ',' + ${todo.title} + ',' + ${todo.shortDescription} + ',' + ${todo.date} + ',' + ${todo.lists.id} + ')" id="task-edit-button">Edit Task</button>
+                                            <button th:onmouseup="deleteTodoItem([[${todo.id}]])" id="task-delete-button">Delete
+                                            </button>
+
+                                            <button th:onmouseup="markAsCompleteItem([[${todo.id}]])" id="task-mark-as-complete-button">Mark as complete</button>
+
+
+
+                                            <button 
+                                                type="button" 
+                                                th:data-id = "${todo.id}"
+                                                th:data-title = "${todo.title}"
+                                                th:data-sd = "${todo.shortDescription}"
+                                                th:data-td = "${todo.date}"
+                                                th:data-lists="${todo.lists == null ? '' : todo.lists.id}"
+                                                th:onmouseup="handleEditTodoItem(this.getAttribute('data-id'),this.getAttribute('data-title'),this.getAttribute('data-sd'),this.getAttribute('data-td'),this.getAttribute('data-lists'))"
+                                                 
+                                                id="task-edit-button">
+                                                Edit Task
+                                            </button>
+
 
                                         </form>
 

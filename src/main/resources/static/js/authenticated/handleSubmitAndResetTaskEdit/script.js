@@ -23,6 +23,13 @@ function handleSubmit(){
 }
 
 function handleEditTodoItem(id,title,sD,tD,listsId){
+
+    console.log('ID : '+id);
+    console.log('Title : '+title);
+    console.log('Short description : '+sD);
+    console.log('Target Date : '+tD);
+    console.log('List Id : '+listsId);
+
     document.querySelectorAll('.add-edit-title')[0].textContent = 'Edit To-do:';
     document.querySelector('#date-and-time-progress-display-container').style.display = 'none';
     document.querySelector('#add-edit-task-container').style.display = 'flex';
@@ -45,7 +52,7 @@ function handleEditTodoItem(id,title,sD,tD,listsId){
 
     const list = document.querySelector('#select-list-container select');
 
-    if(listsId === ''){
+    if(listsId === null){
         list.value = "0";
     }else{
         list.value = listsId;

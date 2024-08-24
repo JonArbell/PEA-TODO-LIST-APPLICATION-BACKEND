@@ -13,13 +13,13 @@ function view(todoTitle,todoDone,todoDescription,todoListName,todoDate){
     
     document.querySelector('#view-details-title').textContent = `Title : ${todoTitle}`;
 
-    document.querySelector('#view-details-description p').textContent = todoDescription != '' ? `${todoDescription}` : 'No Description';
+    document.querySelector('#view-details-description p').textContent =  `${todoDescription}`;
 
-    document.querySelector('#view-details-list p').textContent = todoListName === '' ? 'No list' : `${todoListName}`;
+    document.querySelector('#view-details-list p').textContent = `${todoListName}`;
 
     document.querySelector('#view-details-target-date p').textContent = `${todoDate}`;
-
-    document.querySelector('#view-details-done p').textContent = todoDone == 'false' ? 'No' : 'Yes' ;
+todoDate
+    document.querySelector('#view-details-done p').textContent = `${todoDone}` ;
 
     dim();
 

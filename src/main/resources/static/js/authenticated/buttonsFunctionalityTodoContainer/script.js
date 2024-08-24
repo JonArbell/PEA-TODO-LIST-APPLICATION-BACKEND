@@ -59,18 +59,16 @@ function addHoverAllButton(){
 
 
 function deleteTodoItem(todoId){
-    
-    //Fix this later
 
-    // const form = document.querySelector(`#form-${todoId}`); 
-    console.log('ID :' + todoId);
-    // if (form) {
-    //     form.action = `/pea/todo/delete/${todoId}`;
-    //     form.method = 'post';
-    //     form.submit();
-    // } else {
-    //     console.error('Form not found');
-    // }
+    const form = document.querySelector(`#form-${todoId}`);
+
+    if (form) {
+        form.action = `/pea/todo/delete/${todoId}`;
+        form.method = 'post';
+        form.submit();
+    } else {
+        console.error('Form not found');
+    }
 
 }
 
