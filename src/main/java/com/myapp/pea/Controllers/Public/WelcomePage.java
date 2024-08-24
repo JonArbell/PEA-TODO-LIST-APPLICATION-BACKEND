@@ -30,7 +30,7 @@ public class WelcomePage {
         }
 
         map.addAttribute("user",new User());
-        return "public/index.jsp";
+        return "public/index";
     }
 
     @PostMapping("/create-account")
