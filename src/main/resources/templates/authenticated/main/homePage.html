@@ -344,8 +344,6 @@
 
                                             <button th:onmouseup="markAsCompleteItem([[${todo.id}]])" id="task-mark-as-complete-button">Mark as complete</button>
 
-
-
                                             <button 
                                                 type="button" 
                                                 th:data-id = "${todo.id}"
@@ -358,7 +356,6 @@
                                                 id="task-edit-button">
                                                 Edit Task
                                             </button>
-
 
                                         </form>
 
@@ -481,6 +478,7 @@
             </div>
 
             <div id="add-edit-list-buttons">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <input th:onmouseup="handleDiscard()" value="Discard" type="reset"/>
                 <input th:onmouseup="handleSubmit()" value="Save" type="submit"/>
             </div>

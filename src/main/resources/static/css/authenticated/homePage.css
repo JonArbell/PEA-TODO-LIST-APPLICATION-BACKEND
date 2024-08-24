@@ -217,7 +217,7 @@ header div ul li h1{
 
 #left-container > div{
     width: 85%;
-    margin-top: 3.3%;
+    margin-top: 2.4% !important;
     margin-bottom: 2.7%;
 }
 
@@ -332,7 +332,7 @@ header div ul li h1{
     bottom: 3.7%;
 }
 #lists-container ul{
-    height: 227px;
+    height: 24vh;
     overflow-y: scroll;
 }
 #lists-container{
@@ -490,6 +490,7 @@ header div ul li h1{
     align-items: center;
     justify-content: space-between;
     width: 90%;
+    margin-bottom: 0.7%;
 }
 
 #profile-modal-username{
@@ -657,7 +658,7 @@ h2,h3,h1{
 
 #todo-lists-container{
     overflow-y: scroll;
-    height: 84.7%;
+    height: 77vh;
 }
 
 #tasks-display-container{
@@ -755,7 +756,7 @@ header div ul form input{
 }
 #left-container,#right-container{
     box-shadow: 0 1px 10px black;
-    height: 90vh;
+    height:100vh;
     z-index: 45;
     display: flex;
     flex-direction: column;
@@ -763,7 +764,7 @@ header div ul form input{
     justify-content: flex-start;
 }
 #middle-container{
-    height: 90vh;
+    height: 100vh;
     z-index: 40;
     display: flex;
     flex-direction: column;
@@ -877,7 +878,7 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 4.5% 0 4.5% 0;
+    margin: 4.5% 0 5% 0;
     margin-left: 13.5%;
     gap: 8.7%;
     background-color: #DAD3BE;
@@ -914,8 +915,8 @@ main{
     align-items: center;
     width: 90%;
     gap: 2%;
-    margin-top: 1.5%;
-    margin-bottom: 2.5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 #total-pending-tasks div{
     box-shadow: 0 0 3px rgb(41, 41, 41);
