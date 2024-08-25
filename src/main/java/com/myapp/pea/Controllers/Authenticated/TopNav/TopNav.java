@@ -19,11 +19,11 @@ public class TopNav {
     private final GetLists getLists;
     private final GetTasks getTasks;
 
-//    @GetMapping("/{profile}")
-//    public String getProfile(@ModelAttribute User profile){
-//
-//        return "profile";
-//    }
+    @GetMapping("/{profile}")
+    public String getProfile(@ModelAttribute User profile){
+
+        return "profile";
+    }
 
     @GetMapping("/about-us")
     public String aboutUs(ModelMap map){
