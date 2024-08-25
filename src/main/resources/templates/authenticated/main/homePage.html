@@ -139,21 +139,22 @@
             <div>
                 <h3>Tasks</h3>
                 <ul>
-                    <a th:href="@{/pea/todays-tasks}">
-                        <li>Today's Tasks</li>
-                    </a>
 
-                    <a th:href="@{/pea/completed-tasks}">
-                        <li>Completed Tasks</li>
-                    </a>
-
-                    <a th:href="@{/pea/overdue-tasks}">
-                        <li>Overdue Tasks</li>
-                    </a>
-
-                    <a th:href="@{/pea/all-tasks}">
-                        <li>All Tasks</li>
-                    </a>
+                    <li>
+                        <a th:href="@{/pea/todays-tasks}">Today's Tasks</a>
+                    </li>
+                    
+                    <li>
+                        <a th:href="@{/pea/completed-tasks}">Completed Tasks</a>
+                    </li>
+                    
+                    <li>
+                        <a th:href="@{/pea/overdue-tasks}">Overdue Tasks</a>
+                    </li>
+                    
+                    <li>
+                        <a th:href="@{/pea/all-tasks}">All Tasks</a>
+                    </li>
 
                 </ul>
             </div>
@@ -224,6 +225,8 @@
                         <input type="hidden" name="deleteTasks"/>
 
                         <div id="delete-form-buttons-container">
+
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 
                             <button type="reset" th:onmouseup="deleteEditListDiscard()">Discard</button>
 
@@ -303,7 +306,7 @@
                                         <span 
                                             th:data-title="${todo.title}"
                                             th:data-done="${todo.done ? 'Yes' : 'No'}"
-                                            th:data-sd="${todo.shortDescription == null ? 'No Description' : todo.shortDescription}"
+                                            th:data-sd="${todo.shortDescription == '' ? 'No Description' : todo.shortDescription}"
                                             th:data-list="${todo.lists == null ? 'No list' : todo.lists.listName}"
                                             th:data-formattedDate="${todo.formattedDate}"
                                             th:onclick="view(
@@ -342,13 +345,14 @@
                                             <button th:onmouseup="deleteTodoItem([[${todo.id}]])" id="task-delete-button">Delete
                                             </button>
 
-                                            <button th:onmouseup="markAsCompleteItem([[${todo.id}]])" id="task-mark-as-complete-button">Mark as complete</button>
+                                            <button th:if="${!todo.done}" th:onmouseup="markAsCompleteItem([[${todo.id}]])" id="task-mark-as-complete-button">Mark as complete</button>
 
                                             <button 
+                                                th:if="${!todo.done}"
                                                 type="button" 
                                                 th:data-id = "${todo.id}"
                                                 th:data-title = "${todo.title}"
-                                                th:data-sd = "${todo.shortDescription}"
+                                                th:data-sd = "${todo.shortDescription == '' ? '' : todo.shortDescription}"
                                                 th:data-td = "${todo.date}"
                                                 th:data-lists="${todo.lists == null ? '' : todo.lists.id}"
                                                 th:onmouseup="handleEditTodoItem(this.getAttribute('data-id'),this.getAttribute('data-title'),this.getAttribute('data-sd'),this.getAttribute('data-td'),this.getAttribute('data-lists'))"
@@ -434,18 +438,20 @@
                     <div class="select-list-date" id="select-list-container">
                         <h4>List [Optional]</h4>
 
-                        <select>
-                            <option value="0">None</option>
-
+                        <select th:field="*{lists}">
+                           
+                            <option th:value="0">None</option>
+                            
                             <option th:each="list : ${lists}" th:value="${list.id}" th:text="${list.listName}"></option>
+                       
                         </select>
+                        
                     </div>
 
                     <div class="select-list-date" id="select-date-container">
                         <h4>Target date</h4>
                         <input th:field="*{date}" type="date" required="required"/>
                     </div>
-
 
                     <div class="add-edit-task-buttons">
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />

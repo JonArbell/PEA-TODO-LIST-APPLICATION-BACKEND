@@ -45,7 +45,7 @@ function handleEditTodoItem(id,title,sD,tD,listsId){
     todoTitle.value = `${title}`;
 
     const shortDescription = document.querySelector('#title-description-container textarea');
-    shortDescription.value = `${sD}`;
+    shortDescription.value = sD === null ? '' : `${sD}`;
     
     const todoDate = document.querySelector('#select-date-container input');
     todoDate.value = `${tD}`;

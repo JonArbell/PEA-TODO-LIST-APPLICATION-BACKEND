@@ -330,7 +330,8 @@ header div ul li h1{
 
 #left-container div ul li a{
     display: block;
-    width: 100%;
+    width: 90%;
+    padding: 4% 0 4% 4.5%;
 }
 
 #panis{
@@ -370,8 +371,6 @@ header div ul li h1{
     transition: 0.15s ease;
     cursor: pointer;
     border-radius: 12px;
-    padding: 4%;
-    margin-left: 5%;
     font-size: 135%;
 }
 
@@ -664,7 +663,7 @@ h2,h3,h1{
 
 #todo-lists-container{
     overflow-y: scroll;
-    height: 77vh;
+    height: 77.4vh;
 }
 
 #tasks-display-container{

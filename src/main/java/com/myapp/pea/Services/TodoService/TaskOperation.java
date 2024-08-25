@@ -106,7 +106,6 @@ public class TaskOperation {
                         for(Lists list : getLists.allListsDateModified()){
 
                             if(list.getId().equals(update.getLists().getId())){
-                                currentTodo.setLists(update.getLists());
                                 isCheckList = true;
                                 break;
                             }

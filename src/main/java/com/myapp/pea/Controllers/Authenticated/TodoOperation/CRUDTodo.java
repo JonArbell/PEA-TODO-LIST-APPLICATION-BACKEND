@@ -66,10 +66,12 @@ public class CRUDTodo {
     }
 
     @PostMapping("/todo/edit")
-    public String editTodo(@Valid Todo todo,
+    public String editTodo(@Valid @ModelAttribute("todo") Todo todo,
                            BindingResult result,
                            RedirectAttributes map){
-        System.out.println("Edit TODO : " + todo);
+
+        System.out.println("Lists : " + todo.getLists());
+
         try{
 
             if(result.hasErrors()){
