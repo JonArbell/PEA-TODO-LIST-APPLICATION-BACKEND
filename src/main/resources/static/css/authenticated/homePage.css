@@ -321,11 +321,17 @@ header div ul li h1{
 
 #left-container div ul li:hover{
     background-color: #254336;
-    color: #DAD3BE;
     letter-spacing: 2.5px;
 }
 
+#left-container div ul li:hover a{
+    color: #DAD3BE;
+}
 
+#left-container div ul li a{
+    display: block;
+    width: 100%;
+}
 
 #panis{
     position: fixed;
