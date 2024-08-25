@@ -9,6 +9,8 @@
 
     <link th:href="@{/css/authenticated/homePage.css}" rel="stylesheet"/>
 
+    <link th:href="@{/css/mediaQueries/authenticated.css}" rel="stylesheet"/>
+
 </head>
 <body>
 
@@ -179,15 +181,25 @@
 
             </div>
 
-            <!-- <div id="edit-list-container-modal">
-                <form>
-                    <select>
-                        <c:forEach items="${lists}" var="list">
-                            <option>${list.listName}</option>
-                        </c:forEach>
+            <div id="edit-list-container-modal">
+                <form action="/pea/list/edit" th:object="${editList}" sec:csrf="true">
+
+                    //Fix this later
+
+                    <h2>Select List to rename:</h2>
+
+                    <select th:field="*{id}" required="required">
+                        <option th:each="list : ${lists}" th:value="${list.id}" th:text="${list.listName}"></option>
                     </select>
+
+                    <input th:field="*{listName}" type="text" required="required" placeholder="Enter new list name"/>
+
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                    <button type="submit">Rename</button>
                 </form>
-            </div> -->
+                
+            </div>
 
             <div id="delete-list-container-modal">
 

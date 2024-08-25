@@ -24,7 +24,6 @@ public class TaskOperation {
     private final GetLists getLists;
     private final TodoRepo todoRepo;
 
-
     public void addNewTodo(@Valid Todo todo){
 
         if(checkDate(todo.getDate())){

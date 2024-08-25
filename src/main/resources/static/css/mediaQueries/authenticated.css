@@ -1,0 +1,19 @@
+
+@media (width:375px) and (height:667px){
+
+    #middle-container{
+
+        height: 90vh;
+
+    }
+
+    header{
+        width: 100vw;
+    }
+
+    #left-container,#right-container{
+        display: none;
+    }
+
+}
+

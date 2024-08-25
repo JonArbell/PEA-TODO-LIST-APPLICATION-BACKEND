@@ -59,7 +59,12 @@ function deleteEditListDiscard(){
 
 
 
+function clickedEdit(){
 
+    document.querySelector('#edit-list-container-modal').style.display = 'flex';
+
+
+}
 
 
 

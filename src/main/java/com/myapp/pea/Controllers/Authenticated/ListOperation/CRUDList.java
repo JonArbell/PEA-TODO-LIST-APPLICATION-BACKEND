@@ -49,10 +49,13 @@ public class CRUDList {
     }
 
     @PostMapping("/list/edit")
-    public String editList(@Valid Lists editList,
+    public String editList(@Valid @ModelAttribute(name = "editList") Lists editList,
                            BindingResult result,
                            RedirectAttributes reMap){
 
+        System.out.println("Current name : "+editList.getId());
+
+        System.out.println("New name : "+editList.getListName());
         try{
 
             if(result.hasErrors()){
@@ -61,7 +64,7 @@ public class CRUDList {
 
                 reMap.addFlashAttribute("editListMessage",errorMessage);
             }else{
-                listsOperation.updateListName(editList);
+//                listsOperation.updateListName(list);
                 reMap.addFlashAttribute("editListMessage","");
             }
         }catch (Exception e){
