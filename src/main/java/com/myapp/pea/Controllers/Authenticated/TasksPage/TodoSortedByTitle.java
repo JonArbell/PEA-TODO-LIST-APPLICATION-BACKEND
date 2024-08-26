@@ -87,4 +87,23 @@ public class TodoSortedByTitle {
         return "authenticated/tasks/allTasks";
     }
 
+    @GetMapping("/overdue-tasks/sort-by-title")
+    public String overDue(ModelMap map,HttpServletRequest request){
+
+        List<Todo> overDue = getTasks
+                .allTodoDateModified()
+                .stream()
+                .filter(todo -> !todo.isDone())
+                .filter(todo -> LocalDate.now().isAfter(todo.getDate()))
+                .toList();
+
+        myCustomModelMap.modelMap(map,
+                overDue,
+                "overDueTask",
+                "totalOfOverDueTasks",
+                request.getRequestURI());
+
+        return"authenticated/tasks/overdueTasks";
+    }
+
 }
