@@ -69,4 +69,10 @@ public class WelcomePage {
 
     }
 
+    @GetMapping("/logout-success")
+    public String logoutSuccess(RedirectAttributes map){
+        map.addFlashAttribute("logoutMessage","You have been logged out successfully!");
+        return "redirect:/";
+    }
+
 }

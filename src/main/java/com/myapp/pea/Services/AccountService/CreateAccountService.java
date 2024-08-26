@@ -6,7 +6,6 @@ import com.myapp.pea.Models.User;
 import com.myapp.pea.Repository.ListsRepo;
 import com.myapp.pea.Repository.UsersRepo;
 import lombok.AllArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
@@ -17,7 +16,7 @@ public class CreateAccountService {
 
     private final UsersRepo usersRepo;
     private final ListsRepo listsRepo;
-    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
+    private final PasswordEncoder passwordEncoder;
 
     public boolean checkUsername(String username) throws Exception{
 

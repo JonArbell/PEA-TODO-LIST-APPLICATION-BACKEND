@@ -133,10 +133,22 @@ function createAccountMessage(createAccMessage){
             },7000);
         }
 
-        
-
     }
 
-    
+}
+
+
+function handleLogoutMessage(message){
+    const promptMessage = document.querySelector('#prompt-message');
+    if(message != ''){
+        promptMessage.textContent = `${message}`;
+        promptMessage.classList.add('success-message');
+        promptMessage.style.display='flex';
+
+        setTimeout(()=>{
+            promptMessage.classList.remove('success-message');
+            promptMessage.textContent = '';
+        },7000);
+    }
 
 }
