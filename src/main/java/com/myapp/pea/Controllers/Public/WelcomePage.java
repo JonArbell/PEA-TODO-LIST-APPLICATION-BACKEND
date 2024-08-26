@@ -32,6 +32,11 @@ public class WelcomePage {
         return "public/index";
     }
 
+    @GetMapping("/create-account")
+    public String getCreateAccount(){
+        return "redirect:/";
+    }
+
     @PostMapping("/create-account")
     public String createAccount(@Valid User newUser,
                                 BindingResult result,
