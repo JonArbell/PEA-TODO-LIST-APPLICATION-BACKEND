@@ -26,19 +26,23 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     const select = document.querySelector('#sort');
 
-    switch(window.location.href){
-        case 'http://localhost:8080/home':
-            select.value = '1';
-            break;
-        case 'http://localhost:8080/home/sort-by-title':
-            select.value = '2';
-            break;
-        case 'http://localhost:8080/home/sort-by-target-date':
-            select.value = '3';
-            break;
-        default:
-            
+    if(select != null){
+        switch(window.location.href){
+            case 'http://localhost:8080/home':
+                select.value = '1';
+                break;
+            case 'http://localhost:8080/home/sort-by-title':
+                select.value = '2';
+                break;
+            case 'http://localhost:8080/home/sort-by-target-date':
+                select.value = '3';
+                break;
+            default:
+                
+        }
     }
+
+
 });
 
 

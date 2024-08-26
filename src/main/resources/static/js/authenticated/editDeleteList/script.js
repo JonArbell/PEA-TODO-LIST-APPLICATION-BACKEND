@@ -42,12 +42,13 @@ function deleteListSubmit(){
 function deleteEditListDiscard(){
 
     const listSelected = document.querySelector('#listSelectDelete');
-    const listName = listSelected.options[listSelected.selectedIndex].dataset.name;
 
-    listName.value = '';
+    if(listSelected.value != ''){
+        const listName = listSelected.options[listSelected.selectedIndex].dataset.name;
+        listName.value = '';
+    }
 
     const confirm = document.querySelector('#delete-form-container h2');
-
     confirm.textContent ='';
 
     document.querySelector('#delete-form-container').style.display = 'none';
