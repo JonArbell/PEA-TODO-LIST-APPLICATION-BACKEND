@@ -21,10 +21,11 @@ public class CRUDTodo {
     public String markAsComplete(@PathVariable Long id, RedirectAttributes reMap){
         System.out.println("Panis : "+id);
         if(id == null)
-            reMap.addFlashAttribute("markAsCompleteMessage","No task ID was provided. Please provide a valid ID.");
+            reMap.addFlashAttribute("markAsCompleteErrorMessage","No task ID was provided. Please provide a valid ID.");
         else {
             try {
                 taskOperation.markAsComplete(id);
+                reMap.addFlashAttribute("markAsCompleteMessage","success");
             }catch (Exception e){
                 reMap.addFlashAttribute("markAsCompleteMessage",e.getMessage());
             }
@@ -35,7 +36,7 @@ public class CRUDTodo {
 
     @GetMapping("/todo/{id}/mark-as-done")
     public String getMarkAsComplete(@PathVariable Long id,RedirectAttributes map){
-        map.addFlashAttribute("markAsCompleteMessage","The request to Mark As Complete the item could not be processed. Please use the appropriate method to perform this action or contact support for assistance.");
+        map.addFlashAttribute("markAsCompleteErrorMessage","The request to Mark As Complete the item could not be processed. Please use the appropriate method to perform this action or contact support for assistance.");
 
         return "redirect:"+myCustomModelMap.getCurrentUrl();
     }
@@ -90,7 +91,6 @@ public class CRUDTodo {
 
         return "redirect:"+myCustomModelMap.getCurrentUrl();
     }
-
 
     @PostMapping("/todo/add")
     public String addNew(@Valid Todo todo,

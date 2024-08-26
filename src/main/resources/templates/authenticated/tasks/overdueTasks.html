@@ -529,5 +529,37 @@
 
     <script th:src="@{/js/authenticated/editDeleteList/script.js}"></script>
 
+    <script th:src="@{/js/authenticated/successFailedMessageHandler/todo.js}"></script>
+
+    <script th:src="@{/js/authenticated/successFailedMessageHandler/list.js}"></script>
+    
+    <script>
+
+        let getListError = `[[${getListError}]]`;
+        handleGetListErrorMessage(getListError);
+
+        let editTodoMessage = `[[${editTodoMessage}]]`;
+        handleEditTodoMessage(editTodoMessage);
+
+        let addTodoMessage = `[[${addTodoMessage}]]`;
+        handleAddTodoMessage(addTodoMessage);
+
+        let deleteTodoMessage = `[[${deleteTodoMessage}]]`;
+        handleDeleteMessage(deleteTodoMessage);
+
+        let markAsCompleteMessage = `[[${markAsCompleteMessage}]]`;
+        handleMarkAsCompleteMessage(markAsCompleteMessage);
+
+        let createListMessage = `[[${createListMessage}]]`;
+        handleCreateListMessage(createListMessage);
+
+        let editListMessage = `[[${editListMessage}]]`;
+        handleEditListMessage(editListMessage);
+
+        let deleteListMessage = `[[${deleteListMessage}]]`;
+        handleDeleteListMessage(deleteListMessage);
+
+    </script>
+
 </body>
 </html>

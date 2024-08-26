@@ -119,6 +119,7 @@ function createAccountMessage(createAccMessage){
 
             setTimeout(()=>{
                 promptMessage.classList.remove('success-message');
+                promptMessage.textContent = '';
             },7000);
 
         }else if(createAccMessage.includes('email') || createAccMessage.includes('username') || createAccMessage.length > 7){
@@ -128,6 +129,7 @@ function createAccountMessage(createAccMessage){
             promptMessage.style.display='flex';
             setTimeout(()=>{
                 promptMessage.classList.remove('failed-message');
+                promptMessage.textContent = '';
             },7000);
         }
 

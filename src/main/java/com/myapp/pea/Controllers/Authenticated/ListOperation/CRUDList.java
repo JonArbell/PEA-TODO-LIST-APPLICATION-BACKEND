@@ -1,5 +1,6 @@
 package com.myapp.pea.Controllers.Authenticated.ListOperation;
 
+import com.myapp.pea.Controllers.CustomComponent.MyCustomModelMap;
 import com.myapp.pea.Models.Lists;
 import com.myapp.pea.Services.ListsService.ListsOperation;
 import jakarta.validation.Valid;
@@ -15,6 +16,7 @@ import java.util.Objects;
 public class CRUDList {
 
     private final ListsOperation listsOperation;
+    private final MyCustomModelMap myCustomModelMap;
 
     @PostMapping("/list/add")
     public String createNewList(@Valid @ModelAttribute("list") Lists list,
@@ -24,11 +26,13 @@ public class CRUDList {
         if(result.hasErrors()){
             String errorMessage = Objects.requireNonNull(result.getFieldError()).getDefaultMessage();
             reMap.addFlashAttribute("createListMessage",errorMessage);
-            System.out.println("Error : "+errorMessage);
-        }else
-            listsOperation.createNewList(list);
 
-        return "redirect:/home";
+        }else{
+            listsOperation.createNewList(list);
+            reMap.addFlashAttribute("createListMessage","success");
+        }
+
+        return "redirect:"+myCustomModelMap.getCurrentUrl();
     }
 
     @PostMapping("/list/delete/{id}")
@@ -44,7 +48,7 @@ public class CRUDList {
             reMap.addFlashAttribute("deleteListMessage",e.getMessage());
         }
 
-        return "redirect:/home";
+        return "redirect:"+myCustomModelMap.getCurrentUrl();
     }
 
     @PostMapping("/list/edit")
@@ -61,14 +65,13 @@ public class CRUDList {
                 reMap.addFlashAttribute("editListMessage",errorMessage);
             }else{
                 listsOperation.updateListName(list);
-                reMap.addFlashAttribute("editListMessage","");
             }
         }catch (Exception e){
             System.out.println("Error : "+e.getMessage());
             reMap.addFlashAttribute("editListMessage",e.getMessage());
         }
 
-        return "redirect:/home";
+        return "redirect:"+myCustomModelMap.getCurrentUrl();
     }
 
 }

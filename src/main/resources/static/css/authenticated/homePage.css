@@ -651,8 +651,38 @@ header .dim{
 h2,h3,h1{
     font-weight: bolder;
 }
+
 #prompt-message{
+    color: #ffffff;
+    display: none;
+    right: 33%;
+    top: 12%;
     position: fixed;
+    top: 10;
+    padding: 1%;
+    border-radius: 12px;
+    opacity: 80%;
+    box-shadow: 1px 3px 5px #2c2c2c;
+    animation: fadeOut 7s ease-out forwards;
+    z-index: 1001;
+}
+
+@keyframes fadeOut {
+    from{
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    to{
+        transform: translateX(37%);
+        opacity: 0;
+    }
+}
+
+#prompt-message.success-message{
+    background-color: rgb(127, 180, 127);
+}
+#prompt-message.failed-message{
+    background-color:rgb(255, 69, 58);
 }
 
 #title{

@@ -32,7 +32,7 @@ public class ListsSortedByDateModified {
                 .orElse(null);
 
         if(list == null){
-            throw new TodoListNotFoundException("Todo not found");
+            throw new TodoListNotFoundException("List not found");
         }
 
         return list;
@@ -62,11 +62,11 @@ public class ListsSortedByDateModified {
         }catch (TodoListNotFoundException e){
             System.out.println("Error : "+e.getMessage());
             remap.addFlashAttribute("getListError",e.getMessage());
-            return "redirect:/";
+            return "redirect:/home";
         }catch (RuntimeException e){
             System.out.println("Runtime Error : "+e.getMessage());
             remap.addFlashAttribute("getListError",e.getMessage());
-            return "redirect:/";
+            return "redirect:/home";
         }
 
         return "authenticated/lists/listPage";
