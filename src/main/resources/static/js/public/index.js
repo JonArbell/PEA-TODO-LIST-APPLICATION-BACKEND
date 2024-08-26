@@ -7,11 +7,13 @@ function showPasswordHandlerLogin(id,passId){
     if (!showPasswordCheckBox.hasEventListener) {
         showPasswordCheckBox.addEventListener('click', () => {
             if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
                 showPasswordCheckBox.src = '/images/showPassword/open.png';
+                passwordInput.type = 'text';
+                
             } else {
-                passwordInput.type = 'password';
                 showPasswordCheckBox.src = '/images/showPassword/close.png';
+                passwordInput.type = 'password';
+                
             }
         });
         showPasswordCheckBox.hasEventListener = true; 
@@ -114,14 +116,25 @@ function createAccountMessage(createAccMessage){
             promptMessage.textContent = 'Great job! Your account was created successfully.';
             promptMessage.classList.add('success-message');
             promptMessage.style.display='flex';
+
+            setTimeout(()=>{
+                promptMessage.classList.remove('success-message');
+            },7000);
+
         }else if(createAccMessage.includes('email') || createAccMessage.includes('username') || createAccMessage.length > 7){
 
             promptMessage.textContent = `${createAccMessage}`;
             promptMessage.classList.add('failed-message');
             promptMessage.style.display='flex';
-
+            setTimeout(()=>{
+                promptMessage.classList.remove('failed-message');
+            },7000);
         }
 
+        
+
     }
+
+    
 
 }
