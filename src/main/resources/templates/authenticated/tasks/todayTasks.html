@@ -172,21 +172,33 @@
                 <h2>Manage your lists:</h2>
 
                 <div>
-                    <button id="edit-button-list-container-modal" th:onmouseup="clickedEdit()">Edit List Name</button>
+                    <button id="edit-button-list-container-modal" th:onmouseup="clickedEdit(event)">Edit List Name</button>
                     <button id="delete-button-list-container-modal" th:onmouseup="clickedDelete()">Delete List</button>
                 </div>
 
             </div>
 
-            <!-- <div id="edit-list-container-modal">
-                <form>
-                    <select>
-                        <c:forEach items="${lists}" var="list">
-                            <option>${list.listName}</option>
-                        </c:forEach>
+            <div id="edit-list-container-modal">
+                <form th:action="@{/pea/list/edit}" method="post" th:object="${list}" sec:csrf="true">
+
+                    <span onmouseup="deleteEditListDiscard(event)" class="closeContainer">
+                        <p>&times;</p>
+                    </span>
+
+                    <h2>Select List to rename:</h2>
+
+                    <select th:field="*{id}" required="required">
+                        <option th:if="${list.listName != 'Personal' && list.listName != 'Work'}" th:each="list : ${lists}" th:value="${list.id}" th:text="${list.listName}"></option>
                     </select>
+
+                    <input th:field="*{listName}" type="text" required="required" placeholder="Enter new list name"/>
+
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                    <button type="submit">Rename</button>
                 </form>
-            </div> -->
+                
+            </div>
 
             <div id="delete-list-container-modal">
 
@@ -468,23 +480,24 @@
 
     </main>
 
-    <div id="add-edit-list-container">
+    <div id="add-list-container">
 
-        <form th:object="${list}" method="post" sec:csrf="true">
+        <form th:action="@{/pea/list/add}" th:object="${list}" method="post" sec:csrf="true">
 
             <div id="list-input-container">
 
-                <h3 class="add-edit-title"></h3>
+                <h3>Add List:</h3>
 
                 <input id="list-name" th:field="*{listName}" maxlength="25" required="required" autofocus="autofocus"
                        type="text" placeholder="List name"/>
 
             </div>
 
-            <div id="add-edit-list-buttons">
+            <div id="add-list-buttons">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <input th:onmouseup="handleDiscard()" value="Discard" type="reset"/>
-                <input th:onmouseup="handleSubmit()" value="Save" type="submit"/>
+                <input value="Save" type="submit"/>
+                
             </div>
 
         </form>

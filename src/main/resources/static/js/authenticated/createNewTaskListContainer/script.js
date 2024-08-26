@@ -30,14 +30,11 @@ function dim(){
 
 
 function createNewList(){
-    document.querySelector('#add-edit-list-container').style.display = 'flex';
+    document.querySelector('#add-list-container').style.display = 'flex';
 
     dim();
-
-    document.querySelectorAll('.add-edit-title')[1].textContent = 'Add List:';
-
     resetAllInformation();
-    handleSubmit();
+    
 }
 
 

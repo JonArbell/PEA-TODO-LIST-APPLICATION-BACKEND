@@ -36,7 +36,6 @@ public class MyCustomModelMap {
         map.addAttribute("lists",getLists.allListsDateModified());
         map.addAttribute("list",new Lists());
 
-
         double completedTask = getTasks.allTodoDateModified().stream().filter(Todo::isDone).toList().size();
         double divide = completedTask / getTasks.allTodoTargetDate().size();
         int average = (int)(divide * 100);

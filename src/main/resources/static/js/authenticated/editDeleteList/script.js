@@ -52,22 +52,25 @@ function deleteEditListDiscard(){
 
     document.querySelector('#delete-form-container').style.display = 'none';
     document.querySelector('#delete-list-container-modal').style.display = 'none';
+    document.querySelector('#edit-list-container-modal').style.display = 'none';
 }
 
+function clickedEdit(event){
 
+    const container = document.querySelector('#edit-list-container-modal');
+    const main = document.querySelector('#edit-delete-list-container-modal');
+    const mainButton = document.querySelector('#edit-button-list-container-modal');
 
+    if(mainButton.contains(event.target)){
+        showEditListContainer(container,main);
 
-
-
-function clickedEdit(){
-
-    document.querySelector('#edit-list-container-modal').style.display = 'flex';
-
+    }
 
 }
 
-
-
-
+function showEditListContainer(container,main){
+    container.style.display = 'flex';
+    main.style.display = 'none';
+}
 
 

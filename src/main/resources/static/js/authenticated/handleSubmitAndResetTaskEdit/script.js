@@ -3,7 +3,6 @@ function handleSubmit(){
 
     const typeOfSubmit = document.querySelectorAll('.add-edit-title');
     const formTask = document.querySelector('#add-edit-task-container form');
-    const formList = document.querySelector('#add-edit-list-container form');
 
     typeOfSubmit.forEach(type =>{
         if(type.textContent === 'Add To-do:'){
@@ -11,10 +10,6 @@ function handleSubmit(){
         }else if(type.textContent === 'Edit To-do:'){
             formTask.action = '/pea/todo/edit';
             
-        }else if(type.textContent === 'Add List:'){
-            formList.action = '/pea/list/add';
-        }else if(type.textContent === 'Edit List:'){
-            formList.action = '/pea/list/edit';
         }
     });
 
@@ -80,7 +75,7 @@ function closeCreateNewEditItemContainer(){
     removeDim();
 
     document.querySelector('#date-and-time-progress-display-container').style.display = 'flex';
-    document.querySelector('#add-edit-list-container').style.display = 'none';
+    document.querySelector('#add-list-container').style.display = 'none';
 }
 
 

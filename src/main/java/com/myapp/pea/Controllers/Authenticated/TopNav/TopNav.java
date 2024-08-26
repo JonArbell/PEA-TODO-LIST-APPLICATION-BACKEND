@@ -1,5 +1,6 @@
 package com.myapp.pea.Controllers.Authenticated.TopNav;
 
+import com.myapp.pea.Models.Lists;
 import com.myapp.pea.Models.Todo;
 import com.myapp.pea.Models.User;
 import com.myapp.pea.Services.ListsService.GetLists;
@@ -49,8 +50,9 @@ public class TopNav {
     public void modelMap(ModelMap map){
         map.addAttribute("fullname",userService.getFirstName()+" "+userService.getLastName());
         map.addAttribute("username",userService.getUsername());
-        map.addAttribute("todo",new Todo());
         map.addAttribute("lists",getLists.allListsDateModified());
+        map.addAttribute("todo",new Todo());
+        map.addAttribute("list", new Lists());
 
         double completedTask = getTasks.allTodoDateModified().stream().filter(Todo::isDone).toList().size();
         double divide = completedTask / getTasks.allTodoTargetDate().size();

@@ -82,11 +82,12 @@ public class ListsOperation {
         for(Lists currentList : searchList){
 
             if(currentList.getId().equals(update.getId())){
-                isUpdated = true;
 
                 currentList.setListName(update.getListName());
 
                 listsRepo.save(currentList);
+
+                isUpdated = true;
                 break;
             }
 
