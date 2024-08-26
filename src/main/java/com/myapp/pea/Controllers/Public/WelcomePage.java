@@ -55,7 +55,7 @@ public class WelcomePage {
             System.out.println("Error : "+e.getMessage());
         }
 
-        return "redirect:/home";
+        return "redirect:/";
     }
 
     @GetMapping("/lopit")

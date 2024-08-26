@@ -313,3 +313,34 @@ footer{
     background-color: #B7B597;
 }
 
+#prompt-message{
+    color: #ffffff;
+    display: none;
+    right: 20%;
+    top: 15%;
+    position: fixed;
+    top: 10;
+    padding: 1%;
+    border-radius: 12px;
+    opacity: 80%;
+    box-shadow: 1px 3px 5px #2c2c2c;
+    animation: fadeOut 7s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    from{
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    to{
+        transform: translateX(37%);
+        opacity: 0;
+    }
+}
+
+#prompt-message.success-message{
+    background-color: rgb(127, 180, 127);
+}
+#prompt-message.failed-message{
+    background-color:rgb(255, 69, 58);
+}

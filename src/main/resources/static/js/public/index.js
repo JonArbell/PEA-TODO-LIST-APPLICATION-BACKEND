@@ -105,3 +105,23 @@ function createAccountPasswordValidation(event){
 }
 
 
+function createAccountMessage(createAccMessage){
+    const promptMessage = document.querySelector('#prompt-message');
+
+    if(createAccMessage != '' || createAccMessage != null){
+
+        if(createAccMessage == 'success'){
+            promptMessage.textContent = 'Great job! Your account was created successfully.';
+            promptMessage.classList.add('success-message');
+            promptMessage.style.display='flex';
+        }else if(createAccMessage.includes('email') || createAccMessage.includes('username') || createAccMessage.length > 7){
+
+            promptMessage.textContent = `${createAccMessage}`;
+            promptMessage.classList.add('failed-message');
+            promptMessage.style.display='flex';
+
+        }
+
+    }
+
+}
