@@ -1,25 +1,19 @@
 //Functions to handle show Password
-function showPasswordHandlerLogin(id,passId){
-
+function showPasswordHandlerLogin(id, passId) {
     const showPasswordCheckBox = document.querySelector(`#${id}`);
     const passwordInput = document.querySelector(`#${passId}`);
 
-    if (!showPasswordCheckBox.hasEventListener) {
-        showPasswordCheckBox.addEventListener('click', () => {
-            if (passwordInput.type === 'password') {
-                showPasswordCheckBox.src = '/images/showPassword/open.png';
-                passwordInput.type = 'text';
-                
-            } else {
-                showPasswordCheckBox.src = '/images/showPassword/close.png';
-                passwordInput.type = 'password';
-                
-            }
-        });
-        showPasswordCheckBox.hasEventListener = true; 
-    }
-
+    showPasswordCheckBox.addEventListener('click', () => {
+        if (passwordInput.type === 'password') {
+            showPasswordCheckBox.src = '/images/showPassword/open.png';
+            passwordInput.type = 'text';
+        } else {
+            showPasswordCheckBox.src = '/images/showPassword/close.png';
+            passwordInput.type = 'password';
+        }
+    });
 }
+
 
 function onInputPassword(event,id,passId){
 
