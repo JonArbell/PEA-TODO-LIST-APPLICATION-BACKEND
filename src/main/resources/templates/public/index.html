@@ -29,7 +29,7 @@
         
                 <div id="login-page">
 
-                    <form th:object="${user}" th:action="@{/pea/login}" method="post" sec:csrf="true">
+                    <form th:object="${user}" th:action="@{/login}" method="post" sec:csrf="true">
 
                         <input th:field="*{username}" required="required" class="login-input" type="text" placeholder="Username"/>
 
@@ -67,10 +67,9 @@
                 <p>It's quick and easy.</p>
             </div>
 
-            
             <hr/>
 
-            <form th:object="${user}" th:action="@{/pea/create-account}" method="post" sec:csrf="true">
+            <form th:object="${user}" th:action="@{/create-account}" method="post" sec:csrf="true">
 
                 <div id="create-new-account-names">
                     <input maxlength="35" required="required"  th:field="*{firstName}" type="text"

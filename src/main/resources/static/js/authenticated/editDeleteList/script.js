@@ -31,7 +31,7 @@ function deleteListSubmit(){
     const form = document.querySelector('#delete-form-container form');
 
     const listSelected = document.querySelector('#listSelectDelete');
-    form.action = `/pea/list/delete/${listSelected.value}`;
+    form.action = `/list/delete/${listSelected.value}`;
 
     const check = document.querySelector('#check-all-tasks').checked;
     form.querySelector('input').value = check;

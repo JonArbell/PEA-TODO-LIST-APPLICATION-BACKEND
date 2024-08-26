@@ -15,7 +15,6 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/pea")
 public class TodoSortedByTitle {
 
     private final UserService userService;

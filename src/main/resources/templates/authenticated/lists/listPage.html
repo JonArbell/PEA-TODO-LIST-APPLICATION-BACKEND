@@ -71,7 +71,7 @@
                     </form>
                 </li>
 
-                <a th:href="@{/pea/home}">
+                <a th:href="@{/home}">
                     <li>
                         <h2>Home</h2>
                     </li>
@@ -99,7 +99,7 @@
 
                     <div id="profile-modal">
 
-                        <a id="profile-modal-username" th:href="@{/pea/{username}(username=${username})}">
+                        <a id="profile-modal-username" th:href="@{/{username}(username=${username})}">
                             <img class="nav-button" id="profile-logo-href" th:src="@{/images/try_profile_logo.ico}" />
                             <span th:text="${username}"></span>
                         </a>
@@ -109,7 +109,7 @@
                             <span> Settings</span>
                         </a>
 
-                        <form method="post" th:action="@{/pea/logout}" sec:csrf="true">
+                        <form method="post" th:action="@{/logout}" sec:csrf="true">
 
                             <button type="submit">
                                 <img class="nav-button" id="logout-img" th:src="@{/images/logout.png}"/>
@@ -142,19 +142,19 @@
                 <ul>
 
                     <li>
-                        <a th:href="@{/pea/todays-tasks}">Today's Tasks</a>
+                        <a th:href="@{/todays-tasks}">Today's Tasks</a>
                     </li>
                     
                     <li>
-                        <a th:href="@{/pea/completed-tasks}">Completed Tasks</a>
+                        <a th:href="@{/completed-tasks}">Completed Tasks</a>
                     </li>
                     
                     <li>
-                        <a th:href="@{/pea/overdue-tasks}">Overdue Tasks</a>
+                        <a th:href="@{/overdue-tasks}">Overdue Tasks</a>
                     </li>
                     
                     <li>
-                        <a th:href="@{/pea/all-tasks}">All Tasks</a>
+                        <a th:href="@{/all-tasks}">All Tasks</a>
                     </li>
 
                 </ul>
@@ -164,7 +164,7 @@
                 <h3>Lists</h3>
                 <ul>
                     <li th:each="list : ${lists}">
-                        <a th:href="@{/pea/list/{id}(id=${list.id})}" th:text="${list.listName}"></a>
+                        <a th:href="@{/list/{id}(id=${list.id})}" th:text="${list.listName}"></a>
                     </li>
                 </ul>
             </div>
@@ -181,7 +181,7 @@
             </div>
 
             <div id="edit-list-container-modal">
-                <form th:action="@{/pea/list/edit}" method="post" th:object="${list}" sec:csrf="true">
+                <form th:action="@{/list/edit}" method="post" th:object="${list}" sec:csrf="true">
 
                     <span onmouseup="deleteEditListDiscard(event)" class="closeContainer">
                         <p>&times;</p>
@@ -487,7 +487,7 @@
 
     <div id="add-list-container">
 
-        <form th:action="@{/pea/list/add}" th:object="${list}" method="post" sec:csrf="true">
+        <form th:action="@{/list/add}" th:object="${list}" method="post" sec:csrf="true">
 
             <div id="list-input-container">
 

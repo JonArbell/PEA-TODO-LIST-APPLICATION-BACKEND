@@ -12,7 +12,6 @@ import java.util.Objects;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/pea")
 public class CRUDList {
 
     private final ListsOperation listsOperation;
@@ -29,7 +28,7 @@ public class CRUDList {
         }else
             listsOperation.createNewList(list);
 
-        return "redirect:/pea/home";
+        return "redirect:/home";
     }
 
     @PostMapping("/list/delete/{id}")
@@ -45,7 +44,7 @@ public class CRUDList {
             reMap.addFlashAttribute("deleteListMessage",e.getMessage());
         }
 
-        return "redirect:/pea/home";
+        return "redirect:/home";
     }
 
     @PostMapping("/list/edit")
@@ -69,7 +68,7 @@ public class CRUDList {
             reMap.addFlashAttribute("editListMessage",e.getMessage());
         }
 
-        return "redirect:/pea/home";
+        return "redirect:/home";
     }
 
 }

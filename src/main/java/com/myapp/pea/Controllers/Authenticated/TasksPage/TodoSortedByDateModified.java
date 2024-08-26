@@ -9,16 +9,13 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import java.time.LocalDate;
 import java.util.List;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/pea")
 public class TodoSortedByDateModified {
 
-    private final UserService userService;
     private final GetTasks getTasks;
     private final MyCustomModelMap myCustomModelMap;
 

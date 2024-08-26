@@ -18,7 +18,6 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/pea")
 public class ListsSortedByDateModified {
 
     private final GetLists getLists;

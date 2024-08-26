@@ -24,28 +24,28 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 
         return http.authorizeHttpRequests(auth -> auth
-                                .requestMatchers( "/pea/home/**",
-                                        "/pea/todays-tasks/**",
-                                        "/pea/all-tasks/**",
-                                        "/pea/completed-tasks/**",
-                                        "/pea/overdue-tasks/**",
+                                .requestMatchers( "/home/**",
+                                        "/todays-tasks/**",
+                                        "/all-tasks/**",
+                                        "/completed-tasks/**",
+                                        "/overdue-tasks/**",
                                         "/about-us",
                                         "/contact-us",
                                         "/settings",
-                                        "/pea/todo/**",
-                                        "/pea/list/**")
+                                        "/todo/**",
+                                        "/list/**")
                                 .authenticated()
                                 .anyRequest().permitAll()
                 )
                 .formLogin(form -> form
-                        .loginPage("/pea/login")
-                        .defaultSuccessUrl("/pea/home", true)
-                        .failureUrl("/pea/login?error=true")
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/home", true)
+                        .failureUrl("/login?error=true")
                         .permitAll()
                 )
                 .logout(log -> log
-                        .logoutUrl("/pea/logout")
-                        .logoutSuccessUrl("/pea")
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
                 )
                 .headers( head -> head
                         .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)

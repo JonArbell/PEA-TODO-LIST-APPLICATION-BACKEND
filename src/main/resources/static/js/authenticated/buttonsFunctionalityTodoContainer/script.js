@@ -63,7 +63,7 @@ function deleteTodoItem(todoId){
     const form = document.querySelector(`#form-${todoId}`);
 
     if (form) {
-        form.action = `/pea/todo/delete/${todoId}`;
+        form.action = `/todo/delete/${todoId}`;
         form.method = 'post';
         form.submit();
     } else {
@@ -78,7 +78,7 @@ function markAsCompleteItem(todoId){
 
     if(form){
         form.method = 'post';
-        form.action = `/pea/todo/${todoId}/mark-as-done`;
+        form.action = `/todo/${todoId}/mark-as-done`;
         form.submit();
     }else {
         console.error('Form not found');

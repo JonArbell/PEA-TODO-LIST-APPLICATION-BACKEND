@@ -16,7 +16,6 @@ import java.util.Objects;
 
 @AllArgsConstructor
 @Controller
-@RequestMapping("/pea")
 public class WelcomePage {
 
     private final CreateAccountService createAccountService;
@@ -26,7 +25,7 @@ public class WelcomePage {
     public String welcomePage(ModelMap map){
 
         if(userService.isUserAuthenticated()){
-            return "redirect:/pea/home";
+            return "redirect:/home";
         }
 
         map.addAttribute("user",new User());
@@ -56,7 +55,7 @@ public class WelcomePage {
             System.out.println("Error : "+e.getMessage());
         }
 
-        return "redirect:/pea";
+        return "redirect:/home";
     }
 
     @GetMapping("/lopit")

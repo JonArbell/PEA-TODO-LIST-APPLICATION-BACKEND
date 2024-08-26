@@ -6,9 +6,9 @@ function handleSubmit(){
 
     typeOfSubmit.forEach(type =>{
         if(type.textContent === 'Add To-do:'){
-            formTask.action = '/pea/todo/add';
+            formTask.action = '/todo/add';
         }else if(type.textContent === 'Edit To-do:'){
-            formTask.action = '/pea/todo/edit';
+            formTask.action = '/todo/edit';
             
         }
     });

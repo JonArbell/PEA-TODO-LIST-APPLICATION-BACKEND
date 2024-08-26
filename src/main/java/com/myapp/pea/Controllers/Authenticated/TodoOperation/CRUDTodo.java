@@ -13,7 +13,6 @@ import java.util.Objects;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/pea")
 public class CRUDTodo {
     private final TaskOperation taskOperation;
     private final MyCustomModelMap myCustomModelMap;
