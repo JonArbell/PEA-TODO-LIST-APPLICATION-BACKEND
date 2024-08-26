@@ -277,7 +277,7 @@
                 </div>
 
                     <div th:if="${#lists.isEmpty(tasksOfList)}">
-                        <h1 class="empty"> No pending tasks in your <span th:text="${getListName}"></span> list! Click on 'Create New' to get started!</h1>
+                        <h1 class="empty"> No tasks in your <span th:text="${getListName}"></span> list! Click on 'Create New' to get started!</h1>
                     </div>
 
                     <div th:unless="${#lists.isEmpty(tasksOfList)}">
