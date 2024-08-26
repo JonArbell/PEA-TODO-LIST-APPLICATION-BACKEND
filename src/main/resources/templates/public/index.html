@@ -84,7 +84,7 @@
                 <div id="create-account-password-container">
                     <input minlength="8" id="create-new-password"
                            oninput="onInputPassword(event,'show-password-image-create-account','create-new-password')" required="required"  th:field="*{password}" type="password" placeholder="Create a new password"/>
-                    <img style="height: 15px; width: 15px;" id="show-password-image-create-account" src="<%= request.getContextPath() %>/images/showPassword/close.png" alt="Toggle Password"/>
+                    <img style="height: 15px; width: 15px;" id="show-password-image-create-account" th:src="@{/images/showPassword/close.png}" alt="Toggle Password"/>
                 </div>
 
                 
