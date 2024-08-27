@@ -12,6 +12,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import java.util.Objects;
+
 @Controller
 @AllArgsConstructor
 public class TopNav {
@@ -42,7 +44,8 @@ public class TopNav {
 
     @GetMapping("/settings")
     public String settings(ModelMap map){
-
+        map.addAttribute("firstname",userService.getFirstName());
+        map.addAttribute("lastname",userService.getLastName());
         modelMap(map);
         return "authenticated/topNav/settings";
     }

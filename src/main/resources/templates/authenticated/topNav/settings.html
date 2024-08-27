@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+
+    <link rel="icon" th:href="@{/images/checklist.ico}" type="icon">
+
+    <link th:href="@{/css/authenticated/homePage.css}" rel="stylesheet"/>
+
+    <link th:href="@{/css/authenticated/contact.css}" rel="stylesheet"/>
+
+</head>
+
+<body>
+    
+    <div id="dim-panis">
+
+    </div>
+
+    <header>
+        <div class="dim">
+
+            <ul>
+                <li class="list-no-hover">
+                    <h1 th:onclick="goHome()">P E A</h1>
+                </li>
+
+                <li th:onclick="goHome()" class="list-no-hover">
+                    <img id="pea-logo-icon" th:src="@{/images/checklist.png}"/>
+                </li>
+
+                <li id="list-search">
+                    <form method="get" th:action="@{/search}" sec:csrf="true">
+
+                        <input type="search" name="query" id="" placeholder="Search..."/>
+
+                    </form>
+                </li>
+
+                <a th:href="@{/home}">
+                    <li>
+                        <h2>Home</h2>
+                    </li>
+                </a>
+
+                <a th:href="@{/about-us}">
+                    <li>
+                        <h2>About</h2>
+                    </li>
+                </a>
+
+
+                <a th:href="@{/contact-us}">
+                    <li>
+                        <h2>Contact</h2>
+                    </li>
+                </a>
+
+                <li class="list-no-hover" id="list-profile-logo">
+                    <img class="nav-button" id="profile-logo" th:src="@{/images/try_profile_logo.ico}"/>
+
+                    <div id="account-modal">
+                        <p>Account</p>
+                    </div>
+
+                    <div id="profile-modal">
+
+                        <a id="profile-modal-username" th:href="@{/{username}(username=${username})}">
+                            <img class="nav-button" id="profile-logo-href" th:src="@{/images/try_profile_logo.ico}" />
+                            <span th:text="${username}"></span>
+                        </a>
+
+                        <a href="/settings">
+                            <img class="nav-button" id="settings-logo" th:src="@{/images/settings.png}"/>
+                            <span> Settings</span>
+                        </a>
+
+                        <form method="post" th:action="@{/logout}" sec:csrf="true">
+
+                            <button type="submit">
+                                <img class="nav-button" id="logout-img" th:src="@{/images/logout.png}"/>
+                                <span>Log out</span>
+
+                            </button>
+
+                        </form>
+
+                        <hr/>
+                        <footer>PEA &copy; 2024 Made with &hearts; by Jon Arbell De Ocampo</footer>
+                    </div>
+
+                </li>
+
+            </ul>
+
+        </div>
+    </header>
+
+    <main>
+        
+        <div id="left-container" class="containers dim">
+            <h2>Menu</h2>
+
+            <hr/>
+
+            <div>
+                <h3>Tasks</h3>
+                <ul>
+
+                    <li>
+                        <a th:href="@{/todays-tasks}">Today's Tasks</a>
+                    </li>
+                    
+                    <li>
+                        <a th:href="@{/completed-tasks}">Completed Tasks</a>
+                    </li>
+                    
+                    <li>
+                        <a th:href="@{/overdue-tasks}">Overdue Tasks</a>
+                    </li>
+                    
+                    <li>
+                        <a th:href="@{/all-tasks}">All Tasks</a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div id="lists-container">
+                <h3>Lists</h3>
+                <ul>
+                    <li th:each="list : ${lists}">
+                        <a th:href="@{/list/{id}(id=${list.id})}" th:text="${list.listName}"></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="edit-delete-list-container-modal">
+
+                <h2>Manage your lists:</h2>
+
+                <div>
+                    <button id="edit-button-list-container-modal" th:onmouseup="clickedEdit(event)">Edit List Name</button>
+                    <button id="delete-button-list-container-modal" th:onmouseup="clickedDelete()">Delete List</button>
+                </div>
+
+            </div>
+
+            <div id="edit-list-container-modal">
+                <form th:action="@{/list/edit}" method="post" th:object="${list}" sec:csrf="true">
+
+                    <span onmouseup="deleteEditListDiscard(event)" class="closeContainer">
+                        <p>&times;</p>
+                    </span>
+
+                    <h2>Select List to rename:</h2>
+
+                    <select th:field="*{id}" required="required">
+                        <option th:if="${list.listName != 'Personal' && list.listName != 'Work'}" th:each="list : ${lists}" th:value="${list.id}" th:text="${list.listName}"></option>
+                    </select>
+
+                    <input th:field="*{listName}" type="text" required="required" placeholder="Enter new list name"/>
+
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                    <button type="submit">Rename</button>
+                </form>
+                
+            </div>
+
+            <div id="delete-list-container-modal">
+
+                <span onmouseup="deleteEditListDiscard()" class="closeContainer">
+                    <p>&times;</p>
+                </span>
+
+                <div id="delete-select-list-container">
+                    <h2>Select List to delete:</h2>
+
+                    <select id="listSelectDelete">
+                        <option th:each="list : ${lists}"
+                                th:if="${list.listName != 'Personal' && list.listName != 'Work'}"
+                                th:value="${list.id}"
+                                th:text="${list.listName}"
+                                th:data-name="${list.listName}">
+
+                        </option>
+                    </select>
+
+                    <div>
+
+                        <p>Also delete all tasks within this list: </p>
+                        <input id="check-all-tasks" type="checkbox"/>
+                    </div>
+
+                    <button th:onmouseup="deleteList()">Delete</button>
+                </div>
+
+               <div id="delete-form-container">
+
+                    <form method="post" sec:csrf="true">
+                        <h2></h2>
+
+                        <input type="hidden" name="deleteTasks"/>
+
+                        <div id="delete-form-buttons-container">
+
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                            <button type="reset" th:onmouseup="deleteEditListDiscard()">Discard</button>
+
+                            <button type="submit" th:onmouseup="deleteListSubmit()">Delete</button>
+                        </div>
+                    </form>
+               </div>
+
+            </div>
+
+            <div id="manage-list-container">
+                <button>Manage List</button>
+            </div>
+
+            <hr id="last-left-hr"/>
+
+            <footer>PEA &copy; 2024</footer>
+        </div>
+
+        <div id="middle-container" class="containers">
+
+            <div>
+
+                <div id="form-container">
+                    <h1>Settings</h1>
+
+                    <div>
+    
+                        <h2>Information</h2>
+    
+                        <li>
+                            <h3 th:text="${firstname}"></h3>
+                        </li>
+    
+                        <li>
+                            <h3 th:text="${lastname}"></h3>
+                        </li>
+                        
+                        <button>Change details</button>
+    
+                    </div>
+    
+                    <form onsubmit="" th:object="${user}">
+                        <h2>Change Details</h2>
+    
+                        <label for="firstname">Firstname: </label>
+                        <input id="firstname"/>
+    
+                        <label for="lastname">Lastname: </label>
+                        <input id="lastname"/>
+    
+                        <label for="password">Password: </label>
+                        <input id="password"/>
+    
+                        <button>Submit</button>
+                        
+                    </form>
+                </div>
+                
+                <div>
+                
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="right-container" class="containers dim">
+
+            <div>
+                <h2>Welcome,</h2>
+                <h2 th:text="${fullname}"></h2>
+            </div>
+
+            <hr/>
+
+            <div id="date-and-time-progress-display-container">
+                <div class="date-and-time">
+                    <p id="date"></p>
+                    <p id="time"></p>
+                </div>
+
+                <div class="task-progress">
+
+                    <section>
+                        <div>
+                            <h3>Completed Task:</h3>
+
+                            <div></div>
+                        </div>
+
+                        <div id="incomplete-label-container">
+                            <h3>Incomplete Task:</h3>
+
+                            <div id="incomplete-donut"></div>
+                        </div>
+
+                    </section>
+
+                    <div id="donut" th:data-average="${average}">
+                        <div>
+                            <p th:text="${average}"></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <hr/>
+
+            <footer>Designed and developed by Jon Arbell De Ocampo</footer>
+
+        </div>
+
+    </main>
+
+    <script th:src="@{/js/authenticated/profileModal/script.js}"></script>
+
+    <script th:src="@{/js/authenticated/goToHome/script.js}"></script>
+
+    <script th:src="@{/js/authenticated/dynamicallyProgress/script.js}"></script>
+
+    <script th:src="@{/js/authenticated/dateTime/script.js}"></script>
+
+    <script th:src="@{/js/authenticated/manageListButton/script.js}"></script>
+
+    <script th:src="@{/js/authenticated/editDeleteList/script.js}"></script>
+    
+    <script th:src="@{/js/authenticated/successFailedMessageHandler/list.js}"></script>
+    
+    <script>
+
+        let getListError = `[[${getListError}]]`;
+        handleGetListErrorMessage(getListError);
+
+        let createListMessage = `[[${createListMessage}]]`;
+        handleCreateListMessage(createListMessage);
+
+        let editListMessage = `[[${editListMessage}]]`;
+        handleEditListMessage(editListMessage);
+
+        let deleteListMessage = `[[${deleteListMessage}]]`;
+        handleDeleteListMessage(deleteListMessage);
+
+    </script>
+
+</body>
+
+</html>
