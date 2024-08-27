@@ -64,6 +64,7 @@ public class CRUDList {
 
                 reMap.addFlashAttribute("editListMessage",errorMessage);
             }else{
+                reMap.addFlashAttribute("editListMessage","success");
                 listsOperation.updateListName(list);
             }
         }catch (Exception e){
