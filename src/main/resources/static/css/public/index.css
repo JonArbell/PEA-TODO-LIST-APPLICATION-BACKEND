@@ -325,6 +325,7 @@ footer{
     opacity: 80%;
     box-shadow: 1px 3px 5px #2c2c2c;
     animation: fadeOut 7s ease-out forwards;
+    z-index: 100;
 }
 
 @keyframes fadeOut {

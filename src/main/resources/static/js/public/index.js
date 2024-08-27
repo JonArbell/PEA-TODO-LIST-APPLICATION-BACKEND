@@ -85,26 +85,26 @@ function createAccountContainerHandler(event){
 
 document.addEventListener('click',createAccountContainerHandler);
 
+function validateForm(event) {
+    const password = document.getElementById('create-new-password');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const promptMessage = document.getElementById('prompt-message');
 
-function createAccountPasswordValidation(event){
-
-    event.preventDefault();
-
-    const inputPassword = document.querySelector('#create-new-password');
-    const confirmPassword = document.querySelector('#confirmPassword');
-    const createAccountForm = document.querySelector('#create-new-account-container form');
-
-    console.log('Input pass : '+inputPassword.value);
-    console.log('Confirm pass : '+confirmPassword.value);
-
-    if(inputPassword.value !== confirmPassword.value){
-        alert('Passwords do not match. Please try again.');
-        return;
-    }else{
-        createAccountForm.submit();
+    if (password.value !== confirmPassword.value) {
+        event.preventDefault(); 
+        promptMessage.textContent = 'Passwords do not match. Please try again.';
+        promptMessage.classList.add('failed-message');
+        promptMessage.style.display='flex';
+        setTimeout(()=>{
+            promptMessage.classList.remove('failed-message');
+            promptMessage.textContent = '';
+        },7000);
+        return false;
     }
 
+    return true; 
 }
+
 
 
 function createAccountMessage(createAccMessage){

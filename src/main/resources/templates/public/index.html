@@ -39,7 +39,7 @@
 
                         <div class="login-input" id="password-container">
                             <input oninput="onInputPassword(event,'show-password-image','password')" id="password"
-                                   required="required" th:field="*{password}" type="password" placeholder="Password"/>
+                                   required="required" th:field="*{password}" type="password" minlength="8" placeholder="Password"/>
                             <img style="height: 15px; width: 15px;" id="show-password-image"
                                  th:src="@{/images/showPassword/close.png}" alt="Toggle Password"/>
                         </div>
@@ -71,10 +71,10 @@
 
             <hr/>
 
-            <form th:object="${user}" th:action="@{/create-account}" method="post" sec:csrf="true">
+            <form th:object="${user}" th:action="@{/create-account}" method="post" sec:csrf="true" onsubmit="return validateForm(event)">
 
                 <div id="create-new-account-names">
-                    <input maxlength="35" required="required"  th:field="*{firstName}" type="text"
+                    <input maxlength="35" required="required" autofocus="autofocus"  th:field="*{firstName}" type="text"
                            placeholder="First name"/>
                     <input maxlength="35" required="required"  th:field="*{lastName}" type="text" placeholder="Last name"/>
                 </div>
@@ -96,7 +96,7 @@
                     <p>By clicking Sign Up, you agree to our <a href="/terms">Terms, Privacy Policy and Cookies Policy</a>.</p>
                 </div>
 
-                <button id="sign-up-button" onclick="createAccountPasswordValidation(event)">Sign Up</button>
+                <button id="sign-up-button">Sign Up</button>
             </form>
 
         </div>
