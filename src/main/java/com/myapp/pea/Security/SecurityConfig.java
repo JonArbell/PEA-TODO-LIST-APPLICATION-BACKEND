@@ -13,7 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-
 @EnableWebSecurity
 @Configuration
 @AllArgsConstructor
@@ -53,7 +52,6 @@ public class SecurityConfig {
                 )
                 .build();
     }
-
 
     @Bean
     public AuthenticationProvider authenticationProvider(){
