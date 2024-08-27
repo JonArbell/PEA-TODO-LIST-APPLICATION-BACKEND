@@ -140,6 +140,7 @@ function createAccountMessage(createAccMessage){
 
 function handleLogoutMessage(message){
     const promptMessage = document.querySelector('#prompt-message');
+
     if(message != ''){
         promptMessage.textContent = `${message}`;
         promptMessage.classList.add('success-message');
@@ -147,6 +148,23 @@ function handleLogoutMessage(message){
 
         setTimeout(()=>{
             promptMessage.classList.remove('success-message');
+            promptMessage.textContent = '';
+        },7000);
+    }
+
+}
+
+
+
+function handleLoginFailedMessage(message){
+    const promptMessage = document.querySelector('#prompt-message');
+
+    if(message != ''){
+        promptMessage.textContent = `${message}`;
+        promptMessage.classList.add('failed-message');
+        promptMessage.style.display='flex';
+        setTimeout(()=>{
+            promptMessage.classList.remove('failed-message');
             promptMessage.textContent = '';
         },7000);
     }
