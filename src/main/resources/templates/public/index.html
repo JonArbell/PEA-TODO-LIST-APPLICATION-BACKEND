@@ -71,7 +71,7 @@
 
             <hr/>
 
-            <form th:object="${user}" th:action="@{/create-account}" method="post" sec:csrf="true" onsubmit="return validateForm(event)">
+            <form th:object="${user}" th:action="@{/create-account}" method="post" sec:csrf="true" onsubmit="return validateForm()">
 
                 <div id="create-new-account-names">
                     <input maxlength="35" required="required" autofocus="autofocus"  th:field="*{firstName}" type="text"

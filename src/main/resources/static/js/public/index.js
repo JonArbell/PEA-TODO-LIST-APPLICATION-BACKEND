@@ -77,28 +77,30 @@ function createAccountContainerHandler(event){
 
         showModal(allContainers,modal);
     
-    }else{
-        closeModal(allContainers,modal);
     }
     
 }
 
 document.addEventListener('click',createAccountContainerHandler);
 
-function validateForm(event) {
+function validateForm() {
     const password = document.getElementById('create-new-password');
     const confirmPassword = document.getElementById('confirmPassword');
     const promptMessage = document.getElementById('prompt-message');
 
+
     if (password.value !== confirmPassword.value) {
-        event.preventDefault(); 
+
         promptMessage.textContent = 'Passwords do not match. Please try again.';
         promptMessage.classList.add('failed-message');
         promptMessage.style.display='flex';
+        
         setTimeout(()=>{
-            promptMessage.classList.remove('failed-message');
             promptMessage.textContent = '';
+            promptMessage.classList.remove('failed-message');
+            promptMessage.style.display='none';
         },7000);
+
         return false;
     }
 
