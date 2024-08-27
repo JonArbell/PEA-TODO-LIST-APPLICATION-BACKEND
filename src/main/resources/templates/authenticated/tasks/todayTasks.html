@@ -428,7 +428,7 @@
 
             <div id="add-edit-task-container">
 
-                <form th:object="${todo}" method="post" sec:csrf="true">
+                <form th:object="${todo}" method="post" sec:csrf="true" onsubmit="handleSubmit()">
 
                     <input id="todo-id" th:field="*{id}" hidden="hidden"/>
 
@@ -466,7 +466,7 @@
                     <div class="add-edit-task-buttons">
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                         <input id="add-edit-task-reset" th:onmouseup="handleDiscard()" value="" type="reset"/>
-                        <input id="add-edit-task-submit" th:onmouseup="handleSubmit()" value="" type="submit"/>
+                        <input id="add-edit-task-submit" value="" type="submit"/>
                     </div>
 
                 </form>
