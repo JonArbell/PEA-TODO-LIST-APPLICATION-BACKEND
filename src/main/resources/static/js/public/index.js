@@ -4,14 +4,21 @@ function showPasswordHandlerLogin(id,passId){
     const showPasswordCheckBox = document.querySelector(`#${id}`);
     const passwordInput = document.querySelector(`#${passId}`);
 
+    const openImg = new Image();
+    openImg.src = '/images/showPassword/open.png';
+
+    const closeImg = new Image();
+    closeImg.src = '/images/showPassword/close.png';
+
+
     if (!showPasswordCheckBox.hasEventListener) {
         showPasswordCheckBox.addEventListener('click', () => {
             if (passwordInput.type === 'password') {
-                showPasswordCheckBox.src = '/images/showPassword/open.png';
+                showPasswordCheckBox.src = openImg.src;
                 passwordInput.type = 'text';
                 
             } else {
-                showPasswordCheckBox.src = '/images/showPassword/close.png';
+                showPasswordCheckBox.src = closeImg.src;
                 passwordInput.type = 'password';
                 
             }
