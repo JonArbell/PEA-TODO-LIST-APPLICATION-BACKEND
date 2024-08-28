@@ -1,14 +1,14 @@
 //Functions to handle show Password
+const openImg = new Image();
+openImg.src = '/images/showPassword/open.png';
+
+const closeImg = new Image();
+closeImg.src = '/images/showPassword/close.png';
+
 function showPasswordHandlerLogin(id,passId){
 
     const showPasswordCheckBox = document.querySelector(`#${id}`);
     const passwordInput = document.querySelector(`#${passId}`);
-
-    const openImg = new Image();
-    openImg.src = '/images/showPassword/open.png';
-
-    const closeImg = new Image();
-    closeImg.src = '/images/showPassword/close.png';
 
 
     if (!showPasswordCheckBox.hasEventListener) {
