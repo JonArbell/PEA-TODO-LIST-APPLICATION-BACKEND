@@ -1,0 +1,33 @@
+/*Extra Small Devices (Mobile Phones in Portrait Mode)*/
+@media screen and (max-width: 480px){
+    
+}
+
+/*Small Devices (Mobile Phones)*/
+@media screen and (min-width: 481px) and (max-width: 767px){
+
+}
+
+/*Medium Devices (Tablets in Portrait Mode)*/
+@media screen and (min-width: 768px) and (max-width: 991px){
+    
+}
+
+
+/*Large Devices (Tablets in Landscape Mode or Small Laptops)*/
+@media screen and (min-width: 992px) and (max-width: 1199px){
+    
+}
+
+
+/*Extra Large Devices (Desktops and Large Laptops)*/
+@media screen and (min-width: 1200px) and (max-width: 1599px){
+    
+}
+
+
+/*Ultra Large Devices (Large Desktops and 4K Screens)*/
+@media screen and (min-width: 1600px){
+    
+}
+

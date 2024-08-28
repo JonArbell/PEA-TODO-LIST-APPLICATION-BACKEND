@@ -1,19 +1,33 @@
+/*Extra Small Devices (Mobile Phones in Portrait Mode)*/
+@media screen and (max-width: 480px){
+    
+}
 
-@media (width:375px) and (height:667px){
+/*Small Devices (Mobile Phones)*/
+@media screen and (min-width: 481px) and (max-width: 767px){
 
-    #middle-container{
+}
 
-        height: 90vh;
+/*Medium Devices (Tablets in Portrait Mode)*/
+@media screen and (min-width: 768px) and (max-width: 991px){
+    
+}
 
-    }
 
-    header{
-        width: 100vw;
-    }
+/*Large Devices (Tablets in Landscape Mode or Small Laptops)*/
+@media screen and (min-width: 992px) and (max-width: 1199px){
+    
+}
 
-    #left-container,#right-container{
-        display: none;
-    }
 
+/*Extra Large Devices (Desktops and Large Laptops)*/
+@media screen and (min-width: 1200px) and (max-width: 1599px){
+    
+}
+
+
+/*Ultra Large Devices (Large Desktops and 4K Screens)*/
+@media screen and (min-width: 1600px){
+    
 }
 
