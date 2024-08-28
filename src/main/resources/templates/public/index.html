@@ -12,9 +12,9 @@
 
         <title>P E A - log in or sign up</title>
 
-        <link rel="preload" href="/images/showPassword/open.png" as="image">
+        <link rel="preload" href="/images/showPassword/open.svg" as="image">
 
-        <link rel="preload" href="/images/showPassword/close.png" as="image">
+        <link rel="preload" href="/images/showPassword/close.svg" as="image">
 
         <link rel="icon" type="icon" th:href="@{/images/checklist.ico}" />
 
@@ -49,8 +49,8 @@
                         <div class="login-input" id="password-container">
                             <input oninput="onInputPassword(event,'show-password-image','password')" id="password"
                                    required="required" th:field="*{password}" type="password" minlength="8" placeholder="Password"/>
-                            <img style="height: 15px; width: 15px;" id="show-password-image"
-                                 th:src="@{/images/showPassword/close.png}" alt="Toggle Password"/>
+                            <img id="show-password-image" th:src="@{/images/showPassword/close.svg}" alt="Toggle Password"/>
+
                         </div>
                         
                         <button id="login-button" class="buttons" type="submit">LOG IN</button>
@@ -94,7 +94,7 @@
                 <div id="create-account-password-container">
                     <input minlength="8" id="create-new-password"
                            oninput="onInputPassword(event,'show-password-image-create-account','create-new-password')" required="required"  th:field="*{password}" type="password" placeholder="Create a new password"/>
-                    <img style="height: 15px; width: 15px;" id="show-password-image-create-account" th:src="@{/images/showPassword/close.png}" alt="Toggle Password"/>
+                           <img id="show-password-image" th:src="@{/images/showPassword/close.svg}" alt="Toggle Password"/>
                 </div>
 
                 

@@ -1,9 +1,9 @@
 //Functions to handle show Password
 const openImg = new Image();
-openImg.src = '/images/showPassword/open.png';
+openImg.src = '/images/showPassword/open.svg';
 
 const closeImg = new Image();
-closeImg.src = '/images/showPassword/close.png';
+closeImg.src = '/images/showPassword/close.svg';
 
 function showPasswordHandlerLogin(id,passId){
 

@@ -55,10 +55,13 @@ main{
 }
 
 #show-password-image,#show-password-image-create-account{
+    filter: brightness(80%) contrast(130%);
     cursor: pointer;
     margin-right: 10px;
     display: none;
     margin: 0;
+    height: 15px; 
+    width: 15px;
 }
 
 
@@ -346,3 +349,9 @@ footer{
     background-color:rgb(255, 69, 58);
 }
 
+.toggle-icon{
+
+    cursor: pointer;
+    height: 15px; 
+    width: 15px;
+}
