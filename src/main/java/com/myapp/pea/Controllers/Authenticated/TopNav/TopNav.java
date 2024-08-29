@@ -47,7 +47,8 @@ public class TopNav {
         map.addAttribute("firstname",userService.getFirstName());
         map.addAttribute("lastname",userService.getLastName());
         modelMap(map);
-        return "authenticated/topNav/settings";
+//        return "authenticated/topNav/settings";
+        return "public/underConstruction";
     }
 
     public void modelMap(ModelMap map){

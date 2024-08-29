@@ -8,11 +8,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ForgotPassword {
     @GetMapping("/forgot-password")
     public String forgotPassGet(){
-        return "public/forgotPasswordPage";
+//        return "public/forgotPasswordPage";
+        return "public/underConstruction";
     }
 
     @PostMapping("/forgot-password")
     public String forgotPassPost(){
-        return "public/forgotPasswordPage";
+//        return "public/forgotPasswordPage";
+        return "public/underConstruction";
     }
+
 }
