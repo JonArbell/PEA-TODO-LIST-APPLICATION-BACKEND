@@ -19,6 +19,8 @@
     #title-header{
         flex-direction: column;
         text-align: center;
+        gap: 0;
+        height: fit-content;
     }
     #pea{
         font-size: 4em !important;
