@@ -21,10 +21,6 @@ header > h1{
     text-align: center;
 }
 
-header{
-    height: 93.031;
-}
-
 header > hr{
     margin: 0;
     height: 10px;
@@ -354,4 +350,17 @@ footer{
     cursor: pointer;
     height: 15px; 
     width: 15px;
+}
+
+#title-header h1{
+    margin: 0;
+    font-size: 3.5em;
+}
+
+#title-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    height: 10vh;
 }

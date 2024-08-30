@@ -1,6 +1,94 @@
 /*Extra Small Devices (Mobile Phones in Portrait Mode)*/
 @media screen and (max-width: 480px){
-    
+    header {
+        height: 17.7vh;
+        width: 100vw;
+    }
+
+    header > h1{
+        margin: 0;
+        font-size: 2em;
+        text-align: center;
+    }
+
+    main{
+        width: 100vw;
+        height: 82.303vh;
+    }
+
+    #title-header{
+        flex-direction: column;
+        text-align: center;
+    }
+    #pea{
+        font-size: 4em !important;
+    }
+
+    #main-page{
+        flex-direction: column;
+    }
+
+    #advertisement{
+        margin: 1% 0 1% 0;
+    }
+
+    #advertisement h1{
+        font-size: 2.3em;
+        text-align: center;
+        text-shadow: -1px 1px 3px black;
+    }
+
+    #login-page{
+        width: 93vw;
+        margin: 3% 0 5% 0;
+    }
+
+    #create-new-account-button{
+        width: 85%;
+    }
+    #forgot-password-container{
+        gap: 15%;
+        height: 15%;
+        margin: 0;
+        justify-content: flex-start;
+    }
+
+    footer{
+        font-size: x-small;
+        margin-right: 0.15em;
+    }
+
+    #create-new-account-container form{
+        margin: 5% 0 5% 0;
+    }
+
+    #title-header h1{
+        font-size: x-large;   
+    }
+
+    #create-new-account-container{
+        width: 95vw;
+        height: 85vh;
+        top: 7%;
+        left: 2.5%;
+    }
+    #create-new-account-names{
+        width: 100.5%;
+    }
+
+    #create-new-account-container form input{
+        font-size: larger;
+    }
+    #terms p{
+        font-size: 0.7em;
+    }
+
+    #login-page > form{
+        gap: 0;
+        width: 75%;
+        height: 55%;
+    }
+
 }
 
 /*Small Devices (Mobile Phones)*/
