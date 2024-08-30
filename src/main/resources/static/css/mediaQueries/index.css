@@ -1,7 +1,7 @@
 /*Extra Small Devices (Mobile Phones in Portrait Mode)*/
 @media screen and (max-width: 480px) and (max-height: 800px){
     header {
-        height: 17.7vh;
+        height: 15vh;
     }
 
     header > hr{
@@ -16,7 +16,7 @@
 
     main{
         width: 100vw;
-        height: 82.303vh;
+        height: 85vh;
     }
 
     #title-header{
