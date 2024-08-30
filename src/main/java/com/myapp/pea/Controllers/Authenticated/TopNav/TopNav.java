@@ -25,7 +25,8 @@ public class TopNav {
     @GetMapping("/{profile}")
     public String getProfile(@ModelAttribute User profile){
 
-        return "profile";
+//        return "profile";
+        return "public/underConstruction";
     }
 
     @GetMapping("/about-us")
