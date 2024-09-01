@@ -1,5 +1,5 @@
 /*Extra Small Devices (Mobile Phones in Portrait Mode)*/
-@media screen and (max-width: 480px) and (max-height: 800px){
+@media screen and (max-width: 480px) and (max-height: 800px) and (orientation: portrait){
     header {
         height: 15vh;
     }
@@ -97,7 +97,7 @@
 }
 
 /*Small Devices (Mobile Phones)*/
-@media screen and (min-width: 481px) and (max-width: 767px) and (max-height: 850px){
+@media screen and (min-width: 481px) and (max-width: 767px) and (max-height: 850px) and (orientation: portrait){
 
     #title-header{
         flex-direction: column;
@@ -146,21 +146,101 @@
 
 }
 
-/*Medium Devices (Tablets in Portrait Mode)*/
-@media screen and (min-width: 768px) and (max-width: 991px){
+/*Medium Devices (Tablets)*/
+@media screen and (min-width: 768px) and (max-width: 991px) and (max-height: 900px){
     
+    #create-new-account-container{
+        top: 4em;
+        left: 3.7em;
+        width: 85vw;
+    }
+
+    #pea{
+        font-size: 4em;
+    }
+
+    #title-header h1{
+        font-size: 3em;
+    }
+
+    #advertisement{
+        margin-left: 0;
+        text-align: center;
+    }
+
+    #main-page{
+        flex-direction: column;
+    }
+
+    main{
+        height: 81vh;
+    }
+
+    #advertisement h1{
+        font-size: 2.5em;
+        text-shadow: -1px 1px 3px black;
+    }
+
+    #login-page{
+        margin: 0;
+        width: 85vw;
+    }
+    #title-header{
+        gap: 0;
+        height: fit-content;
+        flex-direction: column;
+    }
+
+    #pea{
+        font-size: 4em;
+    }
+
+
+
 }
 
 
 /*Large Devices (Tablets in Landscape Mode or Small Laptops)*/
-@media screen and (min-width: 992px) and (max-width: 1199px){
+@media screen and (min-width: 992px) and (max-width: 1199px) and (orientation: landscape){
     
+    main{
+        height: 81vh;
+    }
+    #advertisement{
+        margin-left: 1.5%;
+    }
+    #advertisement h1{
+        font-size:7em ;
+    }
+    #create-new-account-button{
+        font-size: 1.5em;
+    }
+
+    #login-page{
+        margin: 5% 0 5% 2.5%;
+        height: 55vh;
+        width: 51vw;
+    }
+
+    #title-header{
+        gap: 0; 
+        height: fit-content;
+        flex-direction: column;
+    }
+
+    #create-new-account-container{
+        top: 5em;
+        left: 17.5%;
+        width: 65vw;
+    }
+
 }
 
 
 /*Extra Large Devices (Desktops and Large Laptops)*/
 @media screen and (min-width: 1200px) and (max-width: 1599px){
     
+
 }
 
 
