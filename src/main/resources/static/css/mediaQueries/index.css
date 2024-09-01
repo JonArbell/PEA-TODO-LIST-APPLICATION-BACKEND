@@ -256,3 +256,21 @@
     
 }
 
+
+/*Custom 720p desktop*/
+
+@media screen and (min-width: 1280px) and (max-width: 1366px) and (min-height:650px) and (max-height:768px) and (orientation: landscape){
+    
+    #login-page{
+        height: 70vh;
+        margin: 3% 0 3% 5%;
+    }
+
+    #login-page > form input, #login-button, #create-new-account-container input, #sign-up-button{
+        font-size: 1.5em;
+    }
+    #advertisement h1{
+        font-size: 9em;
+    }
+
+}
