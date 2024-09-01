@@ -99,7 +99,50 @@
 /*Small Devices (Mobile Phones)*/
 @media screen and (min-width: 481px) and (max-width: 767px) and (max-height: 850px){
 
+    #title-header{
+        flex-direction: column;
+        height: fit-content;
+        gap: 0;
+    }
+    #title-header h1{
+        font-size: 2em;
 
+    }
+    #pea{
+        font-size: 3em;
+    }
+    main{
+        width: 100vw;
+    }
+
+    #main-page{
+        flex-direction: column;
+    }
+
+    #advertisement{
+        margin-left: 0;
+        text-align: center;
+    }
+    #advertisement h1{
+        font-size: 2em;
+        margin: 0;
+        text-shadow: -1px 1px 3px black;
+    }
+
+    #login-page{
+        width: 85vw;
+        
+    }
+
+    #create-new-account-button{
+        font-size: 1.5em;
+    }
+
+    #create-new-account-container{
+        top: 3em;
+        left: 1.5em;
+        width: 90vw;
+    }
 
 }
 
