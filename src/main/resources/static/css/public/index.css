@@ -235,8 +235,9 @@ footer{
     border-radius: 12px;
     box-shadow: 0 7px 7px rgb(59, 59, 59);
     position: fixed;
-    top: 12%;
-    left: 33.7%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 10;
     background-color: #DAD3BE;
 }
