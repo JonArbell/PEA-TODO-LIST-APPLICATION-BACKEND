@@ -1,33 +1,133 @@
 /*Extra Small Devices (Mobile Phones in Portrait Mode)*/
-@media screen and (max-width: 480px){
+@media screen and (max-width: 480px) and (orientation: portrait){
     
+    main,header{
+        display: block;
+    }
+
+    header,header div ul{
+        height: 5vh;
+    }
+
+    #left-container,#right-container,header div ul > li,header div ul > a,#list-profile-logo{
+        display: none;
+    }
+
+    main,#middle-container{
+        height: 95vh;
+
+    }
+
+    #create-new-button{
+        font-size: 0.8em;
+        padding: 1em;
+        height: fit-content;
+        width: fit-content;
+        bottom: 39.5%;
+    }
+
+    #middle-container #title h2{
+        font-size: 1.5em !important;
+    }
+
+    #sort-todo-list-container{
+        font-size: 0.7em;
+    }
+    #sort-container label{
+       width: 4em;
+    }
+
+    #middle-container #title form select{
+        font-size: 0.7em;
+    }
+
+    #todo-lists-container{
+        height: 81.2vh;
+    }
+
+    .task-container{
+        margin: 5% 0 5% 0;
+        margin-left: 3.5%;
+        height: 37.5vh;
+        width: 95%;
+        font-size: 0.7em;
+    }
+
+    #task-buttons, #task-buttons form{
+        font-size: 0.5em;
+    }
+
+    #task-buttons button{
+        font-size: 3em;
+    }
+
+    .portrait{
+        display: block;
+    }
+
+    #create-new-modal-container{
+        top: 36.5%;
+        width: fit-content;
+        margin-left: 23%;
+    }
+
+    .create-new-item-buttons{
+        font-size: 1.3em;
+    }
+
+    header div ul li h1{
+        font-size: 2em;
+        margin-right: 0;
+    }
+
 }
 
 /*Small Devices (Mobile Phones)*/
-@media screen and (min-width: 481px) and (max-width: 767px){
+@media screen and (min-width: 481px) and (max-width: 767px) and (orientation: portrait){
+
+   
 
 }
 
-/*Medium Devices (Tablets in Portrait Mode)*/
-@media screen and (min-width: 768px) and (max-width: 991px){
+/*Medium Devices (Tablets) landscape*/
+@media screen and (min-width: 768px) and (max-width: 991px) and (orientation: landscape){
+    
+    
+
+}
+
+
+/*Medium Devices (Tablets) portrait*/
+@media screen and (min-width: 768px) and (max-width: 991px) and (orientation: portrait){
     
 }
+
+
 
 
 /*Large Devices (Tablets in Landscape Mode or Small Laptops)*/
-@media screen and (min-width: 992px) and (max-width: 1199px){
+@media screen and (min-width: 992px) and (max-width: 1199px) and (orientation: landscape){
     
+   
 }
 
 
 /*Extra Large Devices (Desktops and Large Laptops)*/
-@media screen and (min-width: 1200px) and (max-width: 1599px){
+@media screen and (min-width: 1200px) and (max-width: 1599px) and (orientation: landscape){
+    
     
 }
 
 
 /*Ultra Large Devices (Large Desktops and 4K Screens)*/
-@media screen and (min-width: 1600px){
+@media screen and (min-width: 1600px) and (orientation: landscape){
     
 }
 
+
+/*Custom 720p desktop*/
+@media screen and (min-width: 1280px) and (max-width: 1366px) and (orientation: landscape){
+    
+   
+
+}

@@ -1,9 +1,16 @@
 @media screen {
+
+    .portrait{
+        display: none;
+    }
+
+
     body{
         margin: 0;
         background-color: #d0cab5;
         overflow-y: hidden;
     }
+
     *{
         margin: 0;
         padding: 0;
