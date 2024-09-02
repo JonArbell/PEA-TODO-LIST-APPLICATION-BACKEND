@@ -50,9 +50,11 @@
 
     #create-new-account-button{
         width: 85%;
+        margin-top: 3.7%;
+        font-size: 1.5em;
     }
     #forgot-password-container{
-        gap: 15%;
+        gap: 25%;
         height: 15%;
         margin: 0;
         justify-content: flex-start;
@@ -89,7 +91,7 @@
     #login-page > form{
         gap: 0;
         width: 75%;
-        height: 55%;
+        height: 50%;
     }
 
 }
@@ -143,7 +145,7 @@
 
 }
 
-/*Medium Devices (Tablets)*/
+/*Medium Devices (Tablets) landscape*/
 @media screen and (min-width: 768px) and (max-width: 991px) and (orientation: landscape){
     
     #create-new-account-container{
@@ -193,6 +195,48 @@
 
 
 }
+
+
+/*Medium Devices (Tablets) portrait*/
+@media screen and (min-width: 768px) and (max-width: 991px) and (orientation: portrait){
+    #create-new-account-button{
+        font-size: 1.5em;
+    }
+
+    #title-header{
+        gap: 0;
+        height: fit-content;
+    }
+
+    
+
+    #login-page{
+        margin: 0;
+        height: 50vh;
+        width: 60vw;
+    }
+
+    #advertisement {
+        text-align: center;
+    }
+
+    #main-page {
+        flex-direction: column;
+    }
+
+    #advertisement h1 {
+        font-size: 3em;
+        text-shadow: -1px 1px 3px black;
+    }
+
+    #create-new-account-container{
+        width: 70vw;
+    }
+
+
+}
+
+
 
 
 /*Large Devices (Tablets in Landscape Mode or Small Laptops)*/
