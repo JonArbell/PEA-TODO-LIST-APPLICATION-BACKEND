@@ -1,6 +1,8 @@
 /*Extra Small Devices (Mobile Phones in Portrait Mode)*/
 @media screen and (max-width: 480px) and (orientation: portrait){
-    
+    header div ul{
+        justify-content: flex-start;
+    }
     main,header{
         display: block;
     }
@@ -62,7 +64,10 @@
     }
 
     .portrait{
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100vw;
     }
 
     #create-new-modal-container{
@@ -78,7 +83,16 @@
     header div ul li h1{
         font-size: 2em;
         margin-right: 0;
+        margin-left: 0.3em;
     }
+
+    #menu-hamburger-icon{
+        color: #DAD3BE;
+        margin-right: 0.3em;
+        font-size: 2em;
+    }
+
+
 
 }
 
