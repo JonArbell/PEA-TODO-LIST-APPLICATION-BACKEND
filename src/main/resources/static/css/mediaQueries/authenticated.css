@@ -74,6 +74,7 @@
         top: 36.5%;
         width: fit-content;
         margin-left: 23%;
+        height: fit-content;
     }
 
     .create-new-item-buttons{
@@ -136,6 +137,10 @@
 
     .empty{
         font-size: 3em;
+    }
+
+    #create-new-item-buttons-container{
+        margin-bottom: 5%;
     }
 
 }
