@@ -144,10 +144,6 @@
         margin-bottom: 5%;
     }
 
-    #add-edit-task-buttons input{
-        padding-left: 0.5em !important;
-    }
-
     .select-list-date select{
         font-size: 1em;
     }
