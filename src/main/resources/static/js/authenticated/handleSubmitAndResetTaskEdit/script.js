@@ -19,12 +19,9 @@ function handleSubmit(){
 
 function handleEditTodoItem(id,title,sD,tD,listsId){
 
-    console.log('ID : '+id);
-    console.log('Title : '+title);
-    console.log('Short description : '+sD);
-    console.log('Target Date : '+tD);
-    console.log('List Id : '+listsId);
-
+    if(isPortrait()){
+        portraitEditTodo();
+    }
     document.querySelectorAll('.add-edit-title')[0].textContent = 'Edit To-do:';
     document.querySelector('#date-and-time-progress-display-container').style.display = 'none';
     document.querySelector('#add-edit-task-container').style.display = 'flex';
@@ -52,7 +49,9 @@ function handleEditTodoItem(id,title,sD,tD,listsId){
     }else{
         list.value = listsId;
     }
+    
 
+    
 }
 
 function resetAllInformation(){
@@ -62,7 +61,14 @@ function resetAllInformation(){
 }
 
 function handleDiscard(){
+
     closeCreateNewEditItemContainer();
+
+    if(isPortrait()){
+        document.querySelector('#middle-container').style.display = 'flex';
+        document.querySelector('#right-container').style.display = 'none';
+    }
+
 }
 
 function removeDim(){
@@ -79,3 +85,13 @@ function closeCreateNewEditItemContainer(){
 }
 
 
+function portraitEditTodo(){
+    document.querySelector('#middle-container').style.display = 'none';
+    document.querySelector('#right-container').style.display = 'flex';
+
+}
+
+
+function isPortrait(){
+    return window.innerHeight > window.innerWidth;
+}

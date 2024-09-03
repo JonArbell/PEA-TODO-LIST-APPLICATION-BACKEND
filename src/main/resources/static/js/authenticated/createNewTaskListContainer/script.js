@@ -14,6 +14,11 @@ function handleCreateNewItem(event){
 
 }
 function createNewTask(dateTimeProgressContainer,title){
+
+    if(isPortrait()){
+        portraitEditTodo();
+    }
+
     dateTimeProgressContainer.style.display = 'none';
     document.querySelector('#add-edit-task-container').style.display = 'flex';
     document.querySelector(`#add-edit-task-submit`).value ="Save";

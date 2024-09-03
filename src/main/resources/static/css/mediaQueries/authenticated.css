@@ -25,7 +25,7 @@
         padding: 1em;
         height: fit-content;
         width: fit-content;
-        bottom: 39.5%;
+        top: 53.5%;
     }
 
     #middle-container #title h2{
@@ -44,13 +44,13 @@
     }
 
     #todo-lists-container{
-        height: 81.2vh;
+        height: 83.3vh;
     }
 
     .task-container{
         margin: 5% 0 5% 0;
         margin-left: 3.5%;
-        height: 37.5vh;
+        height: 37vh;
         width: 95%;
         font-size: 0.7em;
     }
@@ -88,11 +88,55 @@
 
     #menu-hamburger-icon{
         color: #DAD3BE;
-        margin-right: 0.3em;
         font-size: 2em;
+        text-shadow: -2px 1px 3px BLACK;
     }
 
+    #menu-hamburger-button{
+        margin-right: 0.3em;
+        background-color: #254336;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
+    .view-details{
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 85%;
+    }
+
+    #add-list-container{
+        width: 80%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #add-edit-task-container{
+        margin: 3em 0 7em 0;
+    }
+    #add-edit-task-container form h3{
+        font-size: 3em;
+    }
+
+    #add-edit-task-container form input, #add-edit-task-container form textarea{
+        font-size: 1em;
+    }
+
+    #welcome,#first-hr{
+        display: none;
+    }
+
+    #right-container footer {
+        margin: 2.5vh 0;
+        font-size: 0.7em;
+    }
+
+    .empty{
+        font-size: 3em;
+    }
 
 }
 

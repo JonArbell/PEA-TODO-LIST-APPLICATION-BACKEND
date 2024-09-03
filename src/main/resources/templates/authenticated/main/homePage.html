@@ -136,7 +136,10 @@
                     <li class="list-no-hover">
                         <h1 th:onclick="goHome()">P E A</h1>
                     </li>
-                    <span id="menu-hamburger-icon">&#9776;</span>
+                    <button id="menu-hamburger-button">
+                        <span id="menu-hamburger-icon">&#9776;</span>
+                    </button>
+                    
                 </div>
         
             </ul>
@@ -406,12 +409,12 @@
 
         <div id="right-container" class="containers dim">
 
-            <div>
+            <div id="welcome">
                 <h2>Welcome,</h2>
                 <h2 th:text="${fullname}"></h2>
             </div>
 
-            <hr/>
+            <hr id="first-hr"/>
 
             <div id="date-and-time-progress-display-container">
                 <div class="date-and-time">
