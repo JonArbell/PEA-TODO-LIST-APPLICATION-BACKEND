@@ -116,14 +116,15 @@
     }
 
     #add-edit-task-container{
-        margin: 3em 0 2em 0;
+        margin: 3em 0 0 0;
     }
     #add-edit-task-container form h3{
         font-size: 3em;
     }
 
     #add-edit-task-container form input, #add-edit-task-container form textarea{
-        font-size: 1em;
+        font-size: 0.8em;
+        padding: 0.5em 0.5em 0.5em 0.5em;
     }
 
     #welcome,#first-hr{
@@ -141,6 +142,18 @@
 
     #create-new-item-buttons-container{
         margin-bottom: 5%;
+    }
+
+    #add-edit-task-buttons input{
+        padding-left: 0.5em !important;
+    }
+
+    .select-list-date select{
+        font-size: 1em;
+    }
+
+    #add-edit-task-container form, #add-edit-task-container form div{
+        width: 85vw;
     }
 
 }
