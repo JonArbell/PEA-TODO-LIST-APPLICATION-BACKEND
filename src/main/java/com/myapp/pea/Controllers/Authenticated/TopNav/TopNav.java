@@ -2,17 +2,17 @@ package com.myapp.pea.Controllers.Authenticated.TopNav;
 
 import com.myapp.pea.Models.Lists;
 import com.myapp.pea.Models.Todo;
-import com.myapp.pea.Models.User;
 import com.myapp.pea.Services.ListsService.GetLists;
 import com.myapp.pea.Services.TodoService.GetTasks;
 import com.myapp.pea.Services.AccountService.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.Objects;
 
 @Controller
 @AllArgsConstructor
@@ -22,9 +22,13 @@ public class TopNav {
     private final GetLists getLists;
     private final GetTasks getTasks;
 
-    @GetMapping("/{profile}")
-    public String getProfile(@ModelAttribute User profile){
+    @GetMapping("/profile/{username}")
+    public String getProfile(@PathVariable String username){
 
+        if(username == null){
+            System.out.println("Profile : "+username);
+            throw new RuntimeException("No Profile");
+        }
 //        return "profile";
         return "public/underConstruction";
     }

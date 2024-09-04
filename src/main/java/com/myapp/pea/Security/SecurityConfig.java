@@ -36,7 +36,8 @@ public class SecurityConfig {
                                         "/contact-us",
                                         "/settings",
                                         "/todo/**",
-                                        "/list/**")
+                                        "/list/**",
+                                        "/profile/**")
                                 .authenticated()
                                 .anyRequest().permitAll()
                 )
