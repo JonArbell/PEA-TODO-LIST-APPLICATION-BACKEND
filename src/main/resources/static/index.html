@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
 
@@ -12,15 +12,15 @@
 
         <title>P E A - log in or sign up</title>
 
-        <link rel="preload" href="/images/showPassword/open.svg" as="image">
+        <link rel="preload" href="./images/showPassword/open.svg" as="image">
 
-        <link rel="preload" href="/images/showPassword/close.svg" as="image">
+        <link rel="preload" href="./images/showPassword/close.svg" as="image">
 
-        <link rel="icon" type="icon" th:href="@{/images/checklist.ico}" />
+        <link rel="icon" type="icon" href="./images/checklist.ico" />
 
-        <link rel="stylesheet" th:href="@{/css/public/index.css}" />
+        <link rel="stylesheet" href="./css/public/index.css" />
 
-        <link rel="stylesheet" th:href="@{/css/mediaQueries/index.css}" />
+        <link rel="stylesheet" href="./css/mediaQueries/index.css" />
 
     </head>
     <body>
@@ -49,14 +49,14 @@
         
                 <div id="login-page">
 
-                    <form th:object="${user}" th:action="@{/login}" method="post" sec:csrf="true">
+                    <form>
 
-                        <input th:field="*{username}" required="required" class="login-input" type="text" placeholder="Username"/>
+                        <input id="login-usn" required="required"  class="login-input" type="text" placeholder="Username"/>
 
                         <div class="login-input" id="password-container">
-                            <input oninput="onInputPassword(event,'show-password-image','password')" id="password"
-                                   required="required" th:field="*{password}" type="password" minlength="8" placeholder="Password"/>
-                            <img id="show-password-image" th:src="@{/images/showPassword/close.svg}" alt="Toggle Password"/>
+                            <input oninput="onInputPassword(event,'show-password-image','login-pass')" id="login-pass"
+                                   required="required" type="password"  placeholder="Password"/>
+                            <img id="show-password-image" src="./images/showPassword/close.svg" alt="Toggle Password"/>
 
                         </div>
                         
@@ -87,24 +87,23 @@
 
             <hr/>
 
-            <form th:object="${user}" th:action="@{/create-account}" method="post" sec:csrf="true" onsubmit="return validateForm()">
+            <form action="/create-account" method="post" onsubmit="return validateForm()">
 
                 <div id="create-new-account-names">
-                    <input maxlength="35" required="required" autofocus="autofocus"  th:field="*{firstName}" type="text"
+                    <input maxlength="35" required="required" autofocus="autofocus" type="text"
                            placeholder="First name"/>
-                    <input maxlength="35" required="required"  th:field="*{lastName}" type="text" placeholder="Last name"/>
+                    <input maxlength="35" required="required" type="text" placeholder="Last name"/>
                 </div>
                 
-                <input required="required"  th:field="*{email}" type="email" placeholder="Enter your email address"/>
-                <input maxlength="25" required="required"  th:field="*{username}" type="text" placeholder="Create a username"/>
+                <input required="required" type="email" placeholder="Enter your email address"/>
+                <input maxlength="25" required="required" type="text" placeholder="Create a username"/>
                 
                 <div id="create-account-password-container">
                     <input minlength="8" id="create-new-password"
-                           oninput="onInputPassword(event,'show-password-image-create-account','create-new-password')" required="required"  th:field="*{password}" type="password" placeholder="Create a new password"/>
-                           <img id="show-password-image-create-account" th:src="@{/images/showPassword/close.svg}" alt="Toggle Password"/>
+                           oninput="onInputPassword(event,'show-password-image-create-account','create-new-password')" required="required" type="password" placeholder="Create a new password"/>
+                           <img id="show-password-image-create-account" src="./images/showPassword/close.svg" alt="Toggle Password"/>
                 </div>
 
-                
                 <input minlength="8" required="required"  type="password" id="confirmPassword" placeholder="Re-enter your password"/>
 
                 <div id="terms">
@@ -119,18 +118,20 @@
 
         <footer class="container" >PEA &copy; 2024</footer>
         
-        <script th:src="@{/js/public/index.js}"></script>
+        <script src="./js/public/index.js"></script>
         
         <script>
 
-            let createAccMessage = `[[${createAccMessage}]]`;
-            createAccountMessage(createAccMessage);
+// <!--            let createAccMessage = `[[${createAccMessage}]]`;-->
+// <!--            createAccountMessage(createAccMessage);-->
 
-            let loginFailedMessage = `[[${loginFailedMessage}]]`;
-            handleLoginFailedMessage(loginFailedMessage);
+// <!--            let loginFailedMessage = `[[${loginFailedMessage}]]`;-->
+// <!--            handleLoginFailedMessage(loginFailedMessage);-->
 
-            let logoutMessage = `[[${logoutMessage}]]`;
-            handleLogoutMessage(logoutMessage);
+// <!--            let logoutMessage = `[[${logoutMessage}]]`;-->
+// <!--            handleLogoutMessage(logoutMessage);-->
+
+            
 
         </script>
         

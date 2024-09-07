@@ -18,19 +18,20 @@ public class TodoSortedByDateModified {
     private final GetTasks getTasks;
     private final MyCustomModelMap myCustomModelMap;
 
-    @GetMapping("/home")
-    public String home(ModelMap map, HttpServletRequest request) {
-
-        List<Todo> allTodo = getTasks
-                .allTodoDateModified()
-                .stream().filter(todo -> !todo.isDone())
-                .toList();
-
-        myCustomModelMap.modelMap(map,allTodo,"todos","totalOfPending",request.getRequestURI());
-
-        return "authenticated/main/homePage";
-
-    }
+//    @GetMapping("/home")
+//    public String home(ModelMap map, HttpServletRequest request) {
+//
+//        List<Todo> allTodo = getTasks
+//                .allTodoDateModified()
+//                .stream().filter(todo -> !todo.isDone())
+//                .toList();
+//
+//        myCustomModelMap.modelMap(map,allTodo,"todos","totalOfPending",request.getRequestURI());
+//
+//        System.out.println("Panis");
+//        return "authenticated/main/homePage";
+//
+//    }
 
     @GetMapping("/todays-tasks")
     public String todayTasks(ModelMap map, HttpServletRequest request){

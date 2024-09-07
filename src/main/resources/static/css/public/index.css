@@ -80,6 +80,11 @@ main{
     z-index: 5;
 }
 
+#login-pass{
+    border: 0;
+    width: 88% !important;
+}
+
 #password-container{
     border:2px solid #254336;
     display: flex;
@@ -104,6 +109,7 @@ input:-webkit-autofill {
 
 
 #login-page > form input,#login-button,#create-new-account-container input,#sign-up-button{
+    width: 94%;
     padding: 2%;
     padding-left: 3%;
     height: 25px;
@@ -332,7 +338,6 @@ footer{
     border-radius: 12px;
     opacity: 80%;
     box-shadow: 1px 3px 5px #2c2c2c;
-    animation: fadeOut 7s ease-out forwards;
     z-index: 100;
 }
 
@@ -346,11 +351,13 @@ footer{
         opacity: 0;
     }
 }
-
-#prompt-message.success-message{
+.success-message,.failed-message{
+    animation: fadeOut 7s ease-out forwards;
+}
+.success-message{
     background-color: rgb(127, 180, 127);
 }
-#prompt-message.failed-message{
+.failed-message{
     background-color:rgb(255, 69, 58);
 }
 

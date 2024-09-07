@@ -6,6 +6,52 @@
     <title>Try lang</title>
 </head>
 <body>
-    <h1>Arbell panis</h1>
+    
+    <div id="add-list-container">
+
+        <form id="loginForm">
+
+            <input id="username" name="username" type="text" placeholder="Username"/>
+            <input id="password" name="password" type="password" placeholder="Username"/>
+
+            <button type="submit">Login</button>
+
+        </form>
+
+    </div>
+    <p></p>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const token = localStorage.getItem('token');
+
+            if (token) {
+                fetch('/home', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Bearer ' + token,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Unauthorized or token expired');
+                    }
+                })
+                .then(data => {
+                    document.querySelector('p').textContent = `${data}`;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to load home page. Redirecting to login.');
+                    
+                });
+            } else {
+                console.log('Token : '+token);
+            }
+        });
+
+    </script>
 </body>
 </html>

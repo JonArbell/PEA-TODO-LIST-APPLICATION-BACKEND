@@ -2,6 +2,7 @@ package com.myapp.pea.Models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import java.util.List;
@@ -20,7 +21,7 @@ public class User {
     private Long id;
 
     @Column(unique = true,nullable = false)
-    @Size(max = 25, message = "Username must be at most 25 characters long.")
+    @Size(min = 2, max = 25, message = "Username must be between 2 and 25 characters long.")
     private String username;
 
     @Size(min = 8, message = "Password must be at least 8 characters long.")

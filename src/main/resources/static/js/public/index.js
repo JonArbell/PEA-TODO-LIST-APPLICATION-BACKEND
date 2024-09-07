@@ -1,9 +1,9 @@
 //Functions to handle show Password
 const openImg = new Image();
-openImg.src = '/images/showPassword/open.svg';
+openImg.src = './images/showPassword/open.svg';
 
 const closeImg = new Image();
-closeImg.src = '/images/showPassword/close.svg';
+closeImg.src = './images/showPassword/close.svg';
 
 function showPasswordHandlerLogin(id,passId){
 
@@ -114,8 +114,6 @@ function validateForm() {
     return true; 
 }
 
-
-
 function createAccountMessage(createAccMessage){
     const promptMessage = document.querySelector('#prompt-message');
 
@@ -150,32 +148,76 @@ function createAccountMessage(createAccMessage){
 function handleLogoutMessage(message){
     const promptMessage = document.querySelector('#prompt-message');
 
-    if(message != ''){
-        promptMessage.textContent = `${message}`;
-        promptMessage.classList.add('success-message');
-        promptMessage.style.display='flex';
+    promptMessage.classList.remove('success-message');
+    promptMessage.textContent = '';
+    promptMessage.style.display='none';
 
-        setTimeout(()=>{
-            promptMessage.classList.remove('success-message');
-            promptMessage.textContent = '';
-        },7000);
-    }
-
+    promptMessage.textContent = `${message}`;
+    promptMessage.style.display='flex';
+    promptMessage.offsetHeight;
+    promptMessage.classList.add('success-message');
+    
 }
-
-
 
 function handleLoginFailedMessage(message){
+
     const promptMessage = document.querySelector('#prompt-message');
 
-    if(message != ''){
-        promptMessage.textContent = `${message}`;
-        promptMessage.classList.add('failed-message');
-        promptMessage.style.display='flex';
-        setTimeout(()=>{
-            promptMessage.classList.remove('failed-message');
-            promptMessage.textContent = '';
-        },7000);
-    }
+    promptMessage.classList.remove('failed-message');
+    promptMessage.textContent = '';
+    promptMessage.style.display = 'none';
+    
+    promptMessage.textContent = `${(message.Error) ? message.Error : (message.password) ? message.password : message.username}`;
+    promptMessage.style.display='flex';
+    promptMessage.offsetHeight;
+    promptMessage.classList.add('failed-message');
 
 }
+
+function login(){
+    document.querySelector('#login-page form').addEventListener('submit',function(event){
+
+        event.preventDefault();
+        
+        const usn = document.querySelector('#login-usn').value;
+        const pass = document.querySelector('#login-pass').value;
+        
+        fetch('http://localhost:8080/login',{
+            method : 'POST',
+            headers : {
+                'Content-Type':'application/json'
+            },
+            body : JSON.stringify({
+                username : usn,
+                password : pass
+            })
+        })
+        .then(response => {
+
+            if(!response.ok){
+                return response.json().then(errorData => {
+                    throw errorData; 
+                });
+            }
+            return response.json();
+
+        })
+        .then(data => {
+
+            sessionStorage.setItem("jwtAuthToken",data.token);
+
+            console.log(data.token);
+            window.location.href = './lopit.html';
+        })
+        .catch(error => {
+            console.log(error);
+
+            handleLoginFailedMessage(error);
+            
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded',login);
+
+

@@ -20,16 +20,18 @@ public class WelcomePage {
     private final CreateAccountService createAccountService;
     private final UserService userService;
 
-    @GetMapping("")
-    public String welcomePage(ModelMap map){
-
-        if(userService.isUserAuthenticated()){
-            return "redirect:/home";
-        }
-
-        map.addAttribute("user",new User());
-        return "public/index";
-    }
+//    @GetMapping("")
+//    public String welcomePage(ModelMap map){
+//
+//        if(userService.isUserAuthenticated()){
+//            return "redirect:/home";
+//        }
+//
+//        map.addAttribute("user",new User());
+//
+////        return "public/index";
+//        return "public/test";
+//    }
 
     @GetMapping("/create-account")
     public String getCreateAccount(){
@@ -60,13 +62,6 @@ public class WelcomePage {
         }
 
         return "redirect:/";
-    }
-
-    @GetMapping("/lopit")
-    public String lopit(){
-
-        return "authenticated/main/try";
-
     }
 
     @GetMapping("/logout-success")

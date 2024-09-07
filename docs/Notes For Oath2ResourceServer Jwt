@@ -1,0 +1,110 @@
+//Oath2 is an authorization framework. It can use JWT for formatting a token.
+
+* JwtConfig class - This class is a configuration for create a beans of Encoder and Decoder of Token.
+
+1) Create a bean method for KeyPair - Creates the keys.
+    @Bean
+    public KeyPair keyPair() throws NoSuchAlgorithmException {
+        var keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+        keyPairGenerator.initialize(2048);
+        return keyPairGenerator.generateKeyPair();
+    }
+
+2) Create a bean method for RSAKey and inject the KeyPair - Sets up the key with a unique ID.
+
+    @Bean
+    public RSAKey rsaKey(KeyPair keyPair){
+        return new RSAKey.Builder((RSAPublicKey) keyPair.getPublic())
+                .privateKey(keyPair.getPrivate())
+                .keyID(UUID.randomUUID().toString())
+                .build();
+    }
+
+3) Create a bean method for JwkSource and inject the RSAKey - Provides the key in the JWK format.
+    @Bean
+    public JWKSource<SecurityContext> jwkSource(RSAKey rsaKey){
+        var jwkSet = new JWKSet(rsaKey);
+        return (jwkSelector,securityContext) -> jwkSelector.select(jwkSet);
+    }
+
+4) Then create a bean method for Decoder and inject the RSAKey pair also - Decodes and verifies JWTs.
+    @Bean
+    public JwtDecoder jwtDecoder(RSAKey rsaKey) throws JOSEException {
+        return NimbusJwtDecoder.withPublicKey(rsaKey.toRSAPublicKey()).build();
+    }
+
+5) Lastly create a bean method for Encoder and inject the JwkSource - Encodes JWTs using the key source.
+    @Bean
+    public JwtEncoder jwtEncoder(JWKSource<SecurityContext> jwkSource){
+        return new NimbusJwtEncoder(jwkSource);
+    }
+
+
+* JwtService Class - This class is for creating a validation or a business logic of Jwt Encoding and Decoding. Also add
+@Service annotation to automatically add this bean to Spring Application Context
+
+1) Add Encoder and Decoder bean. Auto wired it or just use Constructor Injection (use @AllArgsConstructor for
+simplicity)
+
+private final JwtEncoder jwtEncoder;
+private final JwtDecoder jwtDecoder;
+
+2) Create a method for generating a token - In generating a token, it needs to inject the Authentication object just to
+get the userPrincipal of authenticated user.
+
+    public String generateToken(Authentication authentication){
+
+        var userPrincipal = (UserPrincipal) authentication.getPrincipal();
+
+        var claims = JwtClaimsSet.builder()
+                .issuer("https://pea-todo-list-application.onrender.com/")
+                .issuedAt(Instant.now())
+                .expiresAt(Instant.now().plusSeconds(60 * 30))
+                .id(userPrincipal.getId().toString())
+                .subject(authentication.getName())
+                .claim("roles",getClaim(authentication))
+                .build();
+
+        var parameters = JwtEncoderParameters.from(claims);
+
+        return jwtEncoder.encode(parameters).getTokenValue();
+    }
+
+3) Create a method for getting the claim - It needs also inject the Authentication object to get all Claims or the roles
+ of Authenticated user and call this method in claim() method of generateToken method.
+
+    public String getClaim(Authentication authentication){
+        return authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(
+                " "));
+    }
+
+4) Create a method to extract the username of current authenticated user - This method is for getting the username base
+on the token provided and use the method of object jwtDecoder.
+
+    public String extractUsername(String token){
+        try{
+            var username = jwtDecoder.decode(token);
+            return username.getSubject();
+        }catch (JwtException e){
+            logger.error("Failed to extract username from token: {}",e.getMessage());
+            return null;
+        }
+    }
+
+
+5) Create a method to validate the token first if it's expire and if it's equal to the issuer of my application. "https://pea-todo-list-application.onrender.com/"
+
+    public boolean isTokenValid(String token) {
+           try {
+               Jwt decodedJwt = jwtDecoder.decode(token);
+
+               // Check token expiration and issuer
+               Instant expiration = decodedJwt.getExpiresAt();
+               String issuer = decodedJwt.getIssuer().toString();
+
+               return (expiration.isAfter(Instant.now()) && issuer.equals("https://pea-todo-list-application.onrender.com/"));
+           } catch (JwtException e) {
+               logger.error("Invalid token: {}", e.getMessage());
+               return false;
+           }
+       }
