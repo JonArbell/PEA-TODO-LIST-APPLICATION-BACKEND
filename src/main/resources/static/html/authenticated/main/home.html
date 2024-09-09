@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <meta property="og:title" content="PEA TO-DO LIST APPLICATION"/>
+    <meta property="og:description" content="A simple and intuitive to-do list application designed to help you organize tasks, boost productivity, and keep track of your daily activities"/>
+    <meta property="og:image" content="https://www.pea-todo-list-application.onrender.com/static/images/checklist.png"/>
+    <meta property="og:url" content="https://www.pea-todo-list-application.onrender.com"/>
+
+    <title>P E A </title>
+
+    <link rel="icon" type="icon" href="../../../images/checklist.ico"/>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="../../../css/authenticated/main.css" rel="stylesheet"/>
+    <link href="../../../css/mediaQueries/authenticated.css" rel="stylesheet"/>
+</head>
+<body>
+    
+    <div>
+
+    </div>
+
+    <header>
+        <ul>
+            <li>
+                <h1>PEA</h1>
+            </li>
+            
+
+            <div>
+                <li>
+                    <img src="../../../images/checklist.png"/>
+                </li>
+                
+                <li>
+                    <form>
+                        <input type="search" placeholder="Search to-do"/>
+                    </form>
+                </li>
+                
+                <li>
+                    <a href="./home.html">
+                        <p>Home</p>
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="../tasks/completedTasks.html">
+                        <p>Completed Tasks</p>
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="../tasks/overdueTasks.html">
+                        <p>Overdue Tasks</p>
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="../tasks/allTasks.html">
+                        <p>All Tasks</p>
+                    </a>
+                </li>
+    
+                <li>
+                    <img src="../../../images/try_profile_logo.ico"/>
+                </li>
+            </div>
+        </ul>
+    </header>
+
+    <main>
+        <section id="menu-section">
+
+            <h2>MENU</h2>
+
+            <hr/>
+
+            <div id="lists-container">
+                <h3>Lists</h3>
+                <ul>
+
+                    <li>
+                        <p>Personal</p>
+                    </li>
+
+                    <li>
+                        <p>Work</p>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div id="todo-progress-chart">
+
+            </div>
+
+            <button>Manage List</button>
+
+            <hr/>
+
+            <footer>PEA &copy; 2024</footer>
+
+        </section>
+
+        <section id="main-section">
+            
+            <div id="main-head">
+
+                <div id="head-title">
+                    <h2>Pending Tasks : </h2>
+                    <div>
+                        <h2>7</h2>
+                    </div>
+                </div>
+
+                <div>
+                    <p>To-do list :</p>
+
+                    <div id="sort-container">
+                        <p>Sort By:</p>
+                        <select>
+                            <option>Date Modified</option>
+                            <option>Title</option>
+                            <option>Target Date</option>
+                        </select>
+                    </div>
+
+                </div>
+                    
+            </div>
+
+            <hr/>
+
+            <div id="main-body">
+                
+                <div id="todos-container">
+                    <div class="todo-container">
+
+                        <h2>View Details</h2>
+        
+                        <div id="todo-container-header">
+                            <h3>Title</h3>
+                            <h3>Completed</h3>
+                            <h3>Target Date</h3>
+                        </div>
+    
+                        <hr/>
+        
+                        <div id="todo-container-data">
+                            <p id="title">Panis</p>
+                            <p id="completed">No</p>
+                            <p id="target-date">08-20-2024</p>
+                        </div>
+    
+                        <hr/>
+        
+                        <div>
+                            <button id="delete-todo-button">Delete</button>
+                            <button id="mark-as-done-todo-button">Mark as complete</button>
+                            <button id="edit-todo-button">Edit to-do</button>
+                        </div>
+        
+                    </div>
+                   
+                </div>
+
+            </div>
+
+            <hr/>
+
+            <footer id="main-foot">
+                <div id="logo-footer-container">
+                    <img src="../../../images/checklist.png"/>
+                    <h2>PEA</h2>
+                </div>
+                
+                <p>Made with &hearts; by Jon Arbell De Ocampo</p>
+
+                <div>
+                    <a href="../topNav/about.html">About</a>
+
+                    <a href="../topNav/contact.html">Contact</a>
+    
+                </div>
+
+            </footer>
+
+            <button>Create New</button>
+
+        </section>
+
+    </main>
+
+    <script src="../../../js/authenticated/homeRequests/home.js"></script>
+
+</body>
+</html>

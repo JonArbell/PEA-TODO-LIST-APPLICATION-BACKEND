@@ -190,7 +190,8 @@ function login(){
             body : JSON.stringify({
                 username : usn,
                 password : pass
-            })
+            }),
+            credentials: 'include'
         })
         .then(response => {
 
@@ -204,10 +205,8 @@ function login(){
         })
         .then(data => {
 
-            sessionStorage.setItem("jwtAuthToken",data.token);
-
             console.log(data.token);
-            window.location.href = './lopit.html';
+            window.location.href = './html/authenticated/main/home.html';
         })
         .catch(error => {
             console.log(error);
@@ -219,5 +218,4 @@ function login(){
 }
 
 document.addEventListener('DOMContentLoaded',login);
-
 

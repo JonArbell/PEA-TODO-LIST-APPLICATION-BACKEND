@@ -5,7 +5,7 @@ body{
 
 *{
     color: #254336;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     outline: none;
 }
 
@@ -209,7 +209,7 @@ input:-webkit-autofill {
 }
 
 #create-new-account-button{
-    font-size: 30px;
+    font-size: 1.5em;
     height: 15%;
     width: 50%;
     border-radius: 12px;

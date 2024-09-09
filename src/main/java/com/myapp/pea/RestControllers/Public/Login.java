@@ -1,8 +1,10 @@
-package com.myapp.pea.RestControllers;
+package com.myapp.pea.RestControllers.Public;
 
 import com.myapp.pea.Security.JWT.JwtModels.JwtRequest;
 import com.myapp.pea.Security.JWT.JwtModels.JwtResponse;
 import com.myapp.pea.Security.JWT.JwtService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -13,6 +15,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +31,8 @@ public class Login {
     private final AuthenticationManager authenticationManager;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@Valid @RequestBody JwtRequest jwtRequest, BindingResult bindingResult){
+    public ResponseEntity<?> login(@Valid @RequestBody JwtRequest jwtRequest, BindingResult bindingResult,
+                                   HttpServletResponse response){
 
         logger.info("Username : {}",jwtRequest.getUsername());
         logger.info("Password : {}",jwtRequest.getPassword());
@@ -51,6 +55,9 @@ public class Login {
             ));
 
             var token = jwtService.generateToken(auth);
+
+            response.setHeader("Set-Cookie",
+                    "jwtAuthToken=" + token + "; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=3600");
 
             return new ResponseEntity<>(new JwtResponse(token),HttpStatus.OK);
         }catch (AuthenticationException e){

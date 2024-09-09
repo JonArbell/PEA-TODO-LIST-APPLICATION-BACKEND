@@ -1,9 +1,6 @@
 package com.myapp.pea.Security;
 
-
-import com.myapp.pea.Security.CORS.CorsConfig;
 import com.myapp.pea.Security.JWT.CustomJwtAuthFilter.MyCustomJwtAuthFilter;
-import com.myapp.pea.Security.JWT.JwtService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +16,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -52,17 +48,6 @@ public class SecurityConfig {
                         ).authenticated()
                         .anyRequest().permitAll()
                 )
-//                .formLogin(form -> form
-//                        .loginPage("/login")
-//
-//                        .defaultSuccessUrl("/home", true)
-//                        .failureUrl("/login?error=true")
-//                        .permitAll()
-//                )
-//                .logout(log -> log
-//                        .logoutUrl("/logout")
-//                        .logoutSuccessUrl("/logout-success")
-//                )
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(sm -> sm
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -83,11 +68,6 @@ public class SecurityConfig {
         daoAuthenticationProvider.setUserDetailsService(userDetailsService);
         return daoAuthenticationProvider;
     }
-
-//    @Bean
-//    public CustomAuthenticationFilter customFilter(AuthenticationManager authenticationManager){
-//        return new CustomAuthenticationFilter(jwtService,authenticationManager);
-//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

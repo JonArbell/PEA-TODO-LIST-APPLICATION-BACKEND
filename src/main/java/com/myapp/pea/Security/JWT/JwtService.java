@@ -42,7 +42,7 @@ public class JwtService {
                 " "));
     }
 
-    public String extractUsername(String token){
+    public String extractUsername(String token) throws JwtException{
         try{
             var username = jwtDecoder.decode(token);
             return username.getSubject();

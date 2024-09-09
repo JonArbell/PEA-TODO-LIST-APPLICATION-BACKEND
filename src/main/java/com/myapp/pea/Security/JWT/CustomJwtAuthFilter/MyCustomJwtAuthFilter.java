@@ -15,8 +15,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.jwt.JwtException;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import java.io.IOException;
+
 
 @Configuration
 @AllArgsConstructor
@@ -29,38 +29,51 @@ public class MyCustomJwtAuthFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        var header = request.getHeader("Authorization");
+        var cookies = request.getCookies();
 
-        if(header == null || !header.startsWith("Bearer ")){
+        if(cookies == null){
             filterChain.doFilter(request,response);
             return;
         }
-        var token = header.substring(7);
-        try{
 
-            var username = jwtService.extractUsername(token);
+        for(var cookie : cookies){
 
-            if(username != null && SecurityContextHolder.getContext().getAuthentication() == null){
-                var userDetails = userDetailsService.loadUserByUsername(username);
+            if(cookie.getName().equals("jwtAuthToken")){
+                logger.info("Processing cookie: {} with value: {}", cookie.getName(), cookie.getValue());
 
-                if(userDetails != null && jwtService.isTokenValid(token)){
-                    var usnPassAuthToken = new UsernamePasswordAuthenticationToken(
-                            userDetails,
-                            null,
-                            userDetails.getAuthorities()
-                    );
-                    SecurityContextHolder.getContext().setAuthentication(usnPassAuthToken);
-                    logger.info("Token : {}",token);
-                    logger.info("Username : {}",username);
+                try{
+                    var username = jwtService.extractUsername(cookie.getValue());
+                    logger.info("Username: {}",username);
+
+                    if(username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                        var userDetails = userDetailsService.loadUserByUsername(username);
+
+                        logger.info("User Details : {}",userDetails);
+                        logger.info("Is token valid ? : {}",jwtService.isTokenValid(cookie.getValue()));
+                        if (userDetails != null && jwtService.isTokenValid(cookie.getValue())) {
+                            var usnPassAuthToken = new UsernamePasswordAuthenticationToken(
+                                    userDetails,
+                                    null,
+                                    userDetails.getAuthorities()
+                            );
+                            SecurityContextHolder.getContext().setAuthentication(usnPassAuthToken);
+                        }else{
+                            logger.warn("Token validation failed for user: {}", username);
+                        }
+
+                    }else {
+
+                        logger.warn("Username is null or authentication is already set.");
+                    }
+                }catch (JwtException e){
+                    logger.error("JwtException : {}",e.getMessage());
+                }catch (Exception e){
+                    logger.error("Exception : {}",e.getMessage());
                 }
+                filterChain.doFilter(request,response);
+                break;
             }
-        }catch (JwtException e){
-            logger.error("JwtException : {}",e.getMessage());
-        }catch (Exception e){
-            logger.error("Exception : {}",e.getMessage());
         }
-
-        filterChain.doFilter(request,response);
 
     }
 }

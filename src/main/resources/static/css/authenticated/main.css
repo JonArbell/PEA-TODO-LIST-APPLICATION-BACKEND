@@ -1,0 +1,333 @@
+@media screen {
+
+    body{
+        margin: 0;
+        background-color: #d0cab5;
+        overflow-y: hidden;
+    }
+
+    *{
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        text-decoration: none;
+        outline: none;
+        font-family: 'Roboto', sans-serif;
+        resize: none;
+        border: 0;
+        color: #182B22;
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    header ul{
+        background-color: #254336;
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 2px 3px black;
+        z-index: 1000;
+        position: relative;
+    }
+
+    header ul li > img{
+        height: 3em;
+        width: 3em;
+        border-radius: 50%;
+    }
+
+    #main-foot img {
+        height: 3em;
+        width: 3em; 
+    }
+
+    #main-body{
+        height: 70vh;
+        overflow-y: scroll;
+    }
+    
+    #main-body,#main-head{
+        width: 100%;
+    }
+
+    #todo-progress-chart{
+        height: 24vh;
+    }
+
+    #menu-section > button{
+        background-color: #DDD9CA;
+        color: #182B22;
+        padding: 1.4em;
+        border-radius: 12px;
+        font-size: 1.3em;
+        cursor: pointer;
+        border: 0.1em solid #254336;
+        margin: 0 0 1em 0;
+    }
+
+    #menu-section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header > ul > li > h1{
+        margin: 0 0 0 0.3em;
+        font-size: 3em;
+        text-shadow: -2px 3px 4px black
+    }
+
+    #lists-container > ul > li > p{
+        padding-left: 1.5em;
+    }
+
+    #lists-container{
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+    #menu-section > h2{
+        padding: 1.3em 0 1.3em 0;
+    }
+
+    #lists-container > ul > li,#lists-container > h3{
+        padding: 1em 0 1em 0;
+    }
+
+    #lists-container > h3{
+        margin: 0 0 0 0.5em;
+    }
+
+    #lists-container > ul{
+        height: 30vh;
+        overflow-y: scroll;
+    } 
+
+    #main-section > hr{
+        width: 95%;
+        height: .1em;
+        background-color: #254336;
+        border-radius: 10px;
+    }
+
+    #menu-section > hr{
+        width: 100%;
+        height: 1px;
+        background: #DDD9CA;
+        opacity: 50%;
+    }
+
+    #menu-section > footer{
+        padding: 1em 0 1em 0;
+    }
+
+    #main-body > hr{
+        width: 100%;
+        height: 1px;
+        background-color: #254336;
+        border-radius: 10px;
+    }
+
+    header ul li * {
+        color: #DDD9CA;
+    }
+
+    main{
+        display: grid;
+        grid-template-columns: 0.5fr 5fr;
+        grid-row: 1fr;
+        height: 90vh;
+
+    }
+
+    #todos-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        padding-left: 3em;
+        min-height: 70vh;
+        height:auto;
+    }
+
+    #main-foot{
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5em;
+    }
+
+    #logo-footer-container{
+        gap: 0.5em !important;
+    }
+
+    #main-foot > div{
+        display: flex;
+        align-items: center;
+        gap: 1.5em;
+    }
+
+    #main-foot > div > h2{
+        color: #254336;
+    }
+
+    header > ul > div > li > form > input{
+        padding: 1em;
+        border-radius: 1em;
+        width: 20em;
+        color: #182B22;
+    }
+
+    header > ul > div{
+        display: flex;
+        align-items: center;
+        gap: 5em;
+        justify-content: flex-end;
+        margin: 0 1em 0 0;
+    }
+
+    #main-section > button{
+        border-radius: 12px;
+        background-color: #293b49;
+        color: #DDD9CA;
+        position: absolute;
+        padding: 1.5em;
+        bottom: 20%;
+        left: 12%;
+        cursor: pointer;
+    }
+
+    #main-section{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        z-index: 0;
+    }
+
+    .todo-container div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+    }
+
+    .todo-container div *{
+        text-align: center;
+        width: 50%;
+    }
+
+    .todo-container > hr{
+        width: 90%;
+        height: .2em;
+        background-color: #254336;
+        border-radius: 10px;
+    }
+
+    .todo-container > div > button{
+        padding: 0.3em;
+        border-radius: 0.5em;
+        cursor: pointer;
+    }
+
+    #edit-todo-button{
+        background-color: #254336;
+        color: #DDD9CA;
+    }
+
+    #mark-as-done-todo-button{
+        background-color: rgb(162, 157, 157);
+        
+    }
+
+    #delete-todo-button{
+        background-color: #400707;
+        color: #DDD9CA;
+    }
+
+    .todo-container > div:last-of-type{
+        gap: 1%;
+        justify-content: center;
+    }
+
+    .todo-container{
+        border: 0.15em solid #254336;
+        border-radius: 1em;
+        box-shadow: 0 2px 3px black;
+        width: 25vw;
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 7%;
+        margin: 1.3em 0 1em 1.3em;
+        background-color: #DDD9CA;
+    }
+
+    #menu-section{
+        background-color: #2B2B2B;
+        width: 10vw;
+        z-index: 100;
+        box-shadow: 2.5px 0 3px black;
+        height: 90vh;
+    }
+
+    #menu-section *{
+        color: #DDD9CA;
+    }
+
+    .todo-container > h2{
+        text-decoration: underline;
+        margin-top: 1em;
+    }
+
+    #main-head > div,#main-head > div > div{
+        display: flex;
+        align-items: center;
+    }
+    #main-head > div{
+        justify-content: space-between;
+        padding: 0.5em 2.5em 0.5em 2.5em;
+    }
+
+    #main-head{
+        height: 10vh;
+    }
+
+    header > ul > div > li > a > p:hover {
+        text-decoration: underline;
+        filter: brightness(150%);
+    }
+
+    header > ul > div > li > a > p{
+        text-shadow: 0 2px 3px black;
+    }
+
+    #sort-container{
+        gap: 1em;
+    }
+
+    #sort-container > select{
+        border-radius: 0.5em;
+        padding: 0.5em;
+        background-color: #293b49;
+    }
+
+    #sort-container > select *,#sort-container > select{
+        color: #DDD9CA
+    }
+
+    #head-title{
+        justify-content: flex-start !important;
+        gap: 1em;
+    }
+
+    #head-title > div{
+        border-radius: 0.5em;
+        box-shadow: 0 0 2px black;
+        width: 3em;
+        height: 2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
