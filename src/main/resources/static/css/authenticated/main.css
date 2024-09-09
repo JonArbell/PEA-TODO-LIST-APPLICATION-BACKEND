@@ -252,7 +252,7 @@
     .todo-container{
         border: 0.15em solid #254336;
         border-radius: 1em;
-        box-shadow: 0 2px 3px black;
+        box-shadow: 0 1px 3px black;
         width: 25vw;
         height: 30vh;
         display: flex;
@@ -260,7 +260,7 @@
         align-items: center;
         row-gap: 7%;
         margin: 1.3em 0 1em 1.3em;
-        background-color: #DDD9CA;
+        background-color: #e4dec7;
     }
 
     #menu-section{
