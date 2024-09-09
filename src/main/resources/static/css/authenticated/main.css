@@ -289,6 +289,10 @@
         padding: 0.5em 2.5em 0.5em 2.5em;
     }
 
+    #main-foot a{
+        text-decoration: underline;
+    }
+
     #main-head{
         height: 10vh;
     }
