@@ -1,4 +1,4 @@
-function home(){
+export function home(){
     fetch('http://localhost:8080/home', {
         method: 'GET',  
         credentials: 'include'  
@@ -17,6 +17,3 @@ function home(){
         // window.location.href = '../../../index.html';
     });
 }
-
-
-document.addEventListener('DOMContentLoaded',home);

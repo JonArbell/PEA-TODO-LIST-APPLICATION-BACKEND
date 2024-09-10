@@ -92,36 +92,36 @@ public class CRUDTodo {
         return "redirect:"+myCustomModelMap.getCurrentUrl();
     }
 
-    @PostMapping("/todo/add")
-    public String addNew(@Valid Todo todo,
-                         BindingResult result,
-                         RedirectAttributes reMap){
-        System.out.println("New Task : "+todo);
-        try{
-            if(result.hasErrors()){
-
-                var errorMessage = Objects
-                        .requireNonNull(result.getFieldError())
-                        .getDefaultMessage();
-
-                if(errorMessage.contains("Failed to convert")){
-                    reMap.addFlashAttribute("addTodoMessage","Invalid date input. Please enter valid date.");
-                }else {
-                    reMap.addFlashAttribute("addTodoMessage",errorMessage);
-                }
-
-            }else {
-                reMap.addFlashAttribute("addTodoMessage","add");
-                taskOperation.addNewTodo(todo);
-            }
-
-        }catch (Exception e){
-            reMap.addFlashAttribute("addTodoMessage",e.getMessage());
-            System.out.println("Error : "+e);
-        }
-
-        return "redirect:"+myCustomModelMap.getCurrentUrl();
-    }
+//    @PostMapping("/todo/add")
+//    public String addNew(@Valid Todo todo,
+//                         BindingResult result,
+//                         RedirectAttributes reMap){
+//        System.out.println("New Task : "+todo);
+//        try{
+//            if(result.hasErrors()){
+//
+//                var errorMessage = Objects
+//                        .requireNonNull(result.getFieldError())
+//                        .getDefaultMessage();
+//
+//                if(errorMessage.contains("Failed to convert")){
+//                    reMap.addFlashAttribute("addTodoMessage","Invalid date input. Please enter valid date.");
+//                }else {
+//                    reMap.addFlashAttribute("addTodoMessage",errorMessage);
+//                }
+//
+//            }else {
+//                reMap.addFlashAttribute("addTodoMessage","add");
+//                taskOperation.addNewTodo(todo);
+//            }
+//
+//        }catch (Exception e){
+//            reMap.addFlashAttribute("addTodoMessage",e.getMessage());
+//            System.out.println("Error : "+e);
+//        }
+//
+//        return "redirect:"+myCustomModelMap.getCurrentUrl();
+//    }
 
 
 }

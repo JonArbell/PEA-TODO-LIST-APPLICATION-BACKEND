@@ -87,6 +87,52 @@
         z-index: 1002;
         display: none;
     }
+
+    #create-todo-list-modal-pick > span{
+        align-self: flex-end;
+    }
+
+    #create-todo-list-modal-pick > span > p{
+        cursor: pointer;
+        font-size: 1.5em;
+    }
+
+    #create-todo-list-modal-pick{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 2px 3px black;
+        position: absolute;
+        border-radius: 0.5em;
+        border: 1px solid #182B22;
+        top: 50%;
+        left: 50%;
+        display: none;
+        transform: translate(-50%,-50%);
+        z-index: 1002;
+        background-color: #dad4c0;
+    }
+
+    #create-todo-list-modal-pick > *{
+        margin: 0.5em 1em 1em 1em;
+    }
+
+    #create-todo-list-modal-pick > section{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 5%;
+        justify-content: center;
+    }
+
+    #create-todo-list-modal-pick > section > button{
+        width: 40%;
+        padding: 0.5em;
+        border-radius: 0.5em;
+        background-color: #293b49;
+        color: #DDD9CA;
+        cursor: pointer;
+    }
     
     header ul{
         background-color: #254336;

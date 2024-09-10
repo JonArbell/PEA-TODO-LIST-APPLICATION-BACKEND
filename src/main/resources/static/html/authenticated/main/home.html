@@ -168,6 +168,18 @@
                    
                 </div>
 
+                <div id="create-todo-list-modal-pick">
+
+                    <span>
+                        <p>&times;</p>
+                    </span>
+
+                    <h3>Create new item</h3>
+                    <section>
+                        <button id="pick-todo">To-do</button>
+                        <button id="pick-list">List</button>
+                    </section>
+                </div>
 
                 <div id="create-edit-todo-modal-container">
 
@@ -188,9 +200,9 @@
                                 <h4>List [Optional]</h4>
                             </label>
                             <select id="add-edit-todo-list" name="list">
-                                <option>None</option>
-                                <option>Personal</option>
-                                <option>Work</option>
+                                <option value="0">None</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Work">Work</option>
                             </select>
                         </section>
                         
@@ -202,8 +214,8 @@
                         </section>
                         
                         <section>
-                            <button id="add-edit-todo-discard-button">Discard</button>
-                            <button id="add-edit-todo-save-button">Save</button>
+                            <button id="add-edit-todo-discard-button" type="reset">Discard</button>
+                            <button id="add-edit-todo-save-button" type="submit">Save</button>
                         </section>
 
                     </form>
@@ -228,13 +240,14 @@
 
             </footer>
 
-            <button>Create New</button>
+            <button id="create-new-item-button">Create New</button>
 
         </section>
 
     </main>
 
-    <script src="../../../js/authenticated/homeRequests/home.js"></script>
+    
+    <script type="module" src="../../../js/authenticated/main.js"></script>
 
 </body>
 </html>

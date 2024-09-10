@@ -31,11 +31,6 @@ public class MyCustomJwtAuthFilter extends OncePerRequestFilter {
 
         var cookies = request.getCookies();
 
-        if(cookies == null){
-            filterChain.doFilter(request,response);
-            return;
-        }
-
         for(var cookie : cookies){
 
             if(cookie.getName().equals("jwtAuthToken")){
@@ -62,7 +57,6 @@ public class MyCustomJwtAuthFilter extends OncePerRequestFilter {
                         }
 
                     }else {
-
                         logger.warn("Username is null or authentication is already set.");
                     }
                 }catch (JwtException e){
@@ -70,10 +64,10 @@ public class MyCustomJwtAuthFilter extends OncePerRequestFilter {
                 }catch (Exception e){
                     logger.error("Exception : {}",e.getMessage());
                 }
-                filterChain.doFilter(request,response);
                 break;
             }
         }
 
+        filterChain.doFilter(request,response);
     }
 }

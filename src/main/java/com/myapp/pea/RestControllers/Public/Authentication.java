@@ -1,9 +1,10 @@
 package com.myapp.pea.RestControllers.Public;
 
+import com.myapp.pea.Models.User;
 import com.myapp.pea.Security.JWT.JwtModels.JwtRequest;
 import com.myapp.pea.Security.JWT.JwtModels.JwtResponse;
 import com.myapp.pea.Security.JWT.JwtService;
-import jakarta.servlet.http.Cookie;
+import com.myapp.pea.Services.AccountService.CreateAccountService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -15,18 +16,20 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
 @AllArgsConstructor
-public class Login {
+public class Authentication {
 
-    private final Logger logger = LoggerFactory.getLogger(Login.class);
+    private final Logger logger = LoggerFactory.getLogger(Authentication.class);
+    private final CreateAccountService createAccountService;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
@@ -66,6 +69,32 @@ public class Login {
             return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
         }
 
+    }
+
+    @PostMapping("/create-account")
+    public ResponseEntity<?> createUser(@Valid @RequestBody User user,BindingResult bindingResult){
+
+        Map<Object,Object> errors = new HashMap<>();
+        if(bindingResult.hasErrors()){
+            bindingResult.getFieldErrors()
+                    .forEach(error ->
+                            errors.put(error.getField(),error.getDefaultMessage())
+                    );
+            logger.error("Error : {}",errors);
+            return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
+        }
+
+        try{
+
+            createAccountService.createAccount(user);
+            logger.info("User : {}",user);
+            return new ResponseEntity<>(user,HttpStatus.CREATED);
+        }catch (Exception e){
+            logger.error("Exception : {}",e.getMessage());
+            errors.put("error",e.getMessage());
+        }
+
+        return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
     }
 
 }

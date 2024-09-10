@@ -38,31 +38,31 @@ public class WelcomePage {
         return "redirect:/";
     }
 
-    @PostMapping("/create-account")
-    public String createAccount(@Valid User newUser,
-                                BindingResult result,
-                                RedirectAttributes map){
-
-        System.out.println("New user : "+newUser);
-        try {
-
-            if(result.hasErrors()){
-
-                String error = Objects.requireNonNull(result.getFieldError()).getDefaultMessage();
-                System.out.println("Error : "+error);
-                map.addFlashAttribute("createAccMessage",error);
-            }else{
-                createAccountService.createAccount(newUser);
-                map.addFlashAttribute("createAccMessage","success");
-            }
-
-        }catch (Exception e){
-            map.addFlashAttribute("createAccMessage",e.getMessage());
-            System.out.println("Error : "+e.getMessage());
-        }
-
-        return "redirect:/";
-    }
+//    @PostMapping("/create-account")
+//    public String createAccount(@Valid User newUser,
+//                                BindingResult result,
+//                                RedirectAttributes map){
+//
+//        System.out.println("New user : "+newUser);
+//        try {
+//
+//            if(result.hasErrors()){
+//
+//                String error = Objects.requireNonNull(result.getFieldError()).getDefaultMessage();
+//                System.out.println("Error : "+error);
+//                map.addFlashAttribute("createAccMessage",error);
+//            }else{
+//                createAccountService.createAccount(newUser);
+//                map.addFlashAttribute("createAccMessage","success");
+//            }
+//
+//        }catch (Exception e){
+//            map.addFlashAttribute("createAccMessage",e.getMessage());
+//            System.out.println("Error : "+e.getMessage());
+//        }
+//
+//        return "redirect:/";
+//    }
 
     @GetMapping("/logout-success")
     public String logoutSuccess(RedirectAttributes map){

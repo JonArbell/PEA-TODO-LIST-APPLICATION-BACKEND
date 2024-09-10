@@ -89,21 +89,21 @@
 
             <hr/>
 
-            <form action="/create-account" method="post" onsubmit="return validateForm()">
+            <form onsubmit="return validateForm()">
 
                 <div id="create-new-account-names">
-                    <input maxlength="35" required="required" autofocus="autofocus" type="text"
+                    <input id="create-account-firstName" maxlength="35" required="required" autofocus="autofocus" type="text"
                            placeholder="First name"/>
-                    <input maxlength="35" required="required" type="text" placeholder="Last name"/>
+                    <input id="create-account-lastName" maxlength="35" required="required" type="text" placeholder="Last name"/>
                 </div>
                 
-                <input required="required" type="email" placeholder="Enter your email address"/>
-                <input maxlength="25" required="required" type="text" placeholder="Create a username"/>
+                <input id="create-account-email" required="required" type="email" placeholder="Enter your email address"/>
+                <input id="create-account-username" maxlength="25" required="required" type="text" placeholder="Create a username"/>
    
                 <div id="create-account-password-container">
                     <input minlength="8" id="create-new-password"
                            oninput="onInputPassword(event,'show-password-image-create-account','create-new-password')" required="required" type="password" placeholder="Create a new password"/>
-                           <img id="show-password-image-create-account" src="./images/showPassword/close.svg" alt="Toggle Password"/>
+                    <img id="show-password-image-create-account" src="./images/showPassword/close.svg" alt="Toggle Password"/>
                 </div>
 
                 <input minlength="8" required="required"  type="password" id="confirmPassword" placeholder="Re-enter your password"/>

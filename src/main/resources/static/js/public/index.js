@@ -60,7 +60,6 @@ function closeModal(containers,modal){
     document.querySelector('#create-new-account-container form').reset();
 }
 
-
 let isCreateAccountContainerClicked = false;
 
 function createAccountContainerHandler(event){
@@ -98,47 +97,103 @@ function validateForm() {
 
     if (password.value !== confirmPassword.value) {
 
-        promptMessage.textContent = 'Passwords do not match. Please try again.';
-        promptMessage.classList.add('failed-message');
-        promptMessage.style.display='flex';
+        promptMessage.classList.remove('failed-message');
+        promptMessage.textContent = '';
+        promptMessage.style.display = 'none';
         
-        setTimeout(()=>{
-            promptMessage.textContent = '';
-            promptMessage.classList.remove('failed-message');
-            promptMessage.style.display='none';
-        },7000);
-
+        promptMessage.textContent = `Passwords do not match. Please try again.`;
+        promptMessage.style.display='flex';
+        promptMessage.offsetHeight;
+        promptMessage.classList.add('failed-message');        
+        
         return false;
     }
 
-    return true; 
+    return true;
 }
+
+document.addEventListener('DOMContentLoaded',createAccount);
+
+function createAccount(){
+
+    document.querySelector('#create-new-account-container form').addEventListener('submit',(event)=>{
+
+        event.preventDefault();
+
+        const allContainers = document.querySelectorAll('.container');
+        const modal = document.querySelector('#create-new-account-container');
+
+        const firstName = document.querySelector('#create-account-firstName').value;
+        const lastName = document.querySelector('#create-account-lastName').value;
+        const username = document.querySelector('#create-account-username').value;
+        const email = document.querySelector('#create-account-email').value;
+        const createPassword = document.querySelector('#create-new-password').value;
+
+        fetch('http://localhost:8080/create-account',{
+            method : 'POST',
+            headers : {
+                'Content-Type':'application/json'
+            },
+            body : JSON.stringify({
+                firstName : firstName,
+                lastName : lastName,
+                username : username,
+                email : email,
+                password : createPassword
+            })
+        })
+        .then(response => {
+            if(!response.ok){
+                throw new Error(response);
+            }
+    
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error =>{
+            console.log(error);
+            
+        });
+
+        closeModal(allContainers,modal);
+        
+    });
+}
+
 
 function createAccountMessage(createAccMessage){
     const promptMessage = document.querySelector('#prompt-message');
 
+    promptMessage.classList.remove('failed-message');
+    promptMessage.classList.remove('success-message');
+    promptMessage.style.display='none';
+    promptMessage.textContent = '';
+
     if(createAccMessage != '' || createAccMessage != null){
 
-        if(createAccMessage == 'success'){
-            promptMessage.textContent = 'Great job! Your account was created successfully.';
-            promptMessage.classList.add('success-message');
-            promptMessage.style.display='flex';
+        // if(createAccMessage == 'success'){
+        //     promptMessage.textContent = 'Great job! Your account was created successfully.';
+        //     promptMessage.classList.add('success-message');
+        //     promptMessage.offsetHeight;
+        //     promptMessage.style.display='flex';
 
-            setTimeout(()=>{
-                promptMessage.classList.remove('success-message');
-                promptMessage.textContent = '';
-            },7000);
+        // }else if(createAccMessage.includes('email') || createAccMessage.includes('username') || createAccMessage.length > 7){
 
-        }else if(createAccMessage.includes('email') || createAccMessage.includes('username') || createAccMessage.length > 7){
+        //     promptMessage.textContent = `${createAccMessage}`;
+        //     promptMessage.classList.add('failed-message');
+        //     promptMessage.offsetHeight;
+        //     promptMessage.style.display='flex';
 
-            promptMessage.textContent = `${createAccMessage}`;
-            promptMessage.classList.add('failed-message');
-            promptMessage.style.display='flex';
-            setTimeout(()=>{
-                promptMessage.classList.remove('failed-message');
-                promptMessage.textContent = '';
-            },7000);
-        }
+        // }
+
+        console.log('Panis : '+createAccMessage);
+
+        promptMessage.textContent = `${createAccMessage}`;
+        promptMessage.classList.add('failed-message');
+        promptMessage.offsetHeight;
+        promptMessage.style.display='flex';
 
     }
 
@@ -218,4 +273,5 @@ function login(){
 }
 
 document.addEventListener('DOMContentLoaded',login);
+
 
