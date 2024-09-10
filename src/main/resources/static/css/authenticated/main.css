@@ -5,7 +5,7 @@
         background-color: #d0cab5;
         overflow-y: hidden;
     }
-
+      
     *{
         margin: 0;
         padding: 0;
@@ -17,6 +17,73 @@
         border: 0;
         color: #182B22;
         font-family: 'Montserrat', sans-serif;
+    }
+
+    #create-edit-todo-modal-container > form > section > textarea,#add-edit-todo-title{
+        width: 25vw;
+        border-radius: 0.5em;
+        background-color: #dad4c0;
+        border: 1.5px solid #182B22;
+        padding: 0.5em;
+    }
+
+    #list-section{
+        gap: 1em;
+    }
+    #list-section > select{
+        width: 10.7vw;
+    }
+
+    #target-date-section{
+        gap: 2.15em;
+    }
+
+    #create-edit-todo-modal-container > form > section{
+        display: flex;
+        align-items: center;
+        height: 5vh;
+    }
+
+    #add-edit-todo-list,#add-edit-todo-target-date{
+        border-radius: 0.5em;
+        padding: 0.5em;
+        border: 1.5px solid #182B22;
+        width: 10vw;
+        background-color: #dad4c0;
+    }
+
+    #create-edit-todo-modal-container > form > section:last-of-type{
+        justify-content: center;
+        gap: 5%;
+    }
+
+    #create-edit-todo-modal-container > form > section > button{
+        width: 40%;
+        padding: 1em;
+        border-radius: 0.5em;
+        border: 1.5px solid #182B22;
+        cursor: pointer;
+    }
+
+    #add-edit-todo-discard-button{
+        background-color: #dad4c0;
+
+    }
+
+    #add-edit-todo-save-button{
+        background-color: #254336;
+        color: #DDD9CA;
+    }
+
+    #create-edit-todo-modal-container{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #dad4c0;
+        box-shadow: 0 3px 5px black;
+        border-radius: 1em;
+        padding: 2em;
     }
     
     header ul{
@@ -44,6 +111,7 @@
     #main-body{
         height: 70vh;
         overflow-y: scroll;
+        position: relative;
     }
     
     #main-body,#main-head{
@@ -209,6 +277,7 @@
         align-items: center;
         justify-content: center;
         width: 90%;
+        height: 3.7vh;
     }
 
     .todo-container div *{
@@ -254,7 +323,7 @@
         border-radius: 1em;
         box-shadow: 0 1px 3px black;
         width: 25vw;
-        height: 30vh;
+        height: 31vh;
         display: flex;
         flex-direction: column;
         align-items: center;

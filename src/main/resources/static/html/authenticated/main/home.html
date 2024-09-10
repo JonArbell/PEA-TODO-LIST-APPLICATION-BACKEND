@@ -168,6 +168,48 @@
                    
                 </div>
 
+
+                <div id="create-edit-todo-modal-container">
+
+                    <h2 id="add-edit-title">Add To-do:</h2>
+
+                    <form>
+
+                        <section>
+                            <input id="add-edit-todo-title" name="title" type="text" placeholder="Title"/>
+                        </section>
+
+                        <section>
+                            <textarea id="add-edit-todo-short-description" name="short-description" placeholder="Short Description"></textarea>
+                        </section>
+                        
+                        <section id="list-section">
+                            <label for="add-edit-todo-list">
+                                <h4>List [Optional]</h4>
+                            </label>
+                            <select id="add-edit-todo-list" name="list">
+                                <option>None</option>
+                                <option>Personal</option>
+                                <option>Work</option>
+                            </select>
+                        </section>
+                        
+                        <section id="target-date-section">
+                            <label for="add-edit-todo-target-date">
+                                <h4>Target Date</h4>
+                            </label>
+                            <input id="add-edit-todo-target-date" name="target-date" type="date" placeholder="MM-DD-YYYY"/>
+                        </section>
+                        
+                        <section>
+                            <button id="add-edit-todo-discard-button">Discard</button>
+                            <button id="add-edit-todo-save-button">Save</button>
+                        </section>
+
+                    </form>
+                    
+                </div>
+
             </div>
 
             <hr/>
