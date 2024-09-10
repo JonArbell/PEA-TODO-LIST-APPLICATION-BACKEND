@@ -19,7 +19,7 @@
 </head>
 <body>
     
-    <div>
+    <div id="modal-view-background">
 
     </div>
 
@@ -176,11 +176,11 @@
                     <form>
 
                         <section>
-                            <input id="add-edit-todo-title" name="title" type="text" placeholder="Title"/>
+                            <input id="add-edit-todo-title" autofocus="autofocus" required="required" name="title" type="text" placeholder="Title"/>
                         </section>
 
                         <section>
-                            <textarea id="add-edit-todo-short-description" name="short-description" placeholder="Short Description"></textarea>
+                            <textarea required="required" draggable="false" id="add-edit-todo-short-description" name="short-description" placeholder="Short Description"></textarea>
                         </section>
                         
                         <section id="list-section">
@@ -198,7 +198,7 @@
                             <label for="add-edit-todo-target-date">
                                 <h4>Target Date</h4>
                             </label>
-                            <input id="add-edit-todo-target-date" name="target-date" type="date" placeholder="MM-DD-YYYY"/>
+                            <input id="add-edit-todo-target-date" required="required" name="target-date" type="date" placeholder="MM-DD-YYYY"/>
                         </section>
                         
                         <section>
