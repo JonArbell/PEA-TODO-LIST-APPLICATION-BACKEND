@@ -1,6 +1,6 @@
 package com.myapp.pea.Services.ListsService;
 
-import com.myapp.pea.Models.Lists;
+import com.myapp.pea.Entities.Lists;
 import com.myapp.pea.Repository.ListsRepo;
 import com.myapp.pea.Services.AccountService.UserService;
 import lombok.AllArgsConstructor;

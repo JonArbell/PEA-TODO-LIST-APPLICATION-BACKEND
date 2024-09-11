@@ -1,4 +1,4 @@
-package com.myapp.pea.Security.JWT.JwtModels;
+package com.myapp.pea.RequestModels.JwtModels;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

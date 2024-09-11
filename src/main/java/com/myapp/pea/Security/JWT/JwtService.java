@@ -1,6 +1,6 @@
 package com.myapp.pea.Security.JWT;
 
-import com.myapp.pea.Models.UserPrincipal;
+import com.myapp.pea.Entities.UserPrincipal;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

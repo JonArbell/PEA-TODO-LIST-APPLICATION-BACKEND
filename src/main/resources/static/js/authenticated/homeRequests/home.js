@@ -3,17 +3,20 @@ export function home(){
         method: 'GET',  
         credentials: 'include'  
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+    .then(async response => {
+
+        if(!response.ok){
+            const error = await response.json();
+            throw new Error(error.message);
         }
         return response.json();  
     })
     .then(data => {
-        console.log(data);  
+        console.log(data.message);  
     })
     .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
+        console.error(error);
         // window.location.href = '../../../index.html';
     });
 }
+

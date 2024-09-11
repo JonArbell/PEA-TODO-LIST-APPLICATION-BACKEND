@@ -1,13 +1,11 @@
 package com.myapp.pea.Controllers.Authenticated.TopNav;
 
-import com.myapp.pea.Models.Lists;
-import com.myapp.pea.Models.Todo;
+import com.myapp.pea.Entities.Lists;
+import com.myapp.pea.Entities.Todo;
 import com.myapp.pea.Services.ListsService.GetLists;
 import com.myapp.pea.Services.TodoService.GetTasks;
 import com.myapp.pea.Services.AccountService.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,8 +1,8 @@
 package com.myapp.pea.Services.AccountService;
 
 import com.myapp.pea.Exceptions.PasswordTooShortException;
-import com.myapp.pea.Models.Lists;
-import com.myapp.pea.Models.User;
+import com.myapp.pea.Entities.Lists;
+import com.myapp.pea.Entities.User;
 import com.myapp.pea.Repository.ListsRepo;
 import com.myapp.pea.Repository.UsersRepo;
 import lombok.AllArgsConstructor;

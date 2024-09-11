@@ -1,7 +1,7 @@
 package com.myapp.pea.Controllers.Authenticated.TodoOperation;
 
 import com.myapp.pea.Controllers.CustomComponent.MyCustomModelMap;
-import com.myapp.pea.Models.Todo;
+import com.myapp.pea.Entities.Todo;
 import com.myapp.pea.Services.TodoService.TaskOperation;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

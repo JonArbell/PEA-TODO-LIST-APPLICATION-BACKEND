@@ -1,6 +1,6 @@
 package com.myapp.pea.Repository;
 
-import com.myapp.pea.Models.Lists;
+import com.myapp.pea.Entities.Lists;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;

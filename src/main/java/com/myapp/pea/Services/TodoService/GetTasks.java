@@ -1,7 +1,7 @@
 package com.myapp.pea.Services.TodoService;
 
 
-import com.myapp.pea.Models.Todo;
+import com.myapp.pea.Entities.Todo;
 import com.myapp.pea.Repository.TodoRepo;
 import com.myapp.pea.Services.AccountService.UserService;
 import lombok.AllArgsConstructor;

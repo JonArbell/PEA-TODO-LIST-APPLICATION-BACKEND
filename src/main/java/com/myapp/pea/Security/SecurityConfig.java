@@ -1,9 +1,11 @@
 package com.myapp.pea.Security;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.myapp.pea.Security.JWT.CustomJwtAuthFilter.MyCustomJwtAuthFilter;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -18,6 +20,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @EnableWebSecurity
 @Configuration
@@ -52,6 +57,22 @@ public class SecurityConfig {
                 .sessionManagement(sm -> sm
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
+                .exceptionHandling(httpSecurityExceptionHandlingConfigurer -> {
+                    httpSecurityExceptionHandlingConfigurer.authenticationEntryPoint((request, response,
+                                                                                      authException) -> {
+
+                        Map<String,String> error = new HashMap<>();
+                        error.put("error","Unauthorized");
+                        error.put("message","You need to log in to access this resource.");
+
+                        ObjectMapper mapper = new ObjectMapper();
+                        String jsonResponse = mapper.writeValueAsString(error);
+
+                       response.setStatus(HttpStatus.UNAUTHORIZED.value());
+                       response.setContentType("application/json");
+                       response.getOutputStream().println(jsonResponse);
+                    });
+                })
                 .cors(Customizer.withDefaults())
                 .addFilterBefore(myCustomJwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .oauth2ResourceServer(oath -> oath

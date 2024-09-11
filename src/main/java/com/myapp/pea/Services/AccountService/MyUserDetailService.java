@@ -1,7 +1,7 @@
 package com.myapp.pea.Services.AccountService;
 
-import com.myapp.pea.Models.User;
-import com.myapp.pea.Models.UserPrincipal;
+import com.myapp.pea.Entities.User;
+import com.myapp.pea.Entities.UserPrincipal;
 import com.myapp.pea.Repository.UsersRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

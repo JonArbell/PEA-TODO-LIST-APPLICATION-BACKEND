@@ -143,7 +143,7 @@ function createAccount(){
             })
         })
         .then(response => {
-            if(!response.ok){
+            if(!response.status !== 201){
                 throw new Error(response);
             }
     
@@ -248,13 +248,11 @@ function login(){
             }),
             credentials: 'include'
         })
-        .then(response => {
+        .then(async response => {
 
             if(!response.ok){
-                return response.json().then(errorData => {
-                    throw errorData; 
-                });
-                
+                const error = await response.json();
+                throw new Error(error.message);
             }
             return response.json();
 

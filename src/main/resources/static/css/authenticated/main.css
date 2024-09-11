@@ -75,6 +75,30 @@
         color: #DDD9CA;
     }
 
+    .todo-container > h2{
+        cursor: pointer;
+    }
+
+    #view-details{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background-color: #dad4c0;
+        height: 30vh;
+        width: 25vw;
+        padding: 2em;
+        border-radius: 1em;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        row-gap: 5%;
+    }
+
+    #view-details *{
+        width: 100%;
+    }
+
     #create-edit-todo-modal-container{
         position: absolute;
         left: 50%;
@@ -330,7 +354,7 @@
         display: flex;
         align-items: center;
         flex-direction: column;
-
+        position: relative;
     }
 
     .todo-container div{

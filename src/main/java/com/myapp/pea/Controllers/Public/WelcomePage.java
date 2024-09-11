@@ -1,17 +1,11 @@
 package com.myapp.pea.Controllers.Public;
 
-import com.myapp.pea.Models.User;
 import com.myapp.pea.Services.AccountService.UserService;
 import com.myapp.pea.Services.AccountService.CreateAccountService;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import java.util.Objects;
 
 @AllArgsConstructor
 @Controller

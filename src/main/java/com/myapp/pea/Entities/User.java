@@ -1,8 +1,7 @@
-package com.myapp.pea.Models;
+package com.myapp.pea.Entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import java.util.List;

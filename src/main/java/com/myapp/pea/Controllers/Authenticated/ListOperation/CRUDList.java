@@ -1,7 +1,7 @@
 package com.myapp.pea.Controllers.Authenticated.ListOperation;
 
 import com.myapp.pea.Controllers.CustomComponent.MyCustomModelMap;
-import com.myapp.pea.Models.Lists;
+import com.myapp.pea.Entities.Lists;
 import com.myapp.pea.Services.ListsService.ListsOperation;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

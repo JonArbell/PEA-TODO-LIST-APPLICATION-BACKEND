@@ -1,7 +1,7 @@
 package com.myapp.pea.Controllers.CustomComponent;
 
-import com.myapp.pea.Models.Lists;
-import com.myapp.pea.Models.Todo;
+import com.myapp.pea.Entities.Lists;
+import com.myapp.pea.Entities.Todo;
 import com.myapp.pea.Services.ListsService.GetLists;
 import com.myapp.pea.Services.TodoService.GetTasks;
 import com.myapp.pea.Services.AccountService.UserService;

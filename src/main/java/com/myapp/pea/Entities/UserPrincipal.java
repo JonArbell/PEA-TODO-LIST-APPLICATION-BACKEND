@@ -1,4 +1,4 @@
-package com.myapp.pea.Models;
+package com.myapp.pea.Entities;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

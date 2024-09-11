@@ -1,4 +1,4 @@
-package com.myapp.pea.Models;
+package com.myapp.pea.Entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;

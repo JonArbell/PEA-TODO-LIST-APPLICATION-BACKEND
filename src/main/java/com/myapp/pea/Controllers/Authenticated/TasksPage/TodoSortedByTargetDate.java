@@ -1,7 +1,7 @@
 package com.myapp.pea.Controllers.Authenticated.TasksPage;
 
 import com.myapp.pea.Controllers.CustomComponent.MyCustomModelMap;
-import com.myapp.pea.Models.Todo;
+import com.myapp.pea.Entities.Todo;
 import com.myapp.pea.Services.TodoService.GetTasks;
 import com.myapp.pea.Services.AccountService.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,7 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.time.LocalDate;
 import java.util.List;
 
