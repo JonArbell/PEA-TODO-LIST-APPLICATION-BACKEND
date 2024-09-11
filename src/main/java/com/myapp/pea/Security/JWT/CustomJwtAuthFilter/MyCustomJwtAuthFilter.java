@@ -31,6 +31,11 @@ public class MyCustomJwtAuthFilter extends OncePerRequestFilter {
 
         var cookies = request.getCookies();
 
+        if(cookies == null){
+            filterChain.doFilter(request,response);
+            return;
+        }
+
         for(var cookie : cookies){
 
             if(cookie.getName().equals("jwtAuthToken")){

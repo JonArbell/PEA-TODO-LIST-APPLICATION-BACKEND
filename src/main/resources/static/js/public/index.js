@@ -222,7 +222,7 @@ function handleLoginFailedMessage(message){
     promptMessage.textContent = '';
     promptMessage.style.display = 'none';
     
-    promptMessage.textContent = `${(message.Error) ? message.Error : (message.password) ? message.password : message.username}`;
+    promptMessage.textContent = `${message.error}`;
     promptMessage.style.display='flex';
     promptMessage.offsetHeight;
     promptMessage.classList.add('failed-message');
@@ -254,6 +254,7 @@ function login(){
                 return response.json().then(errorData => {
                     throw errorData; 
                 });
+                
             }
             return response.json();
 
@@ -264,7 +265,7 @@ function login(){
             window.location.href = './html/authenticated/main/home.html';
         })
         .catch(error => {
-            console.log(error);
+            console.log(error.error);
 
             handleLoginFailedMessage(error);
             

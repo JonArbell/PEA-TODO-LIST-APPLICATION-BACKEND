@@ -63,7 +63,11 @@ public class Authentication {
             return new ResponseEntity<>(new JwtResponse(token),HttpStatus.OK);
         }catch (AuthenticationException e){
             logger.error("Authentication Error : {}",e.getMessage());
-            errors.put("Error","Invalid username or password");
+            errors.put("error","Invalid username or password");
+            return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
+        }catch (Exception e){
+            logger.error("Exception Error : {}",e.getMessage());
+            errors.put("error",e.getMessage());
             return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
         }
 
