@@ -16,22 +16,20 @@ public class TodoResponse {
     private Long id;
 
     @Size(max = 35, message = "Title must be at most 35 characters long.")
-    @Column(nullable = false)
+
     private String title;
 
-    @Column(nullable = false)
     private boolean done;
 
-    @Column(nullable = false)
     private String formattedDate;
 
-    @Column(nullable = false)
     private LocalDate date;
 
-    @Column(nullable = false)
     private LocalDateTime dateModified;
 
     @Size(max = 200, message = "Description must be at most 200 characters long.")
     private String shortDescription;
 
+    @Size(max = 25, message = "List name must be at most 25 characters long.")
+    private String listName;
 }

@@ -396,17 +396,17 @@
         cursor: pointer;
     }
 
-    #edit-todo-button{
+    .edit-todo-button{
         background-color: #254336;
         color: #DDD9CA;
     }
 
-    #mark-as-done-todo-button{
+    .mark-as-done-todo-button{
         background-color: rgb(162, 157, 157);
         
     }
 
-    #delete-todo-button{
+    .delete-todo-button{
         background-color: #400707;
         color: #DDD9CA;
     }

@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+
 @RequiredArgsConstructor
 @Service
 public class TaskOperation {
@@ -24,6 +25,16 @@ public class TaskOperation {
     private final UserService userService;
     private final GetLists getLists;
     private final TodoRepo todoRepo;
+
+    public Todo findTodoById(Long id){
+
+        var getTodo = todoRepo.findById(id).orElse(null);
+
+        if(getTodo != null && getTodo.getUserId().equals(userService.getId()))
+            return getTodo;
+
+        throw new TodoItemNotFoundException("The specified todo item could not be found.");
+    }
 
     public void addNewTodo(@Valid TodoRequest todoRequest){
 

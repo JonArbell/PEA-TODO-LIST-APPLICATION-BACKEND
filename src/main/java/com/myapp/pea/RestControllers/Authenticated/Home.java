@@ -21,13 +21,17 @@ public class Home {
         var requestList = new ArrayList<TodoResponse>();
 
         getTasks.allTodoDateModified().forEach(data -> {
+            var listName = data.getLists() == null ? "None" : data.getLists().getListName();
+
             var todoRequest = TodoResponse.builder()
+                    .id(data.getId())
                     .title(data.getTitle())
                     .done(data.isDone())
                     .date(data.getDate())
                     .dateModified(data.getDateModified())
                     .shortDescription(data.getShortDescription())
                     .formattedDate(data.getFormattedDate())
+                    .listName(listName)
                     .build();
             requestList.add(todoRequest);
         });

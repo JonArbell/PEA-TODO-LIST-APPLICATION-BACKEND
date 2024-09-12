@@ -110,28 +110,28 @@
 
             <div id="view-details">
                 <span>
-                    <p>&times;</p>
+                    <p onmouseup="view.removeDetails()">&times;</p>
                 </span>
-                <h2 id="view-title">Title : Panis</h2>
+                <h2 id="view-title"></h2>
 
                 <section>
                     <h3>Completed :</h3>
-                    <p>No</p>
+                    <p id="isCompleted"></p>
                 </section>
 
                 <section>
                     <h3>Description :</h3>
-                    <p>No Description</p>
+                    <p id="view-description"></p>
                 </section>
                 
                 <section>
                     <h3>List</h3>
-                    <p>Personal</p>
+                    <p id="view-todo-list"></p>
                 </section>
 
                 <section>
                     <h3>Target Date :</h3>
-                    <p>10-16-2024</p>
+                    <p id="view-target-date">1</p>
                 </section>
                 
                 
@@ -172,7 +172,7 @@
 
                         <h2>View Details</h2>
         
-                        <div id="todo-container-header">
+                        <div class="todo-container-header">
                             <h3>Title</h3>
                             <h3>Completed</h3>
                             <h3>Target Date</h3>
@@ -180,10 +180,10 @@
     
                         <hr/>
         
-                        <div id="todo-container-data">
-                            <p id="title">Panis</p>
-                            <p id="completed">No</p>
-                            <p id="target-date">08-20-2024</p>
+                        <div class="todo-container-data">
+                            <p class="title">Panis</p>
+                            <p class="completed">No</p>
+                            <p class="target-date">08-20-2024</p>
                         </div>
     
                         <hr/>
@@ -229,7 +229,7 @@
                             <label for="add-edit-todo-list">
                                 <h4>List [Optional]</h4>
                             </label>
-                            <select id="add-edit-todo-list" name="list">
+                            <select id="add-edit-todo-list" name="listName">
                                 <option value="0">None</option>
                                 <option value="Personal">Personal</option>
                                 <option value="Work">Work</option>

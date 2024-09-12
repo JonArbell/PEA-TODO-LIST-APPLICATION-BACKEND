@@ -1,6 +1,6 @@
 import {discardCreateNewTodo} from '../uiInteraction/buttons.js';
 
-export const addTodo = (event,home) => {
+export const addTodo = async (event,home) => {
     event.preventDefault();
 
     const createNewItemModal = document.querySelector('#create-todo-list-modal-pick');
@@ -10,33 +10,30 @@ export const addTodo = (event,home) => {
     const list = document.querySelector('#add-edit-todo-list').value;
     const targetDate = document.querySelector('#add-edit-todo-target-date').value;
 
-    discardCreateNewTodo(createNewItemModal);
-    fetch('http://localhost:8080/todo/add',{
-        method : 'POST',
-        headers : {
-            'Content-Type':'application/json'
-        },
-        body : JSON.stringify({
-            title : title,
-            shortDescription : shortDescription,
-            list : list,
-            date : targetDate
-        }),
-        credentials : 'include'
-    })
-    .then(response => {
+    try{
+        const url = 'http://localhost:8080/todo/add';
+        const response = await fetch(url,{
+            method : 'POST',
+            headers : {
+                'Content-Type':'application/json'
+            },
+            body : JSON.stringify({
+                title : title,
+                shortDescription : shortDescription,
+                list : list,
+                date : targetDate
+            }),
+            credentials : 'include'
+        });
 
         if(!response.ok){
-            throw new Error(response);
+            const error = await response.json();
+            throw new Error(error);
         }
 
-        return response.json();
-    })
-    .then(data => {
-        console.log('Data : ',data);
-        home();
-    })
-    .catch(error => {
-        console.error('Error : ',error);
-    });
+        await home();
+        discardCreateNewTodo(createNewItemModal);
+    }catch(e){
+        console.error(e);
+    }
 }
