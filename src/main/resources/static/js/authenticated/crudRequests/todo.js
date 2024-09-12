@@ -1,7 +1,6 @@
 import {discardCreateNewTodo} from '../uiInteraction/buttons.js';
 
-export function addTodo(event,home){
-
+export const addTodo = (event,home) => {
     event.preventDefault();
 
     const createNewItemModal = document.querySelector('#create-todo-list-modal-pick');
@@ -40,5 +39,4 @@ export function addTodo(event,home){
     .catch(error => {
         console.error('Error : ',error);
     });
-
 }

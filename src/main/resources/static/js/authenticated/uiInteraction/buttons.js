@@ -1,22 +1,18 @@
-export function createNewItem(event){
-
+export const createNewItem = (event) => {
     const createNewButton = document.querySelector('#create-new-item-button');
-
 
     if(createNewButton.contains(event.target)){
         document.querySelector('#create-todo-list-modal-pick').style.display = 'flex';
         document.querySelector('#modal-view-background').style.display = 'block';
     }
-
 }
 
-export function removeCreateNewItemModal(createNewItemModal){
+export const removeCreateNewItemModal = (createNewItemModal) => {
     createNewItemModal.style.display = 'none';
     document.querySelector('#modal-view-background').style.display = 'none';
 }
 
-
-export function createNewTodo(event){
+export const createNewTodo = (event) => {
 
     const createNewtodoButton = document.querySelector('#pick-todo');
 
@@ -28,7 +24,7 @@ export function createNewTodo(event){
 
 }
 
-export function discardCreateNewTodo(createNewItemModal){
+export const discardCreateNewTodo = (createNewItemModal) =>{
 
     document.querySelector('#create-edit-todo-modal-container').style.display = 'none';
     removeCreateNewItemModal(createNewItemModal);

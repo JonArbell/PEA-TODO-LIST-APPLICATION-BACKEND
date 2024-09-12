@@ -5,7 +5,7 @@ openImg.src = './images/showPassword/open.svg';
 const closeImg = new Image();
 closeImg.src = './images/showPassword/close.svg';
 
-function showPasswordHandlerLogin(id,passId){
+const showPasswordHandlerLogin = (id,passId) =>{
 
     const showPasswordCheckBox = document.querySelector(`#${id}`);
     const passwordInput = document.querySelector(`#${passId}`);
@@ -28,7 +28,7 @@ function showPasswordHandlerLogin(id,passId){
 
 }
 
-function onInputPassword(event,id,passId){
+const onInputPassword = (event,id,passId) =>{
 
     const showPasswordCheckBox = document.querySelector(`#${id}`);
 
@@ -41,7 +41,7 @@ function onInputPassword(event,id,passId){
     
 }
 
-function showModal(containers,modal){
+const showModal = (containers,modal) =>{
 
     containers.forEach(container =>{
         container.classList.add('blur-background');
@@ -50,7 +50,7 @@ function showModal(containers,modal){
     isCreateAccountContainerClicked = true;
 }
 
-function closeModal(containers,modal){
+const closeModal = (containers,modal) =>{
     
     containers.forEach(container =>{
         container.classList.remove('blur-background');
@@ -62,7 +62,7 @@ function closeModal(containers,modal){
 
 let isCreateAccountContainerClicked = false;
 
-function createAccountContainerHandler(event){
+const createAccountContainerHandler = (event) =>{
     
     const createAccButton = document.querySelector('#create-new-account-button');
     const allContainers = document.querySelectorAll('.container');
@@ -89,7 +89,7 @@ function createAccountContainerHandler(event){
 
 document.addEventListener('click',createAccountContainerHandler);
 
-function validateForm() {
+const validateForm = () => {
     const password = document.getElementById('create-new-password');
     const confirmPassword = document.getElementById('confirmPassword');
     const promptMessage = document.getElementById('prompt-message');
@@ -112,9 +112,7 @@ function validateForm() {
     return true;
 }
 
-document.addEventListener('DOMContentLoaded',createAccount);
-
-function createAccount(){
+const createAccount = () =>{
 
     document.querySelector('#create-new-account-container form').addEventListener('submit',(event)=>{
 
@@ -162,8 +160,10 @@ function createAccount(){
     });
 }
 
+document.addEventListener('DOMContentLoaded',createAccount);
 
-function createAccountMessage(createAccMessage){
+
+const createAccountMessage = (createAccMessage) =>{
     const promptMessage = document.querySelector('#prompt-message');
 
     promptMessage.classList.remove('failed-message');
@@ -172,21 +172,6 @@ function createAccountMessage(createAccMessage){
     promptMessage.textContent = '';
 
     if(createAccMessage != '' || createAccMessage != null){
-
-        // if(createAccMessage == 'success'){
-        //     promptMessage.textContent = 'Great job! Your account was created successfully.';
-        //     promptMessage.classList.add('success-message');
-        //     promptMessage.offsetHeight;
-        //     promptMessage.style.display='flex';
-
-        // }else if(createAccMessage.includes('email') || createAccMessage.includes('username') || createAccMessage.length > 7){
-
-        //     promptMessage.textContent = `${createAccMessage}`;
-        //     promptMessage.classList.add('failed-message');
-        //     promptMessage.offsetHeight;
-        //     promptMessage.style.display='flex';
-
-        // }
 
         console.log('Panis : '+createAccMessage);
 
@@ -200,7 +185,7 @@ function createAccountMessage(createAccMessage){
 }
 
 
-function handleLogoutMessage(message){
+const handleLogoutMessage = (message) =>{
     const promptMessage = document.querySelector('#prompt-message');
 
     promptMessage.classList.remove('success-message');
@@ -214,7 +199,7 @@ function handleLogoutMessage(message){
     
 }
 
-function handleLoginFailedMessage(message){
+const handleLoginFailedMessage = (message) =>{
 
     const promptMessage = document.querySelector('#prompt-message');
 
@@ -229,7 +214,7 @@ function handleLoginFailedMessage(message){
 
 }
 
-function login(){
+const login = () =>{
     document.querySelector('#login-page form').addEventListener('submit',function(event){
 
         event.preventDefault();

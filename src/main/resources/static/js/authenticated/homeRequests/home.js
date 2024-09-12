@@ -1,4 +1,4 @@
-export function home(){
+export const home = () => {
     fetch('http://localhost:8080/home', {
         method: 'GET',  
         credentials: 'include'  
