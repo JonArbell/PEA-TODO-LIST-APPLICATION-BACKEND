@@ -1,6 +1,6 @@
 package com.myapp.pea.RestControllers.Authenticated;
 
-import com.myapp.pea.RequestModels.TodoModels.TodoRequest;
+import com.myapp.pea.RequestResponseModels.TodoModels.TodoResponse;
 import com.myapp.pea.Services.TodoService.GetTasks;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,10 +18,10 @@ public class Home {
     @GetMapping("/home")
     public ResponseEntity<?> home(){
 
-        var requestList = new ArrayList<TodoRequest>();
+        var requestList = new ArrayList<TodoResponse>();
 
         getTasks.allTodoDateModified().forEach(data -> {
-            var todoRequest = TodoRequest.builder()
+            var todoRequest = TodoResponse.builder()
                     .title(data.getTitle())
                     .done(data.isDone())
                     .date(data.getDate())

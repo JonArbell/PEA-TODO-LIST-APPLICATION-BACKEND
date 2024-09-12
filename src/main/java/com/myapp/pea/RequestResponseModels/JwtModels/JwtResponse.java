@@ -1,4 +1,4 @@
-package com.myapp.pea.RequestModels.JwtModels;
+package com.myapp.pea.RequestResponseModels.JwtModels;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

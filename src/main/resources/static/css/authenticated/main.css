@@ -85,18 +85,31 @@
         left: 50%;
         transform: translate(-50%,-50%);
         background-color: #dad4c0;
-        height: 30vh;
+        height: 35vh;
         width: 25vw;
         padding: 2em;
         border-radius: 1em;
-        display: flex;
+        display: none;
         align-items: flex-start;
         flex-direction: column;
         row-gap: 5%;
+        z-index: 1002;
+        box-shadow: 0 2px 5px black;
     }
 
-    #view-details *{
+    #view-details > *{
         width: 100%;
+    }
+
+    #view-details > span{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    #view-details > span > p{
+        font-size: 1.5em;
+        cursor: pointer;
     }
 
     #create-edit-todo-modal-container{

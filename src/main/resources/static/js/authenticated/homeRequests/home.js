@@ -12,7 +12,7 @@ export function home(){
         return response.json();  
     })
     .then(data => {
-        console.log(data.message);  
+        console.log(data);  
     })
     .catch(error => {
         console.error(error);

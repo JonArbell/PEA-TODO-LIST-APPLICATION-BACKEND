@@ -1,7 +1,6 @@
 import {discardCreateNewTodo} from '../uiInteraction/buttons.js';
-import {home} from '../homeRequests/home.js';
 
-export function addTodo(event){
+export function addTodo(event,home){
 
     event.preventDefault();
 
@@ -36,7 +35,7 @@ export function addTodo(event){
     })
     .then(data => {
         console.log('Data : ',data);
-        
+        home();
     })
     .catch(error => {
         console.error('Error : ',error);

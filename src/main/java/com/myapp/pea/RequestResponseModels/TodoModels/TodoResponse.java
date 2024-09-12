@@ -1,4 +1,4 @@
-package com.myapp.pea.RequestModels.TodoModels;
+package com.myapp.pea.RequestResponseModels.TodoModels;
 
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Size;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Builder
 @Getter
 @Setter
-public class TodoRequest {
+public class TodoResponse {
 
     @Size(max = 35, message = "Title must be at most 35 characters long.")
     @Column(nullable = false)

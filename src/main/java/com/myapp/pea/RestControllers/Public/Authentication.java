@@ -1,9 +1,8 @@
 package com.myapp.pea.RestControllers.Public;
 
-import com.myapp.pea.Controllers.CustomComponent.MyCustomModelMap;
 import com.myapp.pea.Entities.User;
-import com.myapp.pea.RequestModels.JwtModels.JwtRequest;
-import com.myapp.pea.RequestModels.JwtModels.JwtResponse;
+import com.myapp.pea.RequestResponseModels.JwtModels.JwtRequest;
+import com.myapp.pea.RequestResponseModels.JwtModels.JwtResponse;
 import com.myapp.pea.Security.JWT.JwtService;
 import com.myapp.pea.Services.AccountService.CreateAccountService;
 import jakarta.servlet.http.HttpServletResponse;
