@@ -2,9 +2,10 @@ import {home} from './homeRequests/home.js';
 import * as todo from './crudRequests/todo.js';
 import * as buttons from './uiInteraction/buttons.js';
 import * as view from './uiInteraction/viewDetails.js';
+import {createTodoContainer} from './uiInteraction/todoContainer.js';
 
 document.addEventListener('DOMContentLoaded', () => { 
-    home(); // Load the home request
+    home(createTodoContainer); // Load the home request
     createNewItemHandler(); // Call create new item handler
     createNewTodoHandler(); // Call create new todo handler
     viewDetailsHandler(); // Call view details handler

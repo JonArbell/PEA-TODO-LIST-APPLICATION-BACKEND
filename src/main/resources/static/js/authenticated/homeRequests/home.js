@@ -1,4 +1,4 @@
-export const home = () => {
+export const home = (createTodoContainer) => {
     fetch('http://localhost:8080/home', {
         method: 'GET',  
         credentials: 'include'  
@@ -12,7 +12,8 @@ export const home = () => {
         return response.json();  
     })
     .then(data => {
-        console.log(data);  
+        console.log(data);
+        createTodoContainer(data);  
     })
     .catch(error => {
         console.error(error);

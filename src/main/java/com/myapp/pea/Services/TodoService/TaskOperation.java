@@ -6,6 +6,7 @@ import com.myapp.pea.Exceptions.TodoListNotFoundException;
 import com.myapp.pea.Entities.Lists;
 import com.myapp.pea.Entities.Todo;
 import com.myapp.pea.Repository.TodoRepo;
+import com.myapp.pea.RequestResponseModels.TodoModels.TodoRequest;
 import com.myapp.pea.Services.ListsService.GetLists;
 import com.myapp.pea.Services.AccountService.UserService;
 import jakarta.validation.Valid;
@@ -24,20 +25,20 @@ public class TaskOperation {
     private final GetLists getLists;
     private final TodoRepo todoRepo;
 
-    public void addNewTodo(@Valid Todo todo){
+    public void addNewTodo(@Valid TodoRequest todoRequest){
 
-        if(checkDate(todo.getDate())){
+        if(checkDate(todoRequest.getDate())){
 
             var newTodo = Todo
                     .builder()
-                    .title(todo.getTitle())
-                    .lists(todo.getLists())
+                    .title(todoRequest.getTitle())
+                    .lists(todoRequest.getLists())
                     .done(false)
                     .userId(userService.getId())
-                    .date(todo.getDate())
-                    .shortDescription(todo.getShortDescription())
+                    .date(todoRequest.getDate())
+                    .shortDescription(todoRequest.getShortDescription())
                     .dateModified(LocalDateTime.now())
-                    .formattedDate(todo
+                    .formattedDate(todoRequest
                             .getDate()
                             .format(DateTimeFormatter.ofPattern("MM-dd-yyyy")))
                     .build();

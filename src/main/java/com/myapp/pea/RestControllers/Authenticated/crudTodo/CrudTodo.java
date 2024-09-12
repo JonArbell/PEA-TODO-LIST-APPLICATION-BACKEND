@@ -1,7 +1,7 @@
 package com.myapp.pea.RestControllers.Authenticated.crudTodo;
 
 import com.myapp.pea.Exceptions.NotValidDateException;
-import com.myapp.pea.Entities.Todo;
+import com.myapp.pea.RequestResponseModels.TodoModels.TodoRequest;
 import com.myapp.pea.Services.TodoService.TaskOperation;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -25,22 +25,22 @@ public class CrudTodo {
     private final TaskOperation taskOperation;
 
     @PostMapping("/todo/add")
-    public ResponseEntity<?> addTodo(@Valid @RequestBody Todo todo, BindingResult bindingResult){
+    public ResponseEntity<?> addTodo(@Valid @RequestBody TodoRequest todoRequest, BindingResult bindingResult){
 
         Map<String, String> errors = new HashMap<>();
 
-        logger.info("Added Todo : {}",todo);
+        logger.info("Added Todo : {}",todoRequest);
 
         if(bindingResult.hasErrors()){
             bindingResult.getFieldErrors().forEach(error -> {
                 errors.put(error.getField(),error.getDefaultMessage());
             });
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
         }
 
         try{
-            taskOperation.addNewTodo(todo);
-            return new ResponseEntity<>(todo,HttpStatus.OK);
+            taskOperation.addNewTodo(todoRequest);
+            return new ResponseEntity<>(todoRequest,HttpStatus.OK);
         }catch (NotValidDateException e){
             logger.error("NotValidDateException : {}",e.getMessage());
             errors.put(NotValidDateException.class.getSimpleName(),e.getMessage());
