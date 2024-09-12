@@ -425,6 +425,22 @@
         justify-content: center;
     }
 
+    #delete-confirmation-message{
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 1002;
+    }
+
+    #delete-confirmation-message > form{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        flex-basis: 100%;
+    }
+
     .todo-container{
         border: 0.15em solid #254336;
         border-radius: 1em;
