@@ -13,9 +13,9 @@ export const createListsContainer = async (data) => {
     data.forEach(list =>{
 
         const li = document.createElement('li');
-        const parag = document.createElement('p');
-        parag.innerHTML = `${list.listName}`;
-        li.appendChild(parag);
+        li.innerHTML = `
+            <p>${list.listName}</p>
+        `;
         displayListContainer.appendChild(li);
 
         const option = document.createElement('option');
