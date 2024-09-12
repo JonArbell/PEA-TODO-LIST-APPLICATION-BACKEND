@@ -1,4 +1,5 @@
 import {createTodoContainer} from '../uiInteraction/todoContainer.js';
+import {createListsContainer} from '../uiInteraction/listsContainer.js';
 
 export const home = async () => {
 
@@ -14,7 +15,9 @@ export const home = async () => {
         }
 
         const data = await response.json();
-        await createTodoContainer(data); 
+        await createTodoContainer(data.todoResponse); 
+        await createListsContainer(data.listsResponse);
+
     }catch(e){
         console.error(e);
         // window.location.href = '../../../index.html';

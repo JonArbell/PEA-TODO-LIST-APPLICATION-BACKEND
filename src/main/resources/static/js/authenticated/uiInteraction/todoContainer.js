@@ -2,8 +2,6 @@ export const createTodoContainer = async (data) => {
     const mainContainer = document.querySelector('#todos-container');
     mainContainer.innerHTML = '';
 
-    console.log('Data : '+data);
-
     data.forEach(todo => {
 
         const todoContainer = document.createElement('div');

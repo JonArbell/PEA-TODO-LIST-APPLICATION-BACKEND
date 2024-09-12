@@ -1,6 +1,9 @@
 package com.myapp.pea.RestControllers.Authenticated;
 
+import com.myapp.pea.RequestResponseModels.ListsModels.ListsResponse;
 import com.myapp.pea.RequestResponseModels.TodoModels.TodoResponse;
+import com.myapp.pea.RequestResponseModels.WebPagesResponse.HomeResponse;
+import com.myapp.pea.Services.ListsService.GetLists;
 import com.myapp.pea.Services.TodoService.GetTasks;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,16 +17,16 @@ import java.util.ArrayList;
 public class Home {
 
     private final GetTasks getTasks;
+    private final GetLists getLists;
 
     @GetMapping("/home")
     public ResponseEntity<?> home(){
 
-        var requestList = new ArrayList<TodoResponse>();
-
+        var listsOfTodos = new ArrayList<TodoResponse>();
         getTasks.allTodoDateModified().forEach(data -> {
             var listName = data.getLists() == null ? "None" : data.getLists().getListName();
 
-            var todoRequest = TodoResponse.builder()
+            var todo = TodoResponse.builder()
                     .id(data.getId())
                     .title(data.getTitle())
                     .done(data.isDone())
@@ -33,10 +36,20 @@ public class Home {
                     .formattedDate(data.getFormattedDate())
                     .listName(listName)
                     .build();
-            requestList.add(todoRequest);
+            listsOfTodos.add(todo);
         });
 
-        return new ResponseEntity<>(requestList,HttpStatus.OK);
+        var listsOfLists = new ArrayList<ListsResponse>();
+        getLists.allListsDateModified().forEach(data -> {
+            var lists = ListsResponse.builder()
+                    .listName(data.getListName())
+                    .id(data.getId())
+                    .build();
+
+            listsOfLists.add(lists);
+        });
+
+        return new ResponseEntity<>(new HomeResponse(listsOfTodos,listsOfLists),HttpStatus.OK);
     }
 
 }

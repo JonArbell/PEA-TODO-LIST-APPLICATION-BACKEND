@@ -7,8 +7,10 @@ export const addTodo = async (event,home) => {
 
     const title = document.querySelector('#add-edit-todo-title').value;
     const shortDescription = document.querySelector('#add-edit-todo-short-description').value;
-    const list = document.querySelector('#add-edit-todo-list').value;
+    const listName = document.querySelector('#add-edit-todo-list').value;
     const targetDate = document.querySelector('#add-edit-todo-target-date').value;
+
+    console.log('List : '+listName);
 
     try{
         const url = 'http://localhost:8080/todo/add';
@@ -20,7 +22,7 @@ export const addTodo = async (event,home) => {
             body : JSON.stringify({
                 title : title,
                 shortDescription : shortDescription,
-                list : list,
+                listName : listName,
                 date : targetDate
             }),
             credentials : 'include'

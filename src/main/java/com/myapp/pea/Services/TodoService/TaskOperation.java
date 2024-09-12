@@ -5,6 +5,7 @@ import com.myapp.pea.Exceptions.TodoItemNotFoundException;
 import com.myapp.pea.Exceptions.TodoListNotFoundException;
 import com.myapp.pea.Entities.Lists;
 import com.myapp.pea.Entities.Todo;
+import com.myapp.pea.Repository.ListsRepo;
 import com.myapp.pea.Repository.TodoRepo;
 import com.myapp.pea.RequestResponseModels.TodoModels.TodoRequest;
 import com.myapp.pea.Services.ListsService.GetLists;
@@ -25,6 +26,7 @@ public class TaskOperation {
     private final UserService userService;
     private final GetLists getLists;
     private final TodoRepo todoRepo;
+    private final ListsRepo listsRepo;
 
     public Todo findTodoById(Long id){
 
@@ -40,10 +42,16 @@ public class TaskOperation {
 
         if(checkDate(todoRequest.getDate())){
 
+            var lists = listsRepo
+                    .findByUserId(userService.getId())
+                    .stream()
+                    .filter(list -> list.getId().equals(Long.parseLong(todoRequest.getListName())))
+                    .findFirst().orElse(null);
+
             var newTodo = Todo
                     .builder()
                     .title(todoRequest.getTitle())
-                    .lists(todoRequest.getLists())
+                    .lists(lists)
                     .done(false)
                     .userId(userService.getId())
                     .date(todoRequest.getDate())

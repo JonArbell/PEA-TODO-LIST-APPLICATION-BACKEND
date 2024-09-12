@@ -33,6 +33,6 @@ public class TodoRequest {
     @Size(max = 200, message = "Description must be at most 200 characters long.")
     private String shortDescription;
 
-    private Lists lists;
+    private String listName;
 
 }

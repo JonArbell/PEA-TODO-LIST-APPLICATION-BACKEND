@@ -55,7 +55,7 @@ public class CrudTodo {
 
         Map<String, String> errors = new HashMap<>();
 
-        logger.info("Added Todo : {}",todoRequest);
+        logger.info("Added Todo : {}",todoRequest.toString());
 
         if(bindingResult.hasErrors()){
             bindingResult.getFieldErrors().forEach(error -> {
@@ -66,6 +66,7 @@ public class CrudTodo {
 
         try{
             taskOperation.addNewTodo(todoRequest);
+            logger.info("List of todo : {}",todoRequest.getListName());
             return new ResponseEntity<>(todoRequest,HttpStatus.OK);
         }catch (NotValidDateException e){
             logger.error("NotValidDateException : {}",e.getMessage());
