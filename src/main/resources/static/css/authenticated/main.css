@@ -95,6 +95,12 @@
         row-gap: 5%;
         z-index: 1002;
         box-shadow: 0 2px 5px black;
+
+    }
+
+    #view-details > span > p{
+        position: absolute;
+        right: 0;
     }
 
     #view-details > *{
@@ -102,14 +108,17 @@
     }
 
     #view-details > span{
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
+        position: relative;
     }
 
     #view-details > span > p{
         font-size: 1.5em;
         cursor: pointer;
+    }
+
+    #view-title{
+        text-align: center;
+        font-size: 1.7em;
     }
 
     #create-edit-todo-modal-container{
@@ -309,7 +318,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: auto;
-        padding-left: 3em;
+        padding-left: 7.5em;
         min-height: 70vh;
         height:auto;
         z-index: 0;
@@ -359,7 +368,7 @@
         position: absolute;
         padding: 1.5em;
         bottom: 20%;
-        left: 12%;
+        left: 0.7%;
         cursor: pointer;
     }
 
