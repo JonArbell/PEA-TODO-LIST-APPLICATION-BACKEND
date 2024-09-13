@@ -33,23 +33,23 @@ public class TodoSortedByDateModified {
 //
 //    }
 
-    @GetMapping("/todays-tasks")
-    public String todayTasks(ModelMap map, HttpServletRequest request){
-
-        List<Todo> todayTask = getTasks.allTodoDateModified()
-                .stream()
-                .filter(todo -> LocalDate.now().isEqual(todo.getDate()))
-                .filter(todo -> !todo.isDone())
-                .toList();
-
-        myCustomModelMap.modelMap(map,
-                todayTask,
-                "todaysTask",
-                "todaysTotalOfPending",
-                request.getRequestURI());
-
-        return "authenticated/tasks/todayTasks";
-    }
+//    @GetMapping("/todays-tasks")
+//    public String todayTasks(ModelMap map, HttpServletRequest request){
+//
+//        List<Todo> todayTask = getTasks.allTodoDateModified()
+//                .stream()
+//                .filter(todo -> LocalDate.now().isEqual(todo.getDate()))
+//                .filter(todo -> !todo.isDone())
+//                .toList();
+//
+//        myCustomModelMap.modelMap(map,
+//                todayTask,
+//                "todaysTask",
+//                "todaysTotalOfPending",
+//                request.getRequestURI());
+//
+//        return "authenticated/tasks/todayTasks";
+//    }
 
     @GetMapping("/completed-tasks")
     public String completedTasks(ModelMap map,HttpServletRequest request){

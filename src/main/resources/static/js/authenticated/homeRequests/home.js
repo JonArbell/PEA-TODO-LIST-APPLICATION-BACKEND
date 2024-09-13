@@ -1,5 +1,6 @@
 import {createTodoContainer} from '../uiInteraction/todoContainer.js';
 import {createListsContainer} from '../uiInteraction/listsContainer.js';
+import {profile} from '../uiInteraction/profile.js';
 
 export const home = async () => {
 
@@ -17,6 +18,7 @@ export const home = async () => {
         const data = await response.json();
         await createTodoContainer(data.todoResponse); 
         await createListsContainer(data.listsResponse);
+        await profile(data.userResponse);
 
     }catch(e){
         console.error(e);

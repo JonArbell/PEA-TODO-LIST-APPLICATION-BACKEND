@@ -415,6 +415,42 @@
         
     }
 
+    #image-account-icon{
+        cursor: pointer;
+    }
+
+    #profile-modal img{
+        height: 3em;
+        width: 3em;
+        border-radius: 50%;
+    }
+
+    #profile-modal > *,#profile-modal > form > button{
+        display: flex;
+        align-items: center;
+    }
+
+    #profile-modal-username{
+        display: flex;
+        align-items: center;
+    }
+
+    #profile-modal{
+        position: absolute;
+        background-color: #254336;
+        z-index: 1002;
+        display: flex;
+        flex-direction: column;
+        right: 10%;
+        top: 100%;
+        width: 15vw;
+        border-radius: 1em;
+    }
+    
+    header > ul > div > li{
+        position: relative;
+    } 
+
     .delete-todo-button{
         background-color: #400707;
         color: #DDD9CA;
