@@ -18,18 +18,22 @@ const showProfileModalHandler = () =>{ // This function is for showing and hide 
 
     let isClicked = false;
 
-    const profile = document.querySelector('#image-account-icon');
-    console.log('Not : '+isClicked);
-    profile.addEventListener('mouseup',()=>{
-        
-        if(isClicked){
+    document.addEventListener('mouseup',(event)=>{
+
+        const profile = document.querySelector('#image-account-icon');
+        const modalContainer = document.querySelector('#profile-modal');
+
+        if(isClicked && !modalContainer.contains(event.target)){
             Index.Profile.hideProfileModal();
             isClicked = false;
             return;
         }
 
-        Index.Profile.showProfileModal();
-        isClicked = true;
+        if(profile.contains(event.target)){
+            Index.Profile.showProfileModal();
+            isClicked = true;
+        }
+
     });
 
 }

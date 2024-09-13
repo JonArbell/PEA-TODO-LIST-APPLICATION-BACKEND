@@ -136,6 +136,7 @@
 
     #create-todo-list-modal-pick > span{
         align-self: flex-end;
+        margin: 0.1em 0.5em 0.1em 0.1em;
     }
 
     #create-todo-list-modal-pick > span > p{
@@ -160,7 +161,7 @@
     }
 
     #create-todo-list-modal-pick > *{
-        margin: 0.5em 1em 1em 1em;
+        margin: 0.1em 1em 1em 1em;
     }
 
     #create-todo-list-modal-pick > section{
