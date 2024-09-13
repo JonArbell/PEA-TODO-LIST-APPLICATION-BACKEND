@@ -415,36 +415,98 @@
         
     }
 
-    #image-account-icon{
-        cursor: pointer;
-    }
-
     #profile-modal img{
         height: 3em;
         width: 3em;
+        margin-left: 1em;
         border-radius: 50%;
+    }
+
+    #profile-modal > hr{
+        width: 100%;
+        flex-basis: 0.15em;
+        border-radius: 1em;
+        background-color: #182B22;
     }
 
     #profile-modal > *,#profile-modal > form > button{
         display: flex;
         align-items: center;
+        column-gap: 1em;
     }
+
+    #profile-modal > form > button,#image-account-icon{
+        cursor: pointer;
+    }
+
+    #profile-modal > form > button{
+        width: 100%;
+        border-radius: 1em;
+        height: 100%;
+        background-color: #dad4c0;
+    }
+
+    #profile-modal-username:hover{
+        background-color: #18242d;
+    }
+
+    #profile-modal-username > span{
+        color: #DDD9CA;
+
+    }
+
+    #profile-modal > form > button:hover{
+        background-color: #400707;
+        
+    }
+
+    #profile-modal > form > button > img{
+        height: 3.5em;
+        width: 3.5em;
+        margin-left: 1.3em;
+    }
+
+    #profile-modal > form > button:hover > span{
+        color: #DDD9CA;
+    }
+
+    #profile-modal > form > button > span{
+        font-size: 1.2em;
+    }
+
 
     #profile-modal-username{
         display: flex;
         align-items: center;
+        border-radius: 1em;
+        background-color: #293b49;
     }
 
     #profile-modal{
         position: absolute;
-        background-color: #254336;
+        background-color: #dad4c0;
         z-index: 1002;
         display: flex;
         flex-direction: column;
-        right: 10%;
+        right: 0;
         top: 100%;
-        width: 15vw;
+        width: 20vw;
         border-radius: 1em;
+        padding: 1em 1em 0 1em;
+        box-shadow: 0 3px 5px black;
+    }
+
+    #profile-modal > footer{
+        font-size: 0.7em;
+        justify-content: center;
+    }
+
+    #profile-modal > *{
+        flex-basis: 5em;
+    }
+
+    #profile-modal * {
+        color: #182B22;
     }
     
     header > ul > div > li{
