@@ -1,6 +1,7 @@
-import {discardCreateNewTodo} from '../uiInteraction/buttons.js';
+import {Button} from '../index.js';
+import {Home} from '../index.js';
 
-export const addTodo = async (event,home) => {
+export const addTodo = async (event) => {
     event.preventDefault();
 
     const createNewItemModal = document.querySelector('#create-todo-list-modal-pick');
@@ -9,8 +10,6 @@ export const addTodo = async (event,home) => {
     const shortDescription = document.querySelector('#add-edit-todo-short-description').value;
     const listName = document.querySelector('#add-edit-todo-list').value;
     const targetDate = document.querySelector('#add-edit-todo-target-date').value;
-
-    console.log('List : '+listName);
 
     try{
         const url = 'http://localhost:8080/todo/add';
@@ -33,9 +32,54 @@ export const addTodo = async (event,home) => {
             throw new Error(error);
         }
 
-        await home();
-        discardCreateNewTodo(createNewItemModal);
+        await Home.home();
+        Button.discardCreateNewTodo(createNewItemModal);
     }catch(e){
         console.error(e);
     }
+}
+
+export const findTodoById = async (id) =>{
+    const url = `http://localhost:8080/find/todo/${id}`;
+
+    try{
+        const response = await fetch(url,{
+            method : 'GET',
+            credentials : 'include'
+        });
+
+        if(!response.ok){
+            const error = await response.json();
+            throw new Error(error.message);
+        }
+
+        const data = await response.json();
+        return data;
+    }catch(e){
+        throw e;
+    }
+
+}
+
+export const deleteTodo = async (id) =>{
+
+    try{
+        const url = `http://localhost:8080/todo/delete/${id}`;
+
+        const response = await fetch(url,{
+            method : 'POST',
+            credentials : 'include'
+        });
+
+        if(!response.ok){
+            const error = await response.json();
+            throw new Error(error);
+        }
+
+        await Home.home();
+
+    }catch(e){
+        console.log('Error Delete Todo : '+e);
+    }
+
 }

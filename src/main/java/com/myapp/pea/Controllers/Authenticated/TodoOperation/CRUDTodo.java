@@ -2,7 +2,7 @@ package com.myapp.pea.Controllers.Authenticated.TodoOperation;
 
 import com.myapp.pea.Controllers.CustomComponent.MyCustomModelMap;
 import com.myapp.pea.Entities.Todo;
-import com.myapp.pea.Services.TodoService.TaskOperation;
+import com.myapp.pea.Services.TodoService.TodoOperationService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -14,83 +14,83 @@ import java.util.Objects;
 @Controller
 @AllArgsConstructor
 public class CRUDTodo {
-    private final TaskOperation taskOperation;
+    private final TodoOperationService todoOperationService;
     private final MyCustomModelMap myCustomModelMap;
 
-    @PostMapping("/todo/{id}/mark-as-done")
-    public String markAsComplete(@PathVariable Long id, RedirectAttributes reMap){
-        System.out.println("Panis : "+id);
-        if(id == null)
-            reMap.addFlashAttribute("markAsCompleteErrorMessage","No task ID was provided. Please provide a valid ID.");
-        else {
-            try {
-                taskOperation.markAsComplete(id);
-                reMap.addFlashAttribute("markAsCompleteMessage","success");
-            }catch (Exception e){
-                reMap.addFlashAttribute("markAsCompleteMessage",e.getMessage());
-            }
-        }
-        System.out.println("Current URL : "+myCustomModelMap.getCurrentUrl());
-        return "redirect:"+myCustomModelMap.getCurrentUrl();
-    }
+//    @PostMapping("/todo/{id}/mark-as-done")
+//    public String markAsComplete(@PathVariable Long id, RedirectAttributes reMap){
+//        System.out.println("Panis : "+id);
+//        if(id == null)
+//            reMap.addFlashAttribute("markAsCompleteErrorMessage","No task ID was provided. Please provide a valid ID.");
+//        else {
+//            try {
+//                todoOperationService.markAsComplete(id);
+//                reMap.addFlashAttribute("markAsCompleteMessage","success");
+//            }catch (Exception e){
+//                reMap.addFlashAttribute("markAsCompleteMessage",e.getMessage());
+//            }
+//        }
+//        System.out.println("Current URL : "+myCustomModelMap.getCurrentUrl());
+//        return "redirect:"+myCustomModelMap.getCurrentUrl();
+//    }
+//
+//    @GetMapping("/todo/{id}/mark-as-done")
+//    public String getMarkAsComplete(@PathVariable Long id,RedirectAttributes map){
+//        map.addFlashAttribute("markAsCompleteErrorMessage","The request to Mark As Complete the item could not be processed. Please use the appropriate method to perform this action or contact support for assistance.");
+//
+//        return "redirect:"+myCustomModelMap.getCurrentUrl();
+//    }
 
-    @GetMapping("/todo/{id}/mark-as-done")
-    public String getMarkAsComplete(@PathVariable Long id,RedirectAttributes map){
-        map.addFlashAttribute("markAsCompleteErrorMessage","The request to Mark As Complete the item could not be processed. Please use the appropriate method to perform this action or contact support for assistance.");
+//    @PostMapping("/todo/delete/{id}")
+//    public String deleteTodo(@PathVariable Long id,
+//                             RedirectAttributes map){
+//        System.out.println("ID delete : "+id);
+//        try{
+//            taskOperation.deleteTodo(id);
+//            map.addFlashAttribute("deleteTodoMessage","delete");
+//        }catch (Exception e){
+//            map.addFlashAttribute("deleteTodoMessage",e.getMessage());
+//        }
+//
+//        return "redirect:"+myCustomModelMap.getCurrentUrl();
+//    }
 
-        return "redirect:"+myCustomModelMap.getCurrentUrl();
-    }
+//    @GetMapping("/todo/delete/{id}")
+//    public String getDeleteTodo(@PathVariable Long id,
+//                                RedirectAttributes map){
+//
+//        map.addFlashAttribute("deleteTodoMessage","The request to delete the item could not be processed. Please use the appropriate method to perform this action or contact support for assistance.");
+//
+//        return "redirect:"+myCustomModelMap.getCurrentUrl();
+//
+//    }
 
-    @PostMapping("/todo/delete/{id}")
-    public String deleteTodo(@PathVariable Long id,
-                             RedirectAttributes map){
-        System.out.println("ID delete : "+id);
-        try{
-            taskOperation.deleteTodo(id);
-            map.addFlashAttribute("deleteTodoMessage","delete");
-        }catch (Exception e){
-            map.addFlashAttribute("deleteTodoMessage",e.getMessage());
-        }
-
-        return "redirect:"+myCustomModelMap.getCurrentUrl();
-    }
-
-    @GetMapping("/todo/delete/{id}")
-    public String getDeleteTodo(@PathVariable Long id,
-                                RedirectAttributes map){
-
-        map.addFlashAttribute("deleteTodoMessage","The request to delete the item could not be processed. Please use the appropriate method to perform this action or contact support for assistance.");
-
-        return "redirect:"+myCustomModelMap.getCurrentUrl();
-
-    }
-
-    @PostMapping("/todo/edit")
-    public String editTodo(@Valid @ModelAttribute("todo") Todo todo,
-                           BindingResult result,
-                           RedirectAttributes map){
-
-        System.out.println("Lists : " + todo.getLists());
-
-        try{
-
-            if(result.hasErrors()){
-                var errorMessage = Objects
-                        .requireNonNull(result.getFieldError()).getDefaultMessage();
-                map.addFlashAttribute("editTodoMessage",errorMessage);
-            }else {
-
-                taskOperation.updateTodo(todo);
-                map.addFlashAttribute("editTodoMessage","success");
-            }
-
-        }catch (Exception e){
-            System.out.println("Error : "+e.getMessage());
-            map.addFlashAttribute("editTodoMessage",e.getMessage());
-        }
-
-        return "redirect:"+myCustomModelMap.getCurrentUrl();
-    }
+//    @PostMapping("/todo/edit")
+//    public String editTodo(@Valid @ModelAttribute("todo") Todo todo,
+//                           BindingResult result,
+//                           RedirectAttributes map){
+//
+//        System.out.println("Lists : " + todo.getLists());
+//
+//        try{
+//
+//            if(result.hasErrors()){
+//                var errorMessage = Objects
+//                        .requireNonNull(result.getFieldError()).getDefaultMessage();
+//                map.addFlashAttribute("editTodoMessage",errorMessage);
+//            }else {
+//
+//                taskOperation.updateTodo(todo);
+//                map.addFlashAttribute("editTodoMessage","success");
+//            }
+//
+//        }catch (Exception e){
+//            System.out.println("Error : "+e.getMessage());
+//            map.addFlashAttribute("editTodoMessage",e.getMessage());
+//        }
+//
+//        return "redirect:"+myCustomModelMap.getCurrentUrl();
+//    }
 
 //    @PostMapping("/todo/add")
 //    public String addNew(@Valid Todo todo,

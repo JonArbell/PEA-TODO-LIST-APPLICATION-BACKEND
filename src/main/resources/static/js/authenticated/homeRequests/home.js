@@ -1,6 +1,6 @@
-import {createTodoContainer} from '../uiInteraction/todoContainer.js';
-import {createListsContainer} from '../uiInteraction/listsContainer.js';
-import {profile} from '../uiInteraction/profile.js';
+import {TodoContainer} from '../index.js';
+import {ListContainer} from '../index.js';
+import {Profile} from '../index.js';
 
 export const home = async () => {
 
@@ -16,9 +16,9 @@ export const home = async () => {
         }
 
         const data = await response.json();
-        await createTodoContainer(data.todoResponse); 
-        await createListsContainer(data.listsResponse);
-        await profile(data.userResponse);
+        await TodoContainer.createTodoContainer(data.todoResponse); 
+        await ListContainer.createListsContainer(data.listsResponse);
+        await Profile.loadProfile(data.userResponse);
 
     }catch(e){
         console.error(e);
@@ -27,24 +27,3 @@ export const home = async () => {
 
 }
 
-export const findTodoById = async (id) =>{
-    const url = `http://localhost:8080/find/todo/${id}`;
-
-    try{
-        const response = await fetch(url,{
-            method : 'GET',
-            credentials : 'include'
-        });
-
-        if(!response.ok){
-            const error = await response.json();
-            throw new Error(error.message);
-        }
-
-        const data = await response.json();
-        return data;
-    }catch(e){
-        throw e;
-    }
-
-}

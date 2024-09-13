@@ -21,7 +21,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class TaskOperation {
+public class TodoOperationService {
 
     private final UserService userService;
     private final GetLists getLists;
@@ -94,11 +94,8 @@ public class TaskOperation {
                 }else{
                     break;
                 }
-
             }
-
         }
-
         if(searchTodo.isEmpty()){
             throw new TodoItemNotFoundException("The todo list is currently empty.");
         }else if(!isDeleted){

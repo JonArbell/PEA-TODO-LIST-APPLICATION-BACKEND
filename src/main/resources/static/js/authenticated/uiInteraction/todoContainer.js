@@ -8,7 +8,7 @@ export const createTodoContainer = async (data) => {
         todoContainer.classList.add('todo-container');
         todoContainer.id = `${todo.id}`;
         todoContainer.innerHTML = `
-                        <h2 id="${todo.id}" onclick="view.viewDetails(${todo.id})">View Details</h2>
+                        <h2 id="${todo.id}" onclick="ViewDetails.viewDetails(${todo.id})">View Details</h2>
         
                         <div class="todo-container-header">
                             <h3>Title</h3>
@@ -27,9 +27,9 @@ export const createTodoContainer = async (data) => {
                         <hr/>
         
                         <div>
-                            <button class="delete-todo-button">Delete</button>
-                            <button class="mark-as-done-todo-button">Mark as complete</button>
-                            <button class="edit-todo-button">Edit to-do</button>
+                            <button class="delete-todo-button" onclick="CrudTodoUi.deleteTodoUi(${todo.id})">Delete</button>
+                            <button class="mark-as-done-todo-button" onclick="">Mark as complete</button>
+                            <button class="edit-todo-button" onclick="">Edit to-do</button>
                         </div>
                         
                         `;

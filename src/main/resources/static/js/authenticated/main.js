@@ -1,25 +1,46 @@
-import {home} from './homeRequests/home.js';
-import * as todo from './crudRequests/todo.js';
-import * as buttons from './uiInteraction/buttons.js';
-import * as view from './uiInteraction/viewDetails.js';
+import * as Index from './index.js';
 
-window.view = view; // Make the scope global for view details and remove view Details
+window.Button = Index.Button // Make the scope global for view details and remove view Details
+window.ViewDetails = Index.ViewDetails
+window.CrudTodoUi = Index.CrudTodoUi
 
 document.addEventListener('DOMContentLoaded', () => { 
-    home(); // Load the home request
-    createNewItemHandler(); // Call create new item handler
-    createNewTodoHandler(); // Call create new todo handler
-    addTodoHandler(); // Call add todo handler
+    Index.Home.home(); // Load the home request function
+    createNewItemHandler(); // Call create new item handler function
+    createNewTodoHandler(); // Call create new todo handler function
+    addTodoHandler(); // Call add todo handler function
+    showProfileModalHandler(); // Call the show profile modal handler function
 });
+
+
+const showProfileModalHandler = () =>{ // This function is for showing and hide a profile modal
+
+    let isClicked = false;
+
+    const profile = document.querySelector('#image-account-icon');
+    console.log('Not : '+isClicked);
+    profile.addEventListener('mouseup',()=>{
+        
+        if(isClicked){
+            Index.Profile.hideProfileModal();
+            isClicked = false;
+            return;
+        }
+
+        Index.Profile.showProfileModal();
+        isClicked = true;
+    });
+
+}
 
 const createNewTodoHandler = () =>{ // This function is for the user click the todo button
     const createNewItemModal = document.querySelector('#create-todo-list-modal-pick');
     const createNewtodoButton = document.querySelector('#pick-todo');
-    createNewtodoButton.addEventListener('mouseup',buttons.createNewTodo);
+    createNewtodoButton.addEventListener('mouseup',Index.Button.createNewTodo);
 
     const discardCreateNewButton = document.querySelector('#add-edit-todo-discard-button');
     discardCreateNewButton.addEventListener('mouseup',()=>{
-        buttons.discardCreateNewTodo(createNewItemModal);
+        Index.Button.discardCreateNewTodo(createNewItemModal);
     });
 }
 
@@ -29,13 +50,11 @@ const createNewItemHandler = () =>{ // This function is for the user click the c
     const createNewItemModal = document.querySelector('#create-todo-list-modal-pick');
 
     if (createNewButton && xButton) {
-        createNewButton.addEventListener('mouseup',buttons.createNewItem);
-        xButton.addEventListener('mouseup',()=> buttons.removeCreateNewItemModal(createNewItemModal));
+        createNewButton.addEventListener('mouseup',Index.Button.createNewItem);
+        xButton.addEventListener('mouseup',()=> Index.Button.removeCreateNewItemModal(createNewItemModal));
     }
 }
 
 const addTodoHandler = () =>{ // This function is for adding a todo and reload home request
-    document.querySelector('#create-edit-todo-modal-container > form').addEventListener('submit',(event)=>{
-        todo.addTodo(event,home);
-    });
+    document.querySelector('#create-edit-todo-modal-container > form').addEventListener('submit',Index.Todo.addTodo);
 }

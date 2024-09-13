@@ -4,7 +4,7 @@ import com.myapp.pea.Exceptions.NotValidDateException;
 import com.myapp.pea.Exceptions.TodoItemNotFoundException;
 import com.myapp.pea.RequestResponseModels.TodoModels.TodoRequest;
 import com.myapp.pea.RequestResponseModels.TodoModels.TodoResponse;
-import com.myapp.pea.Services.TodoService.TaskOperation;
+import com.myapp.pea.Services.TodoService.TodoOperationService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -21,13 +21,13 @@ import java.util.Map;
 public class CrudTodo {
 
     private final Logger logger = LoggerFactory.getLogger(CrudTodo.class);
-    private final TaskOperation taskOperation;
+    private final TodoOperationService todoOperationService;
 
     @GetMapping("/find/todo/{id}")
     public ResponseEntity<?> viewDetails(@PathVariable Long id){
 
         try{
-            var todo = taskOperation.findTodoById(id);
+            var todo = todoOperationService.findTodoById(id);
 
             var listName = todo.getLists() == null ? "None" : todo.getLists().getListName();
             var todoResponse = TodoResponse.builder()
@@ -65,7 +65,7 @@ public class CrudTodo {
         }
 
         try{
-            taskOperation.addNewTodo(todoRequest);
+            todoOperationService.addNewTodo(todoRequest);
             logger.info("List of todo : {}",todoRequest.getListName());
             return new ResponseEntity<>(todoRequest,HttpStatus.OK);
         }catch (NotValidDateException e){
@@ -77,6 +77,18 @@ public class CrudTodo {
         }
 
         return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
+    }
+
+    @PostMapping("/todo/delete/{id}")
+    public ResponseEntity<?> deleteTodo(@PathVariable Long id){
+
+        System.out.println("Id : "+id);
+        try{
+            todoOperationService.deleteTodo(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (TodoItemNotFoundException e){
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

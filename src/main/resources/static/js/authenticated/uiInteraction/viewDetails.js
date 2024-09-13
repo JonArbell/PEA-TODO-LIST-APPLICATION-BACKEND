@@ -1,9 +1,9 @@
-import {findTodoById} from '../homeRequests/home.js';
+import {Todo} from '../index.js';
 
 export const viewDetails = async (id) =>{
     
     try{
-        const data = await findTodoById(id);
+        const data = await Todo.findTodoById(id);
         
         document.querySelector('#view-title').textContent = `Title : ${data.title}`;
         document.querySelector('#isCompleted').textContent = `${data.done ? 'Yes' : 'No'}`;
