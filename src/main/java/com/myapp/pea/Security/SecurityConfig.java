@@ -51,8 +51,11 @@ public class SecurityConfig {
                                 "/profile/**",
                                 "/test"
                         ).authenticated()
+                        .requestMatchers("/logout")
+                        .permitAll()
                         .anyRequest().permitAll()
                 )
+                .logout(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(sm -> sm
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

@@ -27,3 +27,24 @@ export const home = async () => {
 
 }
 
+
+export const logout = async (event) =>{
+    event.preventDefault();
+    try{
+
+        const response = await fetch('http://localhost:8080/logout',{
+            method : 'POST',
+            credentials : 'include'
+        });
+
+        if(!response.ok){
+            const error = await response.json();
+            throw new Error(error);
+        }
+
+        console.log('Success logout'+ await response.json());
+        // window.location.href = '';
+    }catch(e){
+        console.log(e);
+    }
+}

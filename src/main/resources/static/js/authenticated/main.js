@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createNewTodoHandler(); // Call create new todo handler function
     addTodoHandler(); // Call add todo handler function
     showProfileModalHandler(); // Call the show profile modal handler function
+    logoutHandler(); // Call the logout handler function
 });
 
 
@@ -57,4 +58,8 @@ const createNewItemHandler = () =>{ // This function is for the user click the c
 
 const addTodoHandler = () =>{ // This function is for adding a todo and reload home request
     document.querySelector('#create-edit-todo-modal-container > form').addEventListener('submit',Index.Todo.addTodo);
+}
+
+const logoutHandler = () =>{
+    document.querySelector('#profile-modal > form').addEventListener('submit',Index.Home.logout);
 }
