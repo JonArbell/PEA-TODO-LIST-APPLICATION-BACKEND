@@ -39,22 +39,8 @@ public class SecurityConfig {
 
         return http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/home/**",
-                                "/todays-tasks/**",
-                                "/all-tasks/**",
-                                "/completed-tasks/**",
-                                "/overdue-tasks/**",
-                                "/about-us",
-                                "/contact-us",
-                                "/settings",
-                                "/todo/**",
-                                "/list/**",
-                                "/profile/**",
-                                "/logout"
-                        ).authenticated()
-                        .requestMatchers(apiRequestMatcher())
-                        .authenticated()
+                        .requestMatchers("/logout").authenticated()
+                        .requestMatchers(apiRequestMatcher()).authenticated()
                         .anyRequest().permitAll()
                 )
                 .logout(AbstractHttpConfigurer::disable)

@@ -36,6 +36,7 @@ export const addList = async (event) =>{
         Button.discardAddList(createNewItemModal);
 
         await Home.home();
+
     }catch(e){
         console.error(e);
     }

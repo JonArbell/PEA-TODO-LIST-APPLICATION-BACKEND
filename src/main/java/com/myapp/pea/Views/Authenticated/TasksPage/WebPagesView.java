@@ -1,5 +1,6 @@
 package com.myapp.pea.Views.Authenticated.TasksPage;
 
+import com.myapp.pea.Services.AccountService.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,29 +9,47 @@ import org.springframework.web.bind.annotation.GetMapping;
 @AllArgsConstructor
 public class WebPagesView {
 
+    private UserService userService;
+
     @GetMapping("/home")
     public String home() {
-        return "authenticated/main/home";
+
+        if(userService.isUserAuthenticated()){
+            return "authenticated/main/home";
+        }
+        return "redirect:/";
     }
 
     @GetMapping("/todays-tasks")
     public String todayTasks(){
-        return "authenticated/tasks/todayTasks";
+        if(userService.isUserAuthenticated()){
+            return "authenticated/tasks/todayTasks";
+        }
+        return "redirect:/";
     }
 
     @GetMapping("/completed-tasks")
     public String completedTasks(){
-        return "authenticated/tasks/completedTasks";
+        if(userService.isUserAuthenticated()){
+            return "authenticated/tasks/completedTasks";
+        }
+        return "redirect:/";
     }
 
     @GetMapping("/all-tasks")
     public String allTasks(){
-        return "authenticated/tasks/allTasks";
+        if(userService.isUserAuthenticated()){
+            return "authenticated/tasks/allTasks";
+        }
+        return "redirect:/";
     }
 
     @GetMapping("/overdue-tasks")
     public String overDue(){
-        return"authenticated/tasks/overdueTasks";
+        if(userService.isUserAuthenticated()){
+            return"authenticated/tasks/overdueTasks";
+        }
+        return "redirect:/";
     }
 
 }

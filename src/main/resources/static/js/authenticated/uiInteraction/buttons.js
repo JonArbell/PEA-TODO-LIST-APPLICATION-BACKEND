@@ -26,7 +26,6 @@ export const createNewTodo = (event) => {
 
 }
 
-
 export const createNewList = (event) =>{
 
     const createNewListButton = document.querySelector('#pick-list');

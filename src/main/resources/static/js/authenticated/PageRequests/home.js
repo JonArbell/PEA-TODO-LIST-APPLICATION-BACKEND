@@ -22,7 +22,6 @@ export const home = async () => {
 
     }catch(e){
         console.error(e);
-        // window.location.href = '../../../index.html';
     }
 
 }
@@ -32,7 +31,7 @@ export const logout = async (event) =>{
     event.preventDefault();
     try{
 
-        const response = await fetch('http://localhost:8080/logout',{
+        const response = await fetch('http://localhost:8080/api/logout',{
             method : 'POST',
             credentials : 'include'
         });
