@@ -97,7 +97,7 @@ export const todoMarkAsDone = async (id) =>{
 
     try{
 
-        const url = `http://localhost:8080/api/todo/${id}/mark-as-done`;
+        const url = `http://localhost:8080/api/authenticated/todo/${id}/mark-as-done`;
 
         const response = await fetch(url,{
             method : 'POST',

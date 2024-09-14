@@ -18,7 +18,7 @@ import java.util.Map;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/authenticated")
 public class CrudTodo {
 
     private final Logger logger = LoggerFactory.getLogger(CrudTodo.class);

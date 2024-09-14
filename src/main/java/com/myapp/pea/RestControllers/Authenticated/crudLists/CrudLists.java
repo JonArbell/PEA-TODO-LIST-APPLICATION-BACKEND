@@ -2,7 +2,6 @@ package com.myapp.pea.RestControllers.Authenticated.crudLists;
 
 import com.myapp.pea.RequestResponseModels.ListsModels.ListsRequest;
 import com.myapp.pea.RequestResponseModels.MessageResponse;
-import com.myapp.pea.RestControllers.Authenticated.crudTodo.CrudTodo;
 import com.myapp.pea.Services.ListsService.ListsOperation;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -20,7 +19,7 @@ import java.util.Map;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/authenticated")
 public class CrudLists {
 
     private final Logger logger = LoggerFactory.getLogger(CrudLists.class);

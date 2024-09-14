@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/authenticated")
 public class SortByDateModified {
 
     private final GetTasks getTasks;

@@ -20,6 +20,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,10 +51,10 @@ public class SecurityConfig {
                                 "/todo/**",
                                 "/list/**",
                                 "/profile/**",
-                                "/test"
+                                "/logout"
                         ).authenticated()
-                        .requestMatchers("/logout")
-                        .permitAll()
+                        .requestMatchers(apiRequestMatcher())
+                        .authenticated()
                         .anyRequest().permitAll()
                 )
                 .logout(AbstractHttpConfigurer::disable)
@@ -82,6 +85,10 @@ public class SecurityConfig {
                 )
                 .authenticationProvider(authenticationProvider())
                 .build();
+    }
+
+    private RequestMatcher apiRequestMatcher() {
+        return new AntPathRequestMatcher("/api/authenticated/**");
     }
 
     @Bean

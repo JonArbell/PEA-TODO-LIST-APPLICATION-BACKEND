@@ -5,7 +5,7 @@ import {Profile} from '../index.js';
 export const home = async () => {
 
     try{
-        const response = await fetch('http://localhost:8080/api/home', {
+        const response = await fetch('http://localhost:8080/api/authenticated/home', {
             method: 'GET',  
             credentials: 'include'  
         });
