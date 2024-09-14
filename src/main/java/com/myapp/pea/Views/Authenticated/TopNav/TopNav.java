@@ -1,4 +1,4 @@
-package com.myapp.pea.Controllers.Authenticated.TopNav;
+package com.myapp.pea.Views.Authenticated.TopNav;
 
 import com.myapp.pea.Entities.Lists;
 import com.myapp.pea.Entities.Todo;

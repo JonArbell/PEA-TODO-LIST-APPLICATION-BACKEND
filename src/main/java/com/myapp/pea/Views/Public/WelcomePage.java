@@ -1,4 +1,4 @@
-package com.myapp.pea.Controllers.Public;
+package com.myapp.pea.Views.Public;
 
 import com.myapp.pea.Services.AccountService.UserService;
 import com.myapp.pea.Services.AccountService.CreateAccountService;
@@ -14,18 +14,10 @@ public class WelcomePage {
     private final CreateAccountService createAccountService;
     private final UserService userService;
 
-//    @GetMapping("")
-//    public String welcomePage(ModelMap map){
-//
-//        if(userService.isUserAuthenticated()){
-//            return "redirect:/home";
-//        }
-//
-//        map.addAttribute("user",new User());
-//
-////        return "public/index";
-//        return "public/test";
-//    }
+    @GetMapping("")
+    public String welcomePage(){
+        return "index";
+    }
 
     @GetMapping("/create-account")
     public String getCreateAccount(){

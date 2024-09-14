@@ -127,7 +127,7 @@ const createAccount = () =>{
         const email = document.querySelector('#create-account-email').value;
         const createPassword = document.querySelector('#create-new-password').value;
 
-        fetch('http://localhost:8080/create-account',{
+        fetch('http://localhost:8080/api/create-account',{
             method : 'POST',
             headers : {
                 'Content-Type':'application/json'
@@ -223,7 +223,7 @@ const login = () =>{
         const pass = document.querySelector('#login-pass').value;
 
         try{
-            const response = await fetch('http://localhost:8080/login',{
+            const response = await fetch('http://localhost:8080/api/login',{
                 method : 'POST',
                 headers : {
                     'Content-Type':'application/json'
@@ -242,7 +242,7 @@ const login = () =>{
 
             const data = await response.json();
             console.log(data.token);
-            window.location.href = './html/authenticated/main/home.html';
+            window.location.href = 'http://localhost:8080/home';
 
         }catch(e){
             console.log(e);
@@ -253,5 +253,4 @@ const login = () =>{
 }
 
 document.addEventListener('DOMContentLoaded',login);
-
 

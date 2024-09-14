@@ -1,15 +1,9 @@
-package com.myapp.pea.Controllers.Authenticated.TodoOperation;
+package com.myapp.pea.Views.Authenticated.TodoOperation;
 
-import com.myapp.pea.Controllers.CustomComponent.MyCustomModelMap;
-import com.myapp.pea.Entities.Todo;
+import com.myapp.pea.Views.CustomComponent.MyCustomModelMap;
 import com.myapp.pea.Services.TodoService.TodoOperationService;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import java.util.Objects;
 
 @Controller
 @AllArgsConstructor

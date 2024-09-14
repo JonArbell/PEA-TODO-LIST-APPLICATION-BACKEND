@@ -1,6 +1,6 @@
-package com.myapp.pea.Controllers.Authenticated.ListOperation;
+package com.myapp.pea.Views.Authenticated.ListOperation;
 
-import com.myapp.pea.Controllers.CustomComponent.MyCustomModelMap;
+import com.myapp.pea.Views.CustomComponent.MyCustomModelMap;
 import com.myapp.pea.Entities.Lists;
 import com.myapp.pea.Services.ListsService.ListsOperation;
 import jakarta.validation.Valid;

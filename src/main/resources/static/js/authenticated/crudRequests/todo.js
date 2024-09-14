@@ -8,9 +8,9 @@ export const addEditTodo = async (event) => {
     const typeOfRequest = document.querySelector('#add-edit-title');
     let url = null;
     if(typeOfRequest.textContent === 'Add To-do:'){
-        url = 'http://localhost:8080/todo/add';
+        url = 'http://localhost:8080/api/todo/add';
     }else if(typeOfRequest.textContent === 'Edit To-do:'){
-        url = 'http://localhost:8080/todo/edit';
+        url = 'http://localhost:8080/api/todo/edit';
     }
 
     const todoId = document.querySelector('#todo-id').value;
@@ -49,7 +49,7 @@ export const addEditTodo = async (event) => {
 }
 
 export const findTodoById = async (id) =>{
-    const url = `http://localhost:8080/find/todo/${id}`;
+    const url = `http://localhost:8080/api/find/todo/${id}`;
 
     try{
         const response = await fetch(url,{
@@ -73,7 +73,7 @@ export const findTodoById = async (id) =>{
 export const deleteTodo = async (id) =>{
 
     try{
-        const url = `http://localhost:8080/todo/delete/${id}`;
+        const url = `http://localhost:8080/api/todo/delete/${id}`;
 
         const response = await fetch(url,{
             method : 'POST',
@@ -97,7 +97,7 @@ export const todoMarkAsDone = async (id) =>{
 
     try{
 
-        const url = `http://localhost:8080/todo/${id}/mark-as-done`;
+        const url = `http://localhost:8080/api/todo/${id}/mark-as-done`;
 
         const response = await fetch(url,{
             method : 'POST',

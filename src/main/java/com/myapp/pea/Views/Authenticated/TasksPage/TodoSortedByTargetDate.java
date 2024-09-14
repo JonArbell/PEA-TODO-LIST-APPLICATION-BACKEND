@@ -1,6 +1,6 @@
-package com.myapp.pea.Controllers.Authenticated.TasksPage;
+package com.myapp.pea.Views.Authenticated.TasksPage;
 
-import com.myapp.pea.Controllers.CustomComponent.MyCustomModelMap;
+import com.myapp.pea.Views.CustomComponent.MyCustomModelMap;
 import com.myapp.pea.Entities.Todo;
 import com.myapp.pea.Services.TodoService.GetTasks;
 import com.myapp.pea.Services.AccountService.UserService;

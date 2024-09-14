@@ -1,6 +1,6 @@
-package com.myapp.pea.Controllers.Authenticated.ListsPage;
+package com.myapp.pea.Views.Authenticated.ListsPage;
 
-import com.myapp.pea.Controllers.CustomComponent.MyCustomModelMap;
+import com.myapp.pea.Views.CustomComponent.MyCustomModelMap;
 import com.myapp.pea.Exceptions.TodoListNotFoundException;
 import com.myapp.pea.Entities.Lists;
 import com.myapp.pea.Entities.Todo;

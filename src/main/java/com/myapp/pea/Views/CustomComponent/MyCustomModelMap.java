@@ -1,4 +1,4 @@
-package com.myapp.pea.Controllers.CustomComponent;
+package com.myapp.pea.Views.CustomComponent;
 
 import com.myapp.pea.Entities.Lists;
 import com.myapp.pea.Entities.Todo;

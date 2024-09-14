@@ -1,4 +1,4 @@
-package com.myapp.pea.Controllers.Public;
+package com.myapp.pea.Views.Public;
 
 
 import lombok.AllArgsConstructor;

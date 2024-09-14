@@ -13,7 +13,7 @@ export const addList = async (event) =>{
 
         console.log('ListName : '+listName);
 
-        const response = await fetch('http://localhost:8080/list/add',{
+        const response = await fetch('http://localhost:8080/api/list/add',{
             method : 'POST',
             headers : {
                 'Content-Type':'application/json'
