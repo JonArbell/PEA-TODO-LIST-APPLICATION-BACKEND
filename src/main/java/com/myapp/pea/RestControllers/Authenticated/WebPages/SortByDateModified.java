@@ -44,20 +44,20 @@ public class SortByDateModified {
 
         var listsOfTodos = new ArrayList<TodoResponse>();
         getTasks.allTodoDateModified().forEach(data -> {
-            var listId = data.getLists() == null ? 0L : data.getLists().getId();
+                    var listId = data.getLists() == null ? 0L : data.getLists().getId();
 
-            var todo = TodoResponse.builder()
-                    .id(data.getId())
-                    .title(data.getTitle())
-                    .done(data.isDone())
-                    .date(data.getDate())
-                    .dateModified(data.getDateModified())
-                    .shortDescription(data.getShortDescription())
-                    .formattedDate(data.getFormattedDate())
-                    .listId(listId)
-                    .build();
-            listsOfTodos.add(todo);
-        });
+                    var todo = TodoResponse.builder()
+                            .id(data.getId())
+                            .title(data.getTitle())
+                            .done(data.isDone())
+                            .date(data.getDate())
+                            .dateModified(data.getDateModified())
+                            .shortDescription(data.getShortDescription())
+                            .formattedDate(data.getFormattedDate())
+                            .listId(listId)
+                            .build();
+                    listsOfTodos.add(todo);
+                });
 
         return listsOfTodos;
     }
@@ -75,7 +75,11 @@ public class SortByDateModified {
     @GetMapping("/home")
     public ResponseEntity<?> home(){
 
-        return new ResponseEntity<>(new HomeResponse(getAllTodosResponse(),getAllListsResponse(),userResponse()),HttpStatus.OK);
+        var pending = getAllTodosResponse().stream()
+                .filter(done -> !done.isDone())
+                .toList();
+
+        return new ResponseEntity<>(new HomeResponse(pending,getAllListsResponse(),userResponse()),HttpStatus.OK);
     }
 
     @GetMapping("/todays-tasks")

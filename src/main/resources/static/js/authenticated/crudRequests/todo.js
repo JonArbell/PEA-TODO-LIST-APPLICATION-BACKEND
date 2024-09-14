@@ -93,3 +93,26 @@ export const deleteTodo = async (id) =>{
 
 }
 
+export const todoMarkAsDone = async (id) =>{
+
+    try{
+
+        const url = `http://localhost:8080/todo/${id}/mark-as-done`;
+
+        const response = await fetch(url,{
+            method : 'POST',
+            credentials : 'include'
+        });
+
+        if(!response.ok){
+            const error = await response.json();
+            throw error.error;
+        }
+
+        await Home.home();
+
+    }catch(e){
+        console.error(e);
+    }
+
+}

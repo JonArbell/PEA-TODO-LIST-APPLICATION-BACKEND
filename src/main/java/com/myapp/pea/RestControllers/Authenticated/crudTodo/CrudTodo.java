@@ -84,12 +84,13 @@ public class CrudTodo {
     @PostMapping("/todo/delete/{id}")
     public ResponseEntity<?> deleteTodo(@PathVariable Long id){
 
-        System.out.println("Id : "+id);
         try{
             todoOperationService.deleteTodo(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (TodoItemNotFoundException e){
-            return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+            Map<String, String> error = new HashMap<>();
+            error.put("error",e.getMessage());
+            return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -120,6 +121,24 @@ public class CrudTodo {
         }
 
         return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
+    }
+
+
+    @PostMapping("/todo/{id}/mark-as-done")
+    public ResponseEntity<?> markAsDone(@PathVariable Long id){
+
+        logger.info("Mark as done Id : {}",id);
+
+        try{
+            todoOperationService.markAsComplete(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (Exception e){
+
+            Map<String, String> error = new HashMap<>();
+            error.put("error",e.getMessage());
+            return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
+        }
+
     }
 
 }

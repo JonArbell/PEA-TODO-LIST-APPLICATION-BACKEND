@@ -4,10 +4,6 @@ export const deleteTodoUi = async (id) =>{
     await Todo.deleteTodo(id);
 }
 
-export const addTodoUi = () =>{
-    document.querySelector('#add-edit-title').textContent = 'Add To-do:';
-}
-
 export const editTodoUi = async (id) =>{
 
     try{
@@ -29,5 +25,11 @@ export const editTodoUi = async (id) =>{
     }catch(e){
         console.error(e);
     }
+
+}
+
+export const todoMarkAsDoneUi = async (id) =>{
+
+    await Todo.todoMarkAsDone(id);
 
 }

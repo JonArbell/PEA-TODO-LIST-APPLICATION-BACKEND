@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addEditTodoRequestHandler(); // Call add edit todo handler function
     showProfileModalHandler(); // Call the show profile modal handler function
     logoutHandler(); // Call the logout handler function
-    // Index.CrudTodoUi.addTodoUi(); // Load the default title of #add-edit-title element id
+    
 });
 
 
