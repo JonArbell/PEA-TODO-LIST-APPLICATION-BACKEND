@@ -1,3 +1,5 @@
+import {Todo} from '../index.js';
+
 export const createNewItem = (event) => {
     const createNewButton = document.querySelector('#create-new-item-button');
 
@@ -24,9 +26,10 @@ export const createNewTodo = (event) => {
 
 }
 
-export const discardCreateNewTodo = (createNewItemModal) =>{
+export const discardCreateEditTodo = (createNewItemModal) =>{
 
     document.querySelector('#create-edit-todo-modal-container').style.display = 'none';
+    document.querySelector('#add-edit-title').textContent = 'Add To-do:';
     removeCreateNewItemModal(createNewItemModal);
     
 }

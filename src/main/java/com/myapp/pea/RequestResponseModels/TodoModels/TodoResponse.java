@@ -25,5 +25,6 @@ public class TodoResponse {
 
     private String shortDescription;
 
+    private Long listId;
     private String listName;
 }

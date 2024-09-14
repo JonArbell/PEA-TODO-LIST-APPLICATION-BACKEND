@@ -1,27 +1,36 @@
 import {Button} from '../index.js';
 import {Home} from '../index.js';
 
-export const addTodo = async (event) => {
+export const addEditTodo = async (event) => {
     event.preventDefault();
 
     const createNewItemModal = document.querySelector('#create-todo-list-modal-pick');
+    const typeOfRequest = document.querySelector('#add-edit-title');
+    let url = null;
+    if(typeOfRequest.textContent === 'Add To-do:'){
+        url = 'http://localhost:8080/todo/add';
+    }else if(typeOfRequest.textContent === 'Edit To-do:'){
+        url = 'http://localhost:8080/todo/edit';
+    }
 
+    const todoId = document.querySelector('#todo-id').value;
     const title = document.querySelector('#add-edit-todo-title').value;
     const shortDescription = document.querySelector('#add-edit-todo-short-description').value;
-    const listName = document.querySelector('#add-edit-todo-list').value;
+    const listId = document.querySelector('#add-edit-todo-list').value;
     const targetDate = document.querySelector('#add-edit-todo-target-date').value;
 
     try{
-        const url = 'http://localhost:8080/todo/add';
+        
         const response = await fetch(url,{
             method : 'POST',
             headers : {
                 'Content-Type':'application/json'
             },
             body : JSON.stringify({
+                id : todoId,
                 title : title,
                 shortDescription : shortDescription,
-                listName : listName,
+                listId : listId,
                 date : targetDate
             }),
             credentials : 'include'
@@ -33,7 +42,7 @@ export const addTodo = async (event) => {
         }
 
         await Home.home();
-        Button.discardCreateNewTodo(createNewItemModal);
+        Button.discardCreateEditTodo(createNewItemModal);
     }catch(e){
         console.error(e);
     }
@@ -83,3 +92,4 @@ export const deleteTodo = async (id) =>{
     }
 
 }
+

@@ -133,18 +133,6 @@
 
         <section id="main-section">
 
-            <div id="delete-confirmation-message">
-                <h2>Are you sure you want to delete this to-do item?</h2>
-
-                <h3>Title : </h3>
-
-                <form>
-
-                    <button type="reset">No</button>
-                    <button type="submit">Yes</button>
-                </form>
-            </div>
-            
             <div id="view-details">
                 <span>
                     <p onmouseup="ViewDetails.removeDetails()">&times;</p>
@@ -227,6 +215,8 @@
                     <h2 id="add-edit-title">Add To-do:</h2>
 
                     <form>
+
+                        <input type="hidden" id="todo-id"/>
 
                         <section>
                             <input id="add-edit-todo-title" autofocus="autofocus" required="required" name="title" type="text" placeholder="Title"/>

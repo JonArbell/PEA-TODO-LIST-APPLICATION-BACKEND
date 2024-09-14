@@ -7,10 +7,11 @@ window.CrudTodoUi = Index.CrudTodoUi
 document.addEventListener('DOMContentLoaded', () => { 
     Index.Home.home(); // Load the home request function
     createNewItemHandler(); // Call create new item handler function
-    createNewTodoHandler(); // Call create new todo handler function
-    addTodoHandler(); // Call add todo handler function
+    createEditTodoUiHandler(); // Call create new todo handler function
+    addEditTodoRequestHandler(); // Call add edit todo handler function
     showProfileModalHandler(); // Call the show profile modal handler function
     logoutHandler(); // Call the logout handler function
+    // Index.CrudTodoUi.addTodoUi(); // Load the default title of #add-edit-title element id
 });
 
 
@@ -38,16 +39,17 @@ const showProfileModalHandler = () =>{ // This function is for showing and hide 
 
 }
 
-const createNewTodoHandler = () =>{ // This function is for the user click the todo button
+const createEditTodoUiHandler = () =>{ // This function is for the user click the todo button and edit a todo
     const createNewItemModal = document.querySelector('#create-todo-list-modal-pick');
-    const createNewtodoButton = document.querySelector('#pick-todo');
-    createNewtodoButton.addEventListener('mouseup',Index.Button.createNewTodo);
+    const createEditTodoButton = document.querySelector('#pick-todo');
+    createEditTodoButton.addEventListener('mouseup',Index.Button.createNewTodo);
 
-    const discardCreateNewButton = document.querySelector('#add-edit-todo-discard-button');
-    discardCreateNewButton.addEventListener('mouseup',()=>{
-        Index.Button.discardCreateNewTodo(createNewItemModal);
+    const discardCreateEditTodoButton = document.querySelector('#add-edit-todo-discard-button');
+    discardCreateEditTodoButton.addEventListener('mouseup',()=>{
+        Index.Button.discardCreateEditTodo(createNewItemModal);
     });
 }
+
 
 const createNewItemHandler = () =>{ // This function is for the user click the create new button
     const createNewButton = document.querySelector('#create-new-item-button');
@@ -60,8 +62,10 @@ const createNewItemHandler = () =>{ // This function is for the user click the c
     }
 }
 
-const addTodoHandler = () =>{ // This function is for adding a todo and reload home request
-    document.querySelector('#create-edit-todo-modal-container > form').addEventListener('submit',Index.Todo.addTodo);
+const addEditTodoRequestHandler = () =>{ // This function is for adding and editing a todo and reload home request
+
+    document.querySelector('#create-edit-todo-modal-container > form').addEventListener('submit',Index.Todo.addEditTodo);
+
 }
 
 const logoutHandler = () =>{

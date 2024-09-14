@@ -29,6 +29,7 @@ public class CrudTodo {
         try{
             var todo = todoOperationService.findTodoById(id);
 
+            var listId = todo.getLists() == null ? 0L : todo.getLists().getId();
             var listName = todo.getLists() == null ? "None" : todo.getLists().getListName();
             var todoResponse = TodoResponse.builder()
                     .id(todo.getId())
@@ -37,6 +38,7 @@ public class CrudTodo {
                     .done(todo.isDone())
                     .shortDescription(todo.getShortDescription())
                     .formattedDate(todo.getFormattedDate())
+                    .listId(listId)
                     .listName(listName)
                     .dateModified(todo.getDateModified())
                     .build();
@@ -55,7 +57,7 @@ public class CrudTodo {
 
         Map<String, String> errors = new HashMap<>();
 
-        logger.info("Added Todo : {}",todoRequest.toString());
+        logger.info("Added Todo : {}",todoRequest);
 
         if(bindingResult.hasErrors()){
             bindingResult.getFieldErrors().forEach(error -> {
@@ -66,7 +68,7 @@ public class CrudTodo {
 
         try{
             todoOperationService.addNewTodo(todoRequest);
-            logger.info("List of todo : {}",todoRequest.getListName());
+            logger.info("List of todo : {}",todoRequest.getListId());
             return new ResponseEntity<>(todoRequest,HttpStatus.OK);
         }catch (NotValidDateException e){
             logger.error("NotValidDateException : {}",e.getMessage());
@@ -89,6 +91,35 @@ public class CrudTodo {
         }catch (TodoItemNotFoundException e){
             return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @PostMapping("/todo/edit")
+    public ResponseEntity<?> editTodo(@Valid @RequestBody TodoRequest todoRequest, BindingResult bindingResult){
+
+        Map<String, String> errors = new HashMap<>();
+
+        logger.info("Edit Todo : {}",todoRequest);
+
+        if(bindingResult.hasErrors()){
+            bindingResult.getFieldErrors().forEach(error -> {
+                errors.put(error.getField(),error.getDefaultMessage());
+            });
+            return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
+        }
+
+        try{
+            todoOperationService.updateTodo(todoRequest);
+            logger.info("List of edit todo : {}",todoRequest.getListId());
+            return new ResponseEntity<>(todoRequest,HttpStatus.OK);
+        }catch (NotValidDateException e){
+            logger.error("NotValidDateException : {}",e.getMessage());
+            errors.put(NotValidDateException.class.getSimpleName(),e.getMessage());
+        }catch (RuntimeException e){
+            logger.error("RuntimeException : {}",e.getMessage());
+            errors.put(RuntimeException.class.getSimpleName(),e.getMessage());
+        }
+
+        return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
     }
 
 }

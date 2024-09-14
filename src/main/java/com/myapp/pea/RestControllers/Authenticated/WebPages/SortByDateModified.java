@@ -44,7 +44,7 @@ public class SortByDateModified {
 
         var listsOfTodos = new ArrayList<TodoResponse>();
         getTasks.allTodoDateModified().forEach(data -> {
-            var listName = data.getLists() == null ? "None" : data.getLists().getListName();
+            var listId = data.getLists() == null ? 0L : data.getLists().getId();
 
             var todo = TodoResponse.builder()
                     .id(data.getId())
@@ -54,7 +54,7 @@ public class SortByDateModified {
                     .dateModified(data.getDateModified())
                     .shortDescription(data.getShortDescription())
                     .formattedDate(data.getFormattedDate())
-                    .listName(listName)
+                    .listId(listId)
                     .build();
             listsOfTodos.add(todo);
         });

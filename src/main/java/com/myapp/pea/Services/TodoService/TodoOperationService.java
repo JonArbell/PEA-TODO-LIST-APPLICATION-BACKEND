@@ -45,7 +45,7 @@ public class TodoOperationService {
             var lists = listsRepo
                     .findByUserId(userService.getId())
                     .stream()
-                    .filter(list -> list.getId().equals(Long.parseLong(todoRequest.getListName())))
+                    .filter(list -> list.getId().equals(Long.parseLong(todoRequest.getListId())))
                     .findFirst().orElse(null);
 
             var newTodo = Todo
@@ -103,42 +103,43 @@ public class TodoOperationService {
         }
     }
 
-    public void updateTodo(Todo update) throws TodoItemNotFoundException,TodoListNotFoundException {
+    public void updateTodo(TodoRequest todoRequest) throws TodoItemNotFoundException,TodoListNotFoundException {
 
         List<Todo> searchTodo = todoRepo
                 .findByUserId(userService.getId());
 
-        if(checkDate(update.getDate())){
+        if(checkDate(todoRequest.getDate())){
 
             boolean isUpdated = false;
 
             for(var currentTodo : searchTodo){
 
-                if(update.getId().equals(currentTodo.getId())){
+                if(todoRequest.getId().equals(currentTodo.getId())){
 
                     var isCheckList = false;
 
-                    if(update.getLists() != null){
+                    if(todoRequest.getListId() != null && !todoRequest.getListId().equals("0")){
                         for(Lists list : getLists.allListsDateModified()){
 
-                            if(list.getId().equals(update.getLists().getId())){
+                            if(list.getId().equals(Long.parseLong(todoRequest.getListId()))){
+                                currentTodo.setLists(list);
                                 isCheckList = true;
                                 break;
                             }
-
                         }
                         if(!isCheckList){
                             throw new TodoListNotFoundException("No list found");
                         }
+                    }else{
+                        currentTodo.setLists(null);
                     }
 
-                    currentTodo.setLists(update.getLists());
-                    currentTodo.setDate(update.getDate());
-                    currentTodo.setTitle(update.getTitle());
-                    currentTodo.setShortDescription(update.getShortDescription());
-                    currentTodo.setDone(update.isDone());
+                    currentTodo.setDate(todoRequest.getDate());
+                    currentTodo.setTitle(todoRequest.getTitle());
+                    currentTodo.setShortDescription(todoRequest.getShortDescription());
+                    currentTodo.setDone(todoRequest.isDone());
                     currentTodo.setDateModified(LocalDateTime.now());
-                    currentTodo.setFormattedDate(update.getDate().format(DateTimeFormatter.ofPattern("MM-dd-yyyy")));
+                    currentTodo.setFormattedDate(todoRequest.getDate().format(DateTimeFormatter.ofPattern("MM-dd-yyyy")));
 
                     todoRepo.save(currentTodo);
 

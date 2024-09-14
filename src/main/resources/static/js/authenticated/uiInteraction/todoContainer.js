@@ -29,7 +29,7 @@ export const createTodoContainer = async (data) => {
                         <div>
                             <button class="delete-todo-button" onclick="CrudTodoUi.deleteTodoUi(${todo.id})">Delete</button>
                             <button class="mark-as-done-todo-button" onclick="">Mark as complete</button>
-                            <button class="edit-todo-button" onclick="">Edit to-do</button>
+                            <button class="edit-todo-button" onclick="CrudTodoUi.editTodoUi(${todo.id})">Edit to-do</button>
                         </div>
                         
                         `;

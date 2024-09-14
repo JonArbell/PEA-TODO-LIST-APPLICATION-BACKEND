@@ -6,33 +6,33 @@ import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@ToString
 @Builder
 @Getter
 @Setter
 public class TodoRequest {
 
+    private Long id;
+
     @Size(max = 35, message = "Title must be at most 35 characters long.")
-    @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
     private boolean done;
 
-    @Column(nullable = false)
     private String formattedDate;
 
-    @Column(nullable = false)
     private LocalDate date;
 
-    @Column(nullable = false)
     private LocalDateTime dateModified;
 
     @Size(max = 200, message = "Description must be at most 200 characters long.")
     private String shortDescription;
 
-    private String listName;
+    private String listId;
 
 }
