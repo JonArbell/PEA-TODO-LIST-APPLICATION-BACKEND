@@ -4,6 +4,7 @@
         margin: 0;
         background-color: #d0cab5;
         overflow-y: hidden;
+        overflow-x: hidden;
     }
       
     *{
@@ -428,6 +429,7 @@
         flex-basis: 0.15em;
         border-radius: 1em;
         background-color: #182B22;
+        margin: 0.5em 0 0 0;
     }
 
     #profile-modal > *,#profile-modal > form > button{

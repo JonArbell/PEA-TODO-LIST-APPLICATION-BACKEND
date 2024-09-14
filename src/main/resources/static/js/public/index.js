@@ -207,7 +207,7 @@ const handleLoginFailedMessage = (message) =>{
     promptMessage.textContent = '';
     promptMessage.style.display = 'none';
     
-    promptMessage.textContent = `${message.error}`;
+    promptMessage.textContent = `${message}`;
     promptMessage.style.display='flex';
     promptMessage.offsetHeight;
     promptMessage.classList.add('failed-message');
@@ -215,44 +215,40 @@ const handleLoginFailedMessage = (message) =>{
 }
 
 const login = () =>{
-    document.querySelector('#login-page form').addEventListener('submit',function(event){
+    document.querySelector('#login-page form').addEventListener('submit', async (event) =>{
 
         event.preventDefault();
         
         const usn = document.querySelector('#login-usn').value;
         const pass = document.querySelector('#login-pass').value;
-        
-        fetch('http://localhost:8080/login',{
-            method : 'POST',
-            headers : {
-                'Content-Type':'application/json'
-            },
-            body : JSON.stringify({
-                username : usn,
-                password : pass
-            }),
-            credentials: 'include'
-        })
-        .then(async response => {
+
+        try{
+            const response = await fetch('http://localhost:8080/login',{
+                method : 'POST',
+                headers : {
+                    'Content-Type':'application/json'
+                },
+                body : JSON.stringify({
+                    username : usn,
+                    password : pass
+                }),
+                credentials: 'include'
+            });
 
             if(!response.ok){
                 const error = await response.json();
-                throw new Error(error.message);
+                throw error.error;
             }
-            return response.json();
 
-        })
-        .then(data => {
-
+            const data = await response.json();
             console.log(data.token);
             window.location.href = './html/authenticated/main/home.html';
-        })
-        .catch(error => {
-            console.log(error.error);
 
-            handleLoginFailedMessage(error);
-            
-        });
+        }catch(e){
+            console.log(e);
+            handleLoginFailedMessage(e);
+        }
+        
     });
 }
 
