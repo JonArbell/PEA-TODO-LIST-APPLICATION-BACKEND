@@ -253,6 +253,44 @@
                     
                 </div>
 
+                <div id="create-edit-delete-list-container">
+
+                    <div id="add-list-modal-container">
+                        
+                        <form>
+                            <span>
+                                <p>&times;</p>
+                            </span>
+
+                            <h2>Add List:</h2>
+
+                            <input type="text" autofocus="autofocus" placeholder="List name"/>
+                            <button type="submit">Save</button>
+                        </form>
+                    </div>
+
+                    <div id="edit-list-modal-container">
+
+                        <form>
+
+                            <span>
+                                <p>&times;</p>
+                            </span>
+
+                            <h2>Select List to rename:</h2>
+
+                            <select id="edit-list-id" name="listId" required="required">
+
+                            </select>
+                            
+                            <input id="edit-list-name" type="text" required="required" placeholder="Enter new list name"/>
+
+                            <button type="submit">Rename</button>
+                        </form>
+                    </div>
+
+                </div>
+
             </div>
 
             <hr/>

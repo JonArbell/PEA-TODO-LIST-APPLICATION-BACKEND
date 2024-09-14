@@ -6,6 +6,7 @@ import com.myapp.pea.Entities.Lists;
 import com.myapp.pea.Entities.Todo;
 import com.myapp.pea.Repository.ListsRepo;
 import com.myapp.pea.Repository.TodoRepo;
+import com.myapp.pea.RequestResponseModels.ListsModels.ListsRequest;
 import com.myapp.pea.Services.TodoService.GetTasks;
 import com.myapp.pea.Services.AccountService.UserService;
 import lombok.AllArgsConstructor;
@@ -23,14 +24,13 @@ public class ListsOperation {
     private final GetLists getLists;
     private final GetTasks getTasks;
 
-    public void createNewList(Lists list){
+    public void createNewList(ListsRequest listsRequest){
 
         Lists create = Lists
                 .builder()
                 .userId(userService.getId())
                 .date(LocalDateTime.now())
-                .todos(list.getTodos())
-                .listName(list.getListName())
+                .listName(listsRequest.getListName())
                 .build();
 
         listsRepo.save(create);

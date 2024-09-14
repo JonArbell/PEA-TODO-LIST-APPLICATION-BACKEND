@@ -18,22 +18,22 @@ public class CRUDList {
     private final ListsOperation listsOperation;
     private final MyCustomModelMap myCustomModelMap;
 
-    @PostMapping("/list/add")
-    public String createNewList(@Valid @ModelAttribute("list") Lists list,
-                                BindingResult result,
-                                RedirectAttributes reMap){
-
-        if(result.hasErrors()){
-            String errorMessage = Objects.requireNonNull(result.getFieldError()).getDefaultMessage();
-            reMap.addFlashAttribute("createListMessage",errorMessage);
-
-        }else{
-            listsOperation.createNewList(list);
-            reMap.addFlashAttribute("createListMessage","success");
-        }
-
-        return "redirect:"+myCustomModelMap.getCurrentUrl();
-    }
+//    @PostMapping("/list/add")
+//    public String createNewList(@Valid @ModelAttribute("list") Lists list,
+//                                BindingResult result,
+//                                RedirectAttributes reMap){
+//
+//        if(result.hasErrors()){
+//            String errorMessage = Objects.requireNonNull(result.getFieldError()).getDefaultMessage();
+//            reMap.addFlashAttribute("createListMessage",errorMessage);
+//
+//        }else{
+//            listsOperation.createNewList(list);
+//            reMap.addFlashAttribute("createListMessage","success");
+//        }
+//
+//        return "redirect:"+myCustomModelMap.getCurrentUrl();
+//    }
 
     @PostMapping("/list/delete/{id}")
     public String deleteList(@PathVariable Long id,

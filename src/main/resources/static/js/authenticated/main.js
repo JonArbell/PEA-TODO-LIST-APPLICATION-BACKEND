@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     addEditTodoRequestHandler(); // Call add edit todo handler function
     showProfileModalHandler(); // Call the show profile modal handler function
     logoutHandler(); // Call the logout handler function
-    
+    createEditDeleteListUiHandler();
+    addListRequestHandler();
 });
 
 
@@ -50,6 +51,18 @@ const createEditTodoUiHandler = () =>{ // This function is for the user click th
     });
 }
 
+const createEditDeleteListUiHandler = () =>{
+    const createNewItemModal = document.querySelector('#create-todo-list-modal-pick');
+    const createEditListButton = document.querySelector('#pick-list');
+    createEditListButton.addEventListener('mouseup',Index.Button.createNewList);
+
+    const discardAddListButton = document.querySelector('#add-list-modal-container > form > span > p');
+    discardAddListButton.addEventListener('mouseup',()=>{
+        Index.Button.discardAddList(createNewItemModal);
+    });
+}
+
+
 
 const createNewItemHandler = () =>{ // This function is for the user click the create new button
     const createNewButton = document.querySelector('#create-new-item-button');
@@ -66,6 +79,10 @@ const addEditTodoRequestHandler = () =>{ // This function is for adding and edit
 
     document.querySelector('#create-edit-todo-modal-container > form').addEventListener('submit',Index.Todo.addEditTodo);
 
+}
+
+const addListRequestHandler = () =>{
+    document.querySelector('#add-list-modal-container > form').addEventListener('submit',Index.List.addList);
 }
 
 const logoutHandler = () =>{

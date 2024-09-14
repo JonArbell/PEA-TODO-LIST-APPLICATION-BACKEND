@@ -1,7 +1,5 @@
 package com.myapp.pea.RequestResponseModels.TodoModels;
 
-import com.myapp.pea.Entities.Lists;
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Getter;

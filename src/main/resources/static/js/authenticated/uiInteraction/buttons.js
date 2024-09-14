@@ -26,6 +26,30 @@ export const createNewTodo = (event) => {
 
 }
 
+
+export const createNewList = (event) =>{
+
+    const createNewListButton = document.querySelector('#pick-list');
+
+    if(createNewListButton.contains(event.target)){
+        document.querySelector('#create-edit-delete-list-container').style.display = 'block';
+        document.querySelector('#add-list-modal-container').style.display = 'block';
+    }
+
+}
+
+const discardAddEditDeleteList = () =>{
+    document.querySelector('#create-edit-delete-list-container').style.display ='none';
+}
+
+export const discardAddList = (createNewItemModal) =>{
+
+    discardAddEditDeleteList();
+    document.querySelector('#add-list-modal-container').style.display ='none';
+    removeCreateNewItemModal(createNewItemModal);
+    
+}
+
 export const discardCreateEditTodo = (createNewItemModal) =>{
 
     document.querySelector('#create-edit-todo-modal-container').style.display = 'none';
