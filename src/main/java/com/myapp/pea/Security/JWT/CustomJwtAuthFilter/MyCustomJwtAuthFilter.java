@@ -3,7 +3,6 @@ package com.myapp.pea.Security.JWT.CustomJwtAuthFilter;
 import com.myapp.pea.Security.JWT.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
@@ -48,9 +47,11 @@ public class MyCustomJwtAuthFilter extends OncePerRequestFilter {
                     if(username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                         var userDetails = userDetailsService.loadUserByUsername(username);
 
-                        logger.info("User Details : {}",userDetails);
                         logger.info("Is token valid ? : {}",jwtService.isTokenValid(cookie.getValue()));
                         if (userDetails != null && jwtService.isTokenValid(cookie.getValue())) {
+
+                            logger.info("Password : {}",userDetails.getPassword());
+
                             var usnPassAuthToken = new UsernamePasswordAuthenticationToken(
                                     userDetails,
                                     null,

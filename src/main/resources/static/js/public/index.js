@@ -221,12 +221,16 @@ const login = () =>{
         
         const usn = document.querySelector('#login-usn').value;
         const pass = document.querySelector('#login-pass').value;
+        const csrfToken = document.querySelector('#login-page > form > input[name="_csrf"]').value;
 
+        console.log('Csrf : '+csrfToken);
+        
         try{
             const response = await fetch('http://localhost:8080/api/login',{
                 method : 'POST',
                 headers : {
-                    'Content-Type':'application/json'
+                    'Content-Type': 'application/json',
+                    'X-XSRF-TOKEN': csrfToken 
                 },
                 body : JSON.stringify({
                     username : usn,

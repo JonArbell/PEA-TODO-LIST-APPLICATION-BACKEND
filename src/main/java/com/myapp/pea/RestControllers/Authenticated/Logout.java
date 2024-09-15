@@ -19,13 +19,9 @@ public class Logout {
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpServletResponse httpServletResponse){
 
-//        Cookie cookie = new Cookie("jwtAuthToken", null);
-//        cookie.setHttpOnly(true);
-//        cookie.setSecure(true);
-//        cookie.setPath("/");
-//        cookie.setMaxAge(0);
-//
-//        httpServletResponse.addCookie(cookie);
+        httpServletResponse.setHeader("Set-Cookie",
+                "jwtAuthToken=; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=0");
+
         logger.info("Successfully Logout");
         return new ResponseEntity<>(new JwtResponse("Panis"),HttpStatus.OK);
     }

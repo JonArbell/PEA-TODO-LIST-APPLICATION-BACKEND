@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -214,9 +214,7 @@
 
                     <h2 id="add-edit-title">Add To-do:</h2>
 
-                    <form>
-
-                        <input type="hidden" id="todo-id"/>
+                    <form sec:csrf="true">
 
                         <section>
                             <input id="add-edit-todo-title" autofocus="autofocus" required="required" name="title" type="text" placeholder="Title"/>
@@ -244,7 +242,10 @@
                             <input id="add-edit-todo-target-date" required="required" name="target-date" type="date" placeholder="MM-DD-YYYY"/>
                         </section>
                         
-                        <section>
+                        <section id="create-edit-todo-button-section">
+
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
                             <button id="add-edit-todo-discard-button" type="reset">Discard</button>
                             <button id="add-edit-todo-save-button" type="submit">Save</button>
                         </section>

@@ -15,6 +15,11 @@ public class WelcomePage {
 
     @GetMapping("")
     public String index(){
+
+        if(userService.isUserAuthenticated()){
+            return "redirect:/home";
+        }
+
         return "index";
     }
 

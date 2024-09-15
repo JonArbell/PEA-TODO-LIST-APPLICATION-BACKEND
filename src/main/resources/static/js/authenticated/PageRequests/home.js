@@ -41,7 +41,7 @@ export const logout = async (event) =>{
             throw new Error(error);
         }
 
-        console.log('Success logout'+ await response.json());
+        window.location.href = '/';
     }catch(e){
         console.log(e);
     }

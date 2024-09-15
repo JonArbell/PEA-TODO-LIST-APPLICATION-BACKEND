@@ -13,39 +13,42 @@ export const addEditTodo = async (event) => {
         url = 'http://localhost:8080/api/authenticated/todo/edit';
     }
 
-    const todoId = document.querySelector('#todo-id').value;
     const title = document.querySelector('#add-edit-todo-title').value;
     const shortDescription = document.querySelector('#add-edit-todo-short-description').value;
     const listId = document.querySelector('#add-edit-todo-list').value;
     const targetDate = document.querySelector('#add-edit-todo-target-date').value;
 
-    try{
-        
-        const response = await fetch(url,{
-            method : 'POST',
-            headers : {
-                'Content-Type':'application/json'
-            },
-            body : JSON.stringify({
-                id : todoId,
-                title : title,
-                shortDescription : shortDescription,
-                listId : listId,
-                date : targetDate
-            }),
-            credentials : 'include'
-        });
+    const csrfToken = document.querySelector('#create-edit-todo-button-section > input[name="_csrf"]').value;
 
-        if(!response.ok){
-            const error = await response.json();
-            throw new Error(error);
-        }
+    console.log('Csrf : '+csrfToken);
 
-        await Home.home();
-        Button.discardCreateEditTodo(createNewItemModal);
-    }catch(e){
-        console.error(e);
-    }
+    // try{
+
+    //     const response = await fetch(url,{
+    //         method : 'POST',
+    //         headers : {
+    //             'Content-Type': 'application/json',
+    //             'X-XSRF-TOKEN': csrfToken 
+    //         },
+    //         body : JSON.stringify({
+    //             title : title,
+    //             shortDescription : shortDescription,
+    //             listId : listId,
+    //             date : targetDate
+    //         }),
+    //         credentials : 'include'
+    //     });
+
+    //     if(!response.ok){
+    //         const error = await response.json();
+    //         throw new Error(error);
+    //     }
+
+    //     await Home.home();
+    //     Button.discardCreateEditTodo(createNewItemModal);
+    // }catch(e){
+    //     console.error(e);
+    // }
 }
 
 export const findTodoById = async (id) =>{
