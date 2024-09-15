@@ -16,6 +16,7 @@ export const home = async () => {
             credentials: 'include'  
         });
 
+        
         if(!response.ok){
             const error = await response.json();
             throw new Error(error.message);
@@ -43,15 +44,15 @@ export const logout = async (event) =>{
 
         const response = await fetch('http://localhost:8080/logout',{
             method : 'POST',
+            credentials : 'include',
             headers : {
-                'X-CSRF-TOKEN': csrfToken 
-            },
-            credentials : 'include'
+                'X-XSRF-TOKEN' : csrfToken
+            }
         });
 
         if(!response.ok){
             const error = await response.json();
-            throw new Error(error);
+            throw new Error(JSON.stringify(error,null,2));
         }
 
         // window.location.href = '/';
