@@ -10,6 +10,10 @@
         <meta property="og:image" content="https://www.pea-todo-list-application.onrender.com/static/images/checklist.png"/>
         <meta property="og:url" content="https://www.pea-todo-list-application.onrender.com"/>
 
+        <meta name="_csrf" th:content="${_csrf.token}"/>
+
+        <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
         <title>P E A - log in or sign up</title>
 
         <link rel="preload" href="./images/showPassword/open.svg" as="image">

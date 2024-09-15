@@ -18,46 +18,49 @@ export const addEditTodo = async (event) => {
     const listId = document.querySelector('#add-edit-todo-list').value;
     const targetDate = document.querySelector('#add-edit-todo-target-date').value;
 
-    const csrfToken = document.querySelector('#create-edit-todo-button-section > input[name="_csrf"]').value;
+    const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
 
-    console.log('Csrf : '+csrfToken);
+    try{
 
-    // try{
+        const response = await fetch(url,{
+            method : 'POST',
+            headers : {
+                'Content-Type': 'application/json',
+                'X-XSRF-TOKEN' : csrfToken
+            },
+            body : JSON.stringify({
+                title : title,
+                shortDescription : shortDescription,
+                listId : listId,
+                date : targetDate
+            }),
+            credentials : 'include'
+        });
 
-    //     const response = await fetch(url,{
-    //         method : 'POST',
-    //         headers : {
-    //             'Content-Type': 'application/json',
-    //             'X-XSRF-TOKEN': csrfToken 
-    //         },
-    //         body : JSON.stringify({
-    //             title : title,
-    //             shortDescription : shortDescription,
-    //             listId : listId,
-    //             date : targetDate
-    //         }),
-    //         credentials : 'include'
-    //     });
+        if(!response.ok){
+            const error = await response.json();
+            throw new Error(error);
+        }
 
-    //     if(!response.ok){
-    //         const error = await response.json();
-    //         throw new Error(error);
-    //     }
-
-    //     await Home.home();
-    //     Button.discardCreateEditTodo(createNewItemModal);
-    // }catch(e){
-    //     console.error(e);
-    // }
+        await Home.home();
+        Button.discardCreateEditTodo(createNewItemModal);
+    }catch(e){
+        console.error(e);
+    }
 }
 
 export const findTodoById = async (id) =>{
     const url = `http://localhost:8080/api/authenticated/find/todo/${id}`;
 
+    const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
+
     try{
         const response = await fetch(url,{
             method : 'GET',
-            credentials : 'include'
+            credentials : 'include',
+            headers : {
+                'X-XSRF-TOKEN' : csrfToken
+            }
         });
 
         if(!response.ok){
@@ -75,12 +78,17 @@ export const findTodoById = async (id) =>{
 
 export const deleteTodo = async (id) =>{
 
+    const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
+
     try{
         const url = `http://localhost:8080/api/authenticated/todo/delete/${id}`;
 
         const response = await fetch(url,{
             method : 'POST',
-            credentials : 'include'
+            credentials : 'include',
+            headers : {
+                'X-XSRF-TOKEN' : csrfToken
+            }
         });
 
         if(!response.ok){
@@ -98,13 +106,18 @@ export const deleteTodo = async (id) =>{
 
 export const todoMarkAsDone = async (id) =>{
 
+    const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
+
     try{
 
         const url = `http://localhost:8080/api/authenticated/todo/${id}/mark-as-done`;
 
         const response = await fetch(url,{
             method : 'POST',
-            credentials : 'include'
+            credentials : 'include',
+            headers : {
+                'X-XSRF-TOKEN' : csrfToken
+            }
         });
 
         if(!response.ok){

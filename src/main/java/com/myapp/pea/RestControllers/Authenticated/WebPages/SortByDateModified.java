@@ -7,9 +7,11 @@ import com.myapp.pea.RequestResponseModels.WebPagesResponse.HomeResponse;
 import com.myapp.pea.Services.AccountService.UserService;
 import com.myapp.pea.Services.ListsService.GetLists;
 import com.myapp.pea.Services.TodoService.GetTasks;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -75,7 +77,7 @@ public class SortByDateModified {
     }
 
     @GetMapping("/home")
-    public ResponseEntity<?> home(){
+    public ResponseEntity<?> home(HttpServletRequest httpServletRequest){
 
         var pending = getAllTodosResponse().stream()
                 .filter(done -> !done.isDone())
@@ -85,7 +87,7 @@ public class SortByDateModified {
     }
 
     @GetMapping("/todays-tasks")
-    public ResponseEntity<?> todayTasks(){
+    public ResponseEntity<?> todayTasks(HttpServletRequest httpServletRequest){
 
         var todayTask = getAllTodosResponse()
                 .stream()

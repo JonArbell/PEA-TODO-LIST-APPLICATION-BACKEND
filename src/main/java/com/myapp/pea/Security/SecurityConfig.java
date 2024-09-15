@@ -40,15 +40,10 @@ public class SecurityConfig {
 
         return http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/logout").authenticated()
                         .requestMatchers(apiRequestMatcher()).authenticated()
                         .anyRequest().permitAll()
                 )
-                .logout(AbstractHttpConfigurer::disable)
                 .csrf(cs -> cs.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
-                .sessionManagement(sm -> sm
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                )
                 .exceptionHandling(httpSecurityExceptionHandlingConfigurer -> {
                     httpSecurityExceptionHandlingConfigurer.authenticationEntryPoint((request, response,
                                                                                       authException) -> {
@@ -65,7 +60,6 @@ public class SecurityConfig {
                        response.getOutputStream().println(jsonResponse);
                     });
                 })
-                .cors(Customizer.withDefaults())
                 .addFilterBefore(myCustomJwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .oauth2ResourceServer(oath -> oath
                         .jwt(Customizer.withDefaults())

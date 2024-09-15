@@ -86,5 +86,7 @@ const addListRequestHandler = () =>{
 }
 
 const logoutHandler = () =>{
-    document.querySelector('#profile-modal > form').addEventListener('submit',Index.Home.logout);
+    document.querySelector('#profile-modal > form').addEventListener('submit',async (event) => {
+        Index.Home.logout(event);
+    });
 }

@@ -489,7 +489,7 @@
         position: absolute;
         background-color: #dad4c0;
         z-index: 1002;
-        display: none;
+        display: flex;
         flex-direction: column;
         right: 0;
         top: 100%;

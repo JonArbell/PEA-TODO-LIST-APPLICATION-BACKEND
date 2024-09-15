@@ -127,10 +127,13 @@ const createAccount = () =>{
         const email = document.querySelector('#create-account-email').value;
         const createPassword = document.querySelector('#create-new-password').value;
 
+        const csrfToken = document.querySelector('meta[name="_csrf"]').content;
+
         fetch('http://localhost:8080/api/create-account',{
             method : 'POST',
             headers : {
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                'X-XSRF-TOKEN': csrfToken 
             },
             body : JSON.stringify({
                 firstName : firstName,
@@ -221,9 +224,7 @@ const login = () =>{
         
         const usn = document.querySelector('#login-usn').value;
         const pass = document.querySelector('#login-pass').value;
-        const csrfToken = document.querySelector('#login-page > form > input[name="_csrf"]').value;
-
-        console.log('Csrf : '+csrfToken);
+        const csrfToken = document.querySelector('meta[name="_csrf"]').content;
         
         try{
             const response = await fetch('http://localhost:8080/api/login',{

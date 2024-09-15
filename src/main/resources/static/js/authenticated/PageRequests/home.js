@@ -4,9 +4,15 @@ import {Profile} from '../index.js';
 
 export const home = async () => {
 
+    const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
+
     try{
+
         const response = await fetch('http://localhost:8080/api/authenticated/home', {
             method: 'GET',  
+            headers : {
+                'X-CSRF-TOKEN': csrfToken 
+            },
             credentials: 'include'  
         });
 
@@ -28,11 +34,18 @@ export const home = async () => {
 
 
 export const logout = async (event) =>{
+
     event.preventDefault();
+
+    const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
+
     try{
 
-        const response = await fetch('http://localhost:8080/api/logout',{
+        const response = await fetch('http://localhost:8080/logout',{
             method : 'POST',
+            headers : {
+                'X-CSRF-TOKEN': csrfToken 
+            },
             credentials : 'include'
         });
 
@@ -41,7 +54,7 @@ export const logout = async (event) =>{
             throw new Error(error);
         }
 
-        window.location.href = '/';
+        // window.location.href = '/';
     }catch(e){
         console.log(e);
     }

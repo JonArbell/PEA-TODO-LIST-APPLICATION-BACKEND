@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.web.csrf.CsrfToken;
+
 import java.util.List;
 
 @Builder
@@ -18,5 +20,4 @@ public class HomeResponse {
     private List<TodoResponse> todoResponse;
     private List<ListsResponse> listsResponse;
     private UserResponse userResponse;
-
 }
