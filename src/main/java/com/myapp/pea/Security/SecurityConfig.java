@@ -13,6 +13,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -58,6 +59,7 @@ public class SecurityConfig {
                        response.getOutputStream().println(jsonResponse);
                     });
                 })
+                .logout(AbstractHttpConfigurer::disable)
                 .addFilterBefore(myCustomJwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .oauth2ResourceServer(oath -> oath
                         .jwt(Customizer.withDefaults())

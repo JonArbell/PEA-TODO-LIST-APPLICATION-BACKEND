@@ -55,7 +55,7 @@ export const logout = async (event) =>{
             throw new Error(JSON.stringify(error,null,2));
         }
 
-        // window.location.href = '/';
+        window.location.href = '/';
     }catch(e){
         console.log(e);
     }
