@@ -13,6 +13,7 @@ export const addEditTodo = async (event) => {
         url = 'http://localhost:8080/api/authenticated/todo/edit';
     }
 
+    const todoId = document.querySelector('#todo-id').value;
     const title = document.querySelector('#add-edit-todo-title').value;
     const shortDescription = document.querySelector('#add-edit-todo-short-description').value;
     const listId = document.querySelector('#add-edit-todo-list').value;
@@ -29,6 +30,7 @@ export const addEditTodo = async (event) => {
                 'X-XSRF-TOKEN' : csrfToken
             },
             body : JSON.stringify({
+                id : todoId,
                 title : title,
                 shortDescription : shortDescription,
                 listId : listId,

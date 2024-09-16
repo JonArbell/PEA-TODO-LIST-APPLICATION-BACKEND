@@ -53,6 +53,11 @@ export const discardCreateEditTodo = (createNewItemModal) =>{
 
     document.querySelector('#create-edit-todo-modal-container').style.display = 'none';
     document.querySelector('#add-edit-title').textContent = 'Add To-do:';
+    document.querySelector('#todo-id').value = '';
+    document.querySelector('#add-edit-todo-title').value = '';
+    document.querySelector('#add-edit-todo-short-description').value = '';
+    document.querySelector('#add-edit-todo-list').value = '0';
+    document.querySelector('#add-edit-todo-target-date').value = '';
     removeCreateNewItemModal(createNewItemModal);
     
 }

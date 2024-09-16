@@ -489,7 +489,7 @@
         position: absolute;
         background-color: #dad4c0;
         z-index: 1002;
-        display: flex;
+        display: none;
         flex-direction: column;
         right: 0;
         top: 100%;
@@ -600,6 +600,7 @@
         z-index: 100;
         box-shadow: 2.5px 0 3px black;
         height: 90vh;
+        position: relative;
     }
 
     #menu-section *{
