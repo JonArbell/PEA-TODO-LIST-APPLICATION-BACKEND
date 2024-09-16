@@ -201,7 +201,37 @@
                     -->
                 </div>
 
-                <div id="">
+                <div id="edit-list-name">
+                    <form>
+
+                        <span>
+                            <p>&times;</p>
+                        </span>
+
+                        <h2>Select List to rename:</h2>
+
+                        <select>
+                            <!--
+                                all lists of lists to rename
+                            -->
+                        </select>
+
+                        <input type="hidden"/>
+
+                        <input autofocus="autofocus" type="text" name="listName" placeholder="Enter new list name"/>
+
+                        <button type="submit">Rename</button>
+
+                    </form>
+                </div>
+
+                <div id="edit-delete-list-modal-pick">
+                    <h2>Manage your lists:</h2>
+
+                    <div>
+                        <button>Edit List Name</button>
+                        <button>Delete List</button>
+                    </div>
 
                 </div>
 
@@ -235,14 +265,16 @@
                         </section>
                         
                         <section id="list-section">
+
                             <label for="add-edit-todo-list">
                                 <h4>List [Optional]</h4>
                             </label>
+
                             <select id="add-edit-todo-list" name="listName">
                                 <option value="0">None</option>
-                                <option value="Personal">Personal</option>
-                                <option value="Work">Work</option>
+
                             </select>
+
                         </section>
                         
                         <section id="target-date-section">

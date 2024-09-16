@@ -82,7 +82,7 @@ public class CrudTodo {
         return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
     }
 
-    @PostMapping("/todo/delete/{id}")
+    @DeleteMapping("/todo/delete/{id}")
     public ResponseEntity<?> deleteTodo(@PathVariable Long id){
 
         try{
@@ -95,7 +95,7 @@ public class CrudTodo {
         }
     }
 
-    @PostMapping("/todo/edit")
+    @PutMapping("/todo/edit")
     public ResponseEntity<?> editTodo(@Valid @RequestBody TodoRequest todoRequest, BindingResult bindingResult){
 
         Map<String, String> errors = new HashMap<>();
@@ -124,8 +124,7 @@ public class CrudTodo {
         return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
     }
 
-
-    @PostMapping("/todo/{id}/mark-as-done")
+    @PatchMapping("/todo/{id}/mark-as-done")
     public ResponseEntity<?> markAsDone(@PathVariable Long id){
 
         logger.info("Mark as done Id : {}",id);

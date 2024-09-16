@@ -7,10 +7,13 @@ export const addEditTodo = async (event) => {
     const createNewItemModal = document.querySelector('#create-todo-list-modal-pick');
     const typeOfRequest = document.querySelector('#add-edit-title');
     let url = null;
+    let methodType = null;
     if(typeOfRequest.textContent === 'Add To-do:'){
         url = 'http://localhost:8080/api/authenticated/todo/add';
+        methodType = 'POST';
     }else if(typeOfRequest.textContent === 'Edit To-do:'){
         url = 'http://localhost:8080/api/authenticated/todo/edit';
+        methodType = 'PUT';
     }
 
     const todoId = document.querySelector('#todo-id').value;
@@ -24,7 +27,7 @@ export const addEditTodo = async (event) => {
     try{
 
         const response = await fetch(url,{
-            method : 'POST',
+            method : methodType,
             headers : {
                 'Content-Type': 'application/json',
                 'X-XSRF-TOKEN' : csrfToken
@@ -86,7 +89,7 @@ export const deleteTodo = async (id) =>{
         const url = `http://localhost:8080/api/authenticated/todo/delete/${id}`;
 
         const response = await fetch(url,{
-            method : 'POST',
+            method : 'DELETE',
             credentials : 'include',
             headers : {
                 'X-XSRF-TOKEN' : csrfToken
@@ -115,7 +118,7 @@ export const todoMarkAsDone = async (id) =>{
         const url = `http://localhost:8080/api/authenticated/todo/${id}/mark-as-done`;
 
         const response = await fetch(url,{
-            method : 'POST',
+            method : 'PATCH',
             credentials : 'include',
             headers : {
                 'X-XSRF-TOKEN' : csrfToken

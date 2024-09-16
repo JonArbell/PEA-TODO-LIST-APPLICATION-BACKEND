@@ -612,6 +612,81 @@
         margin-top: 1em;
     }
 
+    #edit-list-name,#edit-delete-list-modal-pick{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        display: none;
+    }
+
+    #edit-delete-list-modal-pick,#edit-list-name > form{
+        background-color: #dad4c0;
+        flex-direction: column;
+        padding: 1em;
+        border-radius: 1em;
+        box-shadow: 0 2px 3px black;
+    }
+
+    #edit-delete-list-modal-pick{
+        display: flex;
+        width: 15vw;
+
+    }
+
+    #edit-list-name > form{
+        display: flex;
+    }
+
+    #edit-list-name > form > span{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin: 0;
+    }
+
+    #edit-list-name > form > span > p{
+        font-size: 1em;
+        cursor: pointer;
+    }
+
+    #edit-list-name > form > input,#edit-list-name > form > select{
+        background-color: #dad4c0;
+    }
+
+    #edit-list-name > form > button,#edit-delete-list-modal-pick > div > button{
+        color: #DDD9CA;
+        cursor: pointer;
+    }
+
+    #edit-list-name > form > button{
+        background-color: #254336;
+    }
+    #edit-delete-list-modal-pick > div > button{
+        background-color: #293b49;
+    }
+    #edit-delete-list-modal-pick > div > button{
+        width: 45%;
+        border-radius: 1em;
+        padding: 1em;
+    }
+
+    #edit-delete-list-modal-pick > div{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    #edit-list-name > form > *{
+        margin: 0.5em;
+    }
+
+    #edit-list-name > form > input,#edit-list-name > form > select, #edit-list-name > form > input,#edit-list-name > form > div > button{
+        border: 1px solid #182B22;
+        border-radius: 1em;
+        padding: 1em;
+    }
+
     #main-head > div,#main-head > div > div{
         display: flex;
         align-items: center;
