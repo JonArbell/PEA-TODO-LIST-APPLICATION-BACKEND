@@ -127,7 +127,7 @@
 
             </div>
 
-            <button>Manage List</button>
+            <button onmouseup="Button.manageList()">Manage List</button>
 
             <hr/>
 
@@ -226,6 +226,11 @@
                 </div>
 
                 <div id="edit-delete-list-modal-pick">
+
+                    <span>
+                        <p onmouseup="Button.removeManageListModal()">&times;</p>
+                    </span>
+
                     <h2>Manage your lists:</h2>
 
                     <div>

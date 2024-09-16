@@ -618,6 +618,7 @@
         left: 50%;
         transform: translate(-50%,-50%);
         display: none;
+        z-index: 1002;
     }
 
     #edit-delete-list-modal-pick,#edit-list-name > form{
@@ -628,17 +629,16 @@
         box-shadow: 0 2px 3px black;
     }
 
-    #edit-delete-list-modal-pick{
-        display: flex;
-        width: 15vw;
-
+    #edit-delete-list-modal-pick > span > p{
+        cursor: pointer;
+        font-size: 1.5em;
     }
 
     #edit-list-name > form{
         display: flex;
     }
 
-    #edit-list-name > form > span{
+    #edit-list-name > form > span,#edit-delete-list-modal-pick > span{
         width: 100%;
         display: flex;
         justify-content: flex-end;
@@ -659,21 +659,29 @@
         cursor: pointer;
     }
 
+    #edit-delete-list-modal-pick > h2{
+        text-align: center;
+        margin-top: 0;
+    }
+
+    #edit-delete-list-modal-pick > *{
+        margin: 0.5em;
+    }
+
     #edit-list-name > form > button{
         background-color: #254336;
     }
+
     #edit-delete-list-modal-pick > div > button{
         background-color: #293b49;
-    }
-    #edit-delete-list-modal-pick > div > button{
         width: 45%;
         border-radius: 1em;
         padding: 1em;
+        font-size: 0.7em;
     }
 
     #edit-delete-list-modal-pick > div{
         display: flex;
-        width: 100%;
         justify-content: space-between;
     }
 

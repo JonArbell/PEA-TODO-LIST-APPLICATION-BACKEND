@@ -1,4 +1,3 @@
-import {Todo} from '../index.js';
 
 export const createNewItem = (event) => {
     const createNewButton = document.querySelector('#create-new-item-button');
@@ -63,3 +62,13 @@ export const discardCreateEditTodo = (createNewItemModal) =>{
 }
 
 
+export const manageList = () => {
+
+    document.querySelector('#edit-delete-list-modal-pick').style.display = 'flex';
+    document.querySelector('#modal-view-background').style.display = 'block';
+}
+
+export const removeManageListModal = () =>{
+    document.querySelector('#edit-delete-list-modal-pick').style.display = 'none';
+    document.querySelector('#modal-view-background').style.display = 'none';
+}
