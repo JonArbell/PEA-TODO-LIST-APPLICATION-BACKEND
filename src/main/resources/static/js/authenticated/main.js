@@ -6,13 +6,11 @@ window.CrudTodoUi = Index.CrudTodoUi
 
 document.addEventListener('DOMContentLoaded', () => { 
     Index.Home.home(); // Load the home request function
-    createNewItemHandler(); // Call create new item handler function
-    createEditTodoUiHandler(); // Call create new todo handler function
     addEditTodoRequestHandler(); // Call add edit todo handler function
     showProfileModalHandler(); // Call the show profile modal handler function
     logoutHandler(); // Call the logout handler function
-    createEditDeleteListUiHandler();
-    addListRequestHandler();
+    addListRequestHandler(); // Call the add list function handler
+    editListNameRequestHandler(); // Call the edit list name function handler
 });
 
 
@@ -40,53 +38,27 @@ const showProfileModalHandler = () =>{ // This function is for showing and hide 
 
 }
 
-const createEditTodoUiHandler = () =>{ // This function is for the user click the todo button and edit a todo
-    const createNewItemModal = document.querySelector('#create-todo-list-modal-pick');
-    const createEditTodoButton = document.querySelector('#pick-todo');
-    createEditTodoButton.addEventListener('mouseup',Index.Button.createNewTodo);
-
-    const discardCreateEditTodoButton = document.querySelector('#add-edit-todo-discard-button');
-    discardCreateEditTodoButton.addEventListener('mouseup',()=>{
-        Index.Button.discardCreateEditTodo(createNewItemModal);
-    });
-}
-
-const createEditDeleteListUiHandler = () =>{
-    const createNewItemModal = document.querySelector('#create-todo-list-modal-pick');
-    const createEditListButton = document.querySelector('#pick-list');
-    createEditListButton.addEventListener('mouseup',Index.Button.createNewList);
-
-    const discardAddListButton = document.querySelector('#add-list-modal-container > form > span > p');
-    discardAddListButton.addEventListener('mouseup',()=>{
-        Index.Button.discardAddList(createNewItemModal);
-    });
-}
-
-
-
-const createNewItemHandler = () =>{ // This function is for the user click the create new button
-    const createNewButton = document.querySelector('#create-new-item-button');
-    const xButton = document.querySelector('#create-todo-list-modal-pick > span > p');
-    const createNewItemModal = document.querySelector('#create-todo-list-modal-pick');
-
-    if (createNewButton && xButton) {
-        createNewButton.addEventListener('mouseup',Index.Button.createNewItem);
-        xButton.addEventListener('mouseup',()=> Index.Button.removeCreateNewItemModal(createNewItemModal));
-    }
-}
-
 const addEditTodoRequestHandler = () =>{ // This function is for adding and editing a todo and reload home request
 
     document.querySelector('#create-edit-todo-modal-container > form').addEventListener('submit',Index.Todo.addEditTodo);
 
 }
 
-const addListRequestHandler = () =>{
+const addListRequestHandler = () =>{ // This function is for adding a list and reload home request
     document.querySelector('#add-list-modal-container > form').addEventListener('submit',Index.List.addList);
 }
 
-const logoutHandler = () =>{
+const logoutHandler = () =>{ // This function is for logout
     document.querySelector('#profile-modal > form').addEventListener('submit',async (event) => {
         Index.Home.logout(event);
     });
+}
+
+
+const editListNameRequestHandler = () =>{ // This function is for edit a list name and reload home request
+
+    document.querySelector('#edit-list-name-container').addEventListener('submit', async (event) =>{
+        Index.List.renameList(event);
+    });
+
 }

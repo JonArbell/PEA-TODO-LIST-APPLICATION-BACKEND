@@ -4,7 +4,6 @@ import {Home} from '../index.js';
 export const addEditTodo = async (event) => {
     event.preventDefault();
 
-    const createNewItemModal = document.querySelector('#create-todo-list-modal-pick');
     const typeOfRequest = document.querySelector('#add-edit-title');
     let url = null;
     let methodType = null;
@@ -48,7 +47,7 @@ export const addEditTodo = async (event) => {
         }
 
         await Home.home();
-        Button.discardCreateEditTodo(createNewItemModal);
+        Button.discardCreateEditTodo();
     }catch(e){
         console.error(e);
     }

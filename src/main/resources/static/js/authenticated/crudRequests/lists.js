@@ -5,11 +5,9 @@ export const addList = async (event) =>{
 
     event.preventDefault();
 
-    const createNewItemModal = document.querySelector('#create-todo-list-modal-pick');
-
     const listName = document.querySelector('#add-list-modal-container > form > input').value;
 
-    const token = document.querySelector('meta[name="_csrf"]').content;
+    const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
 
     try{
 
@@ -17,7 +15,7 @@ export const addList = async (event) =>{
             method : 'POST',
             headers : {
                 'Content-Type':'application/json',
-                'X-XSRF-TOKEN' : token
+                'X-XSRF-TOKEN' : csrfToken
             },
             body : JSON.stringify(listName),
             credentials : 'include'
@@ -34,7 +32,7 @@ export const addList = async (event) =>{
 
         console.log(message.message);
 
-        Button.discardAddList(createNewItemModal);
+        Button.discardAddList();
 
         await Home.home();
 
@@ -44,3 +42,40 @@ export const addList = async (event) =>{
 
 }
 
+export const renameList = async (event) =>{
+
+    event.preventDefault();
+
+    const listId = document.querySelector('#edit-list-name-container > form > select').value;
+    const listName = document.querySelector('#edit-list-name-container > form >input').value;
+    const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
+    try{
+
+        const response = await fetch('http://localhost:8080/api/authenticated/list/edit',{
+
+            method : 'PATCH',
+            headers : {
+                'Content-Type':'application/json',
+                'X-XSRF-TOKEN' : csrfToken
+            },
+            body : JSON.stringify({
+                id : listId,
+                listName : listName
+            }),
+            credentials : 'include'
+        });
+
+        if(!response.ok){
+            const error = await response.json();
+            throw error;
+        }
+
+        Button.discardEditListName();
+
+        await Home.home();
+
+    }catch(e){
+        console.error(e);
+    }
+
+}

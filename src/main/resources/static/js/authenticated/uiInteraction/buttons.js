@@ -8,8 +8,8 @@ export const createNewItem = (event) => {
     }
 }
 
-export const removeCreateNewItemModal = (createNewItemModal) => {
-    createNewItemModal.style.display = 'none';
+export const removeCreateNewItemModal = () => {
+    document.querySelector('#create-todo-list-modal-pick').style.display = 'none';
     document.querySelector('#modal-view-background').style.display = 'none';
 }
 
@@ -40,15 +40,15 @@ const discardAddEditDeleteList = () =>{
     document.querySelector('#create-edit-delete-list-container').style.display ='none';
 }
 
-export const discardAddList = (createNewItemModal) =>{
+export const discardAddList = () =>{
 
     discardAddEditDeleteList();
     document.querySelector('#add-list-modal-container').style.display ='none';
-    removeCreateNewItemModal(createNewItemModal);
+    removeCreateNewItemModal();
     
 }
 
-export const discardCreateEditTodo = (createNewItemModal) =>{
+export const discardCreateEditTodo = () =>{
 
     document.querySelector('#create-edit-todo-modal-container').style.display = 'none';
     document.querySelector('#add-edit-title').textContent = 'Add To-do:';
@@ -57,7 +57,7 @@ export const discardCreateEditTodo = (createNewItemModal) =>{
     document.querySelector('#add-edit-todo-short-description').value = '';
     document.querySelector('#add-edit-todo-list').value = '0';
     document.querySelector('#add-edit-todo-target-date').value = '';
-    removeCreateNewItemModal(createNewItemModal);
+    removeCreateNewItemModal();
     
 }
 
@@ -71,4 +71,16 @@ export const manageList = () => {
 export const removeManageListModal = () =>{
     document.querySelector('#edit-delete-list-modal-pick').style.display = 'none';
     document.querySelector('#modal-view-background').style.display = 'none';
+}
+
+
+export const editListName = () =>{
+    document.querySelector('#edit-list-name-container').style.display = 'flex';
+}
+
+export const discardEditListName = () =>{
+    document.querySelector('#edit-list-name-container').style.display = 'none';
+    document.querySelector('#edit-list-name-container > form > select').value = '0';
+    document.querySelector('#edit-list-name-container > form > input').value = '';
+    removeManageListModal();
 }

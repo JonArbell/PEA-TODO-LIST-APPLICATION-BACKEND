@@ -51,28 +51,28 @@ public class CRUDList {
         return "redirect:"+myCustomModelMap.getCurrentUrl();
     }
 
-    @PostMapping("/list/edit")
-    public String editList(@Valid @ModelAttribute Lists list,
-                           BindingResult result,
-                           RedirectAttributes reMap){
-
-        try{
-
-            if(result.hasErrors()){
-
-                String errorMessage = Objects.requireNonNull(result.getFieldError()).getDefaultMessage();
-
-                reMap.addFlashAttribute("editListMessage",errorMessage);
-            }else{
-                reMap.addFlashAttribute("editListMessage","success");
-                listsOperation.updateListName(list);
-            }
-        }catch (Exception e){
-            System.out.println("Error : "+e.getMessage());
-            reMap.addFlashAttribute("editListMessage",e.getMessage());
-        }
-
-        return "redirect:"+myCustomModelMap.getCurrentUrl();
-    }
+//    @PostMapping("/list/edit")
+//    public String editList(@Valid @ModelAttribute Lists list,
+//                           BindingResult result,
+//                           RedirectAttributes reMap){
+//
+//        try{
+//
+//            if(result.hasErrors()){
+//
+//                String errorMessage = Objects.requireNonNull(result.getFieldError()).getDefaultMessage();
+//
+//                reMap.addFlashAttribute("editListMessage",errorMessage);
+//            }else{
+//                reMap.addFlashAttribute("editListMessage","success");
+//                listsOperation.updateListName(list);
+//            }
+//        }catch (Exception e){
+//            System.out.println("Error : "+e.getMessage());
+//            reMap.addFlashAttribute("editListMessage",e.getMessage());
+//        }
+//
+//        return "redirect:"+myCustomModelMap.getCurrentUrl();
+//    }
 
 }

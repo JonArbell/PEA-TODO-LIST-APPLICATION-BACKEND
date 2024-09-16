@@ -3,9 +3,8 @@ export const createListsContainer = async (data) => {
     const displayListContainer = document.querySelector('#lists-container > ul');
     displayListContainer.innerHTML = '';
 
-    const editListNameSelect = document.querySelector('#edit-list-name > form > select');
-
-    const editListSelect = document.querySelector('#edit-list-id');
+    const editListNameSelect = document.querySelector('#edit-list-name-container > form > select');
+    editListNameSelect.innerHTML = '';
 
     const addTodoListContainer = document.querySelector('#add-edit-todo-list');
     addTodoListContainer.innerHTML = '';
@@ -34,10 +33,6 @@ export const createListsContainer = async (data) => {
         option.value = `${list.id}`;
         addTodoListContainer.appendChild(option);
 
-        const editListOption = document.createElement('option');
-        editListOption.textContent = `${list.listName}`;
-        editListOption.value = `${list.id}`;
-        editListSelect.appendChild(editListOption);
 
     });
 

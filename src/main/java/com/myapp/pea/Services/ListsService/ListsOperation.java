@@ -74,16 +74,16 @@ public class ListsOperation {
 
     }
 
-    public void updateListName(Lists update) throws TodoListNotFoundException {
+    public void updateListName(ListsRequest listsRequest) throws TodoListNotFoundException {
 
         List<Lists> searchList = getLists.allListsDateModified();
 
         boolean isUpdated = false;
         for(Lists currentList : searchList){
 
-            if(currentList.getId().equals(update.getId())){
+            if(currentList.getId().equals(listsRequest.getId())){
 
-                currentList.setListName(update.getListName());
+                currentList.setListName(listsRequest.getListName());
 
                 listsRepo.save(currentList);
 

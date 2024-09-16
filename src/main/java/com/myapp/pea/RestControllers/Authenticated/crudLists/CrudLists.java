@@ -1,5 +1,6 @@
 package com.myapp.pea.RestControllers.Authenticated.crudLists;
 
+import com.myapp.pea.Exceptions.TodoListNotFoundException;
 import com.myapp.pea.RequestResponseModels.ListsModels.ListsRequest;
 import com.myapp.pea.RequestResponseModels.MessageResponse;
 import com.myapp.pea.Services.ListsService.ListsOperation;
@@ -10,10 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,6 +42,29 @@ public class CrudLists {
             return new ResponseEntity<>(new MessageResponse("Successfully Add list"),HttpStatus.CREATED);
         }
 
+    }
+
+    @PatchMapping("/list/edit")
+    public ResponseEntity<?> editListName (@Valid @RequestBody ListsRequest listsRequest,BindingResult bindingResult){
+
+        Map<String, String> errors = new HashMap<>();
+
+        logger.info("List name : {}",listsRequest);
+
+        if(bindingResult.hasErrors()){
+            bindingResult.getFieldErrors().forEach(error -> {
+                errors.put(error.getField(),error.getDefaultMessage());
+            });
+        }
+
+        try{
+            listsOperation.updateListName(listsRequest);
+            return new ResponseEntity<>(new MessageResponse("Edit list name successfully"),HttpStatus.OK);
+        }catch(TodoListNotFoundException e){
+            errors.put(TodoListNotFoundException.class.getSimpleName(),e.getMessage());
+        }
+
+        return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
     }
 
 }

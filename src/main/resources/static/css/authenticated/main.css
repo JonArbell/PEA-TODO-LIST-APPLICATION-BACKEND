@@ -131,7 +131,7 @@
         box-shadow: 0 3px 5px black;
         border-radius: 1em;
         padding: 2em;
-        z-index: 1002;
+        z-index: 1005;
         display: none;
     }
 
@@ -521,7 +521,7 @@
         color: #DDD9CA;
     }
 
-    #add-list-modal-container,#edit-list-modal-container,#create-edit-delete-list-container{
+    #add-list-modal-container,#create-edit-delete-list-container{
         position: absolute;
         z-index: 1002;
         display: none;
@@ -566,7 +566,7 @@
         border: 1.5px solid #182B22;
     }
 
-    #add-list-modal-container,#edit-list-modal-container{
+    #add-list-modal-container{
         background-color: #dad4c0;
         transform: translate(-50%,-50%);
         border-radius: 1em;
@@ -612,16 +612,23 @@
         margin-top: 1em;
     }
 
-    #edit-list-name,#edit-delete-list-modal-pick{
+    #edit-list-name-container,#edit-delete-list-modal-pick{
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
         display: none;
+    }
+
+    #edit-delete-list-modal-pick{
         z-index: 1002;
     }
 
-    #edit-delete-list-modal-pick,#edit-list-name > form{
+    #edit-list-name-container{
+        z-index: 1003;
+    }
+
+    #edit-delete-list-modal-pick,#edit-list-name-container > form{
         background-color: #dad4c0;
         flex-direction: column;
         padding: 1em;
@@ -634,27 +641,29 @@
         font-size: 1.5em;
     }
 
-    #edit-list-name > form{
+    #edit-list-name-container > form{
         display: flex;
+        position: relative;
+        z-index: 1003;
     }
 
-    #edit-list-name > form > span,#edit-delete-list-modal-pick > span{
+    #edit-list-name-container > form > span,#edit-delete-list-modal-pick > span{
         width: 100%;
         display: flex;
         justify-content: flex-end;
         margin: 0;
     }
 
-    #edit-list-name > form > span > p{
-        font-size: 1em;
+    #edit-list-name-container > form > span > p{
+        font-size: 1.5em;
         cursor: pointer;
     }
 
-    #edit-list-name > form > input,#edit-list-name > form > select{
+    #edit-list-name-container > form > input,#edit-list-name-container > form > select{
         background-color: #dad4c0;
     }
 
-    #edit-list-name > form > button,#edit-delete-list-modal-pick > div > button{
+    #edit-list-name-container > form > button,#edit-delete-list-modal-pick > div > button{
         color: #DDD9CA;
         cursor: pointer;
     }
@@ -668,7 +677,7 @@
         margin: 0.5em;
     }
 
-    #edit-list-name > form > button{
+    #edit-list-name-container > form > button{
         background-color: #254336;
     }
 
@@ -685,11 +694,11 @@
         justify-content: space-between;
     }
 
-    #edit-list-name > form > *{
+    #edit-list-name-container > form > *{
         margin: 0.5em;
     }
 
-    #edit-list-name > form > input,#edit-list-name > form > select, #edit-list-name > form > input,#edit-list-name > form > div > button{
+    #edit-list-name-container > form > input,#edit-list-name-container > form > select, #edit-list-name-container > form > input,#edit-list-name-container > form > button{
         border: 1px solid #182B22;
         border-radius: 1em;
         padding: 1em;

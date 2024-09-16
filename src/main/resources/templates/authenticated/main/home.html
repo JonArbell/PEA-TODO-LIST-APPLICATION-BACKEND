@@ -201,22 +201,20 @@
                     -->
                 </div>
 
-                <div id="edit-list-name">
+                <div id="edit-list-name-container">
                     <form>
 
                         <span>
-                            <p>&times;</p>
+                            <p onmouseup="Button.discardEditListName()">&times;</p>
                         </span>
 
                         <h2>Select List to rename:</h2>
 
-                        <select>
+                        <select name="id">
                             <!--
                                 all lists of lists to rename
                             -->
                         </select>
-
-                        <input type="hidden"/>
 
                         <input autofocus="autofocus" type="text" name="listName" placeholder="Enter new list name"/>
 
@@ -234,7 +232,7 @@
                     <h2>Manage your lists:</h2>
 
                     <div>
-                        <button>Edit List Name</button>
+                        <button onmouseup="Button.editListName()">Edit List Name</button>
                         <button>Delete List</button>
                     </div>
 
@@ -243,13 +241,13 @@
                 <div id="create-todo-list-modal-pick">
 
                     <span>
-                        <p>&times;</p>
+                        <p onmouseup="Button.removeCreateNewItemModal()">&times;</p>
                     </span>
 
                     <h3>Create new item</h3>
                     <section>
-                        <button id="pick-todo">To-do</button>
-                        <button id="pick-list">List</button>
+                        <button id="pick-todo" onmouseup="Button.createNewTodo(event)">To-do</button>
+                        <button id="pick-list" onmouseup="Button.createNewList(event)">List</button>
                     </section>
                 </div>
 
@@ -291,7 +289,7 @@
                         
                         <section id="create-edit-todo-button-section">
 
-                            <button id="add-edit-todo-discard-button" type="reset">Discard</button>
+                            <button onmouseup="Button.discardCreateEditTodo()" id="add-edit-todo-discard-button" type="reset">Discard</button>
                             <button id="add-edit-todo-save-button" type="submit">Save</button>
                         </section>
 
@@ -305,33 +303,13 @@
                         
                         <form>
                             <span>
-                                <p>&times;</p>
+                                <p onmouseup="Button.discardAddList()">&times;</p>
                             </span>
 
                             <h2>Add List:</h2>
 
                             <input type="text" autofocus="autofocus" placeholder="List name"/>
                             <button type="submit">Save</button>
-                        </form>
-                    </div>
-
-                    <div id="edit-list-modal-container">
-
-                        <form>
-
-                            <span>
-                                <p>&times;</p>
-                            </span>
-
-                            <h2>Select List to rename:</h2>
-
-                            <select id="edit-list-id" name="listId" required="required">
-
-                            </select>
-                            
-                            <input id="edit-list-name" type="text" required="required" placeholder="Enter new list name"/>
-
-                            <button type="submit">Rename</button>
                         </form>
                     </div>
 
@@ -355,7 +333,7 @@
 
             </footer>
 
-            <button id="create-new-item-button">Create New</button>
+            <button id="create-new-item-button" onmouseup="Button.createNewItem(event)">Create New</button>
 
         </section>
 
