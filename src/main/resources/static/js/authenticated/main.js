@@ -5,7 +5,7 @@ window.ViewDetails = Index.ViewDetails
 window.CrudTodoUi = Index.CrudTodoUi
 
 document.addEventListener('DOMContentLoaded', () => { 
-    Index.PageRequests.loadTasksForPage(); // Load the home request function
+    Index.PageRequests.sortByDateModified(); // Load the home request function
     addEditTodoRequestHandler(); // Call add edit todo handler function
     showProfileModalHandler(); // Call the show profile modal handler function
     logoutHandler(); // Call the logout handler function

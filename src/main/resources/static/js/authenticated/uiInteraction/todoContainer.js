@@ -1,7 +1,16 @@
 export const createTodoContainer = async (data) => {
     const mainContainer = document.querySelector('#todos-container');
+    
+    if(data.length === 0){
+        document.querySelector('#main-head').style.display = 'none';
+        document.querySelector('#todos-container').style.display = 'none';
+        return;
+    }else{
+        document.querySelector('#main-head').style.display = 'flex';
+        document.querySelector('#todos-container').style.display = 'grid';
+        document.querySelector('#no-tasks-display').style.display = 'none';
+    }
     mainContainer.innerHTML = '';
-
     data.forEach(todo => {
 
         const todoContainer = document.createElement('div');

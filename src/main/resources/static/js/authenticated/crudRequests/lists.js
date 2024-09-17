@@ -34,7 +34,7 @@ export const addList = async (event) =>{
 
         Button.discardAddList();
 
-        await PageRequests.loadTasksForPage();
+        await PageRequests.sortByDateModified();
 
     }catch(e){
         console.error(e);
@@ -72,7 +72,7 @@ export const renameList = async (event) =>{
 
         Button.discardEditListName();
 
-        await PageRequests.loadTasksForPage();
+        await PageRequests.sortByDateModified();
 
     }catch(e){
         console.error(e);
@@ -110,7 +110,7 @@ export const deleteList = async (event) =>{
         console.log('Data : '+data);
 
         Button.discardDeleteList();
-        await PageRequests.loadTasksForPage();
+        await PageRequests.sortByDateModified();
 
     }catch(e){
         console.error(e);

@@ -46,7 +46,7 @@ export const addEditTodo = async (event) => {
             throw new Error(error);
         }
 
-        await PageRequests.loadTasksForPage();
+        await PageRequests.sortByDateModified();
         Button.discardCreateEditTodo();
     }catch(e){
         console.error(e);
@@ -100,7 +100,7 @@ export const deleteTodo = async (id) =>{
             throw new Error(error);
         }
 
-        await PageRequests.loadTasksForPage();
+        await PageRequests.sortByDateModified();
 
     }catch(e){
         console.log('Error Delete Todo : '+e);
@@ -129,7 +129,7 @@ export const todoMarkAsDone = async (id) =>{
             throw error.error;
         }
 
-        await PageRequests.loadTasksForPage();
+        await PageRequests.sortByDateModified();
 
     }catch(e){
         console.error(e);

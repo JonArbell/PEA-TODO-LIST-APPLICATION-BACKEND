@@ -102,4 +102,27 @@ public class SortByDateModified {
         return new ResponseEntity<>(new PagesResponse(getAllTodosResponse(),getAllListsResponse(),userResponse()),HttpStatus.OK);
     }
 
+    @GetMapping("/completed-tasks")
+    public ResponseEntity<?> completedTasks(){
+
+        var completedTasks = getAllTodosResponse()
+                .stream()
+                .filter(TodoResponse::isDone)
+                .toList();
+
+        return new ResponseEntity<>(new PagesResponse(completedTasks,getAllListsResponse(),userResponse()),HttpStatus.OK);
+    }
+
+    @GetMapping("/overdue-tasks")
+    public ResponseEntity<?> overdueTasks(){
+
+        var overdueTasks = getAllTodosResponse()
+                .stream()
+                .filter(todo -> !todo.isDone())
+                .filter(todo -> LocalDate.now().isAfter(todo.getDate()))
+                .toList();
+
+        return new ResponseEntity<>(new PagesResponse(overdueTasks,getAllListsResponse(),userResponse()),HttpStatus.OK);
+    }
+
 }

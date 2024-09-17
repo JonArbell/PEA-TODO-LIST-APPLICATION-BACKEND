@@ -2,7 +2,7 @@ import {TodoContainer} from '../index.js';
 import {ListContainer} from '../index.js';
 import {Profile} from '../index.js';
 
-export const loadTasksForPage = async () => {
+export const sortByDateModified = async () => {
 
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
     const path = window.location.pathname;
