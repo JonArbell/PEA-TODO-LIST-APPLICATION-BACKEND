@@ -6,6 +6,9 @@ export const createListsContainer = async (data) => {
     const editListNameSelect = document.querySelector('#edit-list-name-container > form > select');
     editListNameSelect.innerHTML = '';
 
+    const deleteListSelect = document.querySelector('#delete-select-list-container > select');
+    deleteListSelect.innerHTML = '';
+
     const addTodoListContainer = document.querySelector('#add-edit-todo-list');
     addTodoListContainer.innerHTML = '';
     const none = document.createElement('option');
@@ -20,6 +23,12 @@ export const createListsContainer = async (data) => {
             editListNameOption.textContent = `${list.listName}`;
             editListNameOption.value = `${list.id}`;
             editListNameSelect.appendChild(editListNameOption);
+
+            const deleteListOption = document.createElement('option');
+            deleteListOption.textContent = `${list.listName}`;
+            deleteListOption.value = `${list.id}`;
+            deleteListSelect.appendChild(deleteListOption);
+
         }
 
         const li = document.createElement('li');

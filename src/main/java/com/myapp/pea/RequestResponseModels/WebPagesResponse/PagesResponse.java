@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-public class HomeResponse {
+public class PagesResponse {
 
     private List<TodoResponse> todoResponse;
     private List<ListsResponse> listsResponse;

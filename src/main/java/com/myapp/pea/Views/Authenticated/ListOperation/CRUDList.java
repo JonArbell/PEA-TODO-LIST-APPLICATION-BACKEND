@@ -35,21 +35,21 @@ public class CRUDList {
 //        return "redirect:"+myCustomModelMap.getCurrentUrl();
 //    }
 
-    @PostMapping("/list/delete/{id}")
-    public String deleteList(@PathVariable Long id,
-                            boolean deleteTasks,
-                             RedirectAttributes reMap){
-
-        try{
-            listsOperation.deleteList(id,deleteTasks);
-            reMap.addFlashAttribute("deleteListMessage","success");
-        }catch (Exception e){
-            System.out.println("Error : "+e);
-            reMap.addFlashAttribute("deleteListMessage",e.getMessage());
-        }
-
-        return "redirect:"+myCustomModelMap.getCurrentUrl();
-    }
+//    @PostMapping("/list/delete/{id}")
+//    public String deleteList(@PathVariable Long id,
+//                            boolean deleteTasks,
+//                             RedirectAttributes reMap){
+//
+//        try{
+//            listsOperation.deleteList(id,deleteTasks);
+//            reMap.addFlashAttribute("deleteListMessage","success");
+//        }catch (Exception e){
+//            System.out.println("Error : "+e);
+//            reMap.addFlashAttribute("deleteListMessage",e.getMessage());
+//        }
+//
+//        return "redirect:"+myCustomModelMap.getCurrentUrl();
+//    }
 
 //    @PostMapping("/list/edit")
 //    public String editList(@Valid @ModelAttribute Lists list,

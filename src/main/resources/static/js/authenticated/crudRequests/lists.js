@@ -1,5 +1,5 @@
 import { Button } from "../index.js";
-import { Home } from "../index.js";
+import { PageRequests } from "../index.js";
 
 export const addList = async (event) =>{
 
@@ -34,7 +34,7 @@ export const addList = async (event) =>{
 
         Button.discardAddList();
 
-        await Home.home();
+        await PageRequests.loadTasksForPage();
 
     }catch(e){
         console.error(e);
@@ -72,10 +72,49 @@ export const renameList = async (event) =>{
 
         Button.discardEditListName();
 
-        await Home.home();
+        await PageRequests.loadTasksForPage();
 
     }catch(e){
         console.error(e);
     }
+
+}
+
+export const deleteList = async (event) =>{
+
+    event.preventDefault();
+
+    const listId = document.querySelector('#delete-select-list-container > select').value;
+    const deleteTasks = document.querySelector('#delete-select-list-container > div > input').checked;
+    const url = `http://localhost:8080/api/authenticated/list/delete/${listId}`;
+    const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
+    try{
+        
+        const response = await fetch(url,{
+            method : 'DELETE',
+            headers : {
+                'Content-Type':'application/json',
+                'X-XSRF-TOKEN' : csrfToken
+            },
+            body : JSON.stringify(deleteTasks),
+            credentials : 'include'
+        });
+
+        if(!response.ok){
+            const error = await response.json();
+            throw error;
+        }
+
+        const data = await response.json();
+
+        console.log('Data : '+data);
+
+        Button.discardDeleteList();
+        await PageRequests.loadTasksForPage();
+
+    }catch(e){
+        console.error(e);
+    }
+
 
 }

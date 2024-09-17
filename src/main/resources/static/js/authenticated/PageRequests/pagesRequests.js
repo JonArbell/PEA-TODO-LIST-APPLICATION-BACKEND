@@ -2,13 +2,16 @@ import {TodoContainer} from '../index.js';
 import {ListContainer} from '../index.js';
 import {Profile} from '../index.js';
 
-export const home = async () => {
+export const loadTasksForPage = async () => {
 
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
+    const path = window.location.pathname;
+
+    let url = `http://localhost:8080/api/authenticated${path}`;
 
     try{
 
-        const response = await fetch('http://localhost:8080/api/authenticated/home', {
+        const response = await fetch(url, {
             method: 'GET',  
             headers : {
                 'X-CSRF-TOKEN': csrfToken 

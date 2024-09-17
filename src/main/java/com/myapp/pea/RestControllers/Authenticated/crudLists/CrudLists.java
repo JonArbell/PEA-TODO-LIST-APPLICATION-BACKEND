@@ -4,6 +4,7 @@ import com.myapp.pea.Exceptions.TodoListNotFoundException;
 import com.myapp.pea.RequestResponseModels.ListsModels.ListsRequest;
 import com.myapp.pea.RequestResponseModels.MessageResponse;
 import com.myapp.pea.Services.ListsService.ListsOperation;
+import com.myapp.pea.Services.TodoService.TodoOperationService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -23,6 +24,7 @@ public class CrudLists {
 
     private final Logger logger = LoggerFactory.getLogger(CrudLists.class);
     private final ListsOperation listsOperation;
+    private final TodoOperationService todoOperationService;
 
     @PostMapping("/list/add")
     public ResponseEntity<?> addList(@Valid @RequestBody ListsRequest listsRequest, BindingResult bindingResult){
@@ -62,9 +64,32 @@ public class CrudLists {
             return new ResponseEntity<>(new MessageResponse("Edit list name successfully"),HttpStatus.OK);
         }catch(TodoListNotFoundException e){
             errors.put(TodoListNotFoundException.class.getSimpleName(),e.getMessage());
+        }catch (Exception e){
+            errors.put(Exception.class.getSimpleName(),e.getMessage());
         }
 
         return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
+    }
+
+    @DeleteMapping("/list/delete/{id}")
+    public ResponseEntity<?> deleteList(@PathVariable Long id, @RequestBody boolean deleteTasks){
+
+        Map<String, String> errors = new HashMap<>();
+
+        logger.info("Delete all tasks ? : {}",deleteTasks);
+        logger.info("Delete List Id : {}",id);
+
+        try{
+
+            listsOperation.deleteList(id,deleteTasks);
+            return new ResponseEntity<>(new MessageResponse("Delete list Successfully"),HttpStatus.OK);
+        }catch(TodoListNotFoundException e){
+            errors.put(TodoListNotFoundException.class.getSimpleName(),e.getMessage());
+        }catch (Exception e){
+            errors.put(Exception.class.getSimpleName(),e.getMessage());
+        }
+
+        return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
     }
 
 }

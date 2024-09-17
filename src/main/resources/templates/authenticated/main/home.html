@@ -10,7 +10,6 @@
     <meta property="og:url" content="https://www.pea-todo-list-application.onrender.com"/>
 
     <meta name="_csrf_authenticated" th:content="${_csrf.token}"/>
-    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 
     <title>P E A </title>
 
@@ -233,7 +232,7 @@
 
                     <div>
                         <button onmouseup="Button.editListName()">Edit List Name</button>
-                        <button>Delete List</button>
+                        <button onmouseup="Button.deleteList()">Delete List</button>
                     </div>
 
                 </div>
@@ -313,6 +312,45 @@
                         </form>
                     </div>
 
+                    <div id="delete-list-modal-container">
+
+                        <form>
+            
+                            <div id="delete-select-list-container">
+
+                                <span>
+                                    <p onmouseup="Button.discardDeleteList()">&times;</p>
+                                </span>
+
+                                <h2>Select List to delete:</h2>
+            
+                                <select name="id">
+                                    
+                                </select>
+            
+                                <div>
+                                    <p>Also delete all tasks within this list:</p>
+                                    <input name="deleteTasks" id="check-all-tasks" type="checkbox"/>
+                                </div>
+            
+                                <button onmouseup="Button.confirmDeleteList()" type="button">Delete</button>
+                            </div>
+
+                            <div id="delete-list-submit-confirmation">
+
+                                <h3>Are you sure you want to delete this list? If 'Delete All Tasks' is checked, all tasks associated with this list will also be permanently deleted. Please confirm to proceed.</h3>
+
+                                <div>
+                                    <button onmouseup="Button.discardDeleteList()" type="reset">Discard</button>
+                                    <button type="submit">Delete</button>
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
                 </div>
 
             </div>
@@ -339,7 +377,6 @@
 
     </main>
 
-    
     <script type="module" src="../../../js/authenticated/main.js"></script>
 
 </body>

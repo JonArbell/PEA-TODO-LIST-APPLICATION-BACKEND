@@ -5,12 +5,13 @@ window.ViewDetails = Index.ViewDetails
 window.CrudTodoUi = Index.CrudTodoUi
 
 document.addEventListener('DOMContentLoaded', () => { 
-    Index.Home.home(); // Load the home request function
+    Index.PageRequests.loadTasksForPage(); // Load the home request function
     addEditTodoRequestHandler(); // Call add edit todo handler function
     showProfileModalHandler(); // Call the show profile modal handler function
     logoutHandler(); // Call the logout handler function
     addListRequestHandler(); // Call the add list function handler
     editListNameRequestHandler(); // Call the edit list name function handler
+    deleteListRequestHandler();
 });
 
 
@@ -60,5 +61,11 @@ const editListNameRequestHandler = () =>{ // This function is for edit a list na
     document.querySelector('#edit-list-name-container').addEventListener('submit', async (event) =>{
         Index.List.renameList(event);
     });
+
+}
+
+const deleteListRequestHandler = async () =>{
+
+    document.querySelector('#delete-list-modal-container > form').addEventListener('submit',Index.List.deleteList);
 
 }

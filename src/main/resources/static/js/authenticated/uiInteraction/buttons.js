@@ -43,6 +43,7 @@ const discardAddEditDeleteList = () =>{
 export const discardAddList = () =>{
 
     discardAddEditDeleteList();
+    document.querySelector('#add-list-modal-container > form').reset();
     document.querySelector('#add-list-modal-container').style.display ='none';
     removeCreateNewItemModal();
     
@@ -51,16 +52,10 @@ export const discardAddList = () =>{
 export const discardCreateEditTodo = () =>{
 
     document.querySelector('#create-edit-todo-modal-container').style.display = 'none';
-    document.querySelector('#add-edit-title').textContent = 'Add To-do:';
-    document.querySelector('#todo-id').value = '';
-    document.querySelector('#add-edit-todo-title').value = '';
-    document.querySelector('#add-edit-todo-short-description').value = '';
-    document.querySelector('#add-edit-todo-list').value = '0';
-    document.querySelector('#add-edit-todo-target-date').value = '';
+    document.querySelector('#create-edit-todo-modal-container > form').reset();
     removeCreateNewItemModal();
     
 }
-
 
 export const manageList = () => {
 
@@ -73,14 +68,30 @@ export const removeManageListModal = () =>{
     document.querySelector('#modal-view-background').style.display = 'none';
 }
 
-
 export const editListName = () =>{
     document.querySelector('#edit-list-name-container').style.display = 'flex';
 }
 
+export const deleteList = () =>{
+    document.querySelector('#create-edit-delete-list-container').style.display = 'block';
+    document.querySelector('#delete-list-modal-container').style.display = 'block';
+    document.querySelector('#delete-select-list-container').style.display = 'block';
+}
+
+export const confirmDeleteList = () =>{
+    document.querySelector('#delete-select-list-container').style.display = 'none';
+    document.querySelector('#delete-list-submit-confirmation').style.display = 'block';
+}
+
+export const discardDeleteList = () =>{
+    document.querySelector('#delete-list-modal-container > form').reset();
+    document.querySelector('#delete-list-submit-confirmation').style.display = 'none';
+    document.querySelector('#create-edit-delete-list-container').style.display = 'none';
+    removeManageListModal();
+}
+
 export const discardEditListName = () =>{
+    document.querySelector('#edit-list-name-container > form').reset();
     document.querySelector('#edit-list-name-container').style.display = 'none';
-    document.querySelector('#edit-list-name-container > form > select').value = '0';
-    document.querySelector('#edit-list-name-container > form > input').value = '';
     removeManageListModal();
 }

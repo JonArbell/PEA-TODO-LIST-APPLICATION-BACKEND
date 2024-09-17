@@ -1,11 +1,11 @@
 import * as CrudTodoUi from './uiInteraction/crudTodoUi.js';
 import * as Todo from './crudRequests/todo.js';
 import * as List from './crudRequests/lists.js';
-import * as Home from './PageRequests/home.js';
+import * as PageRequests from './PageRequests/pagesRequests.js';
 import * as Profile from './uiInteraction/profile.js';
 import * as TodoContainer from './uiInteraction/todoContainer.js';
 import * as ListContainer from './uiInteraction/listsContainer.js';
 import * as Button from './uiInteraction/buttons.js';
 import * as ViewDetails from './uiInteraction/viewDetails.js';
 
-export {Todo,List,Home,Profile,TodoContainer,ListContainer,Button,ViewDetails,CrudTodoUi};
+export {Todo,List,PageRequests,Profile,TodoContainer,ListContainer,Button,ViewDetails,CrudTodoUi};

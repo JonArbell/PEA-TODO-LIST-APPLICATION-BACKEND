@@ -1,5 +1,5 @@
 import {Button} from '../index.js';
-import {Home} from '../index.js';
+import {PageRequests} from '../index.js';
 
 export const addEditTodo = async (event) => {
     event.preventDefault();
@@ -46,7 +46,7 @@ export const addEditTodo = async (event) => {
             throw new Error(error);
         }
 
-        await Home.home();
+        await PageRequests.loadTasksForPage();
         Button.discardCreateEditTodo();
     }catch(e){
         console.error(e);
@@ -100,7 +100,7 @@ export const deleteTodo = async (id) =>{
             throw new Error(error);
         }
 
-        await Home.home();
+        await PageRequests.loadTasksForPage();
 
     }catch(e){
         console.log('Error Delete Todo : '+e);
@@ -129,7 +129,7 @@ export const todoMarkAsDone = async (id) =>{
             throw error.error;
         }
 
-        await Home.home();
+        await PageRequests.loadTasksForPage();
 
     }catch(e){
         console.error(e);

@@ -521,13 +521,89 @@
         color: #DDD9CA;
     }
 
+    
+
     #add-list-modal-container,#create-edit-delete-list-container{
         position: absolute;
         z-index: 1002;
         display: none;
         top: 50%;
         left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #delete-list-modal-container,#delete-list-submit-confirmation{
+        display: none;
+    }
+
+    #delete-select-list-container > select,#delete-select-list-container > button,#delete-list-submit-confirmation > div > button{
+        padding: 1em;
+        border-radius: 1em;
+        border: 1px solid #182B22;
+    }
+
+    #delete-select-list-container > select{
+        background-color: #dad4c0;
+    }
+
+    #delete-select-list-container > button,#delete-list-submit-confirmation > div > button{
+        color: #DDD9CA;
+        cursor: pointer;
+    }
+
+    #delete-list-submit-confirmation > div > button[type="submit"]{
+        background-color: #254336;
+    }
+
+    #delete-list-submit-confirmation > div > button[type="reset"]{
+        background-color: #dad4c0;
+        color: #182B22;
+    }
+
+    #delete-list-submit-confirmation > div > button{
+        width: 45%;
+    }
+
+    #delete-list-submit-confirmation > *{
+        margin: 0.5em 0 0.5em 0;
+    }
+    #delete-list-submit-confirmation > div{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    #delete-select-list-container > button{
+        background-color: #293b49;
+    }
+
+    #delete-select-list-container{
+        display: flex;
+        flex-direction: column;
         
+    }
+
+    #delete-select-list-container > span{
+        display: flex;
+        justify-content: flex-end;
+        margin: 0;
+    }
+
+    #delete-select-list-container > span > p{
+        cursor: pointer;
+        font-size: 1.5em;
+    }
+
+    #delete-select-list-container > *{
+        width: 100%;
+        margin: 0.5em 0 0.5em 0;
+    }
+
+    #delete-list-modal-container{
+        border-radius: 1em;
+        box-shadow: 0 2px 3px black;
+        background-color: #dad4c0;
+        padding: 1em;
     }
     
     #add-list-modal-container > form{

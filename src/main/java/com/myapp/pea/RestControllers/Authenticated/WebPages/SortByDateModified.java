@@ -3,11 +3,10 @@ package com.myapp.pea.RestControllers.Authenticated.WebPages;
 import com.myapp.pea.RequestResponseModels.ListsModels.ListsResponse;
 import com.myapp.pea.RequestResponseModels.TodoModels.TodoResponse;
 import com.myapp.pea.RequestResponseModels.UserModels.UserResponse;
-import com.myapp.pea.RequestResponseModels.WebPagesResponse.HomeResponse;
+import com.myapp.pea.RequestResponseModels.WebPagesResponse.PagesResponse;
 import com.myapp.pea.Services.AccountService.UserService;
 import com.myapp.pea.Services.ListsService.GetLists;
 import com.myapp.pea.Services.TodoService.GetTasks;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -76,17 +75,17 @@ public class SortByDateModified {
     }
 
     @GetMapping("/home")
-    public ResponseEntity<?> home(HttpServletRequest httpServletRequest){
+    public ResponseEntity<?> home(){
 
         var pending = getAllTodosResponse().stream()
                 .filter(done -> !done.isDone())
                 .toList();
 
-        return new ResponseEntity<>(new HomeResponse(pending,getAllListsResponse(),userResponse()),HttpStatus.OK);
+        return new ResponseEntity<>(new PagesResponse(pending,getAllListsResponse(),userResponse()),HttpStatus.OK);
     }
 
     @GetMapping("/todays-tasks")
-    public ResponseEntity<?> todayTasks(HttpServletRequest httpServletRequest){
+    public ResponseEntity<?> todayTasks(){
 
         var todayTask = getAllTodosResponse()
                 .stream()
@@ -94,9 +93,13 @@ public class SortByDateModified {
                 .filter(done -> !done.isDone())
                 .toList();
 
-        return new ResponseEntity<>(new HomeResponse(todayTask,getAllListsResponse(),userResponse()),HttpStatus.OK);
+        return new ResponseEntity<>(new PagesResponse(todayTask,getAllListsResponse(),userResponse()),HttpStatus.OK);
     }
 
+    @GetMapping("/all-tasks")
+    public ResponseEntity<?> allTasks(){
 
+        return new ResponseEntity<>(new PagesResponse(getAllTodosResponse(),getAllListsResponse(),userResponse()),HttpStatus.OK);
+    }
 
 }
