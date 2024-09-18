@@ -47,13 +47,21 @@ export const addEditTodo = async (event) => {
 
         if(!response.ok){
             const error = await response.json();
-            throw new Error(error);
+            throw error;
         }
 
         await PageRequests.sortByDateModified();
         Button.discardCreateEditTodo();
     }catch(e){
-        console.error(e);
+
+        if(methodType === 'POST'){
+            console.log(e.addTodoError);
+        }else if(methodType === 'PUT'){
+            console.error(e.editTodoError);
+        }else{
+            console.error('What error is that ? '+e);
+        }
+
     }
 }
 
@@ -78,7 +86,7 @@ export const findTodoById = async (id) =>{
 
         if(!response.ok){
             const error = await response.json();
-            throw new Error(error.message);
+            throw error.findTodoError;
         }
 
         const data = await response.json();
@@ -110,7 +118,7 @@ export const deleteTodo = async (id) =>{
 
         if(!response.ok){
             const error = await response.json();
-            throw new Error(error);
+            throw error.deleteTodoError;
         }
 
         await PageRequests.sortByDateModified();
@@ -142,7 +150,7 @@ export const todoMarkAsDone = async (id) =>{
 
         if(!response.ok){
             const error = await response.json();
-            throw error.error;
+            throw error.todoDoneError;
         }
 
         await PageRequests.sortByDateModified();

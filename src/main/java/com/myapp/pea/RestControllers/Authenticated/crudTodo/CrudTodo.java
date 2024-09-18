@@ -47,7 +47,7 @@ public class CrudTodo {
             return new ResponseEntity<>(todoResponse,HttpStatus.OK);
         }catch (TodoItemNotFoundException e){
             Map<String, String> error = new HashMap<>();
-            error.put("message",e.getMessage());
+            error.put("findTodoError",e.getMessage());
             return new ResponseEntity<>(error,HttpStatus.FORBIDDEN);
         }
 
@@ -62,7 +62,7 @@ public class CrudTodo {
 
         if(bindingResult.hasErrors()){
             bindingResult.getFieldErrors().forEach(error -> {
-                errors.put(error.getField(),error.getDefaultMessage());
+                errors.put("addTodoError",error.getDefaultMessage());
             });
             return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
         }
@@ -73,10 +73,10 @@ public class CrudTodo {
             return new ResponseEntity<>(todoRequest,HttpStatus.OK);
         }catch (NotValidDateException e){
             logger.error("NotValidDateException : {}",e.getMessage());
-            errors.put(NotValidDateException.class.getSimpleName(),e.getMessage());
+            errors.put("addTodoError",e.getMessage());
         }catch (RuntimeException e){
             logger.error("RuntimeException : {}",e.getMessage());
-            errors.put(RuntimeException.class.getSimpleName(),e.getMessage());
+            errors.put("addTodoError",e.getMessage());
         }
 
         return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
@@ -88,11 +88,8 @@ public class CrudTodo {
         try{
             todoOperationService.deleteTodo(id);
             return new ResponseEntity<>(HttpStatus.OK);
-        }catch (TodoItemNotFoundException e){
-            error.put(TodoItemNotFoundException.class.getSimpleName(),e.getMessage());
-            return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
-        }catch (Exception e){
-            error.put(Exception.class.getSimpleName(),e.getMessage());
+        } catch (Exception e){
+            error.put("deleteTodoError",e.getMessage());
             return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
         }
     }
@@ -106,7 +103,7 @@ public class CrudTodo {
 
         if(bindingResult.hasErrors()){
             bindingResult.getFieldErrors().forEach(error -> {
-                errors.put(error.getField(),error.getDefaultMessage());
+                errors.put("editTodoError",error.getDefaultMessage());
             });
             return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
         }
@@ -117,10 +114,10 @@ public class CrudTodo {
             return new ResponseEntity<>(todoRequest,HttpStatus.OK);
         }catch (NotValidDateException e){
             logger.error("NotValidDateException : {}",e.getMessage());
-            errors.put(NotValidDateException.class.getSimpleName(),e.getMessage());
+            errors.put("editTodoError",e.getMessage());
         }catch (Exception e){
             logger.error("Exception : {}",e.getMessage());
-            errors.put(Exception.class.getSimpleName(),e.getMessage());
+            errors.put("editTodoError",e.getMessage());
         }
 
         return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
@@ -135,9 +132,8 @@ public class CrudTodo {
             todoOperationService.markAsComplete(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
-
             Map<String, String> error = new HashMap<>();
-            error.put("error",e.getMessage());
+            error.put("todoDoneError",e.getMessage());
             return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
         }
 

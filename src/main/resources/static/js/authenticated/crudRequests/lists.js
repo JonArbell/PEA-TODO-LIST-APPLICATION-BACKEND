@@ -27,7 +27,7 @@ export const addList = async (event) =>{
         if(!response.ok){
 
             const error = await response.json();
-            throw error;
+            throw error.addListError;
 
         }
 
@@ -74,7 +74,7 @@ export const renameList = async (event) =>{
 
         if(!response.ok){
             const error = await response.json();
-            throw error;
+            throw error.editListNameError;
         }
 
         Button.discardEditListName();
@@ -112,7 +112,7 @@ export const deleteList = async (event) =>{
 
         if(!response.ok){
             const error = await response.json();
-            throw error;
+            throw error.deleteListError;
         }
 
         const data = await response.json();
@@ -125,6 +125,5 @@ export const deleteList = async (event) =>{
     }catch(e){
         console.error(e);
     }
-
 
 }

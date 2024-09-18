@@ -13,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,7 +34,7 @@ public class CrudLists {
             Map<String, String> errors = new HashMap<>();
 
             bindingResult.getFieldErrors().forEach(error ->{
-                errors.put(error.getField(),error.getDefaultMessage());
+                errors.put("addListError",error.getDefaultMessage());
             });
             return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
 
@@ -55,17 +54,15 @@ public class CrudLists {
 
         if(bindingResult.hasErrors()){
             bindingResult.getFieldErrors().forEach(error -> {
-                errors.put(error.getField(),error.getDefaultMessage());
+                errors.put("editListNameError",error.getDefaultMessage());
             });
         }
 
         try{
             listsOperation.updateListName(listsRequest);
             return new ResponseEntity<>(new MessageResponse("Edit list name successfully"),HttpStatus.OK);
-        }catch(TodoListNotFoundException e){
-            errors.put(TodoListNotFoundException.class.getSimpleName(),e.getMessage());
-        }catch (Exception e){
-            errors.put(Exception.class.getSimpleName(),e.getMessage());
+        } catch (Exception e){
+            errors.put("editListNameError",e.getMessage());
         }
 
         return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
@@ -83,10 +80,8 @@ public class CrudLists {
 
             listsOperation.deleteList(id,deleteTasks);
             return new ResponseEntity<>(new MessageResponse("Delete list Successfully"),HttpStatus.OK);
-        }catch(TodoListNotFoundException e){
-            errors.put(TodoListNotFoundException.class.getSimpleName(),e.getMessage());
-        }catch (Exception e){
-            errors.put(Exception.class.getSimpleName(),e.getMessage());
+        } catch (Exception e){
+            errors.put("deleteListError",e.getMessage());
         }
 
         return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);

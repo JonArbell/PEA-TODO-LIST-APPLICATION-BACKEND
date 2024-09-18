@@ -25,7 +25,7 @@ export const sortByDateModified = async () => {
         
         if(!response.ok){
             const error = await response.json();
-            throw new Error(error.message);
+            throw error;
         }
 
         const data = await response.json();
@@ -38,7 +38,6 @@ export const sortByDateModified = async () => {
     }
 
 }
-
 
 export const logout = async (event) =>{
 
@@ -63,7 +62,7 @@ export const logout = async (event) =>{
 
         if(!response.ok){
             const error = await response.json();
-            throw new Error(JSON.stringify(error,null,2));
+            throw error;
         }
 
         window.location.href = '/';
