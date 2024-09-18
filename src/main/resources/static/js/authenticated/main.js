@@ -51,7 +51,7 @@ const addListRequestHandler = () =>{ // This function is for adding a list and r
 
 const logoutHandler = () =>{ // This function is for logout
     document.querySelector('#profile-modal > form').addEventListener('submit',async (event) => {
-        Index.Home.logout(event);
+        Index.PageRequests.logout(event);
     });
 }
 
