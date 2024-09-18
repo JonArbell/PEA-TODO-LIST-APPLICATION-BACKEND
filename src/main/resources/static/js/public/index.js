@@ -129,7 +129,7 @@ const createAccount = () =>{
 
         const csrfToken = document.querySelector('meta[name="_csrf"]').content;
 
-        fetch('http://localhost:8080/api/create-account',{
+        fetch('https://pea-todo-list-application.onrender.com/api/create-account',{
             method : 'POST',
             headers : {
                 'Content-Type':'application/json',
@@ -227,7 +227,7 @@ const login = () =>{
         const csrfToken = document.querySelector('meta[name="_csrf"]').content;
         
         try{
-            const response = await fetch('http://localhost:8080/api/login',{
+            const response = await fetch('https://pea-todo-list-application.onrender.com/api/login',{
                 method : 'POST',
                 headers : {
                     'Content-Type': 'application/json',
