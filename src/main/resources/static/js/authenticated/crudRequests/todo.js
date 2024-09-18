@@ -8,10 +8,10 @@ export const addEditTodo = async (event) => {
     let url = null;
     let methodType = null;
     if(typeOfRequest.textContent === 'Add To-do:'){
-        url = 'http://localhost:8080/api/authenticated/todo/add';
+        url = 'https://pea-todo-list-application.onrender.com/api/authenticated/todo/add';
         methodType = 'POST';
     }else if(typeOfRequest.textContent === 'Edit To-do:'){
-        url = 'http://localhost:8080/api/authenticated/todo/edit';
+        url = 'https://pea-todo-list-application.onrender.com/api/authenticated/todo/edit';
         methodType = 'PUT';
     }
 
@@ -54,7 +54,7 @@ export const addEditTodo = async (event) => {
 }
 
 export const findTodoById = async (id) =>{
-    const url = `http://localhost:8080/api/authenticated/find/todo/${id}`;
+    const url = `https://pea-todo-list-application.onrender.com/api/authenticated/find/todo/${id}`;
 
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
 
@@ -85,7 +85,7 @@ export const deleteTodo = async (id) =>{
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
 
     try{
-        const url = `http://localhost:8080/api/authenticated/todo/delete/${id}`;
+        const url = `https://pea-todo-list-application.onrender.com/api/authenticated/todo/delete/${id}`;
 
         const response = await fetch(url,{
             method : 'DELETE',
@@ -114,7 +114,7 @@ export const todoMarkAsDone = async (id) =>{
 
     try{
 
-        const url = `http://localhost:8080/api/authenticated/todo/${id}/mark-as-done`;
+        const url = `https://pea-todo-list-application.onrender.com/api/authenticated/todo/${id}/mark-as-done`;
 
         const response = await fetch(url,{
             method : 'PATCH',

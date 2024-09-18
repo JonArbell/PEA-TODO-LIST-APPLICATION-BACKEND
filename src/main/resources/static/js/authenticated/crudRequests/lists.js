@@ -11,7 +11,7 @@ export const addList = async (event) =>{
 
     try{
 
-        const response = await fetch('http://localhost:8080/api/authenticated/list/add',{
+        const response = await fetch('https://pea-todo-list-application.onrender.com/api/authenticated/list/add',{
             method : 'POST',
             headers : {
                 'Content-Type':'application/json',
@@ -51,7 +51,7 @@ export const renameList = async (event) =>{
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
     try{
 
-        const response = await fetch('http://localhost:8080/api/authenticated/list/edit',{
+        const response = await fetch('https://pea-todo-list-application.onrender.com/api/authenticated/list/edit',{
 
             method : 'PATCH',
             headers : {
@@ -86,7 +86,7 @@ export const deleteList = async (event) =>{
 
     const listId = document.querySelector('#delete-select-list-container > select').value;
     const deleteTasks = document.querySelector('#delete-select-list-container > div > input').checked;
-    const url = `http://localhost:8080/api/authenticated/list/delete/${listId}`;
+    const url = `https://pea-todo-list-application.onrender.com/api/authenticated/list/delete/${listId}`;
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
     try{
         

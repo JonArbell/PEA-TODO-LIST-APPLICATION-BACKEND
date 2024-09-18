@@ -7,7 +7,7 @@ export const sortByDateModified = async () => {
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
     const path = window.location.pathname;
 
-    let url = `http://localhost:8080/api/authenticated${path}`;
+    let url = `https://pea-todo-list-application.onrender.com/api/authenticated${path}`;
 
     try{
 
@@ -45,7 +45,7 @@ export const logout = async (event) =>{
 
     try{
 
-        const response = await fetch('http://localhost:8080/logout',{
+        const response = await fetch('https://pea-todo-list-application.onrender.com/logout',{
             method : 'POST',
             credentials : 'include',
             headers : {
