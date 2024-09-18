@@ -326,7 +326,6 @@
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: auto;
         padding-left: 7.5em;
-        min-height: 55vh;
         height:auto;
         z-index: 0;
     }
