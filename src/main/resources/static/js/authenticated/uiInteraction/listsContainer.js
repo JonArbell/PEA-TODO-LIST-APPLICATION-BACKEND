@@ -50,7 +50,7 @@ export const createListsContainer = async (data) => {
             addTodoListContainer.appendChild(option);
         }
 
-        if(window.location.pathname.split('/').slice(0,2).join('/') === '/list'){ // '/list'
+        if(window.location.pathname === `/list/${list.id}`){
             document.querySelector('title').textContent = `P E A | List - ${list.listName}`;
             document.querySelector('#head-title > h2').textContent = `${list.listName} Tasks :`;
         }

@@ -259,7 +259,7 @@
     }
 
     #lists-container > ul > li > a > p{
-        padding-left: 1.5rem;
+        padding-left: 1.5rem !important;
     }
 
     #lists-container{
@@ -271,7 +271,7 @@
         padding: 2rem 0 2rem 0;
     }
 
-    #lists-container > ul > li,#lists-container > h3{
+    #lists-container > ul > li > a > p,#lists-container > h3{
         padding: 1.5rem 0 1.5rem 0;
     }
 
