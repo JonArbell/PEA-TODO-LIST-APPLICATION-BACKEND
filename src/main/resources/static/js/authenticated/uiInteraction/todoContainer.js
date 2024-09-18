@@ -1,18 +1,13 @@
 export const createTodoContainer = async (data) => {
     const mainContainer = document.querySelector('#todos-container');
-    
-    if(data.length === 0){
-        document.querySelector('#main-head').style.display = 'none';
-        document.querySelector('#todos-container').style.display = 'none';
-        return;
-    }else{
-        document.querySelector('#main-head').style.display = 'flex';
-        document.querySelector('#todos-container').style.display = 'grid';
-        document.querySelector('#no-tasks-display').style.display = 'none';
-    }
     mainContainer.innerHTML = '';
-    data.forEach(todo => {
 
+    const totalTasks = document.querySelector('#total-tasks');
+    totalTasks.innerHTML = '';
+
+    let total = 0;
+    data.forEach((todo,index) => {
+        total += ++index;
         const todoContainer = document.createElement('div');
         todoContainer.classList.add('todo-container');
         todoContainer.id = `${todo.id}`;
@@ -45,5 +40,15 @@ export const createTodoContainer = async (data) => {
 
         mainContainer.appendChild(todoContainer);
     });
+
+    totalTasks.textContent = `${total}`;
+
+    if(total > 0){
+
+        document.querySelector('#no-tasks-display').style.display = 'none';
+    }else{
+        document.querySelector('#no-tasks-display').style.display = 'block';
+    }
+
 
 }

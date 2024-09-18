@@ -321,9 +321,17 @@
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: auto;
         padding-left: 7.5em;
-        min-height: 70vh;
+        min-height: 55vh;
         height:auto;
         z-index: 0;
+    }
+
+    #no-tasks-display{
+        text-align: center;
+    }
+
+    #no-tasks-display > h1{
+        font-size: 3.5rem;
     }
 
     #main-foot{
