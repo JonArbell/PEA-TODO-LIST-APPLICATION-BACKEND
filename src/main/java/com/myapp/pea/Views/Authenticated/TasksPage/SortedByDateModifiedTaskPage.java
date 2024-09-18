@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @AllArgsConstructor
-public class WebPagesView {
+public class SortedByDateModifiedTaskPage {
 
     private UserService userService;
 

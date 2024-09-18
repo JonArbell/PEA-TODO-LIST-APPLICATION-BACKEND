@@ -36,7 +36,10 @@ export const createListsContainer = async (data) => {
 
         const li = document.createElement('li');
         li.innerHTML = `
-            <p>${list.listName}</p>
+            <a href="/list/${list.id}">
+                <p>${list.listName}</p>
+            </a>
+            
         `;
         displayListContainer.appendChild(li);
 

@@ -258,7 +258,7 @@
         text-shadow: -2px 3px 4px black
     }
 
-    #lists-container > ul > li > p{
+    #lists-container > ul > li > a > p{
         padding-left: 1.5rem;
     }
 
@@ -321,6 +321,15 @@
 
     }
 
+    #lists-container > ul > li:hover{
+        background-color: #dad4c0;
+        cursor: pointer;
+    }
+
+    #lists-container > ul > li:hover a > p{
+        color: #182B22;
+    }
+    
     #todos-container{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
