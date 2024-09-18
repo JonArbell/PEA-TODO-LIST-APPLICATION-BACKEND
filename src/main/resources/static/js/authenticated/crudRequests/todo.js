@@ -5,13 +5,17 @@ export const addEditTodo = async (event) => {
     event.preventDefault();
 
     const typeOfRequest = document.querySelector('#add-edit-title');
+
+    const prod = 'https://pea-todo-list-application.onrender.com';
+    const dev = 'http://localhost:8080';
+
     let url = null;
     let methodType = null;
     if(typeOfRequest.textContent === 'Add To-do:'){
-        url = 'https://pea-todo-list-application.onrender.com/api/authenticated/todo/add';
+        url = `${prod}/api/authenticated/todo/add`;
         methodType = 'POST';
     }else if(typeOfRequest.textContent === 'Edit To-do:'){
-        url = 'https://pea-todo-list-application.onrender.com/api/authenticated/todo/edit';
+        url = `${prod}/api/authenticated/todo/edit`;
         methodType = 'PUT';
     }
 
@@ -54,11 +58,16 @@ export const addEditTodo = async (event) => {
 }
 
 export const findTodoById = async (id) =>{
-    const url = `https://pea-todo-list-application.onrender.com/api/authenticated/find/todo/${id}`;
 
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
 
     try{
+
+        const prod = `https://pea-todo-list-application.onrender.com`;
+        const dev = `http://localhost:8080`;
+
+        const url = `${prod}/api/authenticated/find/todo/${id}`;
+
         const response = await fetch(url,{
             method : 'GET',
             credentials : 'include',
@@ -85,7 +94,11 @@ export const deleteTodo = async (id) =>{
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
 
     try{
-        const url = `https://pea-todo-list-application.onrender.com/api/authenticated/todo/delete/${id}`;
+
+        const prod = 'https://pea-todo-list-application.onrender.com';
+        const dev = 'http://localhost:8080';
+
+        const url = `${prod}/api/authenticated/todo/delete/${id}`;
 
         const response = await fetch(url,{
             method : 'DELETE',
@@ -114,7 +127,10 @@ export const todoMarkAsDone = async (id) =>{
 
     try{
 
-        const url = `https://pea-todo-list-application.onrender.com/api/authenticated/todo/${id}/mark-as-done`;
+        const prod = 'https://pea-todo-list-application.onrender.com';
+        const dev = 'http://localhost:8080';
+
+        const url = `${prod}/api/authenticated/todo/${id}/mark-as-done`;
 
         const response = await fetch(url,{
             method : 'PATCH',

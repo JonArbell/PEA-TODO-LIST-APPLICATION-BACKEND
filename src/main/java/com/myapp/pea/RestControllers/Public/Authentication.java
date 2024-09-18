@@ -2,7 +2,7 @@ package com.myapp.pea.RestControllers.Public;
 
 import com.myapp.pea.Entities.User;
 import com.myapp.pea.RequestResponseModels.JwtModels.JwtRequest;
-import com.myapp.pea.RequestResponseModels.JwtModels.JwtResponse;
+import com.myapp.pea.RequestResponseModels.MessageResponse;
 import com.myapp.pea.Security.JWT.JwtService;
 import com.myapp.pea.Services.AccountService.CreateAccountService;
 import jakarta.servlet.http.HttpServletResponse;
@@ -45,7 +45,7 @@ public class Authentication {
 
             bindingResult.getFieldErrors()
                         .forEach(error ->
-                                errors.put(error.getField(),error.getDefaultMessage())
+                                errors.put("loginError",error.getDefaultMessage())
             );
 
             return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
@@ -62,16 +62,18 @@ public class Authentication {
             response.setHeader("Set-Cookie",
                     "jwtAuthToken=" + token + "; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=3600");
 
-            return new ResponseEntity<>(new JwtResponse(token),HttpStatus.OK);
+            return new ResponseEntity<>(new MessageResponse("Panis"),HttpStatus.OK);
         }catch (AuthenticationException e){
             logger.error("Authentication Error : {}",e.getMessage());
-            errors.put("error","Invalid username or password");
-            return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
+
+            errors.put("loginError","Invalid username or password");
+
         }catch (Exception e){
             logger.error("Exception Error : {}",e.getMessage());
-            errors.put("error",e.getMessage());
-            return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
+            errors.put("loginError",e.getMessage());
         }
+
+        return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);
 
     }
 
@@ -82,7 +84,7 @@ public class Authentication {
         if(bindingResult.hasErrors()){
             bindingResult.getFieldErrors()
                     .forEach(error ->
-                            errors.put(error.getField(),error.getDefaultMessage())
+                            errors.put("createUserError",error.getDefaultMessage())
                     );
             logger.error("Error : {}",errors);
             return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
@@ -92,10 +94,10 @@ public class Authentication {
 
             createAccountService.createAccount(user);
             logger.info("User : {}",user);
-            return new ResponseEntity<>(user,HttpStatus.CREATED);
+            return new ResponseEntity<>(new MessageResponse("Your account has been created! You can now log in."),HttpStatus.CREATED);
         }catch (Exception e){
             logger.error("Exception : {}",e.getMessage());
-            errors.put("error",e.getMessage());
+            errors.put("createUserError",e.getMessage());
         }
 
         return new ResponseEntity<>(errors,HttpStatus.FORBIDDEN);

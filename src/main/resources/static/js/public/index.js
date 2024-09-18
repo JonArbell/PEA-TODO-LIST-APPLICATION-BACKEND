@@ -114,7 +114,7 @@ const validateForm = () => {
 
 const createAccount = () =>{
 
-    document.querySelector('#create-new-account-container form').addEventListener('submit',(event)=>{
+    document.querySelector('#create-new-account-container form').addEventListener('submit', async (event)=>{
 
         event.preventDefault();
 
@@ -129,44 +129,47 @@ const createAccount = () =>{
 
         const csrfToken = document.querySelector('meta[name="_csrf"]').content;
 
-        fetch('https://pea-todo-list-application.onrender.com/api/create-account',{
-            method : 'POST',
-            headers : {
-                'Content-Type':'application/json',
-                'X-XSRF-TOKEN': csrfToken 
-            },
-            body : JSON.stringify({
-                firstName : firstName,
-                lastName : lastName,
-                username : username,
-                email : email,
-                password : createPassword
-            })
-        })
-        .then(response => {
-            if(!response.status !== 201){
-                throw new Error(response);
-            }
-    
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error =>{
-            console.log(error);
-            
-        });
+        try{
 
-        closeModal(allContainers,modal);
-        
+            const prod = 'https://pea-todo-list-application.onrender.com/api/create-account';
+            const dev = 'http://localhost:8080/api/create-account';
+
+            const response = await fetch(prod,{
+                method : 'POST',
+                headers : {
+                    'Content-Type':'application/json',
+                    'X-XSRF-TOKEN': csrfToken 
+                },
+                body : JSON.stringify({
+                    firstName : firstName,
+                    lastName : lastName,
+                    username : username,
+                    email : email,
+                    password : createPassword
+                })
+            });
+
+            if(response.status !== 201){
+                const error = await response.json();
+                throw error.createUserError;
+            }
+
+            const message = await response.json();
+
+            createAccountSuccessMessage(message.message);
+
+            closeModal(allContainers,modal);
+
+        }catch(e){
+            createAccountFailedMessage(e);
+        }
+
     });
 }
 
 document.addEventListener('DOMContentLoaded',createAccount);
 
-
-const createAccountMessage = (createAccMessage) =>{
+const createAccountFailedMessage = (createAccMessage) =>{
     const promptMessage = document.querySelector('#prompt-message');
 
     promptMessage.classList.remove('failed-message');
@@ -180,6 +183,27 @@ const createAccountMessage = (createAccMessage) =>{
 
         promptMessage.textContent = `${createAccMessage}`;
         promptMessage.classList.add('failed-message');
+        promptMessage.offsetHeight;
+        promptMessage.style.display='flex';
+
+    }
+
+}
+
+const createAccountSuccessMessage = (createAccMessage) =>{
+    const promptMessage = document.querySelector('#prompt-message');
+
+    promptMessage.classList.remove('failed-message');
+    promptMessage.classList.remove('success-message');
+    promptMessage.style.display='none';
+    promptMessage.textContent = '';
+
+    if(createAccMessage != '' || createAccMessage != null){
+
+        console.log('Panis : '+createAccMessage);
+
+        promptMessage.textContent = `${createAccMessage}`;
+        promptMessage.classList.add('success-message');
         promptMessage.offsetHeight;
         promptMessage.style.display='flex';
 
@@ -227,7 +251,13 @@ const login = () =>{
         const csrfToken = document.querySelector('meta[name="_csrf"]').content;
         
         try{
-            const response = await fetch('https://pea-todo-list-application.onrender.com/api/login',{
+
+            const prod = 'https://pea-todo-list-application.onrender.com';
+            const dev = 'http://localhost:8080';
+
+            const url = `${prod}/api/login`;
+
+            const response = await fetch(url,{
                 method : 'POST',
                 headers : {
                     'Content-Type': 'application/json',
@@ -242,13 +272,10 @@ const login = () =>{
 
             if(!response.ok){
                 const error = await response.json();
-                throw error.error;
+                throw error.loginError;
             }
 
-            const data = await response.json();
-            console.log(data.token);
-            window.location.href = 'http://localhost:8080/home';
-
+            window.location.href = `${prod}/home`;
         }catch(e){
             console.log(e);
             handleLoginFailedMessage(e);

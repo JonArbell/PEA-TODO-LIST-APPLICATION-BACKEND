@@ -7,7 +7,10 @@ export const sortByDateModified = async () => {
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
     const path = window.location.pathname;
 
-    let url = `https://pea-todo-list-application.onrender.com/api/authenticated${path}`;
+    const prod = 'https://pea-todo-list-application.onrender.com';
+    const dev = 'http://localhost:8080';
+
+    let url = `${prod}/api/authenticated${path}`;
 
     try{
 
@@ -45,7 +48,12 @@ export const logout = async (event) =>{
 
     try{
 
-        const response = await fetch('https://pea-todo-list-application.onrender.com/logout',{
+        const prod = 'https://pea-todo-list-application.onrender.com';
+        const dev = 'http://localhost:8080';
+
+        const url = `${prod}/logout`;
+
+        const response = await fetch(url,{
             method : 'POST',
             credentials : 'include',
             headers : {

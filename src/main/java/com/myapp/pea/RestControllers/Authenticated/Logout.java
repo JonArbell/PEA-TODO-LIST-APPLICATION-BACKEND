@@ -1,6 +1,6 @@
 package com.myapp.pea.RestControllers.Authenticated;
 
-import com.myapp.pea.RequestResponseModels.JwtModels.JwtResponse;
+import com.myapp.pea.RequestResponseModels.MessageResponse;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +22,7 @@ public class Logout {
 
         logger.info("Successfully Logout");
 
-        return new ResponseEntity<>(new JwtResponse("Panis"),HttpStatus.OK);
+        return new ResponseEntity<>(new MessageResponse("You have been logged out successfully!"),HttpStatus.OK);
     }
 
 }
