@@ -11,18 +11,22 @@ export const addList = async (event) =>{
 
     try{
 
-        const prod = 'https://pea-todo-list-application.onrender.com/api/authenticated/list/add';
-        const dev = 'http://localhost:8080/api/authenticated/list/add';
+        const prod = 'https://pea-todo-list-application.onrender.com';
+        const dev = 'http://localhost:8080';
 
-        const response = await fetch(prod,{
+        const url = `${prod}/api/authenticated/list/add`;
+
+        const response = await fetch(url,{
             method : 'POST',
             headers : {
                 'Content-Type':'application/json',
                 'X-XSRF-TOKEN' : csrfToken
             },
-            body : JSON.stringify(listName),
+            body : JSON.stringify({listName}),
             credentials : 'include'
         });
+
+        console.log('Status : '+response.status);
 
         if(response.status !== 201){
 
