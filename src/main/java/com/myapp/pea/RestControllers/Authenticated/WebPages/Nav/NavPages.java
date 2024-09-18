@@ -51,8 +51,6 @@ public class NavPages {
     @GetMapping("/about-us")
     public ResponseEntity<?> aboutUs(){
 
-
-
         return new ResponseEntity<>(new PagesResponse(null,getAllListsResponse(),userResponse()),HttpStatus.OK);
     }
 
