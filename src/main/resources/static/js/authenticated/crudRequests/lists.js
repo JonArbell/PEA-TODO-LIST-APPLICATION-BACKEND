@@ -24,7 +24,7 @@ export const addList = async (event) =>{
             credentials : 'include'
         });
 
-        if(!response.ok){
+        if(response.status !== 201){
 
             const error = await response.json();
             throw error.addListError;
