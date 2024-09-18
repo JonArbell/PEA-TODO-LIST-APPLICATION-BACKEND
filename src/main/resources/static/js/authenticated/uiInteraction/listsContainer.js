@@ -10,11 +10,14 @@ export const createListsContainer = async (data) => {
     deleteListSelect.innerHTML = '';
 
     const addTodoListContainer = document.querySelector('#add-edit-todo-list');
-    addTodoListContainer.innerHTML = '';
-    const none = document.createElement('option');
-    none.textContent = "None";
-    none.value = "0";
-    addTodoListContainer.appendChild(none);
+    if(addTodoListContainer){
+        addTodoListContainer.innerHTML = '';
+
+        const none = document.createElement('option');
+        none.textContent = "None";
+        none.value = "0";
+        addTodoListContainer.appendChild(none);
+    }
 
     data.forEach(list =>{
 
@@ -37,11 +40,12 @@ export const createListsContainer = async (data) => {
         `;
         displayListContainer.appendChild(li);
 
-        const option = document.createElement('option');
-        option.textContent = `${list.listName}`;
-        option.value = `${list.id}`;
-        addTodoListContainer.appendChild(option);
-
+        if(addTodoListContainer){
+            const option = document.createElement('option');
+            option.textContent = `${list.listName}`;
+            option.value = `${list.id}`;
+            addTodoListContainer.appendChild(option);
+        }
 
     });
 

@@ -217,13 +217,18 @@
     }
 
     #main-body{
-        height: 70vh;
+        min-height: 70vh;
+        max-height: 80.1vh;
         overflow-y: scroll;
         position: relative;
     }
-    
+
     #main-body,#main-head{
         width: 100%;
+    }
+
+    #main-top-container{
+        margin-top: 0;
     }
 
     #todo-progress-chart{
@@ -299,9 +304,9 @@
 
     #main-body > hr{
         width: 100%;
-        height: 1px;
+        height: 0.15rem;
         background-color: #254336;
-        border-radius: 10px;
+        border-radius: 1rem;
     }
 
     header ul li * {

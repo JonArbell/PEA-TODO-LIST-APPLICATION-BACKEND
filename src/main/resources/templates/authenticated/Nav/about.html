@@ -11,12 +11,13 @@
 
     <meta name="_csrf_authenticated" th:content="${_csrf.token}"/>
 
-    <title>P E A | All Tasks </title>
+    <title>About Us</title>
 
     <link rel="icon" type="icon" href="../../../images/checklist.ico"/>
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="../../../css/authenticated/main.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../../css/authenticated/about.css"/>
     <link href="../../../css/mediaQueries/authenticated.css" rel="stylesheet"/>
 </head>
 <body>
@@ -141,72 +142,74 @@
 
         <section id="main-section">
 
-            <div id="view-details">
-                <span>
-                    <p onmouseup="ViewDetails.removeDetails()">&times;</p>
-                </span>
-                <h2 id="view-title"></h2>
-
-                <section>
-                    <h3>Completed :</h3>
-                    <p id="isCompleted"></p>
-                </section>
-
-                <section>
-                    <h3>Description :</h3>
-                    <p id="view-description"></p>
-                </section>
-                
-                <section>
-                    <h3>List</h3>
-                    <p id="view-todo-list"></p>
-                </section>
-
-                <section>
-                    <h3>Target Date :</h3>
-                    <p id="view-target-date">1</p>
-                </section>
-                
-            </div>
-            
-            <div id="main-head">
-
-                <div id="head-title">
-                    <h2>All Tasks : </h2>
-                    <div>
-                        <h2 id="total-tasks"></h2>
-                    </div>
-                </div>
-
-                <div>
-                    <p>To-do list :</p>
-
-                    <div id="sort-container">
-                        <p>Sort By:</p>
-                        <select>
-                            <option>Date Modified</option>
-                            <option>Title</option>
-                            <option>Target Date</option>
-                        </select>
-                    </div>
-
-                </div>
-                    
-            </div>
-
-            <hr/>
-
             <div id="main-body">
 
-                <div id="no-tasks-display">
-                    <h1>Looks like you don't have any tasks right now. Add new tasks to get started and keep track of everything in one place!</h1>
-                </div>
+                <div class="nav-body">
+                    <div id="main-top-container" class="about-containers">
+                        <h1>PEA TO-DO LIST APPLICATION</h1>
+              
+                        <p>Welcome to the PEA TO-DO LIST APPLICATION! My name is Jon Arbell De Ocampo, and I am thrilled to introduce you to my very first web application. PEA stands for Plan, Execute, Achieve, encapsulating the essence of productivity and accomplishment.</p>
+                    </div>
+                    
+                    <div class="about-containers">
+                        <h2>The Journey</h2>
                 
-                <div id="todos-container">
-                    <!--
-                        All todo's here
-                        <div class=".todo-container"></div>
-                    -->
+                        <p>Over the past three months, I've been immersed in developing the PEA TO-DO LIST APPLICATION. I simultaneously learned HTML, CSS, JavaScript, and Spring Boot, applying these skills as I progressed. Starting with a month of foundational learning, I continued to develop and refine the app, incorporating new knowledge into its design and functionality.</p>
+    
+                        <p>The backend of the app is powered by Spring Boot with Java, and it uses PostgreSQL for database management. This integration ensures efficient data handling and robust server-side logic.</p>
+                        
+                        <p>Completing the app within three months, while still learning and applying new technologies, has been a significant achievement. The PEA TO-DO LIST APPLICATION reflects my dedication to transforming ideas into practical solutions through continuous learning and development.</p>
+                    </div>
+                
+                
+                    <div class="about-containers">
+                        <h2>Why PEA TO-DO LIST APPLICATION?</h2>
+                
+                        <p>I created the PEA TO-DO LIST APPLICATION because I personally struggled with prioritization and task management. This app serves as a tool to help users like me organize tasks effectively, set priorities, and track progress towards achieving their goals.</p>
+                    </div>
+                
+                    <div class="about-containers">
+                        <h2>Features</h2>
+                        <ul>
+                          <li>
+                            <strong>Simple and Intuitive:</strong>Designed to be user-friendly, making task management effortless.
+                          </li>
+                    
+                          <li>
+                            <strong>Flexible Task Management:</strong> Organize your tasks, set priorities, and track your progress seamlessly.
+                          </li>
+                    
+                          <li>
+                            <strong>Secure Data Management:</strong>Accessible across devices, ensuring you stay productive wherever you go.
+                          </li>
+            
+                          <li>
+                            <strong>Secure Data Management:</strong> Your information and tasks are protected with standard security measures, ensuring a safe and reliable experience.
+                          </li>
+
+                        </ul>
+                    </div>
+            
+                    <div class="about-containers">
+                        <h2>Future Plans</h2>
+                        <p>At PEA TO-DO LIST APPLICATION, we're dedicated to continual improvement. Our upcoming updates will focus on:</p>
+                        <ul>
+                            <li><strong>Enhancing Functionality:</strong> Implementing new features and refining existing ones to better meet user needs.</li>
+    
+                            <li><strong>Improving User Experience:</strong> Leveraging user feedback to create a more intuitive and enjoyable application.</li>
+    
+                            <li><strong>Strengthening Security:</strong> Upgrading our security measures to protect your data and ensure a reliable experience.</li>
+    
+                            <li><strong>Introducing Real-Time Search:</strong> Adding real-time search for to-do items to streamline task management and boost productivity.</li>
+    
+                            <li>
+                                <strong>Adding Notifications:</strong> Implementing a notification system to keep users informed and engaged with their tasks.
+                            </li>
+                        </ul>
+                        
+                    </div>
+                
+                    <h3 id="last-parag">Thank you for visiting, and I hope the PEA Todo App helps you plan effectively, execute efficiently, and achieve your goals!</h3>
                 </div>
 
                 <div id="edit-list-name-container">
@@ -244,65 +247,6 @@
                         <button onmouseup="Button.deleteList()">Delete List</button>
                     </div>
 
-                </div>
-
-                <div id="create-todo-list-modal-pick">
-
-                    <span>
-                        <p onmouseup="Button.removeCreateNewItemModal()">&times;</p>
-                    </span>
-
-                    <h3>Create new item</h3>
-                    <section>
-                        <button id="pick-todo" onmouseup="Button.createNewTodo(event)">To-do</button>
-                        <button id="pick-list" onmouseup="Button.createNewList(event)">List</button>
-                    </section>
-                </div>
-
-                <div id="create-edit-todo-modal-container">
-
-                    <h2 id="add-edit-title">Add To-do:</h2>
-
-                    <form>
-
-                        <input id="todo-id" type="hidden"/>
-                        
-                        <section>
-                            <input id="add-edit-todo-title" autofocus="autofocus" required="required" name="title" type="text" placeholder="Title"/>
-                        </section>
-
-                        <section>
-                            <textarea draggable="false" id="add-edit-todo-short-description" name="short-description" placeholder="Short Description"></textarea>
-                        </section>
-                        
-                        <section id="list-section">
-
-                            <label for="add-edit-todo-list">
-                                <h4>List [Optional]</h4>
-                            </label>
-
-                            <select id="add-edit-todo-list" name="listName">
-                                <option value="0">None</option>
-
-                            </select>
-
-                        </section>
-                        
-                        <section id="target-date-section">
-                            <label for="add-edit-todo-target-date">
-                                <h4>Target Date</h4>
-                            </label>
-                            <input id="add-edit-todo-target-date" required="required" name="target-date" type="date" placeholder="MM-DD-YYYY"/>
-                        </section>
-                        
-                        <section id="create-edit-todo-button-section">
-
-                            <button onmouseup="Button.discardCreateEditTodo()" id="add-edit-todo-discard-button" type="reset">Discard</button>
-                            <button id="add-edit-todo-save-button" type="submit">Save</button>
-                        </section>
-
-                    </form>
-                    
                 </div>
 
                 <div id="create-edit-delete-list-container">
@@ -379,8 +323,6 @@
                 <a href="/contact-us">Contact</a>
 
             </footer>
-
-            <button id="create-new-item-button" onmouseup="Button.createNewItem(event)">Create New</button>
 
         </section>
 

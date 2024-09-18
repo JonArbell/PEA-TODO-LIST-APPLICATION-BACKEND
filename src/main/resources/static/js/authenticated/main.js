@@ -41,8 +41,10 @@ const showProfileModalHandler = () =>{ // This function is for showing and hide 
 
 const addEditTodoRequestHandler = () =>{ // This function is for adding and editing a todo and reload home request
 
-    document.querySelector('#create-edit-todo-modal-container > form').addEventListener('submit',Index.Todo.addEditTodo);
-
+    if(window.location.pathname !== '/about-us' && window.location.pathname !== '/contact-us'){
+        document.querySelector('#create-edit-todo-modal-container > form').addEventListener('submit',Index.Todo.addEditTodo);
+    }
+    
 }
 
 const addListRequestHandler = () =>{ // This function is for adding a list and reload home request

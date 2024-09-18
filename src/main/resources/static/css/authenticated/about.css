@@ -1,26 +1,32 @@
-.about-containers *{
-
-    margin: 2% 0 2% 0;
-
-}
-#middle-container > div{
-    overflow-y: scroll;
-    font-size: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: 90vh;
+#main-section > hr {
+    height: 0.15rem;
 }
 
-
-.about-containers,#last-parag{
-    margin: 0.5% 0 0.5% 0;
-}
 #last-parag{
     text-align: center;
-    margin-bottom: 3%;
+    margin-top: 2.5rem;
 }
-.about-containers{
-    width: 97%;
+
+.nav-body{
+    padding: 0 1rem 1rem 1rem;
+}
+
+.nav-body h1{
+    font-size: 3rem;
+}
+
+.nav-body > div *{
+    margin: 1rem 0 1rem 0;
+}
+
+.nav-body h2{
+    font-size: 1.5rem;
+}
+
+.nav-body p, .nav-body li{
+    font-size: 1.2rem;
+}
+
+.nav-body > *{
+    margin: 2rem 0 2rem 0;
 }
