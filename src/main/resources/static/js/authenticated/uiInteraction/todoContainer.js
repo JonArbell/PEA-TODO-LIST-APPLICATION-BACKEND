@@ -6,6 +6,12 @@ export const createTodoContainer = async (data) => {
     
         const totalTasks = document.querySelector('#total-tasks');
         totalTasks.innerHTML = '';
+
+        if(data.length === 0){
+            document.querySelector('#no-tasks-display').style.display = 'block';
+            totalTasks.textContent = `0`;
+            return;
+        }
     
         let total = 0;
         data.forEach((todo,index) => {
@@ -44,14 +50,8 @@ export const createTodoContainer = async (data) => {
         });
     
         totalTasks.textContent = `${total}`;
-    
-        if(total > 0){
-    
-            document.querySelector('#no-tasks-display').style.display = 'none';
-        }else{
-            document.querySelector('#no-tasks-display').style.display = 'block';
-        }
-    
+        document.querySelector('#no-tasks-display').style.display = 'none';
+
     }
     
 }
