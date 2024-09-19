@@ -12,7 +12,7 @@ export const createTodoContainer = async (data) => {
             totalTasks.textContent = `0`;
             return;
         }
-    
+        document.querySelector('#no-tasks-display').style.display = 'none';
         let total = 0;
         data.forEach((todo,index) => {
             total += ++index;
@@ -50,8 +50,7 @@ export const createTodoContainer = async (data) => {
         });
     
         totalTasks.textContent = `${total}`;
-        document.querySelector('#no-tasks-display').style.display = 'none';
-
+        
     }
     
 }
