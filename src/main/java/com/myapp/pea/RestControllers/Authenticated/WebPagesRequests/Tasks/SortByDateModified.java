@@ -1,4 +1,4 @@
-package com.myapp.pea.RestControllers.Authenticated.WebPages.Tasks;
+package com.myapp.pea.RestControllers.Authenticated.WebPagesRequests.Tasks;
 
 import com.myapp.pea.RequestResponseModels.ListsModels.ListsResponse;
 import com.myapp.pea.RequestResponseModels.TodoModels.TodoResponse;

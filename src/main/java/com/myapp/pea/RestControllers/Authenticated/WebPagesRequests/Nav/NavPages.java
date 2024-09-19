@@ -1,4 +1,4 @@
-package com.myapp.pea.RestControllers.Authenticated.WebPages.Nav;
+package com.myapp.pea.RestControllers.Authenticated.WebPagesRequests.Nav;
 
 import com.myapp.pea.RequestResponseModels.ListsModels.ListsResponse;
 import com.myapp.pea.RequestResponseModels.UserModels.UserResponse;

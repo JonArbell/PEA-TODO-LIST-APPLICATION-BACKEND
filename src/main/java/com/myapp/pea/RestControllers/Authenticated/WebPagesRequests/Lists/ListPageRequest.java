@@ -1,4 +1,4 @@
-package com.myapp.pea.RestControllers.Authenticated.WebPages.Lists;
+package com.myapp.pea.RestControllers.Authenticated.WebPagesRequests.Lists;
 
 import com.myapp.pea.RequestResponseModels.ListsModels.ListsResponse;
 import com.myapp.pea.RequestResponseModels.TodoModels.TodoResponse;
@@ -15,12 +15,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/authenticated")
-public class SortByDateModifiedList {
+public class ListPageRequest {
 
     private final GetTasks getTasks;
     private final GetLists getLists;
@@ -85,4 +86,32 @@ public class SortByDateModifiedList {
         return new ResponseEntity<>(new PagesResponse(todosOfThisList,getAllListsResponse(),userResponse()),
                 HttpStatus.OK);
     }
+
+    @GetMapping("/list/{id}/sort-by-title")
+    public ResponseEntity<?> getListSortByTitle(@PathVariable Long id){
+
+
+        var todosOfThisList = getAllTodosResponse()
+                .stream()
+                .filter(todo -> todo.getListId() != null && todo.getListId().equals(id))
+                .sorted(Comparator.comparing(TodoResponse::getTitle))
+                .toList();
+
+        return new ResponseEntity<>(new PagesResponse(todosOfThisList,getAllListsResponse(),userResponse()),
+                HttpStatus.OK);
+    }
+
+    @GetMapping("/list/{id}/sort-by-target-date")
+    public ResponseEntity<?> getListSortByTargetDate(@PathVariable Long id){
+
+        var todosOfThisList = getAllTodosResponse()
+                .stream()
+                .filter(todo -> todo.getListId() != null && todo.getListId().equals(id))
+                .sorted(Comparator.comparing(TodoResponse::getDate))
+                .toList();
+
+        return new ResponseEntity<>(new PagesResponse(todosOfThisList,getAllListsResponse(),userResponse()),
+                HttpStatus.OK);
+    }
+
 }

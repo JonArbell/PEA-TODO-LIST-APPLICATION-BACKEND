@@ -6,11 +6,17 @@ export const sortByRequest = async () => {
 
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
     const path = window.location.pathname;
+    const sort = sessionStorage.getItem('sortBy');
 
+    let url = null;
     const prod = 'https://pea-todo-list-application.onrender.com';
     const dev = 'http://localhost:8080';
 
-    let url = `${prod}/api/authenticated${path}`;
+    if(sort !== null && sort !== 'd-m'){
+        url = `${dev}/api/authenticated${path}/${sort}`;
+    }else{
+        url = `${dev}/api/authenticated${path}`;
+    }
 
     try{
 
@@ -22,7 +28,6 @@ export const sortByRequest = async () => {
             credentials: 'include'  
         });
 
-        
         if(!response.ok){
             const error = await response.json();
             throw error;

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 @AllArgsConstructor
-public class ListsSortedByDateModified {
+public class ListPage {
 
     private final UserService userService;
     private final GetLists getLists;
@@ -34,6 +34,8 @@ public class ListsSortedByDateModified {
 
         return "authenticated/lists/listPage";
     }
+
+
 
 //    @GetMapping("/list/{id}")
 //    public String getList(@PathVariable Long id, ModelMap map, RedirectAttributes remap, HttpServletRequest request) throws TodoListNotFoundException{
