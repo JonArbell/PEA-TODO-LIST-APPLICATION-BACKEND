@@ -2,7 +2,7 @@ import {TodoContainer} from '../index.js';
 import {ListContainer} from '../index.js';
 import {Profile} from '../index.js';
 
-export const sortByDateModified = async () => {
+export const sortByRequest = async () => {
 
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
     const path = window.location.pathname;
@@ -44,7 +44,7 @@ export const logout = async (event) =>{
     event.preventDefault();
 
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
-
+    
     try{
 
         const prod = 'https://pea-todo-list-application.onrender.com';
@@ -70,3 +70,4 @@ export const logout = async (event) =>{
         console.log(e);
     }
 }
+

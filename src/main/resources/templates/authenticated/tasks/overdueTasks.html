@@ -183,10 +183,10 @@
 
                     <div id="sort-container">
                         <p>Sort By:</p>
-                        <select>
-                            <option>Date Modified</option>
-                            <option>Title</option>
-                            <option>Target Date</option>
+                        <select onchange="ChangePage.sortByChangePage()" name="sort">
+                            <option value="d-m">Date Modified</option>
+                            <option value="title">Title</option>
+                            <option value="t-d">Target Date</option>
                         </select>
                     </div>
 

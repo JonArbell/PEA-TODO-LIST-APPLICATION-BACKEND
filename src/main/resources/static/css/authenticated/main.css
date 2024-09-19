@@ -833,8 +833,8 @@
     }
 
     #sort-container > select{
-        border-radius: 0.5em;
-        padding: 0.5em;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
         background-color: #293b49;
     }
 

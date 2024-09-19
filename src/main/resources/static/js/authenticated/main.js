@@ -1,11 +1,12 @@
 import * as Index from './index.js';
 
-window.Button = Index.Button // Make the scope global for view details and remove view Details
-window.ViewDetails = Index.ViewDetails
-window.CrudTodoUi = Index.CrudTodoUi
+window.Button = Index.Button; // Make the scope global for view details and remove view Details
+window.ViewDetails = Index.ViewDetails;
+window.CrudTodoUi = Index.CrudTodoUi;
+window.ChangePage = Index.ChangePage;
 
 document.addEventListener('DOMContentLoaded', () => { 
-    Index.PageRequests.sortByDateModified(); // Load the home request function
+    Index.PageRequests.sortByRequest(); // Load the home request function
     addEditTodoRequestHandler(); // Call add edit todo handler function
     showProfileModalHandler(); // Call the show profile modal handler function
     logoutHandler(); // Call the logout handler function
