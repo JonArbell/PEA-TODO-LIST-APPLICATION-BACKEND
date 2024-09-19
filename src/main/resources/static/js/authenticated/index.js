@@ -7,6 +7,6 @@ import * as TodoContainer from './uiInteraction/todoContainer.js';
 import * as ListContainer from './uiInteraction/listsContainer.js';
 import * as Button from './uiInteraction/buttons.js';
 import * as ViewDetails from './uiInteraction/viewDetails.js';
-import * as ChangePage from './uiInteraction/changePage.js';
+import * as SortBy from './uiInteraction/sorting.js';
 
-export {Todo,List,PageRequests,Profile,TodoContainer,ListContainer,Button,ViewDetails,CrudTodoUi,ChangePage};
+export {Todo,List,PageRequests,Profile,TodoContainer,ListContainer,Button,ViewDetails,CrudTodoUi,SortBy};

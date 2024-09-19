@@ -1,6 +1,6 @@
 import { PageRequests } from "../index.js";
 
-export const sortByChangePage = async () =>{
+export const sortProcess = async () =>{
 
     const sort = document.querySelector('#sort-container > select');
     

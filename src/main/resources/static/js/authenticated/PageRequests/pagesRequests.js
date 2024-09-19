@@ -13,9 +13,9 @@ export const sortByRequest = async () => {
     const dev = 'http://localhost:8080';
 
     if(sort !== null && sort !== 'd-m'){
-        url = `${dev}/api/authenticated${path}/${sort}`;
+        url = `${prod}/api/authenticated${path}/${sort}`;
     }else{
-        url = `${dev}/api/authenticated${path}`;
+        url = `${prod}/api/authenticated${path}`;
     }
 
     try{

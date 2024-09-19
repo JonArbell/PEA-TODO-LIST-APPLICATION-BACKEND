@@ -3,7 +3,7 @@ import * as Index from './index.js';
 window.Button = Index.Button; // Make the scope global for view details and remove view Details
 window.ViewDetails = Index.ViewDetails;
 window.CrudTodoUi = Index.CrudTodoUi;
-window.ChangePage = Index.ChangePage;
+window.SortBy = Index.SortBy;
 
 document.addEventListener('DOMContentLoaded', () => { 
     Index.PageRequests.sortByRequest(); // Load the home request function
