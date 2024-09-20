@@ -50,7 +50,7 @@ export const searchTodoUi = async (data) =>{
     data.forEach(todo => {
 
         const newElement = document.createElement('p');
-        newElement.setAttribute('oninput',`ViewDetails.viewDetails(${todo.id})`);
+        newElement.setAttribute('onclick',`ViewDetails.viewDetails(${todo.id})`);
         newElement.textContent = `${todo.title}`;
 
         searchContainer.appendChild(newElement);
