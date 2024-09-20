@@ -46,7 +46,7 @@ public class ListsOperation {
 
             if(list.getId().equals(id)){
 
-                for(Todo todo : getTasks.allTodoDateModified()){
+                for(Todo todo : getTasks.getAllTodo()){
 
                     if(todo.getLists() != null && todo.getLists().getId().equals(id)){
                         todo.setLists(null);

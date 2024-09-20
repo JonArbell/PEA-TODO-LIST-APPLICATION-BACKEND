@@ -33,3 +33,30 @@ export const todoMarkAsDoneUi = async (id) =>{
     await Todo.todoMarkAsDone(id);
 
 }
+
+export const searchTodoUi = async (data) =>{
+
+    const searchContainer = document.querySelector('#search-result-modal');
+    searchContainer.innerHTML = '';
+    searchContainer.style.display = 'block';
+
+    let panis = data.length === 0;
+    console.log('True or false : '+panis);
+
+    if(data.length === 0){
+        const newElement = document.createElement('h3');
+        newElement.textContent = 'No result';
+        searchContainer.appendChild(newElement);
+        return;
+    }
+
+    data.forEach(element => {
+
+        const newElement = document.createElement('p');
+        newElement.textContent = `${element.title}`;
+
+        searchContainer.appendChild(newElement);
+    });
+
+
+}

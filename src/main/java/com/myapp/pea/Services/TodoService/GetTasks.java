@@ -16,35 +16,10 @@ public class GetTasks {
     private final UserService userService;
     private final TodoRepo todoRepo;
 
-    public List<Todo> allTodoDateModified(){
+    public List<Todo> getAllTodo(){
 
-        List<Todo> allTodo = todoRepo
+        return todoRepo
                 .findByUserId(userService.getId());
-
-        return allTodo
-                .stream()
-                .sorted(Comparator.comparing(Todo::getDateModified))
-                .toList()
-                .reversed();
     }
 
-    public List<Todo> allTodoTitle(){
-        List<Todo> allTodo = todoRepo
-                .findByUserId(userService.getId());
-
-        return allTodo
-                .stream()
-                .sorted(Comparator.comparing(Todo::getTitle))
-                .toList();
-    }
-
-    public List<Todo> allTodoTargetDate(){
-        List<Todo> allTodo = todoRepo
-                .findByUserId(userService.getId());
-
-        return allTodo
-                .stream()
-                .sorted(Comparator.comparing(Todo::getDate))
-                .toList();
-    }
 }

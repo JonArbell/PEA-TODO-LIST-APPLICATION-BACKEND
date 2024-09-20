@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     addListRequestHandler(); // Call the add list function handler
     editListNameRequestHandler(); // Call the edit list name function handler
     deleteListRequestHandler();
+    searchTodoHandler();
+    searchTodoUiHandler();
 });
 
 
@@ -70,5 +72,23 @@ const editListNameRequestHandler = () =>{ // This function is for edit a list na
 const deleteListRequestHandler = async () =>{
 
     document.querySelector('#delete-list-modal-container > form').addEventListener('submit',Index.List.deleteList);
+
+}
+
+const searchTodoHandler = async () =>{
+    document.querySelector('header > ul > div > li > form').addEventListener('submit',Index.Todo.searchTodoQuery);
+}
+
+const searchTodoUiHandler = () =>{
+
+    const searchModalContainer = document.querySelector('#search-result-modal');
+
+    document.addEventListener('click',(event)=>{
+
+        if(!searchModalContainer.contains(event.target)){
+            searchModalContainer.style.display = 'none';
+        }
+
+    });    
 
 }

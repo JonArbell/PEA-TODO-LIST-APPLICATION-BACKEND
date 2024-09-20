@@ -1,6 +1,5 @@
 package com.myapp.pea.RestControllers.Authenticated.crudLists;
 
-import com.myapp.pea.Exceptions.TodoListNotFoundException;
 import com.myapp.pea.RequestResponseModels.ListsModels.ListsRequest;
 import com.myapp.pea.RequestResponseModels.MessageResponse;
 import com.myapp.pea.Services.ListsService.ListsOperation;

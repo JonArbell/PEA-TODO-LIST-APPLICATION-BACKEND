@@ -4,6 +4,7 @@ import com.myapp.pea.Exceptions.NotValidDateException;
 import com.myapp.pea.Exceptions.TodoItemNotFoundException;
 import com.myapp.pea.RequestResponseModels.TodoModels.TodoRequest;
 import com.myapp.pea.RequestResponseModels.TodoModels.TodoResponse;
+import com.myapp.pea.Services.TodoService.GetTasks;
 import com.myapp.pea.Services.TodoService.TodoOperationService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,6 +26,7 @@ public class CrudTodo {
 
     private final Logger logger = LoggerFactory.getLogger(CrudTodo.class);
     private final TodoOperationService todoOperationService;
+    private final GetTasks getTasks;
 
     @GetMapping("/find/todo/{id}")
     public ResponseEntity<?> viewDetails(@PathVariable Long id){
@@ -136,6 +140,36 @@ public class CrudTodo {
             error.put("todoDoneError",e.getMessage());
             return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
         }
+
+    }
+
+    @GetMapping("/search-todo")
+    public ResponseEntity<?> searchTodoQuery(@RequestParam("search") String search){
+
+        var todoListResponse = new ArrayList<TodoResponse>();
+
+        getTasks.getAllTodo()
+                .stream()
+                .filter(todo -> todo.getTitle().equalsIgnoreCase(search))
+                .forEach(todo -> {
+
+                    var getTodo = TodoResponse.builder()
+                            .id(todo.getUserId())
+                            .listId((todo.getLists() == null) ? 0L : todo.getLists().getId())
+                            .listName((todo.getLists() == null) ? "None" : todo.getLists().getListName())
+                            .title(todo.getTitle())
+                            .date(todo.getDate())
+                            .dateModified(todo.getDateModified())
+                            .formattedDate(todo.getFormattedDate())
+                            .shortDescription(todo.getShortDescription())
+                            .done(todo.isDone())
+                            .build();
+
+                    todoListResponse.add(getTodo);
+
+                });
+
+        return new ResponseEntity<>(todoListResponse,HttpStatus.OK);
 
     }
 

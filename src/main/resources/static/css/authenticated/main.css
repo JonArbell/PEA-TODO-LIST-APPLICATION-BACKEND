@@ -258,6 +258,10 @@
         text-shadow: -2px 3px 4px black
     }
 
+    header > ul > li{
+        position: relative;
+    }
+
     #lists-container > ul > li > a > p{
         padding-left: 1.5rem !important;
     }
@@ -836,6 +840,38 @@
         border-radius: 0.5rem;
         padding: 0.5rem;
         background-color: #293b49;
+    }
+
+    #search-result-modal{
+        position: absolute;
+        min-height: 10vh;
+        max-height: 30vh;
+        background-color: white;
+        width: 16.67rem;
+        top: 70%;
+        border-radius: 0 0 1rem 1rem;
+        box-shadow: 0 3px 2px black;
+        overflow-y: auto;
+        display: none;
+    }
+
+    #search-result-modal > p{
+        cursor: pointer;
+    }
+    #search-result-modal > h3,#search-result-modal > p{
+        color: #182B22;
+        margin: 1rem;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+
+    #search-result-modal > h3{
+        text-align: center;
+    }
+
+    #search-result-modal > p:hover{
+        color: #DDD9CA;
+        background-color: #254336;
     }
 
     #sort-container > select *,#sort-container > select{

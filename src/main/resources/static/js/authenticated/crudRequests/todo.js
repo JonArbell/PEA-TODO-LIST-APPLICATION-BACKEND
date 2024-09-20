@@ -1,5 +1,6 @@
 import {Button} from '../index.js';
 import {PageRequests} from '../index.js';
+import { CrudTodoUi } from '../index.js';
 
 export const addEditTodo = async (event) => {
     event.preventDefault();
@@ -160,3 +161,45 @@ export const todoMarkAsDone = async (id) =>{
     }
 
 }
+
+
+export const searchTodoQuery = async (event) =>{
+
+    event.preventDefault();
+
+    const search = document.querySelector('header > ul > div > li > form > input').value;
+    const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
+
+    const prod = 'https://pea-todo-list-application.onrender.com';
+    const dev = 'http://localhost:8080';
+    const url = `${prod}/api/authenticated/search-todo?search=${encodeURIComponent(search)}`;
+
+    try{
+        
+        const response = await fetch(url,{
+
+            method : 'GET',
+            headers : {
+                'X-XSRF-TOKEN' : csrfToken
+            },
+            credentials : 'include'
+
+        });
+
+        if(!response.ok){
+            const error = await response.json();
+            throw error;
+        }
+
+        const data = await response.json();
+
+        await CrudTodoUi.searchTodoUi(data);
+        
+
+    }catch(e){
+        console.error(e);
+    }
+
+}
+
+
