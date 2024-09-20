@@ -12,8 +12,10 @@ export const sortByRequest = async () => {
     const prod = 'https://pea-todo-list-application.onrender.com';
     const dev = 'http://localhost:8080';
 
-    if(sort !== null && sort !== 'd-m'){
+    if((sort !== null && sort !== 'd-m') && (path !== '/about-us' && path !== '/contact-us')){
+
         url = `${prod}/api/authenticated${path}/${sort}`;
+
     }else{
         url = `${prod}/api/authenticated${path}`;
     }
