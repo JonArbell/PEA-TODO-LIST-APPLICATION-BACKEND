@@ -2,8 +2,7 @@ package com.myapp.pea.RestControllers.Authenticated.crudLists;
 
 import com.myapp.pea.RequestResponseModels.ListsModels.ListsRequest;
 import com.myapp.pea.RequestResponseModels.MessageResponse;
-import com.myapp.pea.Services.ListsService.ListsOperation;
-import com.myapp.pea.Services.TodoService.TodoOperationService;
+import com.myapp.pea.Services.ListsService.ListsOperationService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -21,8 +20,7 @@ import java.util.Map;
 public class CrudLists {
 
     private final Logger logger = LoggerFactory.getLogger(CrudLists.class);
-    private final ListsOperation listsOperation;
-    private final TodoOperationService todoOperationService;
+    private final ListsOperationService listsOperationService;
 
     @PostMapping("/list/add")
     public ResponseEntity<?> addList(@Valid @RequestBody ListsRequest listsRequest, BindingResult bindingResult){
@@ -38,7 +36,7 @@ public class CrudLists {
             return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
 
         }else{
-            listsOperation.createNewList(listsRequest);
+            listsOperationService.createNewList(listsRequest);
             return new ResponseEntity<>(new MessageResponse("Successfully Add list"),HttpStatus.CREATED);
         }
 
@@ -58,7 +56,7 @@ public class CrudLists {
         }
 
         try{
-            listsOperation.updateListName(listsRequest);
+            listsOperationService.updateListName(listsRequest);
             return new ResponseEntity<>(new MessageResponse("Edit list name successfully"),HttpStatus.OK);
         } catch (Exception e){
             errors.put("editListNameError",e.getMessage());
@@ -77,7 +75,7 @@ public class CrudLists {
 
         try{
 
-            listsOperation.deleteList(id,deleteTasks);
+            listsOperationService.deleteList(id,deleteTasks);
             return new ResponseEntity<>(new MessageResponse("Delete list Successfully"),HttpStatus.OK);
         } catch (Exception e){
             errors.put("deleteListError",e.getMessage());

@@ -1,23 +1,15 @@
 package com.myapp.pea.Views.CustomComponent;
 
-import com.myapp.pea.Entities.Lists;
-import com.myapp.pea.Entities.Todo;
-import com.myapp.pea.Services.ListsService.GetLists;
-import com.myapp.pea.Services.TodoService.GetTasks;
 import com.myapp.pea.Services.AccountService.UserService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.ModelMap;
-import java.util.List;
 
 @Component
 @RequiredArgsConstructor
 public class MyCustomModelMap {
 
     private final UserService userService;
-    private final GetLists getLists;
-    private final GetTasks getTasks;
     @Getter
     private final StringBuilder currentUrl = new StringBuilder();
 

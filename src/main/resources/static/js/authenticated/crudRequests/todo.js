@@ -162,12 +162,12 @@ export const todoMarkAsDone = async (id) =>{
 
 }
 
+export const searchTodoQueryRealtime = async (search) =>{
 
-export const searchTodoQuery = async (event) =>{
+    if(search === ''){
+        return;
+    }
 
-    event.preventDefault();
-
-    const search = document.querySelector('header > ul > div > li > form > input').value;
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
 
     const prod = 'https://pea-todo-list-application.onrender.com';
@@ -201,5 +201,3 @@ export const searchTodoQuery = async (event) =>{
     }
 
 }
-
-

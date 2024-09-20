@@ -6,7 +6,7 @@ import com.myapp.pea.RequestResponseModels.UserModels.UserResponse;
 import com.myapp.pea.RequestResponseModels.WebPagesResponse.PagesResponse;
 import com.myapp.pea.Services.AccountService.UserService;
 import com.myapp.pea.Services.ListsService.GetLists;
-import com.myapp.pea.Services.TodoService.GetTasks;
+import com.myapp.pea.Services.TodoService.GetTodos;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,14 +23,14 @@ import java.util.List;
 @RequestMapping("/api/authenticated")
 public class ListPageRequest {
 
-    private final GetTasks getTasks;
     private final GetLists getLists;
     private final UserService userService;
+    private final GetTodos getTodos;
 
     private List<TodoResponse> getAllTodosResponse(){
 
         var listsOfTodos = new ArrayList<TodoResponse>();
-        getTasks.getAllTodo().forEach(data -> {
+        getTodos.getAllTodo().forEach(data -> {
             var listId = data.getLists() == null ? 0L : data.getLists().getId();
 
             var todo = TodoResponse.builder()

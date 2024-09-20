@@ -40,9 +40,6 @@ export const searchTodoUi = async (data) =>{
     searchContainer.innerHTML = '';
     searchContainer.style.display = 'block';
 
-    let panis = data.length === 0;
-    console.log('True or false : '+panis);
-
     if(data.length === 0){
         const newElement = document.createElement('h3');
         newElement.textContent = 'No result';

@@ -19,8 +19,8 @@ import java.util.List;
 @RequestMapping("/api/authenticated")
 public class NavPages {
 
-    private final GetLists getLists;
     private final UserService userService;
+    private final GetLists getLists;
 
     private UserResponse userResponse(){
         return UserResponse.builder()

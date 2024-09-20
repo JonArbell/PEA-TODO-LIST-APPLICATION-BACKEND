@@ -1,10 +1,9 @@
 package com.myapp.pea.RestControllers.Authenticated.crudTodo;
 
 import com.myapp.pea.Exceptions.NotValidDateException;
-import com.myapp.pea.Exceptions.TodoItemNotFoundException;
+import com.myapp.pea.Exceptions.TodoItemsNotFoundException;
 import com.myapp.pea.RequestResponseModels.TodoModels.TodoRequest;
 import com.myapp.pea.RequestResponseModels.TodoModels.TodoResponse;
-import com.myapp.pea.Services.TodoService.GetTasks;
 import com.myapp.pea.Services.TodoService.TodoOperationService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -14,8 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +23,6 @@ public class CrudTodo {
 
     private final Logger logger = LoggerFactory.getLogger(CrudTodo.class);
     private final TodoOperationService todoOperationService;
-    private final GetTasks getTasks;
 
     @GetMapping("/find/todo/{id}")
     public ResponseEntity<?> viewDetails(@PathVariable Long id){
@@ -49,7 +45,7 @@ public class CrudTodo {
                     .build();
 
             return new ResponseEntity<>(todoResponse,HttpStatus.OK);
-        }catch (TodoItemNotFoundException e){
+        }catch (TodoItemsNotFoundException e){
             Map<String, String> error = new HashMap<>();
             error.put("findTodoError",e.getMessage());
             return new ResponseEntity<>(error,HttpStatus.FORBIDDEN);
@@ -145,31 +141,24 @@ public class CrudTodo {
 
     @GetMapping("/search-todo")
     public ResponseEntity<?> searchTodoQuery(@RequestParam("search") String search){
+        Map<String,String> errors = new HashMap<>();
 
-        var todoListResponse = new ArrayList<TodoResponse>();
+        if(search.isEmpty() || search.isBlank()){
+            errors.put("searchTodoQueryError","Search is empty");
+            return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
+        }
 
-        getTasks.getAllTodo()
-                .stream()
-                .filter(todo -> todo.getTitle().equalsIgnoreCase(search))
-                .forEach(todo -> {
+        try{
+            var allTodo = todoOperationService.findByTitle(search);
 
-                    var getTodo = TodoResponse.builder()
-                            .id(todo.getUserId())
-                            .listId((todo.getLists() == null) ? 0L : todo.getLists().getId())
-                            .listName((todo.getLists() == null) ? "None" : todo.getLists().getListName())
-                            .title(todo.getTitle())
-                            .date(todo.getDate())
-                            .dateModified(todo.getDateModified())
-                            .formattedDate(todo.getFormattedDate())
-                            .shortDescription(todo.getShortDescription())
-                            .done(todo.isDone())
-                            .build();
+            logger.info("All todo : {}",allTodo);
 
-                    todoListResponse.add(getTodo);
-
-                });
-
-        return new ResponseEntity<>(todoListResponse,HttpStatus.OK);
+            return new ResponseEntity<>(allTodo,HttpStatus.OK);
+        }catch(Exception e){
+            logger.info("Exception search todo : {}",e.getMessage());
+            errors.put("searchTodoQueryError",e.getMessage());
+            return new ResponseEntity<>(errors,HttpStatus.NOT_FOUND);
+        }
 
     }
 

@@ -1,32 +1,33 @@
 package com.myapp.pea.Services.TodoService;
 
 import com.myapp.pea.Exceptions.NotValidDateException;
-import com.myapp.pea.Exceptions.TodoItemNotFoundException;
+import com.myapp.pea.Exceptions.TodoItemsNotFoundException;
 import com.myapp.pea.Exceptions.TodoListNotFoundException;
 import com.myapp.pea.Entities.Lists;
 import com.myapp.pea.Entities.Todo;
-import com.myapp.pea.Repository.ListsRepo;
 import com.myapp.pea.Repository.TodoRepo;
 import com.myapp.pea.RequestResponseModels.TodoModels.TodoRequest;
-import com.myapp.pea.Services.ListsService.GetLists;
+import com.myapp.pea.RequestResponseModels.TodoModels.TodoResponse;
 import com.myapp.pea.Services.AccountService.UserService;
+import com.myapp.pea.Services.ListsService.GetLists;
+import com.myapp.pea.Services.ListsService.ListsOperationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
-
 
 @RequiredArgsConstructor
 @Service
 public class TodoOperationService {
 
     private final UserService userService;
-    private final GetLists getLists;
     private final TodoRepo todoRepo;
-    private final ListsRepo listsRepo;
+    private final ListsOperationService listsOperationService;
+    private final GetLists getLists;
 
     public Todo findTodoById(Long id){
 
@@ -35,15 +36,15 @@ public class TodoOperationService {
         if(getTodo != null && getTodo.getUserId().equals(userService.getId()))
             return getTodo;
 
-        throw new TodoItemNotFoundException("The specified todo item could not be found.");
+        throw new TodoItemsNotFoundException("The specified todo item could not be found.");
     }
 
     public void addNewTodo(@Valid TodoRequest todoRequest){
 
         if(checkDate(todoRequest.getDate())){
 
-            var lists = listsRepo
-                    .findByUserId(userService.getId())
+            var lists = getLists
+                    .allListsDateModified()
                     .stream()
                     .filter(list -> list.getId().equals(Long.parseLong(todoRequest.getListId())))
                     .findFirst().orElse(null);
@@ -76,7 +77,7 @@ public class TodoOperationService {
         return true;
     }
 
-    public void deleteTodo(Long id) throws TodoItemNotFoundException {
+    public void deleteTodo(Long id) throws TodoItemsNotFoundException {
 
         List<Todo> searchTodo = todoRepo
                 .findByUserId(userService.getId());
@@ -97,13 +98,13 @@ public class TodoOperationService {
             }
         }
         if(searchTodo.isEmpty()){
-            throw new TodoItemNotFoundException("The todo list is currently empty.");
+            throw new TodoItemsNotFoundException("The todo list is currently empty.");
         }else if(!isDeleted){
-            throw new TodoItemNotFoundException("The specified todo item could not be found.");
+            throw new TodoItemsNotFoundException("The specified todo item could not be found.");
         }
     }
 
-    public void updateTodo(TodoRequest todoRequest) throws TodoItemNotFoundException,TodoListNotFoundException {
+    public void updateTodo(TodoRequest todoRequest) throws TodoItemsNotFoundException,TodoListNotFoundException {
 
         List<Todo> searchTodo = todoRepo
                 .findByUserId(userService.getId());
@@ -150,16 +151,16 @@ public class TodoOperationService {
             }
 
             if(searchTodo.isEmpty()){
-                throw new TodoItemNotFoundException("You don't have any todo items yet.");
+                throw new TodoItemsNotFoundException("You don't have any todo items yet.");
             }else if(!isUpdated){
-                throw new TodoItemNotFoundException("The specified todo item could not be found.");
+                throw new TodoItemsNotFoundException("The specified todo item could not be found.");
             }
 
         }
 
     }
 
-    public void markAsComplete(Long id) throws TodoItemNotFoundException {
+    public void markAsComplete(Long id) throws TodoItemsNotFoundException {
 
         List<Todo> searchTodo = todoRepo
                 .findByUserId(userService.getId());
@@ -179,10 +180,45 @@ public class TodoOperationService {
         }
 
         if(searchTodo.isEmpty()){
-            throw new TodoItemNotFoundException("You don't have any todo items yet.");
+            throw new TodoItemsNotFoundException("You don't have any todo items yet.");
         }else if(!isMarked){
-            throw new TodoItemNotFoundException("The specified todo item could not be found.");
+            throw new TodoItemsNotFoundException("The specified todo item could not be found.");
         }
 
     }
+
+    public List<TodoResponse> findByTitle(String title) throws TodoItemsNotFoundException{
+
+        var getTodos = todoRepo
+                .findByUserIdAndTitleContainingIgnoreCase(userService.getId(),title)
+                .orElse(null);
+
+        if(getTodos == null){
+            throw new TodoItemsNotFoundException("No todo items found matching the title : "+title);
+        }
+
+        var todoResponse = new ArrayList<TodoResponse>();
+
+        getTodos.forEach(todo -> {
+
+            var getTodo = TodoResponse.builder()
+                    .id(todo.getUserId())
+                    .title(todo.getTitle())
+                    .listId((todo.getLists() == null) ? 0L : todo.getLists().getId())
+                    .listName((todo.getLists() == null) ? "None" : todo.getLists().getListName())
+                    .date(todo.getDate())
+                    .dateModified(todo.getDateModified())
+                    .formattedDate(todo.getFormattedDate())
+                    .shortDescription(todo.getShortDescription())
+                    .done(todo.isDone())
+                    .build();
+
+            todoResponse.add(getTodo);
+
+        });
+
+        return todoResponse;
+
+    }
+
 }

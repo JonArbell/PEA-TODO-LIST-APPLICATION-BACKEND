@@ -2,7 +2,7 @@ package com.myapp.pea.Views.Authenticated.ListOperation;
 
 import com.myapp.pea.Views.CustomComponent.MyCustomModelMap;
 import com.myapp.pea.Entities.Lists;
-import com.myapp.pea.Services.ListsService.ListsOperation;
+import com.myapp.pea.Services.ListsService.ListsOperationService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,8 +15,6 @@ import java.util.Objects;
 @AllArgsConstructor
 public class CRUDList {
 
-    private final ListsOperation listsOperation;
-    private final MyCustomModelMap myCustomModelMap;
 
 //    @PostMapping("/list/add")
 //    public String createNewList(@Valid @ModelAttribute("list") Lists list,

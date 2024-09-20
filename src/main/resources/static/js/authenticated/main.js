@@ -1,9 +1,13 @@
 import * as Index from './index.js';
 
-window.Button = Index.Button; // Make the scope global for view details and remove view Details
-window.ViewDetails = Index.ViewDetails;
-window.CrudTodoUi = Index.CrudTodoUi;
-window.SortBy = Index.SortBy;
+window.Button = Index.Button; // Create global scope for Buttons
+window.ViewDetails = Index.ViewDetails; // Create global scope for view details and remove view Details
+window.CrudTodoUi = Index.CrudTodoUi; // Create global scope for Crud todo ui
+window.SortBy = Index.SortBy; // Create global scope for sort by
+
+window.Todo = { // Create global scope for search todo real time
+    searchTodoQueryRealtime : Index.Todo.searchTodoQueryRealtime
+};
 
 document.addEventListener('DOMContentLoaded', () => { 
     Index.PageRequests.sortByRequest(); // Load the home request function
@@ -12,11 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     logoutHandler(); // Call the logout handler function
     addListRequestHandler(); // Call the add list function handler
     editListNameRequestHandler(); // Call the edit list name function handler
-    deleteListRequestHandler();
-    searchTodoHandler();
-    searchTodoUiHandler();
+    deleteListRequestHandler(); // Call the delete list function handler
+    searchTodoUiHandler(); // Call the edit search todo ui handler function handler
 });
-
 
 const showProfileModalHandler = () =>{ // This function is for showing and hide a profile modal
 
@@ -60,7 +62,6 @@ const logoutHandler = () =>{ // This function is for logout
     });
 }
 
-
 const editListNameRequestHandler = () =>{ // This function is for edit a list name and reload home request
 
     document.querySelector('#edit-list-name-container').addEventListener('submit', async (event) =>{
@@ -69,17 +70,13 @@ const editListNameRequestHandler = () =>{ // This function is for edit a list na
 
 }
 
-const deleteListRequestHandler = async () =>{
+const deleteListRequestHandler = async () =>{ // This function is for delete list request and reload home request
 
     document.querySelector('#delete-list-modal-container > form').addEventListener('submit',Index.List.deleteList);
 
 }
 
-const searchTodoHandler = async () =>{
-    document.querySelector('header > ul > div > li > form').addEventListener('submit',Index.Todo.searchTodoQuery);
-}
-
-const searchTodoUiHandler = () =>{
+const searchTodoUiHandler = () =>{ // This function is for checking if the click is not in search result modal
 
     const searchModalContainer = document.querySelector('#search-result-modal');
 

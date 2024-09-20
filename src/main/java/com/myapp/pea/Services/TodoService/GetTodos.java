@@ -1,20 +1,19 @@
 package com.myapp.pea.Services.TodoService;
 
-
 import com.myapp.pea.Entities.Todo;
 import com.myapp.pea.Repository.TodoRepo;
 import com.myapp.pea.Services.AccountService.UserService;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Controller;
-import java.util.Comparator;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-@AllArgsConstructor
-@Controller
-public class GetTasks {
+@RequiredArgsConstructor
+@Service
+public class GetTodos {
 
-    private final UserService userService;
     private final TodoRepo todoRepo;
+    private final UserService userService;
 
     public List<Todo> getAllTodo(){
 
