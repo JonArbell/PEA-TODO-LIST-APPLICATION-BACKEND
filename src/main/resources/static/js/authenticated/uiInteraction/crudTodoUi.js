@@ -50,6 +50,7 @@ export const searchTodoUi = async (data) =>{
     data.forEach(element => {
 
         const newElement = document.createElement('p');
+        newElement.setAttribute('oninput','Todo.searchTodoQueryRealtime(this.value)');
         newElement.textContent = `${element.title}`;
 
         searchContainer.appendChild(newElement);
