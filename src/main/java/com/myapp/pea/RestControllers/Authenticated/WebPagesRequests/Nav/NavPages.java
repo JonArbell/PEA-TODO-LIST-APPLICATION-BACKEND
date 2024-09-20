@@ -54,4 +54,9 @@ public class NavPages {
         return new ResponseEntity<>(new PagesResponse(null,getAllListsResponse(),userResponse()),HttpStatus.OK);
     }
 
+    @GetMapping("/contact-us")
+    public ResponseEntity<?> contactUs(){
+        return new ResponseEntity<>(new PagesResponse(null,getAllListsResponse(),userResponse()),HttpStatus.OK);
+    }
+
 }
