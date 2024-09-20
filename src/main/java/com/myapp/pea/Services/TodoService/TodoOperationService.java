@@ -202,7 +202,7 @@ public class TodoOperationService {
         getTodos.forEach(todo -> {
 
             var getTodo = TodoResponse.builder()
-                    .id(todo.getUserId())
+                    .id(todo.getId())
                     .title(todo.getTitle())
                     .listId((todo.getLists() == null) ? 0L : todo.getLists().getId())
                     .listName((todo.getLists() == null) ? "None" : todo.getLists().getListName())
