@@ -1,8 +1,8 @@
 package com.myapp.pea.RestControllers.Public;
 
-import com.myapp.pea.Entities.User;
 import com.myapp.pea.RequestResponseModels.JwtModels.JwtRequest;
 import com.myapp.pea.RequestResponseModels.MessageResponse;
+import com.myapp.pea.RequestResponseModels.UserModels.CreateAccountRequest;
 import com.myapp.pea.Security.JWT.JwtService;
 import com.myapp.pea.Services.AccountService.CreateAccountService;
 import jakarta.servlet.http.HttpServletResponse;
@@ -78,7 +78,8 @@ public class Authentication {
     }
 
     @PostMapping("/create-account")
-    public ResponseEntity<?> createUser(@Valid @RequestBody User user,BindingResult bindingResult){
+    public ResponseEntity<?> createUser(@Valid @RequestBody CreateAccountRequest createAccountRequest,
+                                        BindingResult bindingResult){
 
         Map<Object,Object> errors = new HashMap<>();
         if(bindingResult.hasErrors()){
@@ -92,8 +93,8 @@ public class Authentication {
 
         try{
 
-            createAccountService.createAccount(user);
-            logger.info("User : {}",user);
+            createAccountService.createAccount(createAccountRequest);
+            logger.info("User : {}",createAccountRequest);
             return new ResponseEntity<>(new MessageResponse("Your account has been created! You can now log in."),HttpStatus.CREATED);
         }catch (Exception e){
             logger.error("Exception : {}",e.getMessage());

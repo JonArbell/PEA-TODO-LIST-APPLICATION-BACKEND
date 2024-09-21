@@ -71,7 +71,7 @@ public class TodoOperationService {
     public boolean checkDate(LocalDate localDate)throws NotValidDateException {
 
         if(LocalDate.now().isAfter(localDate)){
-            throw new NotValidDateException("The date must be in the future.");
+            throw new NotValidDateException("The date must be today or in the future.");
         }
 
         return true;

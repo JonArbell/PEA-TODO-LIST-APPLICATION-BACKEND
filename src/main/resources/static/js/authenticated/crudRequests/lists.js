@@ -1,5 +1,6 @@
 import { Button } from "../index.js";
 import { PageRequests } from "../index.js";
+import { PromptMessage } from '../index.js';
 
 export const addList = async (event) =>{
 
@@ -31,20 +32,20 @@ export const addList = async (event) =>{
         if(response.status !== 201){
 
             const error = await response.json();
-            throw error.addListError;
+            throw error;
 
         }
 
         const message = await response.json();
 
-        console.log(message.message);
+        await PromptMessage.successMessage(message.message);
 
         Button.discardAddList();
 
         await PageRequests.sortByRequest();
 
     }catch(e){
-        console.error(e);
+        await PromptMessage.failedMessage(e.addListError);
     }
 
 }
@@ -58,11 +59,11 @@ export const renameList = async (event) =>{
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
     try{
 
-        const prod = 'https://pea-todo-list-application.onrender.com/api/authenticated/list/edit';
+        const prod = 'https://pea-todo-list-application.onrender.com';
+        const dev = 'http://localhost:8080';
+        const url = `${prod}/api/authenticated/list/edit`;
 
-        const dev = 'http://localhost:8080/api/authenticated/list/edit';
-
-        const response = await fetch(prod,{
+        const response = await fetch(url,{
 
             method : 'PATCH',
             headers : {
@@ -78,15 +79,19 @@ export const renameList = async (event) =>{
 
         if(!response.ok){
             const error = await response.json();
-            throw error.editListNameError;
+            throw error;
         }
 
         Button.discardEditListName();
 
+        const message = await response.json();
+
+        await PromptMessage.successMessage(message.message);
+
         await PageRequests.sortByRequest();
 
     }catch(e){
-        console.error(e);
+        await PromptMessage.failedMessage(e.editListNameError);
     }
 
 }
@@ -100,11 +105,11 @@ export const deleteList = async (event) =>{
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
     try{
 
-        const prod = `https://pea-todo-list-application.onrender.com/api/authenticated/list/delete/${listId}`;
-
-        const dev = `http://localhost:8080/api/authenticated/list/delete/${listId}`;
+        const prod = `https://pea-todo-list-application.onrender.com`;
+        const dev = `http://localhost:8080`;
+        const url = `${prod}/api/authenticated/list/delete/${listId}`;
         
-        const response = await fetch(prod,{
+        const response = await fetch(url,{
             method : 'DELETE',
             headers : {
                 'Content-Type':'application/json',
@@ -116,18 +121,18 @@ export const deleteList = async (event) =>{
 
         if(!response.ok){
             const error = await response.json();
-            throw error.deleteListError;
+            throw error;
         }
 
-        const data = await response.json();
+        const message = await response.json();
 
-        console.log('Data : '+data);
+        await PromptMessage.successMessage(message.message);
 
         Button.discardDeleteList();
         await PageRequests.sortByRequest();
 
     }catch(e){
-        console.error(e);
+        await PromptMessage.failedMessage(e.deleteListError);
     }
 
 }

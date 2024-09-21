@@ -1,10 +1,11 @@
 package com.myapp.pea.Services.AccountService;
 
-import com.myapp.pea.Exceptions.PasswordTooShortException;
 import com.myapp.pea.Entities.Lists;
 import com.myapp.pea.Entities.User;
+import com.myapp.pea.Exceptions.PasswordConfirmationMismatchException;
 import com.myapp.pea.Repository.ListsRepo;
 import com.myapp.pea.Repository.UsersRepo;
+import com.myapp.pea.RequestResponseModels.UserModels.CreateAccountRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -43,29 +44,38 @@ public class CreateAccountService {
         return true;
     }
 
-    public boolean checkPass(String password) throws PasswordTooShortException {
+    public boolean checkPassword(String password,String confirmPassword) throws PasswordConfirmationMismatchException {
 
-        if(password.length() < 8){
-            throw new PasswordTooShortException("Password must be at least 8 characters long.");
+        if(!password.equals(confirmPassword)){
+            throw new PasswordConfirmationMismatchException("Passwords do not match. Please try again.");
         }
-
         return true;
     }
 
-    public void createAccount(User user) throws Exception{
+    public void createAccount(CreateAccountRequest createAccountRequest) throws Exception{
 
         try {
 
-            if(checkEmail(user.getEmail())){
+            if(checkEmail(createAccountRequest.getEmail())){
 
-                if(checkUsername(user.getUsername())){
+                if(checkUsername(createAccountRequest.getUsername())){
 
-                    if(checkPass(user.getPassword())){
-                        user.setPassword(passwordEncoder.encode(user.getPassword()));
-                        usersRepo.save(user);
+                    if(checkPassword(createAccountRequest.getPassword(),createAccountRequest.getConfirmPassword())){
+                        createAccountRequest.setPassword(passwordEncoder.encode(createAccountRequest.getPassword()));
 
-                        User searchUser = usersRepo.findByUsername(user.getUsername());
-                        System.out.println("Search user : "+searchUser);
+                        var saveUser = User
+                                .builder()
+                                .firstName(createAccountRequest.getFirstName())
+                                .lastName(createAccountRequest.getLastName())
+                                .email(createAccountRequest.getEmail())
+                                .username(createAccountRequest.getUsername())
+                                .password(createAccountRequest.getPassword())
+                                .build();
+
+                        usersRepo.save(saveUser);
+
+                        User searchUser = usersRepo.findByUsername(createAccountRequest.getUsername());
+
                         Lists personal = Lists
                                 .builder()
                                 .userId(searchUser.getId())

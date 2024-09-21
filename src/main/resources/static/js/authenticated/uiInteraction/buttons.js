@@ -32,12 +32,15 @@ export const createNewList = (event) =>{
     if(createNewListButton.contains(event.target)){
         document.querySelector('#create-edit-delete-list-container').style.display = 'block';
         document.querySelector('#add-list-modal-container').style.display = 'block';
+        document.querySelector('#delete-list-modal-container').style.display = 'none';
     }
 
 }
 
 const discardAddEditDeleteList = () =>{
     document.querySelector('#create-edit-delete-list-container').style.display ='none';
+    document.querySelector('#add-list-modal-container').style.display = 'none';
+    document.querySelector('#delete-list-modal-container').style.display = 'none';
 }
 
 export const discardAddList = () =>{
@@ -52,6 +55,7 @@ export const discardAddList = () =>{
 export const discardCreateEditTodo = () =>{
 
     document.querySelector('#create-edit-todo-modal-container').style.display = 'none';
+    document.querySelector('#add-edit-title').textContent = 'Add To-do:';
     document.querySelector('#create-edit-todo-modal-container > form').reset();
     removeCreateNewItemModal();
     
@@ -76,6 +80,7 @@ export const deleteList = () =>{
     document.querySelector('#create-edit-delete-list-container').style.display = 'block';
     document.querySelector('#delete-list-modal-container').style.display = 'block';
     document.querySelector('#delete-select-list-container').style.display = 'block';
+    document.querySelector('#add-list-modal-container').style.display = 'none';
 }
 
 export const confirmDeleteList = () =>{

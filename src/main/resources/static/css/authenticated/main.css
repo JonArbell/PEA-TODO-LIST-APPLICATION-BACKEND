@@ -869,6 +869,39 @@
         text-align: center;
     }
 
+    #prompt-message{
+        color: #ffffff;
+        display: none;
+        position: absolute;
+        top: 2%;
+        right: 50%;
+        padding: 1%;
+        border-radius: 12px;
+        opacity: 80%;
+        box-shadow: 1px 3px 5px #2c2c2c;
+        z-index: 100;
+    }
+    
+    @keyframes fadeOut {
+        from{
+            transform: translateX(0%);
+            opacity: 1;
+        }
+        to{
+            transform: translateX(37%);
+            opacity: 0;
+        }
+    }
+    .success-message,.failed-message{
+        animation: fadeOut 7s ease-out forwards;
+    }
+    .success-message{
+        background-color: rgb(127, 180, 127);
+    }
+    .failed-message{
+        background-color:rgb(255, 69, 58);
+    }
+
     #search-result-modal > p:hover{
         color: #DDD9CA;
         background-color: #254336;

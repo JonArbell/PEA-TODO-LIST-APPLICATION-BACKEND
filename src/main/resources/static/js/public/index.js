@@ -92,19 +92,10 @@ document.addEventListener('click',createAccountContainerHandler);
 const validateForm = () => {
     const password = document.getElementById('create-new-password');
     const confirmPassword = document.getElementById('confirmPassword');
-    const promptMessage = document.getElementById('prompt-message');
-
 
     if (password.value !== confirmPassword.value) {
 
-        promptMessage.classList.remove('failed-message');
-        promptMessage.textContent = '';
-        promptMessage.style.display = 'none';
-        
-        promptMessage.textContent = `Passwords do not match. Please try again.`;
-        promptMessage.style.display='flex';
-        promptMessage.offsetHeight;
-        promptMessage.classList.add('failed-message');        
+        failedMessage('Passwords do not match. Please try again.');
         
         return false;
     }
@@ -118,50 +109,55 @@ const createAccount = () =>{
 
         event.preventDefault();
 
-        const allContainers = document.querySelectorAll('.container');
-        const modal = document.querySelector('#create-new-account-container');
-
-        const firstName = document.querySelector('#create-account-firstName').value;
-        const lastName = document.querySelector('#create-account-lastName').value;
-        const username = document.querySelector('#create-account-username').value;
-        const email = document.querySelector('#create-account-email').value;
-        const createPassword = document.querySelector('#create-new-password').value;
-
-        const csrfToken = document.querySelector('meta[name="_csrf"]').content;
-
-        try{
-
-            const prod = 'https://pea-todo-list-application.onrender.com/api/create-account';
-            const dev = 'http://localhost:8080/api/create-account';
-
-            const response = await fetch(prod,{
-                method : 'POST',
-                headers : {
-                    'Content-Type':'application/json',
-                    'X-XSRF-TOKEN': csrfToken 
-                },
-                body : JSON.stringify({
-                    firstName : firstName,
-                    lastName : lastName,
-                    username : username,
-                    email : email,
-                    password : createPassword
-                })
-            });
-
-            if(response.status !== 201){
-                const error = await response.json();
-                throw error.createUserError;
+        if(validateForm()){
+            const allContainers = document.querySelectorAll('.container');
+            const modal = document.querySelector('#create-new-account-container');
+    
+            const firstName = document.querySelector('#create-account-firstName').value;
+            const lastName = document.querySelector('#create-account-lastName').value;
+            const username = document.querySelector('#create-account-username').value;
+            const email = document.querySelector('#create-account-email').value;
+            const createPassword = document.querySelector('#create-new-password').value;
+            const confirmPassword = document.querySelector('#confirmPassword').value;
+    
+            const csrfToken = document.querySelector('meta[name="_csrf"]').content;
+    
+            try{
+    
+                const prod = 'https://pea-todo-list-application.onrender.comt';
+                const dev = 'http://localhost:8080';
+                const url = `${prod}/api/create-account`;
+    
+                const response = await fetch(url,{
+                    method : 'POST',
+                    headers : {
+                        'Content-Type':'application/json',
+                        'X-XSRF-TOKEN': csrfToken 
+                    },
+                    body : JSON.stringify({
+                        firstName : firstName,
+                        lastName : lastName,
+                        username : username,
+                        email : email,
+                        password : createPassword,
+                        confirmPassword : confirmPassword
+                    })
+                });
+    
+                if(response.status !== 201){
+                    const error = await response.json();
+                    throw error.createUserError;
+                }
+    
+                const message = await response.json();
+    
+                await successMessage(message.message);
+    
+                closeModal(allContainers,modal);
+    
+            }catch(e){
+                await failedMessage(e);
             }
-
-            const message = await response.json();
-
-            createAccountSuccessMessage(message.message);
-
-            closeModal(allContainers,modal);
-
-        }catch(e){
-            createAccountFailedMessage(e);
         }
 
     });
@@ -169,77 +165,6 @@ const createAccount = () =>{
 
 document.addEventListener('DOMContentLoaded',createAccount);
 
-const createAccountFailedMessage = (createAccMessage) =>{
-    const promptMessage = document.querySelector('#prompt-message');
-
-    promptMessage.classList.remove('failed-message');
-    promptMessage.classList.remove('success-message');
-    promptMessage.style.display='none';
-    promptMessage.textContent = '';
-
-    if(createAccMessage != '' || createAccMessage != null){
-
-        console.log('Panis : '+createAccMessage);
-
-        promptMessage.textContent = `${createAccMessage}`;
-        promptMessage.classList.add('failed-message');
-        promptMessage.offsetHeight;
-        promptMessage.style.display='flex';
-
-    }
-
-}
-
-const createAccountSuccessMessage = (createAccMessage) =>{
-    const promptMessage = document.querySelector('#prompt-message');
-
-    promptMessage.classList.remove('failed-message');
-    promptMessage.classList.remove('success-message');
-    promptMessage.style.display='none';
-    promptMessage.textContent = '';
-
-    if(createAccMessage != '' || createAccMessage != null){
-
-        console.log('Panis : '+createAccMessage);
-
-        promptMessage.textContent = `${createAccMessage}`;
-        promptMessage.classList.add('success-message');
-        promptMessage.offsetHeight;
-        promptMessage.style.display='flex';
-
-    }
-
-}
-
-
-const handleLogoutMessage = (message) =>{
-    const promptMessage = document.querySelector('#prompt-message');
-
-    promptMessage.classList.remove('success-message');
-    promptMessage.textContent = '';
-    promptMessage.style.display='none';
-
-    promptMessage.textContent = `${message}`;
-    promptMessage.style.display='flex';
-    promptMessage.offsetHeight;
-    promptMessage.classList.add('success-message');
-    
-}
-
-const handleLoginFailedMessage = (message) =>{
-
-    const promptMessage = document.querySelector('#prompt-message');
-
-    promptMessage.classList.remove('failed-message');
-    promptMessage.textContent = '';
-    promptMessage.style.display = 'none';
-    
-    promptMessage.textContent = `${message}`;
-    promptMessage.style.display='flex';
-    promptMessage.offsetHeight;
-    promptMessage.classList.add('failed-message');
-
-}
 
 const login = () =>{
     document.querySelector('#login-page form').addEventListener('submit', async (event) =>{
@@ -278,7 +203,7 @@ const login = () =>{
             window.location.href = `${prod}/home`;
         }catch(e){
             console.log(e);
-            handleLoginFailedMessage(e);
+            await failedMessage(e);
         }
         
     });
@@ -286,3 +211,34 @@ const login = () =>{
 
 document.addEventListener('DOMContentLoaded',login);
 
+const failedMessage = async (message) => {
+
+    const promptMessage = document.querySelector('#prompt-message');
+
+    promptMessage.classList.remove('success-message');
+    promptMessage.classList.remove('failed-message');
+    promptMessage.textContent = '';
+    promptMessage.style.display = 'none';
+    
+    promptMessage.textContent = `${message}`;
+    promptMessage.style.display='flex';
+    promptMessage.offsetHeight;
+    promptMessage.classList.add('failed-message');
+
+}
+
+const successMessage = async (message) => {
+
+    const promptMessage = document.querySelector('#prompt-message');
+
+    promptMessage.classList.remove('success-message');
+    promptMessage.classList.remove('failed-message');
+    promptMessage.textContent = '';
+    promptMessage.style.display = 'none';
+    
+    promptMessage.textContent = `${message}`;
+    promptMessage.style.display='flex';
+    promptMessage.offsetHeight;
+    promptMessage.classList.add('success-message');
+
+}

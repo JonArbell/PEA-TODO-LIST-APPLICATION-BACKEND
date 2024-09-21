@@ -2,6 +2,7 @@ package com.myapp.pea.RestControllers.Authenticated.crudTodo;
 
 import com.myapp.pea.Exceptions.NotValidDateException;
 import com.myapp.pea.Exceptions.TodoItemsNotFoundException;
+import com.myapp.pea.RequestResponseModels.MessageResponse;
 import com.myapp.pea.RequestResponseModels.TodoModels.TodoRequest;
 import com.myapp.pea.RequestResponseModels.TodoModels.TodoResponse;
 import com.myapp.pea.Services.TodoService.TodoOperationService;
@@ -70,7 +71,7 @@ public class CrudTodo {
         try{
             todoOperationService.addNewTodo(todoRequest);
             logger.info("List of todo : {}",todoRequest.getListId());
-            return new ResponseEntity<>(todoRequest,HttpStatus.OK);
+            return new ResponseEntity<>(new MessageResponse("Todo item added successfully!"),HttpStatus.OK);
         }catch (NotValidDateException e){
             logger.error("NotValidDateException : {}",e.getMessage());
             errors.put("addTodoError",e.getMessage());
@@ -87,7 +88,7 @@ public class CrudTodo {
         Map<String, String> error = new HashMap<>();
         try{
             todoOperationService.deleteTodo(id);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(new MessageResponse("Todo item deleted successfully!"),HttpStatus.OK);
         } catch (Exception e){
             error.put("deleteTodoError",e.getMessage());
             return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
@@ -111,7 +112,7 @@ public class CrudTodo {
         try{
             todoOperationService.updateTodo(todoRequest);
             logger.info("List of edit todo : {}",todoRequest.getListId());
-            return new ResponseEntity<>(todoRequest,HttpStatus.OK);
+            return new ResponseEntity<>(new MessageResponse("Todo item updated successfully!"),HttpStatus.OK);
         }catch (NotValidDateException e){
             logger.error("NotValidDateException : {}",e.getMessage());
             errors.put("editTodoError",e.getMessage());
@@ -130,7 +131,7 @@ public class CrudTodo {
 
         try{
             todoOperationService.markAsComplete(id);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(new MessageResponse("Todo item marked as done!"),HttpStatus.OK);
         }catch (Exception e){
             Map<String, String> error = new HashMap<>();
             error.put("todoDoneError",e.getMessage());

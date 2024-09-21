@@ -91,7 +91,7 @@
 
             <hr/>
 
-            <form onsubmit="return validateForm()">
+            <form>
 
                 <div id="create-new-account-names">
                     <input id="create-account-firstName" maxlength="35" required="required" autofocus="autofocus" type="text"
@@ -108,7 +108,7 @@
                     <img id="show-password-image-create-account" src="./images/showPassword/close.svg" alt="Toggle Password"/>
                 </div>
 
-                <input minlength="8" required="required"  type="password" id="confirmPassword" placeholder="Re-enter your password"/>
+                <input minlength="8" required="required" name="confirmPassword"  type="password" id="confirmPassword" placeholder="Re-enter your password"/>
 
                 <div id="terms">
                     <p>People who use our service may have uploaded your contact information to PEA</p>

@@ -37,7 +37,7 @@ public class CrudLists {
 
         }else{
             listsOperationService.createNewList(listsRequest);
-            return new ResponseEntity<>(new MessageResponse("Successfully Add list"),HttpStatus.CREATED);
+            return new ResponseEntity<>(new MessageResponse("List added successfully!"),HttpStatus.CREATED);
         }
 
     }
@@ -57,7 +57,7 @@ public class CrudLists {
 
         try{
             listsOperationService.updateListName(listsRequest);
-            return new ResponseEntity<>(new MessageResponse("Edit list name successfully"),HttpStatus.OK);
+            return new ResponseEntity<>(new MessageResponse("List renamed successfully!"),HttpStatus.OK);
         } catch (Exception e){
             errors.put("editListNameError",e.getMessage());
         }
@@ -76,7 +76,7 @@ public class CrudLists {
         try{
 
             listsOperationService.deleteList(id,deleteTasks);
-            return new ResponseEntity<>(new MessageResponse("Delete list Successfully"),HttpStatus.OK);
+            return new ResponseEntity<>(new MessageResponse("List deleted successfully!"),HttpStatus.OK);
         } catch (Exception e){
             errors.put("deleteListError",e.getMessage());
         }

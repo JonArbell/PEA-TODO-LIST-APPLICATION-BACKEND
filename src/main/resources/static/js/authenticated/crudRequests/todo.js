@@ -1,6 +1,7 @@
 import {Button} from '../index.js';
 import {PageRequests} from '../index.js';
 import { CrudTodoUi } from '../index.js';
+import { PromptMessage } from '../index.js';
 
 export const addEditTodo = async (event) => {
     event.preventDefault();
@@ -51,18 +52,26 @@ export const addEditTodo = async (event) => {
             throw error;
         }
 
+        const message = await response.json();
+
+        await PromptMessage.successMessage(message.message);
+
         await PageRequests.sortByRequest();
+
         Button.discardCreateEditTodo();
+
     }catch(e){
 
         if(methodType === 'POST'){
             console.log(e.addTodoError);
+            await PromptMessage.failedMessage(e.addTodoError);
         }else if(methodType === 'PUT'){
             console.error(e.editTodoError);
+            await PromptMessage.failedMessage(e.editTodoError);
         }else{
             console.error('What error is that ? '+e);
         }
-
+        
     }
 }
 
@@ -119,13 +128,18 @@ export const deleteTodo = async (id) =>{
 
         if(!response.ok){
             const error = await response.json();
-            throw error.deleteTodoError;
+            throw error;
         }
+
+        const message = await response.json();
+
+        await PromptMessage.successMessage(message.message);
 
         await PageRequests.sortByRequest();
 
     }catch(e){
         console.log('Error Delete Todo : '+e);
+        await PromptMessage.failedMessage(e.deleteTodoError);
     }
 
 }
@@ -151,13 +165,18 @@ export const todoMarkAsDone = async (id) =>{
 
         if(!response.ok){
             const error = await response.json();
-            throw error.todoDoneError;
+            throw error;
         }
+
+        const message = await response.json();
+
+        await PromptMessage.successMessage(message.message);
 
         await PageRequests.sortByRequest();
 
     }catch(e){
         console.error(e);
+        await PromptMessage.failedMessage(e.todoDoneError);
     }
 
 }

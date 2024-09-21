@@ -8,5 +8,6 @@ import * as ListContainer from './uiInteraction/listsContainer.js';
 import * as Button from './uiInteraction/buttons.js';
 import * as ViewDetails from './uiInteraction/viewDetails.js';
 import * as SortBy from './uiInteraction/sorting.js';
+import * as PromptMessage from './uiInteraction/promptMessage.js';
 
-export {Todo,List,PageRequests,Profile,TodoContainer,ListContainer,Button,ViewDetails,CrudTodoUi,SortBy};
+export {Todo,List,PageRequests,Profile,TodoContainer,ListContainer,Button,ViewDetails,CrudTodoUi,SortBy,PromptMessage};
