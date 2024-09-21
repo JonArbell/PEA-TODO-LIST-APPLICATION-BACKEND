@@ -232,7 +232,7 @@
                             -->
                         </select>
 
-                        <input autofocus="autofocus" type="text" name="listName" placeholder="Enter new list name"/>
+                        <input required="required" minlength="1" maxlength="25" autofocus="autofocus" type="text" name="listName" placeholder="Enter new list name"/>
 
                         <button type="submit">Rename</button>
 
@@ -276,7 +276,7 @@
                         <input id="todo-id" type="hidden"/>
                         
                         <section>
-                            <input id="add-edit-todo-title" autofocus="autofocus" required="required" name="title" type="text" placeholder="Title"/>
+                            <input minlength="1" maxlength="35" id="add-edit-todo-title" autofocus="autofocus" required="required" name="title" type="text" placeholder="Title"/>
                         </section>
 
                         <section>
@@ -324,7 +324,7 @@
 
                             <h2>Add List:</h2>
 
-                            <input type="text" autofocus="autofocus" placeholder="List name"/>
+                            <input required="required" maxlength="25" minlength="1" type="text" autofocus="autofocus" placeholder="List name"/>
                             <button type="submit">Save</button>
                         </form>
                     </div>

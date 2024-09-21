@@ -12,8 +12,6 @@
 
         <meta name="_csrf" th:content="${_csrf.token}"/>
 
-        <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
-
         <title>P E A - log in or sign up</title>
 
         <link rel="preload" href="./images/showPassword/open.svg" as="image">
@@ -57,12 +55,10 @@
 
                     <form>
 
-                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-
-                        <input id="login-usn" required="required"  class="login-input" type="text" placeholder="Username"/>
+                        <input minlength="2" maxlength="25" id="login-usn" required="required"  class="login-input" type="text" placeholder="Username"/>
 
                         <div class="login-input" id="password-container">
-                            <input oninput="onInputPassword(event,'show-password-image','login-pass')" id="login-pass"
+                            <input minlength="8" oninput="onInputPassword(event,'show-password-image','login-pass')" id="login-pass"
                                    required="required" type="password"  placeholder="Password"/>
                             <img id="show-password-image" src="./images/showPassword/close.svg" alt="Toggle Password"/>
 
@@ -104,7 +100,7 @@
                 </div>
                 
                 <input id="create-account-email" required="required" type="email" placeholder="Enter your email address"/>
-                <input id="create-account-username" maxlength="25" required="required" type="text" placeholder="Create a username"/>
+                <input minlength="2" id="create-account-username" maxlength="25" required="required" type="text" placeholder="Create a username"/>
    
                 <div id="create-account-password-container">
                     <input minlength="8" id="create-new-password"
