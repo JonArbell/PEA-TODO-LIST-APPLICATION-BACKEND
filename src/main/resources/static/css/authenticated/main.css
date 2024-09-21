@@ -223,7 +223,7 @@
         position: relative;
     }
 
-    #main-body,#main-head{
+    #main-body, #main-head{
         width: 100%;
     }
 
@@ -320,9 +320,17 @@
     main{
         display: grid;
         grid-template-columns: 0.5fr 5fr;
-        grid-row: 1fr;
+        grid-template-rows: 1fr;
         height: 90vh;
 
+    }
+    
+    .fa-bars{
+        font-size: 2em;
+    }
+
+    #hamburger-button{
+        display: none;
     }
 
     #lists-container > ul > li:hover{

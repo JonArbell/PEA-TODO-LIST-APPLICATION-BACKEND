@@ -15,9 +15,10 @@
 
     <link rel="icon" type="icon" href="../../../images/checklist.ico"/>
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet"/>
     <link href="../../../css/authenticated/main.css" rel="stylesheet"/>
     <link href="../../../css/mediaQueries/authenticated.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
 </head>
 <body>
@@ -47,37 +48,37 @@
 
                 </li>
             
-                <li>
+                <li class="remove-li">
                     <a href="/home">
                         <p>Home</p>
                     </a>
                 </li>
 
-                <li>
+                <li class="remove-li">
                     <a href="/todays-tasks">
                         <p>Today's Tasks</p>
                     </a>
                 </li>
     
-                <li>
+                <li class="remove-li">
                     <a href="/completed-tasks">
                         <p>Completed Tasks</p>
                     </a>
                 </li>
     
-                <li>
+                <li class="remove-li">
                     <a href="/overdue-tasks">
                         <p>Overdue Tasks</p>
                     </a>
                 </li>
     
-                <li>
+                <li class="remove-li">
                     <a href="/all-tasks">
                         <p>All Tasks</p>
                     </a>
                 </li>
     
-                <li>
+                <li class="remove-li">
 
                     <div id="account-modal">
                         
@@ -111,6 +112,11 @@
 
                     <img id="image-account-icon" src="../../../images/try_profile_logo.ico"/>
                 </li>
+
+                <li id="hamburger-button">
+                    <i class="fa fa-bars"></i>
+                </li>
+
             </div>
         </ul>
     </header>
@@ -126,11 +132,20 @@
             <div id="lists-container">
                 <h3>Lists</h3>
                 <ul>
+                    <li>
+                        <a>
+                            <p>Personal</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a>
+                            <p>Work</p>
+                        </a>
+                    </li>
+
                     <!--
                         Lists of lists here
-                        <li>
-                            <p>Panis</p>
-                        </li>
                     -->
                 </ul>
             </div>
