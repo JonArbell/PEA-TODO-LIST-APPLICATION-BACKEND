@@ -13,9 +13,9 @@ export const createTodoContainer = async (data) => {
             return;
         }
         document.querySelector('#no-tasks-display').style.display = 'none';
-        let total = 0;
+
         data.forEach((todo,index) => {
-            total += ++index;
+
             const todoContainer = document.createElement('div');
             todoContainer.classList.add('todo-container');
             todoContainer.id = `${todo.id}`;
@@ -49,7 +49,7 @@ export const createTodoContainer = async (data) => {
             mainContainer.appendChild(todoContainer);
         });
     
-        totalTasks.textContent = `${total}`;
+        totalTasks.textContent = `${data.length}`;
         
     }
     
