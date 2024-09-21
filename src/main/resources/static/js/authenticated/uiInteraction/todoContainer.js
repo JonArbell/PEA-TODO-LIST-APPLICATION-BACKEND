@@ -14,7 +14,7 @@ export const createTodoContainer = async (data) => {
         }
         document.querySelector('#no-tasks-display').style.display = 'none';
 
-        data.forEach((todo,index) => {
+        data.forEach(todo => {
 
             const todoContainer = document.createElement('div');
             todoContainer.classList.add('todo-container');
