@@ -16,30 +16,30 @@
     <link rel="icon" type="icon" href="../../../images/checklist.ico"/>
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet"/>
-    <link href="../../../css/authenticated/main.css" rel="stylesheet"/>
-    <link href="../../../css/mediaQueries/authenticated.css" rel="stylesheet"/>
+    <link href="../../../css/tailwind-output.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
 </head>
-<body>
+<body class="overflow-y-hidden overflow-x-hidden bg-white-bg">
     
     <div id="modal-view-background">
 
     </div>
 
     <header> 
-        <ul>
-            <li>
-                <h1>PEA</h1>
+        <ul class="h-10vh flex flex-wrap justify-between lg:space-x-96 bg-green-bg shadow-top-nav relative z-40">
+            <li class="flex items-center ml-4">
+                <h1 class="font-bold text-5xl text-white-color [text-shadow:_-2px_3px_4px_black]">PEA</h1>
             </li>
             
-            <div>
+            <div class="flex flex-wrap lg:gap-20">
 
-                <li>
-                    <form>
+                <li class="flex items-center">
+                    <!-- <form>
                         <input oninput="Todo.searchTodoQueryRealtime(this.value)" type="search" placeholder="Search to-do..."/>
-                    </form>
-
+                    </form> -->
+                    <input class="p-4 rounded-2xl w-80 text-xs border border-solid border-green-color" oninput="Todo.searchTodoQueryRealtime(this.value)" type="search" placeholder="Search To-do"/>
+                    
                     <div id="search-result-modal">
                         <!---
                             display all result of search
@@ -48,58 +48,58 @@
 
                 </li>
             
-                <li class="remove-li">
+                <li class="flex items-center">
                     <a href="/home">
-                        <p>Home</p>
+                        <p class="text-white-color hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]">Home</p>
                     </a>
                 </li>
 
-                <li class="remove-li">
+                <li class="flex items-center">
                     <a href="/todays-tasks">
-                        <p>Today's Tasks</p>
+                        <p class="text-white-color hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]">Today's Tasks</p>
                     </a>
                 </li>
     
-                <li class="remove-li">
+                <li class="flex items-center">
                     <a href="/completed-tasks">
-                        <p>Completed Tasks</p>
+                        <p class="text-white-color hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]">Completed Tasks</p>
                     </a>
                 </li>
     
-                <li class="remove-li">
+                <li class="flex items-center">
                     <a href="/overdue-tasks">
-                        <p>Overdue Tasks</p>
+                        <p class="text-white-color hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]">Overdue Tasks</p>
                     </a>
                 </li>
     
-                <li class="remove-li">
+                <li class="flex items-center">
                     <a href="/all-tasks">
-                        <p>All Tasks</p>
+                        <p class="text-white-color hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]">All Tasks</p>
                     </a>
                 </li>
     
-                <li class="remove-li">
+                <li class="flex items-center mr-4">
 
                     <div id="account-modal">
                         
                     </div>
 
-                    <div id="profile-modal">
+                    <div id="profile-modal" class="hidden">
 
                         <a id="profile-modal-username">
-                            <img id="profile-logo-href" src="../../../images/try_profile_logo.ico"/>
+                            <img class="h-12 w-12 rounded-full" id="profile-logo-href" src="../../../images/try_profile_logo.ico"/>
                             <span id="profile-full-name"></span>
                         </a>
 
                         <a href="/settings">
-                            <img id="settings-logo" src="../../../images/settings.png"/>
+                            <img class="h-12 w-12" id="settings-logo" src="../../../images/settings.png"/>
                             <span> Settings</span>
                         </a>
 
                         <form>
 
                             <button type="submit">
-                                <img class="nav-button" id="logout-img" src="../../../images/logout.png"/>
+                                <img class="h-12 w-12" id="logout-img" src="../../../images/logout.png"/>
                                 <span>Log out</span>
 
                             </button>
@@ -110,10 +110,10 @@
                         <footer>PEA &copy; 2024 Made with &hearts; by Jon Arbell De Ocampo</footer>
                     </div>
 
-                    <img id="image-account-icon" src="../../../images/try_profile_logo.ico"/>
+                    <img class="h-12 w-12 rounded-full" id="image-account-icon" src="../../../images/try_profile_logo.ico"/>
                 </li>
 
-                <li id="hamburger-button">
+                <li id="hamburger-button" class="hidden">
                     <i class="fa fa-bars"></i>
                 </li>
 
@@ -121,17 +121,20 @@
         </ul>
     </header>
 
-    <main>
+    <main class="grid grid-cols-[0.5fr_5fr] grid-rows-[1fr]">
 
-        <section id="menu-section">
+        <section id="menu-section" class="bg-brown-bg relative z-30 shadow-[_2.5px_0_3px_black] w-10vw text-white-color">
 
-            <h2>MENU</h2>
+            <div class="flex justify-center items-center h-10vh">
+                <h2 class="font-bold text-center">MENU</h2>
 
-            <hr/>
+            </div>
+            
+            <hr class="h-px opacity-50 bg-white-bg"/>
 
             <div id="lists-container">
-                <h3>Lists</h3>
-                <ul>
+                <h3 class="p-6 pl-2 font-bold">Lists</h3>
+                <ul class="h-30vh">
                     <li>
                         <a>
                             <p>Personal</p>
@@ -156,13 +159,13 @@
 
             <button onmouseup="Button.manageList()">Manage List</button>
 
-            <hr/>
+            <hr class="h-px opacity-50 bg-white-bg"/>
 
             <footer>PEA &copy; 2024</footer>
 
         </section>
 
-        <section id="main-section">
+        <section id="main-section" class="relative z-20">
 
             <div id="prompt-message">
                 
@@ -246,6 +249,7 @@
                         <h2>Select List to rename:</h2>
 
                         <select name="id">
+                            <option value="0">None</option>
                             <!--
                                 all lists of lists to rename
                             -->
