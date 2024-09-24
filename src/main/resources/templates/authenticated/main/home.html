@@ -122,7 +122,7 @@
 
     <main class="grid grid-cols-[0.5fr_5fr] grid-rows-[1fr]">
 
-        <section id="menu-section" class="bg-brown-bg relative z-30 shadow-[_2.5px_0_3px_black] w-10vw text-white-color">
+        <section id="menu-section" class="h-90vh bg-brown-bg relative z-30 shadow-[_2.5px_0_3px_black] w-10vw text-white-color">
 
             <div class="flex justify-center items-center h-10vh">
                 <h2 class="font-bold text-center">MENU</h2>
@@ -152,12 +152,12 @@
                 </ul>
             </div>
 
-            <div class="h-25vh" id="todo-progress-chart">
+            <div class="h-[27vh]" id="todo-progress-chart">
 
             </div>
 
             <div class="flex justify-center">
-                <button class="m-6 p-4 border border-solid border-green-color rounded-2xl bg-white-bg text-green-color" onmouseup="Button.manageList()">Manage List</button>
+                <button class="mt-2 mb-2 p-4 text-2xl w-full border-4 border-solid border-green-color rounded-2xl bg-white-bg text-green-color" onmouseup="Button.manageList()">Manage List</button>
             </div>
 
             <hr class="h-px opacity-50 bg-white-bg"/>
@@ -166,7 +166,7 @@
 
         </section>
 
-        <section id="main-section" class="relative z-20 flex flex-col">
+        <section id="main-section" class="h-90vh relative z-20 flex flex-col">
 
             <div id="prompt-message" class="hidden">
                 
@@ -227,7 +227,7 @@
 
             <hr class="w-97.5% bg-green-bg h-1 self-center"/>
 
-            <div id="main-body" class="overflow-y-scroll">
+            <div id="main-body" class="overflow-y-scroll h-70vh">
 
                 <div id="no-tasks-display" class="hidden">
                     <h1>It looks like there are no pending tasks at the moment. Check back later or add new tasks to get started!</h1>
@@ -396,21 +396,21 @@
 
             </div>
 
-            <hr/>
+            <hr class="w-97.5% bg-green-bg h-1 self-center"/>
 
-            <footer id="main-foot" class="flex items-center justify-center">
-                <div id="logo-footer-container">
+            <footer id="main-foot" class="flex items-center justify-center h-10vh gap-12">
+                <div id="logo-footer-container" class="flex items-center gap-2">
                     <img src="../../../images/checklist.png" class="h-12 w-12"/>
-                    <h2>PEA</h2>
+                    <h2 class="font-bold text-[#254336] text-xl">PEA</h2>
                 </div>
                 
-                <p>Designed and developed by <a href="https://www.linkedin.com/in/jon-arbell-donor-de-ocampo-134083284/">Jon Arbell De Ocampo</a></p>
+                <!-- <p>Designed and developed by <a href="https://www.linkedin.com/in/jon-arbell-donor-de-ocampo-134083284/">Jon Arbell De Ocampo</a></p> -->
 
-                <p>&copy; 2024 Panis by K.E - Keep Exploring. All rights reserved.</p>
+                <p>K.E. &copy; 2024 - Keep Exploring. All rights reserved.</p>
 
-                <a href="/about-us">About</a>
+                <a href="/about-us" class="underline">About</a>
 
-                <a href="/contact-us">Contact</a>
+                <a href="/contact-us" class="underline">Contact</a>
 
             </footer>
 
