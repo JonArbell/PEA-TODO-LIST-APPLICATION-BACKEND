@@ -17,7 +17,6 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet"/>
     <link href="../../../css/tailwind-output.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
 </head>
 <body class="overflow-y-hidden overflow-x-hidden bg-white-bg">
@@ -132,18 +131,18 @@
             
             <hr class="h-px opacity-50 bg-white-bg"/>
 
-            <div id="lists-container">
+            <div id="lists-container" class="w-full relative z-40">
                 <h3 class="p-6 pl-2 font-bold">Lists</h3>
-                <ul class="h-30vh">
+                <ul class="h-30vh overflow-y-scroll">
                     <li>
                         <a>
-                            <p>Personal</p>
+                            <span>Personal</span>
                         </a>
                     </li>
 
                     <li>
                         <a>
-                            <p>Work</p>
+                            <span>Work</span>
                         </a>
                     </li>
 
@@ -153,25 +152,27 @@
                 </ul>
             </div>
 
-            <div id="todo-progress-chart">
+            <div class="h-25vh" id="todo-progress-chart">
 
             </div>
 
-            <button onmouseup="Button.manageList()">Manage List</button>
+            <div class="flex justify-center">
+                <button class="m-6 p-4 border border-solid border-green-color rounded-2xl bg-white-bg text-green-color" onmouseup="Button.manageList()">Manage List</button>
+            </div>
 
             <hr class="h-px opacity-50 bg-white-bg"/>
 
-            <footer>PEA &copy; 2024</footer>
+            <footer class="text-center p-4 pt-3">K.E &copy; 2024</footer>
 
         </section>
 
-        <section id="main-section" class="relative z-20">
+        <section id="main-section" class="relative z-20 flex flex-col">
 
-            <div id="prompt-message">
+            <div id="prompt-message" class="hidden">
                 
             </div>
 
-            <div id="view-details">
+            <div id="view-details" class="hidden w-full">
                 <span>
                     <p onmouseup="ViewDetails.removeDetails()">&times;</p>
                 </span>
@@ -199,19 +200,19 @@
                 
             </div>
 
-            <div id="main-head">
+            <div id="main-head" class="h-10vh">
 
-                <div id="head-title">
+                <div id="head-title" class="flex">
                     <h2>Pending Tasks : </h2>
                     <div>
                         <h2 id="total-tasks">0</h2>
                     </div>
                 </div>
 
-                <div>
+                <div class="flex justify-between">
                     <p>To-do list :</p>
 
-                    <div id="sort-container">
+                    <div id="sort-container" class="flex">
                         <p>Sort By:</p>
                         <select onchange="SortBy.sortProcess()" name="sort">
                             <option value="d-m">Date Modified</option>
@@ -224,22 +225,22 @@
                     
             </div>
 
-            <hr/>
+            <hr class="w-97.5% bg-green-bg h-1 self-center"/>
 
-            <div id="main-body">
+            <div id="main-body" class="overflow-y-scroll">
 
-                <div id="no-tasks-display">
+                <div id="no-tasks-display" class="hidden">
                     <h1>It looks like there are no pending tasks at the moment. Check back later or add new tasks to get started!</h1>
                 </div>
 
-                <div id="todos-container">
+                <div id="todos-container" class="grid grid-cols-3">
                     <!--
                         All todo's here
                         <div class=".todo-container"></div>
                     -->
                 </div>
 
-                <div id="edit-list-name-container">
+                <div id="edit-list-name-container" class="hidden">
                     <form>
 
                         <span>
@@ -262,7 +263,7 @@
                     </form>
                 </div>
 
-                <div id="edit-delete-list-modal-pick">
+                <div id="edit-delete-list-modal-pick" class="hidden">
 
                     <span>
                         <p onmouseup="Button.removeManageListModal()">&times;</p>
@@ -277,7 +278,7 @@
 
                 </div>
 
-                <div id="create-todo-list-modal-pick">
+                <div id="create-todo-list-modal-pick" class="hidden">
 
                     <span>
                         <p onmouseup="Button.removeCreateNewItemModal()">&times;</p>
@@ -290,7 +291,7 @@
                     </section>
                 </div>
 
-                <div id="create-edit-todo-modal-container">
+                <div id="create-edit-todo-modal-container" class="hidden">
 
                     <h2 id="add-edit-title">Add To-do:</h2>
 
@@ -336,7 +337,7 @@
                     
                 </div>
 
-                <div id="create-edit-delete-list-container">
+                <div id="create-edit-delete-list-container" class="hidden">
 
                     <div id="add-list-modal-container">
                         
@@ -397,13 +398,15 @@
 
             <hr/>
 
-            <footer id="main-foot">
+            <footer id="main-foot" class="flex items-center justify-center">
                 <div id="logo-footer-container">
-                    <img src="../../../images/checklist.png"/>
+                    <img src="../../../images/checklist.png" class="h-12 w-12"/>
                     <h2>PEA</h2>
                 </div>
                 
                 <p>Designed and developed by <a href="https://www.linkedin.com/in/jon-arbell-donor-de-ocampo-134083284/">Jon Arbell De Ocampo</a></p>
+
+                <p>&copy; 2024 Panis by K.E - Keep Exploring. All rights reserved.</p>
 
                 <a href="/about-us">About</a>
 
@@ -411,7 +414,7 @@
 
             </footer>
 
-            <button id="create-new-item-button" onmouseup="Button.createNewItem(event)">Create New</button>
+            <button class="absolute bottom-0" id="create-new-item-button" onmouseup="Button.createNewItem(event)">Create New</button>
 
         </section>
 
