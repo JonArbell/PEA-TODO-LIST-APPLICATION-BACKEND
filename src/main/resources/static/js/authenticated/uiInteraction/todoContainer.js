@@ -18,39 +18,47 @@ export const createTodoContainer = async (todos) => {
 
             const todoContainer = document.createElement('div');
             todoContainer.classList.add(
-                'border-2',
+                'w-full',
+                'border-4',
                 'border-solid',
                 'border-green-color',
                 'rounded-2xl',
                 'flex',
                 'flex-col',
-                'w-[25vw]',
+                'gap-2',
                 'h-30vh'
             );
             todoContainer.id = `${todo.id}`;
+            const classes = 'h-[3rem] flex items-center justify-center w-[30%]';
+            const buttonClasses = `${classes} border-2 border-solid border-black rounded-2xl`;
+            
             todoContainer.innerHTML = `
-                            <h2 id="${todo.id}" class="text-center cursor-pointer text-green-color font-bold" onclick="ViewDetails.viewDetails(${todo.id})" role="button">View Details</h2>
+                            <h2 id="${todo.id}" class="flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline text-2xl w-[50%] m-4" onclick="ViewDetails.viewDetails(${todo.id})" role="button">View Details</h2>
             
-                            <div class="flex justify-center w-[90%]">
-                                <h3 class="h-[10vh]">Title</h3>
-                                <h3 class="h-[10vh]">Completed</h3>
-                                <h3 class="h-[10vh]">Target Date</h3>
+                            <div class="flex items-center justify-center w-[90%]">
+                                <h3 class="${classes} font-bold">Title</h3>
+                                <h3 class="${classes} font-bold">Completed</h3>
+                                <h3 class="${classes} font-bold">Target Date</h3>
                             </div>
         
-                            <hr class="bg-green-color h-2"/>
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto"/>
             
-                            <div class="flex justify-center w-[90%]">
-                                <p class="h-[10vh]">${todo.title}</p>
-                                <p class="h-[10vh]">${todo.done? 'Yes' : 'No'}</p>
-                                <p class="h-[10vh]">${todo.formattedDate}</p>
+                            <div class="flex items-center justify-center w-[90%]">
+                                <p class="${classes}">${todo.title}</p>
+                                <p class="${classes}">${todo.done? 'Yes' : 'No'}</p>
+                                <p class="${classes}">${todo.formattedDate}</p>
                             </div>
         
-                            <hr/>
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto"/>
             
-                            <div class="flex justify-center h-1/4">
-                                <button class="delete-todo-button" onclick="CrudTodoUi.deleteTodoUi(${todo.id})">Delete</button>
-                                <button class="mark-as-done-todo-button" onclick="CrudTodoUi.todoMarkAsDoneUi(${todo.id})">Mark as complete</button>
-                                <button class="edit-todo-button" onclick="CrudTodoUi.editTodoUi(${todo.id})">Edit to-do</button>
+                            <div class="flex items-center justify-center w-[90%]">
+
+                                <button class="delete-todo-button ${buttonClasses} text-sm text-white-color bg-[#400707]" onclick="CrudTodoUi.deleteTodoUi(${todo.id})">Delete</button>
+
+                                <button class="mark-as-done-todo-button ${buttonClasses} text-sm bg-[rgb(162, 157, 157)]" onclick="CrudTodoUi.todoMarkAsDoneUi(${todo.id})">Mark as complete</button>
+
+                                <button class="edit-todo-button ${buttonClasses} text-sm text-white-color bg-green-bg" onclick="CrudTodoUi.editTodoUi(${todo.id})">Edit to-do</button>
+
                             </div>
                             
                             `;

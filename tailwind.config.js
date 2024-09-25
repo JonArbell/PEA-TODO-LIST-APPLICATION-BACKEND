@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/main/resources/templates/authenticated/main/home.html",
+  "./src/main/resources/templates/authenticated/main/test.html",
   "./src/main/resources/templates/index.html"],
   theme: {
     extend: {
@@ -29,7 +30,6 @@ module.exports = {
         "30vw" : "30vw",
         "40vw" : "40vw",
         "50vw" : "50vw",
-        "50%" : "50%",
         "60vw" : "60vw",
         "70vw" : "70vw",
         "80vw" : "80vw",
