@@ -16,7 +16,7 @@ export const createTodoContainer = async (todos) => {
         }
 
         mainContainer.innerHTML = `
-            <div class="grid grid-cols-4 text-center m-4 mt-2 mb-2 font-bold">
+            <div class="grid grid-cols-4 text-center m-4 mt-2 mb-2 mx-0 font-bold">
                 <h2>Title</h2>
                 <h2>Completed</h2>
                 <h2>Target Date</h2>
@@ -26,8 +26,12 @@ export const createTodoContainer = async (todos) => {
 
         document.querySelector('#no-tasks-display').style.display = 'none';
         document.querySelector('#todos-container').classList.remove('hidden');
+
+        const unorderedList = document.createElement('ul');
         
         todos.forEach((todo,index) => {
+
+            const list = document.createElement('li');
 
             const todoContainer = document.createElement('div');
             const bgColor = `${(index%2) == 0 ? 'bg-white-color' : 'bg-white-bg'}`;
@@ -48,7 +52,6 @@ export const createTodoContainer = async (todos) => {
                 'border-solid',
                 'border-green-color'
             );
-            todoContainer.id = `${todo.id}`;
             todoContainer.innerHTML = `
                 <p>${todo.title}</p>
                 <p>${todo.done? 'Yes' : 'No'}</p>
@@ -66,6 +69,11 @@ export const createTodoContainer = async (todos) => {
                     </button>
                 </div>
             `;
+
+            list.appendChild(todoContainer);
+            unorderedList.appendChild(list);
+            mainContainer.appendChild(unorderedList);
+            
             // todoContainer.innerHTML = `
             //                 <h2 id="${todo.id}" class="flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline text-2xl w-[50%] m-4" onclick="ViewDetails.viewDetails(${todo.id})" role="button">View Details</h2>
             
@@ -97,7 +105,7 @@ export const createTodoContainer = async (todos) => {
                             
             //                 `;
     
-            mainContainer.appendChild(todoContainer);
+            
         });
     
     }

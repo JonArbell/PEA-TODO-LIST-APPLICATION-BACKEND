@@ -8,33 +8,50 @@
     <link rel="stylesheet" href="../../../static/css/tailwind-output.css"/>
 
 </head>
-<body class="">
+<body class="relative h-screen">
 
-    <div id="main-head" class="flex flex-col h-10vh w-[97.5%] items-center">
-
-        <div id="head-title" class="self-start flex">
-            <h2>Pending Tasks : </h2>
-            <div>
-                <h2 id="total-tasks">0</h2>
-            </div>
-        </div>
-
-        <div class="flex justify-between w-full">
-            <p>To-do list :</p>
-
-            <div id="sort-container" class="flex gap-4">
-                <p>Sort By:</p>
-                <select onchange="SortBy.sortProcess()" name="sort">
-                    <option value="d-m">Date Modified</option>
-                    <option value="title">Title</option>
-                    <option value="t-d">Target Date</option>
-                </select>
-            </div>
-
-        </div>
-            
+    <div class="grid grid-cols-4 text-center m-4 mt-2 mb-2 mx-0 font-bold">
+        <h2>Title</h2>
+        <h2>Completed</h2>
+        
     </div>
+
+    <div class="bg-white-color grid grid-cols-4 text-center items-center p-4 px-0 border-2 border-r-0 border-l-0 none border-solid border-green-color">
+        <p>Lopit</p>
+        <p>No</p>
+        <p>10-16-2024</p>
+        <div class="flex justify-around">
+
+            <h3 id="${todo.id}" role="button" class="underline cursor-pointer text-green-color" >View Details</h3>
     
+            <button>
+                <img alt="Edit button" class="h-4 w-4" src="../../../static/images/edit_button.png" />
+            </button>
+
+            <button>
+                <img alt="Delete button" class="h-4 w-4" src="../../../static/images/delete_button.png"/>
+            </button>
+        </div>
+    </div>
+
+    <div class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg h-[35%] w-[25%] p-8 rounded-2xl shadow-[_0_2px_5px_black] hidden flex-col">
+        <p>Lopit</p>
+        <p>No</p>
+        <p>10-16-2024</p>
+        <div class="flex justify-around">
+
+            <h3 id="${todo.id}" role="button" class="underline cursor-pointer text-green-color" >View Details</h3>
+    
+            <button>
+                <img alt="Edit button" class="h-4 w-4" src="../../../static/images/edit_button.png" />
+            </button>
+
+            <button>
+                <img alt="Delete button" class="h-4 w-4" src="../../../static/images/delete_button.png"/>
+            </button>
+        </div>
+    </div>
+
 
 </body>
 </html>

@@ -1,6 +1,6 @@
 export const createListsContainer = async (data) => {
 
-    const displayListContainer = document.querySelector('#lists-container > ul');
+    const displayListContainer = document.querySelector('#lists-container > nav > ul');
     displayListContainer.innerHTML = '';
 
     const editListNameSelect = document.querySelector('#edit-list-name-container > form > select');

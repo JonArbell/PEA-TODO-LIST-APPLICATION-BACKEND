@@ -14,10 +14,10 @@ export const sortByRequest = async () => {
 
     if((sort !== null && sort !== 'd-m') && (path !== '/about-us' && path !== '/contact-us')){
 
-        url = `${prod}/api/authenticated${path}/${sort}`;
+        url = `${dev}/api/authenticated${path}/${sort}`;
 
     }else{
-        url = `${prod}/api/authenticated${path}`;
+        url = `${dev}/api/authenticated${path}`;
     }
 
     try{
@@ -57,7 +57,7 @@ export const logout = async (event) =>{
         const prod = 'https://pea-todo-list-application.onrender.com';
         const dev = 'http://localhost:8080';
 
-        const url = `${prod}/logout`;
+        const url = `${dev}/logout`;
 
         const response = await fetch(url,{
             method : 'POST',

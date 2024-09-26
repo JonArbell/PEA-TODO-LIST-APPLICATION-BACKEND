@@ -54,12 +54,13 @@
 </head>
 <body class="overflow-y-hidden overflow-x-hidden bg-white-bg relative z-0">
     
-    <div id="modal-view-background">
+    <div id="modal-view-background" class="hidden h-screen w-screen opacity-70 fixed z-[51] left-0 top-0 bg-[#000000] ">
 
     </div>
 
     <header> 
-        <ul class="h-10vh flex flex-wrap justify-between lg:space-x-96 bg-green-bg shadow-top-nav relative z-40">
+
+        <ul class="h-10vh flex flex-wrap justify-between lg:space-x-96 bg-green-bg shadow-top-nav relative z-50">
             <li class="flex items-center ml-4">
                 <h1 class="font-bold text-5xl text-white-color [text-shadow:_-2px_3px_4px_black]">PEA</h1>
             </li>
@@ -80,35 +81,37 @@
 
                 </li>
             
-                <li class="flex items-center">
-                    <a href="/home">
-                        <p class="text-white-color hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]">Home</p>
-                    </a>
-                </li>
-
-                <li class="flex items-center">
-                    <a href="/todays-tasks">
-                        <p class="text-white-color hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]">Today's Tasks</p>
-                    </a>
-                </li>
+                <nav class="flex flex-wrap lg:gap-20">
+                    <li class="flex items-center">
+                        <a href="/home">
+                            <p class="text-white-color hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]">Home</p>
+                        </a>
+                    </li>
     
-                <li class="flex items-center">
-                    <a href="/completed-tasks">
-                        <p class="text-white-color hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]">Completed Tasks</p>
-                    </a>
-                </li>
-    
-                <li class="flex items-center">
-                    <a href="/overdue-tasks">
-                        <p class="text-white-color hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]">Overdue Tasks</p>
-                    </a>
-                </li>
-    
-                <li class="flex items-center">
-                    <a href="/all-tasks">
-                        <p class="text-white-color hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]">All Tasks</p>
-                    </a>
-                </li>
+                    <li class="flex items-center">
+                        <a href="/todays-tasks">
+                            <p class="text-white-color hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]">Today's Tasks</p>
+                        </a>
+                    </li>
+        
+                    <li class="flex items-center">
+                        <a href="/completed-tasks">
+                            <p class="text-white-color hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]">Completed Tasks</p>
+                        </a>
+                    </li>
+        
+                    <li class="flex items-center">
+                        <a href="/overdue-tasks">
+                            <p class="text-white-color hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]">Overdue Tasks</p>
+                        </a>
+                    </li>
+        
+                    <li class="flex items-center">
+                        <a href="/all-tasks">
+                            <p class="text-white-color hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]">All Tasks</p>
+                        </a>
+                    </li>
+                </nav>
     
                 <li class="flex items-center mr-4">
 
@@ -155,7 +158,7 @@
 
     <main class="grid grid-cols-[0.5fr_5fr] grid-rows-[1fr]">
 
-        <section id="menu-section" class="h-90vh bg-brown-bg relative z-30 shadow-[_2.5px_0_3px_black] w-10vw text-white-color">
+        <section id="menu-section" class="h-90vh bg-brown-bg relative z-40 shadow-[_2.5px_0_3px_black] w-10vw text-white-color">
 
             <div class="flex justify-center items-center h-10vh">
                 <h2 class="font-bold text-center">MENU</h2>
@@ -166,23 +169,27 @@
 
             <div id="lists-container" class="w-full relative z-40">
                 <h3 class="p-6 pl-2 font-bold">Lists</h3>
-                <ul class="h-30vh overflow-y-scroll">
-                    <li>
-                        <a class="hover:brightness-150">
-                            <p class="p-4 ml-4">Personal</p>
-                        </a>
-                    </li>
 
-                    <li>
-                        <a class="hover:brightness-150">
-                            <p class="p-4 ml-4">Work</p>
-                        </a>
-                    </li>
+                <nav>
+                    <ul class="h-30vh overflow-y-scroll">
+                        <li>
+                            <a class="hover:brightness-150">
+                                <p class="p-4 ml-4">Personal</p>
+                            </a>
+                        </li>
+    
+                        <li>
+                            <a class="hover:brightness-150">
+                                <p class="p-4 ml-4">Work</p>
+                            </a>
+                        </li>
+    
+                        <!--
+                            Lists of lists here
+                        -->
+                    </ul>
+                </nav>
 
-                    <!--
-                        Lists of lists here
-                    -->
-                </ul>
             </div>
 
             <div class="h-[27vh]" id="todo-progress-chart">
@@ -199,35 +206,34 @@
 
         </section>
 
-        <section id="main-section" class="h-90vh relative z-20 flex flex-col">
+        <section id="main-section" class="h-90vh relative flex flex-col">
 
             <div id="prompt-message" class="hidden">
                 
             </div>
 
-            <div id="view-details" class="hidden w-full">
-                <span>
-                    <p onmouseup="ViewDetails.removeDetails()">&times;</p>
-                </span>
-                <h2 id="view-title"></h2>
+            <div id="view-details" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg h-[35%] w-[25%] p-8 rounded-2xl shadow-[_0_2px_5px_black] hidden flex-col ">
+                <button onmouseup="ViewDetails.removeDetails()" class="cursor-pointer">&times;</button>
+
+                <h2 id="view-title" class="font-bold text-center text-2xl"></h2>
 
                 <section>
-                    <h3>Completed :</h3>
+                    <h3 class="font-bold">Completed :</h3>
                     <p id="isCompleted"></p>
                 </section>
 
                 <section>
-                    <h3>Description :</h3>
+                    <h3 class="font-bold">Description :</h3>
                     <p id="view-description"></p>
                 </section>
                 
                 <section>
-                    <h3>List</h3>
+                    <h3 class="font-bold">List</h3>
                     <p id="view-todo-list"></p>
                 </section>
 
                 <section>
-                    <h3>Target Date :</h3>
+                    <h3 class="font-bold">Target Date :</h3>
                     <p id="view-target-date">1</p>
                 </section>
                 
@@ -443,9 +449,19 @@
 
                 <p>K.E. &copy; 2024 - Keep Exploring. All rights reserved.</p>
 
-                <a href="/about-us" class="underline">About</a>
+                <nav>
 
-                <a href="/contact-us" class="underline">Contact</a>
+                    <ul class="flex items-center justify-center gap-12">
+                        <li>
+                            <a href="/about-us" class="underline">About</a>
+                        </li>
+
+                        <li>
+                            <a href="/contact-us" class="underline">Contact</a>
+                        </li>
+                    </ul>
+
+                </nav>
 
             </footer>
 
