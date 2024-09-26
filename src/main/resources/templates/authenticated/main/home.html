@@ -52,7 +52,7 @@
     </style>
 
 </head>
-<body class="overflow-y-hidden overflow-x-hidden bg-white-bg">
+<body class="overflow-y-hidden overflow-x-hidden bg-white-bg relative z-0">
     
     <div id="modal-view-background">
 
@@ -233,40 +233,40 @@
                 
             </div>
 
-            <div id="main-head" class=" h-10vh">
+            <div id="main-head" class="flex flex-col justify-evenly h-10vh w-[97.5%] self-center">
 
-                <div id="head-title" class="flex">
+                <div id="head-title" class="self-start flex items-center gap-4 font-bold text-2xl">
                     <h2>Pending Tasks : </h2>
-                    <div>
+                    <div class="flex items-center justify-center h-10 w-10 rounded-lg shadow-[_0_0_2px_black]">
                         <h2 id="total-tasks">0</h2>
                     </div>
                 </div>
-
-                <div class="flex justify-between">
+        
+                <div class="flex justify-between w-full">
                     <p>To-do list :</p>
-
-                    <div id="sort-container" class="flex">
+        
+                    <div id="sort-container" class="flex items-center gap-4">
                         <p>Sort By:</p>
-                        <select onchange="SortBy.sortProcess()" name="sort">
+                        <select onchange="SortBy.sortProcess()" name="sort" class="bg-[#293b49] text-xs text-white-color p-3 rounded-lg">
                             <option value="d-m">Date Modified</option>
                             <option value="title">Title</option>
                             <option value="t-d">Target Date</option>
                         </select>
                     </div>
-
+        
                 </div>
                     
             </div>
 
             <hr class="w-[97.5%] bg-green-bg h-1 self-center"/>
 
-            <div id="main-body" class="h-70vh overflow-y-scroll">
+            <div id="main-body" class="h-70vh self-center w-[97.5%] overflow-y-scroll">
 
                 <div id="no-tasks-display" class="hidden">
                     <h1>It looks like there are no pending tasks at the moment. Check back later or add new tasks to get started!</h1>
                 </div>
 
-                <div id="todos-container" class="grid grid-cols-3 gap-4 relative z-30">
+                <div id="todos-container" class="h-[68.5vh]">
                     <!--
                         All todo's here
                         <div class=".todo-container"></div>
@@ -431,7 +431,9 @@
 
             <hr class="w-[97.5%] bg-green-bg h-1 self-center"/>
 
-            <footer id="main-foot" class="flex items-center justify-center h-10vh gap-12">
+            <button class="hidden absolute bottom-0" id="create-new-item-button" onmouseup="Button.createNewItem(event)">Create New</button>
+
+            <footer id="main-foot" class="flex items-center justify-center gap-12 h-10vh">
                 <div id="logo-footer-container" class="flex items-center gap-2">
                     <img src="../../../images/checklist.png" class="h-12 w-12"/>
                     <h2 class="font-bold text-[#254336] text-xl">PEA</h2>
@@ -446,8 +448,6 @@
                 <a href="/contact-us" class="underline">Contact</a>
 
             </footer>
-
-            <button class="absolute bottom-0" id="create-new-item-button" onmouseup="Button.createNewItem(event)">Create New</button>
 
         </section>
 

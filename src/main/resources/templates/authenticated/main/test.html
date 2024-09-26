@@ -8,23 +8,33 @@
     <link rel="stylesheet" href="../../../static/css/tailwind-output.css"/>
 
 </head>
-<body>
+<body class="">
+
+    <div id="main-head" class="flex flex-col h-10vh w-[97.5%] items-center">
+
+        <div id="head-title" class="self-start flex">
+            <h2>Pending Tasks : </h2>
+            <div>
+                <h2 id="total-tasks">0</h2>
+            </div>
+        </div>
+
+        <div class="flex justify-between w-full">
+            <p>To-do list :</p>
+
+            <div id="sort-container" class="flex gap-4">
+                <p>Sort By:</p>
+                <select onchange="SortBy.sortProcess()" name="sort">
+                    <option value="d-m">Date Modified</option>
+                    <option value="title">Title</option>
+                    <option value="t-d">Target Date</option>
+                </select>
+            </div>
+
+        </div>
+            
+    </div>
     
-    <div class="grid grid-cols-3 gap-4">
-        <div class="flex flex-col h-30vh">
-          <div class="h-[30%] w-[30%] bg-green-500 m-4">Child 2</div> <!-- Fixed height of 1rem -->
-        </div>
-        <div class="flex flex-col h-30vh">
-          <div class="h-[21rem] bg-red-500">Child 3</div> <!-- Fixed height of 1rem -->
-          <div class="h-[2rem] bg-yellow-500">Child 4</div> <!-- Fixed height of 1rem -->
-        </div>
-        <div class="flex flex-col h-30vh">
-          <div class="h-[5rem] bg-purple-500">Child 5</div> <!-- Fixed height of 1rem -->
-          <div class="h-[3rem] bg-pink-500">Child 6</div> <!-- Fixed height of 1rem -->
-        </div>
-      </div>
-      
-      
 
 </body>
 </html>
