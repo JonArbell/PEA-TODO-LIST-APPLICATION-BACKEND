@@ -24,9 +24,15 @@
             height: 10px; 
         }
 
-        ::-webkit-scrollbar-track {
+        .menu-section::-webkit-scrollbar-track {
+            background: #2B2B2B;
+        }
+
+        .todo-section::-webkit-scrollbar-track {
             background: #d0cab5;
-            border-radius: 10px; 
+        }
+
+        ::-webkit-scrollbar-track{
             position: relative;
             z-index: 50;
         }
@@ -171,22 +177,19 @@
                 <h3 class="p-6 pl-2 font-bold">Lists</h3>
 
                 <nav>
-                    <ul class="h-30vh overflow-y-scroll">
+                    <ul class="h-30vh menu-section overflow-y-scroll">
                         <li>
-                            <a class="hover:brightness-150">
-                                <p class="p-4 ml-4">Personal</p>
+                            <a>
+                                <p class="p-4 pl-6 hover:bg-white-bg hover:text-green-color">Personal</p>
                             </a>
                         </li>
     
                         <li>
-                            <a class="hover:brightness-150">
-                                <p class="p-4 ml-4">Work</p>
+                            <a>
+                                <p class="p-4 pl-6 hover:bg-white-bg hover:text-green-color">Work</p>
                             </a>
                         </li>
     
-                        <!--
-                            Lists of lists here
-                        -->
                     </ul>
                 </nav>
 
@@ -212,8 +215,10 @@
                 
             </div>
 
-            <div id="view-details" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg h-[35%] w-[25%] p-8 rounded-2xl shadow-[_0_2px_5px_black] hidden flex-col ">
-                <button onmouseup="ViewDetails.removeDetails()" class="cursor-pointer">&times;</button>
+            <div id="view-details" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg w-[35%] p-8 rounded-2xl shadow-[_0_2px_5px_black] hidden flex-col gap-y-4">
+                <button onmouseup="ViewDetails.removeDetails()" class="cursor-pointer relative">
+                    <span class="absolute right-0 font-bold hover:text-red-900">&times;</span>
+                </button>
 
                 <h2 id="view-title" class="font-bold text-center text-2xl"></h2>
 
@@ -241,7 +246,7 @@
 
             <div id="main-head" class="flex flex-col justify-evenly h-10vh w-[97.5%] self-center">
 
-                <div id="head-title" class="self-start flex items-center gap-4 font-bold text-2xl">
+                <div id="head-title" class="self-start flex items-center gap-4 font-bold text-2xl text-green-color">
                     <h2>Pending Tasks : </h2>
                     <div class="flex items-center justify-center h-10 w-10 rounded-lg shadow-[_0_0_2px_black]">
                         <h2 id="total-tasks">0</h2>
@@ -266,13 +271,13 @@
 
             <hr class="w-[97.5%] bg-green-bg h-1 self-center"/>
 
-            <div id="main-body" class="h-70vh self-center w-[97.5%] overflow-y-scroll">
+            <div id="main-body" class="h-70vh self-center w-[97.5%] todo-section overflow-y-scroll">
 
                 <div id="no-tasks-display" class="hidden">
                     <h1>It looks like there are no pending tasks at the moment. Check back later or add new tasks to get started!</h1>
                 </div>
 
-                <div id="todos-container" class="h-[68.5vh]">
+                <div id="todos-container" class="h-[68.55vh]">
                     <!--
                         All todo's here
                         <div class=".todo-container"></div>
@@ -330,46 +335,46 @@
                     </section>
                 </div>
 
-                <div id="create-edit-todo-modal-container" class="hidden">
+                <div id="create-edit-todo-modal-container" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg w-[35%] p-8 rounded-2xl shadow-[_0_2px_5px_black] hidden text-green-color">
 
-                    <h2 id="add-edit-title">Add To-do:</h2>
+                    <h2 id="add-edit-title" class="font-bold text-2xl">Add To-do:</h2>
 
                     <form>
 
                         <input id="todo-id" type="hidden"/>
                         
-                        <section>
-                            <input minlength="1" maxlength="35" id="add-edit-todo-title" autofocus="autofocus" required="required" name="title" type="text" placeholder="Title"/>
+                        <section class="flex items-center my-4">
+                            <input minlength="1" maxlength="35" id="add-edit-todo-title" autofocus="autofocus" required="required" name="title" type="text" placeholder="Title" class="placeholder-gray-500 bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg w-full"/>
                         </section>
 
-                        <section>
-                            <textarea draggable="false" id="add-edit-todo-short-description" name="short-description" placeholder="Short Description"></textarea>
+                        <section class="flex items-center my-4">
+                            <textarea draggable="false" id="add-edit-todo-short-description" name="short-description" placeholder="Short Description" class="placeholder-gray-500 bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg w-full resize-none"></textarea>
                         </section>
                         
-                        <section id="list-section">
+                        <section id="list-section" class="flex items-center gap-[3.5%] my-4">
 
-                            <label for="add-edit-todo-list">
+                            <label for="add-edit-todo-list" class="w-[25%]">
                                 <h4>List [Optional]</h4>
                             </label>
 
-                            <select id="add-edit-todo-list" name="listName">
+                            <select id="add-edit-todo-list" name="listName" class="w-[45%] bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg">
                                 <option value="0">None</option>
 
                             </select>
 
                         </section>
                         
-                        <section id="target-date-section">
-                            <label for="add-edit-todo-target-date">
+                        <section id="target-date-section" class="flex items-center gap-[3.5%] my-4">
+                            <label for="add-edit-todo-target-date" class="w-[25%]">
                                 <h4>Target Date</h4>
                             </label>
-                            <input id="add-edit-todo-target-date" required="required" name="target-date" type="date" placeholder="MM-DD-YYYY"/>
+                            <input class="w-[45%] bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg" id="add-edit-todo-target-date" required="required" name="target-date" type="date" placeholder="MM-DD-YYYY"/>
                         </section>
                         
-                        <section id="create-edit-todo-button-section">
+                        <section id="create-edit-todo-button-section" class="flex items-center justify-evenly my-4">
 
-                            <button onmouseup="Button.discardCreateEditTodo()" id="add-edit-todo-discard-button" type="reset">Discard</button>
-                            <button id="add-edit-todo-save-button" type="submit">Save</button>
+                            <button class="w-[40%] p-3 cursor-pointer border-[1.5px] border-solid border-green-color rounded-lg" onmouseup="Button.discardCreateEditTodo()" id="add-edit-todo-discard-button" type="reset">Discard</button>
+                            <button class="w-[40%] p-3 cursor-pointer border-[1.5px] border-solid border-green-color rounded-lg bg-green-bg text-white-color" id="add-edit-todo-save-button" type="submit">Save</button>
                         </section>
 
                     </form>

@@ -16,7 +16,7 @@ export const createTodoContainer = async (todos) => {
         }
 
         mainContainer.innerHTML = `
-            <div class="grid grid-cols-4 text-center m-4 mt-2 mb-2 mx-0 font-bold">
+            <div class="grid grid-cols-4 text-center m-4 mt-2 mb-2 mx-0 font-bold text-green-color">
                 <h2>Title</h2>
                 <h2>Completed</h2>
                 <h2>Target Date</h2>
@@ -35,8 +35,8 @@ export const createTodoContainer = async (todos) => {
 
             const todoContainer = document.createElement('div');
             const bgColor = `${(index%2) == 0 ? 'bg-white-color' : 'bg-white-bg'}`;
-            const border = `${(index%2) == 0 ? 'border-2' : index === (todos.length-1) ? 'border-b-2' : 'border-b-0'}`; 
-            const lastItemBorder = `${index === (todos.length-1) ? 'border-t-0' : 'none'}`;
+            const border = `${index === 0 ? 'border-y-2' : 'border-t-0'}`;
+            const noTop = `${index !== 0 ? 'border-b-2' : 'none'}`;
             todoContainer.classList.add(
                 `${bgColor}`,
                 'grid',
@@ -46,9 +46,7 @@ export const createTodoContainer = async (todos) => {
                 'p-4',
                 'px-0',
                 `${border}`,
-                'border-r-0',
-                'border-l-0',
-                `${lastItemBorder}`,
+                `${noTop}`,
                 'border-solid',
                 'border-green-color'
             );
