@@ -66,20 +66,18 @@
 
     <header> 
 
-        <ul class="h-10vh flex flex-wrap justify-between lg:space-x-96 bg-green-bg shadow-top-nav relative z-50">
+        <ul class="h-10vh flex flex-wrap justify-between bg-green-bg shadow-top-nav relative z-50">
             <li class="flex items-center ml-4">
                 <h1 class="font-bold text-5xl text-white-color [text-shadow:_-2px_3px_4px_black]">PEA</h1>
             </li>
             
-            <div class="flex flex-wrap lg:gap-20">
+            <div class="flex flex-wrap gap-20">
 
-                <li class="flex items-center">
-                    <!-- <form>
-                        <input oninput="Todo.searchTodoQueryRealtime(this.value)" type="search" placeholder="Search to-do..."/>
-                    </form> -->
+                <li class="flex items-center relative">
+ 
                     <input class="p-4 rounded-2xl w-80 text-xs border border-solid border-green-color" oninput="Todo.searchTodoQueryRealtime(this.value)" type="search" placeholder="Search To-do"/>
                     
-                    <div id="search-result-modal">
+                    <div id="search-result-modal" class="hidden absolute bg-white rounded-bl-2xl rounded-br-2xl -bottom-14 border border-solid border-t-0 border-green-color min-h-[10vh] w-80 shadow-[_0_3px_2px_black] overflow-y-auto">
                         <!---
                             display all result of search
                         -->
@@ -307,17 +305,17 @@
                     </form>
                 </div>
 
-                <div id="edit-delete-list-modal-pick" class="hidden">
+                <div id="edit-delete-list-modal-pick" class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg z-[55] flex-col p-4 rounded-2xl shadow-[_0_2px_3px_black] gap-y-5 w-[17%]">
 
-                    <span>
-                        <p onmouseup="Button.removeManageListModal()">&times;</p>
-                    </span>
+                    <button class="cursor-pointer relative" onmouseup="Button.removeManageListModal()">
+                        <span class="text-2xl hover:text-red-900 absolute right-0">&times;</span>
+                    </button>
 
-                    <h2>Manage your lists:</h2>
+                    <h2 class="text-center font-bold text-lg">Manage your lists:</h2>
 
-                    <div>
-                        <button onmouseup="Button.editListName()">Edit List Name</button>
-                        <button onmouseup="Button.deleteList()">Delete List</button>
+                    <div class="flex justify-between">
+                        <button class="cursor-pointer text-white-color bg-[#293b49] p-4 rounded-2xl w-[47.5%] text-xs" onmouseup="Button.editListName()">Edit List Name</button>
+                        <button class="cursor-pointer text-white-color bg-[#293b49] p-4 rounded-2xl w-[47.5%] text-xs" onmouseup="Button.deleteList()">Delete List</button>
                     </div>
 
                 </div>
@@ -442,7 +440,7 @@
 
             <hr class="w-[97.5%] bg-green-bg h-1 self-center"/>
 
-            <button class="hidden absolute bottom-0" id="create-new-item-button" onmouseup="Button.createNewItem(event)">Create New</button>
+            <button class="absolute text-white-color bg-[#293b49] p-5 cursor-pointer rounded-2xl bottom-28 left-4" id="create-new-item-button" onmouseup="Button.createNewItem(event)">Create New</button>
 
             <footer id="main-foot" class="flex items-center justify-center gap-12 h-10vh">
                 <div id="logo-footer-container" class="flex items-center gap-2">

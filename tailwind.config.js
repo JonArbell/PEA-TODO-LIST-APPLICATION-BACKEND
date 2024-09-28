@@ -5,6 +5,15 @@ module.exports = {
   "./src/main/resources/templates/index.html"],
   theme: {
     extend: {
+       keyframes: {
+            fadeOut: {
+              '0%': { transform: 'translateX(0%)', opacity: '1' },
+              '100%': { transform: 'translateX(37%)', opacity: '0' },
+            },
+       },
+      animation: {
+        fadeOut: 'fadeOut 7s ease-out forwards',
+      },
       height: {
               "10vh": "10vh",
               "20vh": "20vh",

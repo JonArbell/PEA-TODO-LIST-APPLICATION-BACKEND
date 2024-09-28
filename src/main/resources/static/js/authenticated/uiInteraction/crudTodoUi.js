@@ -42,6 +42,7 @@ export const searchTodoUi = async (data) =>{
 
     if(data.length === 0){
         const newElement = document.createElement('h3');
+        newElement.classList.add('font-bold');
         newElement.textContent = 'No result';
         searchContainer.appendChild(newElement);
         return;
@@ -50,6 +51,7 @@ export const searchTodoUi = async (data) =>{
     data.forEach(todo => {
 
         const newElement = document.createElement('p');
+        newElement.classList.add('p-4','m-4','rounded-2xl','text-green-color','hover:bg-green-bg','hover:text-white-color','cursor-pointer');
         newElement.setAttribute('onclick',`ViewDetails.viewDetails(${todo.id})`);
         newElement.textContent = `${todo.title}`;
 
