@@ -79,13 +79,22 @@ export const editListName = () =>{
 export const deleteList = () =>{
     document.querySelector('#create-edit-delete-list-container').style.display = 'block';
     document.querySelector('#delete-list-modal-container').style.display = 'block';
-    document.querySelector('#delete-select-list-container').style.display = 'block';
+    document.querySelector('#delete-select-list-container').style.display = 'flex';
     document.querySelector('#add-list-modal-container').style.display = 'none';
 }
 
 export const confirmDeleteList = () =>{
-    document.querySelector('#delete-select-list-container').style.display = 'none';
-    document.querySelector('#delete-list-submit-confirmation').style.display = 'block';
+
+    const select = document.querySelector('#delete-select-list-container > select');
+
+    if(select.value != '0'){
+        document.querySelector('#delete-select-list-container').style.display = 'none';
+        document.querySelector('#delete-list-submit-confirmation').style.display = 'flex';
+        return;
+    }
+
+    alert('No list can be deleted.');
+
 }
 
 export const discardDeleteList = () =>{

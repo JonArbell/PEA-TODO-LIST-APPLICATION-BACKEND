@@ -19,6 +19,7 @@ export const createListsContainer = async (data) => {
         addTodoListContainer.appendChild(none);
     }
 
+    
     data.forEach(list =>{
 
         if(list.listName !== 'Personal' && list.listName !== 'Work'){
@@ -55,5 +56,13 @@ export const createListsContainer = async (data) => {
         }
 
     });
+
+    if(data.length === 2){
+
+        const deleteListOption = document.createElement('option');
+        deleteListOption.textContent = 'None';
+        deleteListOption.value = 0;
+        deleteListSelect.appendChild(deleteListOption);
+    }
 
 }

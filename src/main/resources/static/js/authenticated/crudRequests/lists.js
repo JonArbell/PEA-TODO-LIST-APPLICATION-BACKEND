@@ -101,7 +101,7 @@ export const deleteList = async (event) =>{
     event.preventDefault();
 
     const listId = document.querySelector('#delete-select-list-container > select').value;
-    const deleteTasks = document.querySelector('#delete-select-list-container > div > input').checked;
+    const deleteTasks = document.querySelector('#delete-select-list-container > section > input').checked;
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
     try{
 

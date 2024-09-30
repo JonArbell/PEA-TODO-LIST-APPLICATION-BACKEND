@@ -5,6 +5,26 @@
     outline: none;
 }
 
+@keyframes fadeOut {
+    from{
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    to{
+        transform: translateX(37%);
+        opacity: 0;
+    }
+}
+.success-message,.failed-message{
+    animation: fadeOut 7s ease-out forwards;
+}
+.success-message{
+    background-color: rgb(127, 180, 127);
+}
+.failed-message{
+    background-color:rgb(255, 69, 58);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
