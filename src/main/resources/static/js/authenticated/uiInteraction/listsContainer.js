@@ -63,6 +63,12 @@ export const createListsContainer = async (data) => {
         deleteListOption.textContent = 'None';
         deleteListOption.value = 0;
         deleteListSelect.appendChild(deleteListOption);
+
+
+        const editListNameOption = document.createElement('option');
+        editListNameOption.textContent = 'None';
+        editListNameOption.value = 0;
+        editListNameSelect.appendChild(editListNameOption);
     }
 
 }

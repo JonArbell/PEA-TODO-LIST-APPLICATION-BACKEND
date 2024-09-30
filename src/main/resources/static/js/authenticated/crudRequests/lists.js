@@ -57,6 +57,12 @@ export const renameList = async (event) =>{
     const listId = document.querySelector('#edit-list-name-container > form > select').value;
     const listName = document.querySelector('#edit-list-name-container > form >input').value;
     const csrfToken = document.querySelector('meta[name="_csrf_authenticated"]').content;
+
+    if(listId === '0'){
+        alert('No list can be renamed.');
+        return;
+    }
+        
     try{
 
         const prod = 'https://pea-todo-list-application.onrender.com';
