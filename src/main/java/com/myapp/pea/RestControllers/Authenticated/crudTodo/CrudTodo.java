@@ -71,7 +71,7 @@ public class CrudTodo {
         try{
             todoOperationService.addNewTodo(todoRequest);
             logger.info("List of todo : {}",todoRequest.getListId());
-            return new ResponseEntity<>(new MessageResponse("Todo item added successfully!"),HttpStatus.OK);
+            return new ResponseEntity<>(new MessageResponse("Todo item added successfully!"),HttpStatus.CREATED);
         }catch (NotValidDateException e){
             logger.error("NotValidDateException : {}",e.getMessage());
             errors.put("addTodoError",e.getMessage());

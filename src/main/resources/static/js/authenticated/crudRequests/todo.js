@@ -47,7 +47,7 @@ export const addEditTodo = async (event) => {
             credentials : 'include'
         });
 
-        if(!response.ok){
+        if(response.status !== 201 || !response.ok){
             const error = await response.json();
             throw error;
         }
@@ -62,11 +62,11 @@ export const addEditTodo = async (event) => {
 
     }catch(e){
 
-        if(methodType === 'POST'){
-            console.log(e.addTodoError);
+        if(methodType === 'POST' && e){
+            console.log('Add error : '+e.addTodoError);
             await PromptMessage.failedMessage(e.addTodoError);
-        }else if(methodType === 'PUT'){
-            console.error(e.editTodoError);
+        }else if(methodType === 'PUT' && e){
+            console.error('Edit error : '+e.editTodoError);
             await PromptMessage.failedMessage(e.editTodoError);
         }else{
             console.error('What error is that ? '+e);
