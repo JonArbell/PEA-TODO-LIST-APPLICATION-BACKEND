@@ -124,7 +124,7 @@ const createAccount = () =>{
     
             try{
     
-                const prod = 'https://pea-todo-list-application.onrender.comt';
+                const prod = 'https://pea-todo-list-application.onrender.com';
                 const dev = 'http://localhost:8080';
                 const url = `${prod}/api/create-account`;
     
