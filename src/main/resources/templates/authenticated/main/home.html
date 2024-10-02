@@ -75,10 +75,10 @@
                 <h1>PEA</h1>
             </li>
 
-            <div class="flex items-center 2xl:gap-20 xl:gap-12 lg:gap-10 sm:gap-24">
+            <div class="flex items-center 2xl:gap-20 xl:gap-12 lg:gap-10 xs:gap-20">
                 <li class="flex items-center">
  
-                    <input class="p-4 rounded-2xl 2xl:w-80 sm:w-72 lg:w-48 text-xs border border-solid border-green-color" oninput="Todo.searchTodoQueryRealtime(this.value)" type="search" placeholder="Search To-do"/>
+                    <input class="p-4 rounded-2xl 2xl:w-80 sm:w-72 xs:w-44 lg:w-48 text-xs border border-solid border-green-color " oninput="Todo.searchTodoQueryRealtime(this.value)" type="search" placeholder="Search To-do"/>
                     
                     <div id="search-result-modal" class="hidden absolute bg-white rounded-bl-2xl rounded-br-2xl top-[65%] border border-solid border-t-0 border-green-color min-h-[10vh] max-h-[30vh] 2xl:w-80 shadow-[_0_3px_2px_black] overflow-y-auto">
                         <!---
@@ -88,7 +88,7 @@
 
                 </li>
 
-                <nav class="lg:flex 2xl:gap-20 xl:gap-12 text-white-color lg:text-sm lg:gap-10 sm:hidden">
+                <nav class="lg:flex 2xl:gap-20 xl:gap-12 text-white-color lg:text-sm lg:gap-10 xs:hidden">
                     <li>
                         <a class="hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]" href="/home">Home</a>
                     </li>
@@ -110,7 +110,7 @@
                     </li>
                 </nav>
 
-                <li class="lg:flex items-center mr-4 sm:hidden">
+                <li class="lg:flex items-center mr-4 xs:hidden">
 
                     <div id="account-modal">
                         
@@ -161,7 +161,7 @@
 
     <main class="lg:grid lg:grid-cols-[0.25fr_1fr] xl:grid-cols-[0.20fr_1fr] 2xl:grid-cols-[0.15fr_1fr] lg:grid-rows-[1fr]">
 
-        <section class="lg:h-90vh bg-brown-bg relative z-40 shadow-[_2.5px_0_3px_black] w-full text-white-color sm:hidden lg:block">
+        <section class="lg:h-90vh bg-brown-bg relative z-40 shadow-[_2.5px_0_3px_black] w-full text-white-color xs:hidden lg:block">
 
             <div class="flex justify-center items-center h-10vh">
                 <h2 class="font-bold text-center">MENU</h2>
@@ -250,7 +250,7 @@
         
                     <section id="sort-container" class="flex items-center gap-4">
                         <p>Sort By:</p>
-                        <select onchange="SortBy.sortProcess()" name="sort" class="bg-[#293b49] sm:p-2 text-xs text-white-color 2xl:p-3 xl:p-2 rounded-lg">
+                        <select onchange="SortBy.sortProcess()" name="sort" class="bg-[#293b49] xs:p-2 text-xs text-white-color 2xl:p-3 xl:p-2 rounded-lg">
                             <option value="d-m">Date Modified</option>
                             <option value="title">Title</option>
                             <option value="t-d">Target Date</option>
@@ -263,9 +263,9 @@
 
             <hr class="w-[97.5%] bg-green-bg h-1 self-center"/>
 
-            <section id="main-body" class="sm:h-80vh self-center w-[97.5%] todo-section overflow-y-scroll">
+            <section id="main-body" class="xs:h-80vh self-center w-[97.5%] todo-section overflow-y-scroll">
 
-                <div id="no-tasks-display" class="hidden lg:h-[69vh] sm:h-[79.5vh] font-bold sm:text-5xl 2xl:text-7xl xl:text-5xl text-green-color">
+                <div id="no-tasks-display" class="hidden lg:h-[69vh] xs:h-[79.5vh] font-bold xs:text-5xl 2xl:text-7xl xl:text-5xl text-green-color">
                     <h1>It looks like there are no pending tasks at the moment. Check back later or add new tasks to get started!</h1>
                 </div>
 
@@ -439,9 +439,9 @@
 
             <button class="absolute text-white-color bg-[#293b49] p-5 cursor-pointer rounded-2xl bottom-28 left-4" id="create-new-item-button" onmouseup="Button.createNewItem(event)">Create New</button>
 
-            <hr class="w-[97.5%] bg-green-bg h-1 self-center lg:block sm:hidden"/>
+            <hr class="w-[97.5%] bg-green-bg h-1 self-center lg:block xs:hidden"/>
 
-            <footer id="main-foot" class="lg:flex items-center justify-center gap-12 sm:h-10vh sm:hidden">
+            <footer id="main-foot" class="lg:flex items-center justify-center gap-12 md:h-10vh xs:hidden">
                 <div id="logo-footer-container" class="flex items-center gap-2">
                     <img src="../../../images/checklist.png" class="h-12 w-12"/>
                     <h2 class="font-bold text-[#254336] text-xl">PEA</h2>

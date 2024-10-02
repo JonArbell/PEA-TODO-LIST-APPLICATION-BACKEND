@@ -5,6 +5,10 @@ module.exports = {
   "./src/main/resources/templates/index.html"],
   theme: {
     extend: {
+       screens: {
+        'xs': '412px',
+        '3xl': '1920px'
+       },
        keyframes: {
             fadeOut: {
               '0%': { transform: 'translateX(0%)', opacity: '1' },
