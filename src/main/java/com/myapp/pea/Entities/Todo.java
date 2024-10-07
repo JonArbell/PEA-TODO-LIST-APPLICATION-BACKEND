@@ -36,7 +36,7 @@ public class Todo {
     @Size(max = 200, message = "Description must be at most 200 characters long.")
     private String shortDescription;
 
-    @Size(max = 35, message = "Title must be at most 35 characters long.")
+    @Size(max = 20, message = "Title must be at most 20 characters long.")
     @Column(nullable = false)
     private String title;
 

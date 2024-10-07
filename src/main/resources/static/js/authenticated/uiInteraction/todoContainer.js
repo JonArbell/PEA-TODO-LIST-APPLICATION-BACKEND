@@ -15,96 +15,58 @@ export const createTodoContainer = async (todos) => {
             return;
         }
 
-        mainContainer.innerHTML = `
-            <div class="grid grid-cols-4 text-center m-4 mt-2 mb-2 mx-0 font-bold text-green-color">
-                <h2>Title</h2>
-                <h2>Completed</h2>
-                <h2>Target Date</h2>
-                <div></div>
-            </div>
-        `;
-
         document.querySelector('#no-tasks-display').style.display = 'none';
         document.querySelector('#todos-container').classList.remove('hidden');
 
         const unorderedList = document.createElement('ul');
+        unorderedList.classList.add('grid','lg:grid-cols-3','lg:gap-x-4','gap-y-4','py-4');
         
-        todos.forEach((todo,index) => {
+        todos.forEach(todo => {
 
             const list = document.createElement('li');
+            list.classList.add('w-full')
 
             const todoContainer = document.createElement('div');
-            const bgColor = `${(index%2) == 0 ? 'bg-white-color' : 'bg-white-bg'}`;
-            const border = `${index === 0 ? 'border-y-2' : 'border-t-0'}`;
-            const noTop = `${index !== 0 ? 'border-b-2' : 'none'}`;
-            todoContainer.classList.add(
-                `${bgColor}`,
-                'grid',
-                'grid-cols-4',
-                'text-center',
-                'items-center',
-                'p-4',
-                'px-0',
-                `${border}`,
-                `${noTop}`,
-                'border-solid',
-                'border-green-color'
-            );
-            todoContainer.innerHTML = `
-                <p>${todo.title}</p>
-                <p>${todo.done? 'Yes' : 'No'}</p>
-                <p>${todo.formattedDate}</p>
-                <div class="flex justify-around">
-
-                    <h3 id="${todo.id}" role="button" class="underline cursor-pointer text-green-color" onclick="ViewDetails.viewDetails(${todo.id})">View Details</h3>
+            todoContainer.classList.add('border-2','border-solid','border-green-color','rounded-2xl','flex','flex-col','items-center');
+            todoContainer.id = `${todo.id}`;
             
-                    <button>
-                        <img alt="Edit button" class="h-4 w-4" src="../../../images/edit_button.png" onclick="CrudTodoUi.editTodoUi(${todo.id})"/>
-                    </button>
+            todoContainer.innerHTML = `
+                            <h2 id="${todo.id}" class=" flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline text-2xl w-[50%] m-4" onclick="ViewDetails.viewDetails(${todo.id})" role="button">View Details</h2>
+            
+                            <div class="flex items-center justify-center h-10 w-[90%]">
+                                <h3 class="font-bold text-center w-1/3">Title</h3>
+                                <h3 class="font-bold text-center w-1/3">Completed</h3>
+                                <h3 class="font-bold text-center w-1/3">Target Date</h3>
+                            </div>
+        
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto"/>
+            
+                            <div class="flex items-center justify-center h-10 w-[90%]">
+                                <p class="text-center w-1/3">${todo.title}</p>
+                                <p class="text-center w-1/3">${todo.done? 'Yes' : 'No'}</p>
+                                <p class="text-center w-1/3">${todo.formattedDate}</p>
+                            </div>
+        
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto"/>
+            
+                            <div class="self-end flex items-center justify-evenly w-[90%] h-12">
 
-                    <button>
-                        <img alt="Delete button" class="h-4 w-4" src="../../../images/delete_button.png" onclick="CrudTodoUi.deleteTodoUi(${todo.id})"/>
-                    </button>
-                </div>
-            `;
+                                <button class="delete-todo-button text-sm text-white-color bg-[#400707] w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.deleteTodoUi(${todo.id})">Delete</button>
 
+                                <button class="mark-as-done-todo-button text-sm bg-[rgb(162,157,157)] w-1/3 p-2 rounded-xl" onclick="CrudTodoUi.todoMarkAsDoneUi(${todo.id})">Mark as complete</button>
+
+                                <button class="edit-todo-button text-sm text-white-color bg-green-bg w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.editTodoUi(${todo.id})">Edit to-do</button>
+
+                            </div>
+                            
+                            `;
+    
             list.appendChild(todoContainer);
             unorderedList.appendChild(list);
-            mainContainer.appendChild(unorderedList);
-            
-            // todoContainer.innerHTML = `
-            //                 <h2 id="${todo.id}" class="flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline text-2xl w-[50%] m-4" onclick="ViewDetails.viewDetails(${todo.id})" role="button">View Details</h2>
-            
-            //                 <div class="flex items-center justify-center w-[90%]">
-            //                     <h3 class="${classes} font-bold">Title</h3>
-            //                     <h3 class="${classes} font-bold">Completed</h3>
-            //                     <h3 class="${classes} font-bold">Target Date</h3>
-            //                 </div>
-        
-            //                 <hr class="border-t-2 border-green-color w-[90%] mx-auto"/>
-            
-            //                 <div class="flex items-center justify-center w-[90%]">
-            //                     <p class="${classes}">${todo.title}</p>
-            //                     <p class="${classes}">${todo.done? 'Yes' : 'No'}</p>
-            //                     <p class="${classes}">${todo.formattedDate}</p>
-            //                 </div>
-        
-            //                 <hr class="border-t-2 border-green-color w-[90%] mx-auto"/>
-            
-            //                 <div class="flex items-center justify-center w-[90%]">
-
-            //                     <button class="delete-todo-button ${buttonClasses} text-sm text-white-color bg-[#400707]" onclick="CrudTodoUi.deleteTodoUi(${todo.id})">Delete</button>
-
-            //                     <button class="mark-as-done-todo-button ${buttonClasses} text-sm bg-[rgb(162, 157, 157)]" onclick="CrudTodoUi.todoMarkAsDoneUi(${todo.id})">Mark as complete</button>
-
-            //                     <button class="edit-todo-button ${buttonClasses} text-sm text-white-color bg-green-bg" onclick="CrudTodoUi.editTodoUi(${todo.id})">Edit to-do</button>
-
-            //                 </div>
-                            
-            //                 `;
-    
             
         });
+
+        mainContainer.appendChild(unorderedList);
     
     }
     
