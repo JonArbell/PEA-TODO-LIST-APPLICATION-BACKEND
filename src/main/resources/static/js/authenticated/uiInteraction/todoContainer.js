@@ -19,19 +19,18 @@ export const createTodoContainer = async (todos) => {
         document.querySelector('#todos-container').classList.remove('hidden');
 
         const unorderedList = document.createElement('ul');
-        unorderedList.classList.add('grid','lg:grid-cols-3','lg:gap-x-4','gap-y-4','py-4');
+        unorderedList.classList.add('grid','xl:grid-cols-3','md:gap-x-2','lg:gap-x-4','gap-y-4','py-4','md:grid-cols-2','xs:justify-items-center');
         
         todos.forEach(todo => {
 
             const list = document.createElement('li');
-            list.classList.add('w-full')
+            list.classList.add('xs:w-[80%]','md:w-full')
 
             const todoContainer = document.createElement('div');
-            todoContainer.classList.add('border-2','border-solid','border-green-color','rounded-2xl','flex','flex-col','items-center');
-            todoContainer.id = `${todo.id}`;
+            todoContainer.classList.add('border-2','border-solid','border-green-color','rounded-2xl','flex','flex-col','items-center','justify-evenly','h-25vh');
             
             todoContainer.innerHTML = `
-                            <h2 id="${todo.id}" class=" flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline text-2xl w-[50%] m-4" onclick="ViewDetails.viewDetails(${todo.id})" role="button">View Details</h2>
+                            <h2 id="${todo.id}" class=" flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline text-xl w-[50%] m-4" onclick="ViewDetails.viewDetails(${todo.id})" role="button">View Details</h2>
             
                             <div class="flex items-center justify-center h-10 w-[90%]">
                                 <h3 class="font-bold text-center w-1/3">Title</h3>
@@ -49,13 +48,13 @@ export const createTodoContainer = async (todos) => {
         
                             <hr class="border-t-2 border-green-color w-[90%] mx-auto"/>
             
-                            <div class="self-end flex items-center justify-evenly w-[90%] h-12">
+                            <div class="self-end flex items-center justify-evenly w-[90%]">
 
-                                <button class="delete-todo-button text-sm text-white-color bg-[#400707] w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.deleteTodoUi(${todo.id})">Delete</button>
+                                <button class="delete-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-[#400707] w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.deleteTodoUi(${todo.id})">Delete</button>
 
-                                <button class="mark-as-done-todo-button text-sm bg-[rgb(162,157,157)] w-1/3 p-2 rounded-xl" onclick="CrudTodoUi.todoMarkAsDoneUi(${todo.id})">Mark as complete</button>
+                                <button class="mark-as-done-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs bg-[rgb(162,157,157)] w-1/3 p-2 rounded-xl" onclick="CrudTodoUi.todoMarkAsDoneUi(${todo.id})">Mark as complete</button>
 
-                                <button class="edit-todo-button text-sm text-white-color bg-green-bg w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.editTodoUi(${todo.id})">Edit to-do</button>
+                                <button class="edit-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-green-bg w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.editTodoUi(${todo.id})">Edit to-do</button>
 
                             </div>
                             

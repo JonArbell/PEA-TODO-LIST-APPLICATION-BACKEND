@@ -63,7 +63,7 @@
 </head>
 <body class="overflow-y-hidden overflow-x-hidden bg-white-bg relative z-0">
     
-    <div id="modal-view-background" class="hidden h-screen w-screen opacity-70 fixed z-[51] left-0 top-0 bg-[#000000] ">
+    <div id="modal-view-background" class="hidden h-screen w-screen opacity-80 fixed z-[51] left-0 top-0 bg-[#000000] ">
 
     </div>
 
@@ -76,7 +76,13 @@
             </li>
 
             <div class="flex items-center 2xl:gap-20 xl:gap-12 lg:gap-10 xs:gap-7">
-                <li class="flex items-center">
+
+                <input type="checkbox" id="check" class="peer hidden"/>
+                <label for="check" class="lg:hidden cursor-pointer text-4xl text-white-color [text-shadow:_0_2px_3px_black] absolute right-0 xs:block mr-4">
+                    <i class="fa fa-bars"></i>
+                </label>
+
+                <li class="flex items-center xs:mr-20 lg:mr-0">
  
                     <input class="p-4 rounded-2xl 2xl:w-80 sm:w-72 xs:w-44 lg:w-48 text-xs border border-solid border-green-color bg-white-bg" oninput="Todo.searchTodoQueryRealtime(this.value)" type="search" placeholder="Search To-do"/>
                     
@@ -88,7 +94,7 @@
 
                 </li>
 
-                <nav class="lg:flex 2xl:gap-20 xl:gap-12 text-white-color lg:text-sm lg:gap-10 xs:hidden">
+                <nav class="lg:flex 2xl:gap-20 xl:gap-12 md:text-white-color lg:text-sm lg:gap-10 xs:hidden">
                     <li>
                         <a class="hover:brightness-150 hover:underline [text-shadow:_0_2px_3px_black]" href="/home">Home</a>
                     </li>
@@ -149,12 +155,7 @@
                     <img class="h-12 w-12 rounded-full cursor-pointer" id="image-account-icon" src="../../../images/try_profile_logo.ico"/>
                 </li>
 
-                <li id="hamburger-button" class="lg:hidden md:block mr-4">
-                    <button class="cursor-pointer text-4xl text-white-color [text-shadow:_0_2px_3px_black]">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                </li>
-
+                
             </div>
 
         </ul>
@@ -265,13 +266,13 @@
 
             <hr class="w-[97.5%] bg-green-bg h-1 self-center"/>
 
-            <section id="main-body" class="xs:h-80vh self-center w-[97.5%] todo-section overflow-y-scroll">
+            <section id="main-body" class="lg:h-70vh xs:h-80vh self-center w-[97.5%] todo-section overflow-y-scroll">
 
                 <div id="no-tasks-display" class="hidden lg:h-[69vh] xs:h-[79.5vh] font-bold sm:text-5xl xs:text-3xl 2xl:text-7xl text-green-color">
                     <h1>It looks like there are no pending tasks at the moment. Check back later or add new tasks to get started!</h1>
                 </div>
 
-                <section id="todos-container" class="2xl:h-70vh">
+                <section id="todos-container">
                     <!--
                         All todo's here
                         <div class="todo-container"></div>
@@ -443,7 +444,7 @@
 
             <hr class="w-[97.5%] bg-green-bg h-1 self-center lg:block xs:hidden"/>
 
-            <footer id="main-foot" class="lg:flex items-center justify-center gap-12 md:h-10vh xs:hidden">
+            <footer id="main-foot" class="lg:flex items-center justify-center gap-12 h-10vh xs:hidden">
                 <div id="logo-footer-container" class="flex items-center gap-2">
                     <img src="../../../images/checklist.png" class="h-12 w-12"/>
                     <h2 class="font-bold text-[#254336] text-xl">PEA</h2>
