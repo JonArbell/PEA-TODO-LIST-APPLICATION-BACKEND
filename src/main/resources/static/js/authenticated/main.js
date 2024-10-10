@@ -11,6 +11,7 @@ window.Todo = { // Create global scope for search todo real time
 
 document.addEventListener('DOMContentLoaded', () => { 
     Index.PageRequests.sortByRequest(); // Load the home request function
+    Index.Menu.menuToggle(); // Call the menu toggle function
     addEditTodoRequestHandler(); // Call add edit todo handler function
     showProfileModalHandler(); // Call the show profile modal handler function
     logoutHandler(); // Call the logout handler function
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     editListNameRequestHandler(); // Call the edit list name function handler
     deleteListRequestHandler(); // Call the delete list function handler
     searchTodoUiHandler(); // Call the edit search todo ui handler function handler
+    
 });
 
 const showProfileModalHandler = () =>{ // This function is for showing and hide a profile modal

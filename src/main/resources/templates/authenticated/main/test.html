@@ -11,6 +11,7 @@
 </head>
 <body class="relative h-screen">
 
+
     <!-- <div>
 
         <input type="checkbox" id="check" class="peer"/>
@@ -43,22 +44,22 @@
     </div> -->
 
     
-    <!-- <ul class="grid xl:grid-cols-3 md:gap-x-2 lg:gap-x-4 gap-y-2 py-4 md:grid-cols-2 xs:justify-items-center">
-        <li class="md:w-full xs:w-[75%] self-center">
+    <ul class="grid xl:grid-cols-3 md:gap-x-2 lg:gap-x-4 gap-y-2 py-4 md:grid-cols-2 xs:justify-items-center">
+        <li class="md:w-full xs:w-[95%] self-center">
             <div class="border-2 border-solid border-green-color h-25vh justify-around" id="124">
                 <h2 id="124" class="flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline text-2xl w-[50%] m-4" onclick="ViewDetails.viewDetails(124)" role="button">View Details</h2>
 
-                <div class="flex items-center justify-center w-[90%]">
+                <div class="flex items-center xs:justify-evenly md:justify-center w-[90%]">
                     <h3 class="font-bold">Title</h3>
-                    <h3 class="font-bold">Completed</h3>
+                    <h3 class="font-bold xs:hidden md:block">Completed</h3>
                     <h3 class="font-bold">Target Date</h3>
                 </div>
 
                 <hr class="border-t-2 border-green-color w-[90%] mx-auto">
 
-                <div class="flex items-center justify-center w-[90%]">
+                <div class="flex items-center xs:justify-evenly md:justify-center w-[90%]">
                     <p class="">try</p>
-                    <p class="">No</p>
+                    <p class="xs:hidden md:block">No</p>
                     <p class="">10-16-2024</p>
                 </div>
 
@@ -175,19 +176,8 @@
                 
             </div>
         </li>
-    </ul> -->
+    </ul>
 
-    <li class="flex items-center mr-20">
- 
-        <input class="p-4 rounded-2xl 2xl:w-80 sm:w-72 xs:w-44 lg:w-48 text-xs border border-solid border-green-color bg-white-bg" oninput="Todo.searchTodoQueryRealtime(this.value)" type="search" placeholder="Search To-do"/>
-        
-        <div id="search-result-modal" class="hidden absolute bg-white-bg rounded-bl-2xl rounded-br-2xl top-[65%] border border-solid border-t-0 border-green-color min-h-[10vh] max-h-[30vh] 2xl:w-80 shadow-[_0_3px_2px_black] overflow-y-auto">
-            <!---
-                display all result of search
-            -->
-        </div>
-
-    </li>
 
 </body>
 </html>

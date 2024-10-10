@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta property="og:title" content="PEA TO-DO LIST APPLICATION"/>
     <meta property="og:description" content="A simple and intuitive to-do list application designed to help you organize tasks, boost productivity, and keep track of your daily activities"/>
@@ -77,16 +77,11 @@
 
             <div class="flex items-center 2xl:gap-20 xl:gap-12 lg:gap-10 xs:gap-7">
 
-                <input type="checkbox" id="check" class="peer hidden"/>
-                <label for="check" class="lg:hidden cursor-pointer text-4xl text-white-color [text-shadow:_0_2px_3px_black] absolute right-0 xs:block mr-4">
-                    <i class="fa fa-bars"></i>
-                </label>
-
-                <li class="flex items-center xs:mr-20 lg:mr-0">
+                <li class="flex items-center sm:mr-12 md:mr-20 lg:mr-0"> 
  
                     <input class="p-4 rounded-2xl 2xl:w-80 sm:w-72 xs:w-44 lg:w-48 text-xs border border-solid border-green-color bg-white-bg" oninput="Todo.searchTodoQueryRealtime(this.value)" type="search" placeholder="Search To-do"/>
                     
-                    <div id="search-result-modal" class="hidden absolute bg-white-bg rounded-bl-2xl rounded-br-2xl top-[65%] border border-solid border-t-0 border-green-color min-h-[10vh] max-h-[30vh] 2xl:w-80 shadow-[_0_3px_2px_black] overflow-y-auto">
+                    <div id="search-result-modal" class="hidden absolute bg-white-bg rounded-bl-2xl rounded-br-2xl top-[65%] border border-solid border-t-0 border-green-color min-h-[10vh] max-h-[30vh] xs:w-44 sm:w-72 2xl:w-80 shadow-[_0_3px_2px_black] overflow-y-auto">
                         <!---
                             display all result of search
                         -->
@@ -155,7 +150,13 @@
                     <img class="h-12 w-12 rounded-full cursor-pointer" id="image-account-icon" src="../../../images/try_profile_logo.ico"/>
                 </li>
 
-                
+                <li class="lg:hidden xs:block mr-4">
+                    <input type="checkbox" id="check" class="peer hidden"/>
+                    <label for="check" class="cursor-pointer text-4xl text-white-color [text-shadow:_0_2px_3px_black]">
+                        <i class="fa fa-bars"></i>
+                    </label>
+                </li>
+
             </div>
 
         </ul>
@@ -164,10 +165,12 @@
 
     <main class="lg:grid lg:grid-cols-[0.25fr_1fr] xl:grid-cols-[0.20fr_1fr] 2xl:grid-cols-[0.15fr_1fr] lg:grid-rows-[1fr]">
 
+        
         <section class="h-90vh bg-brown-bg relative z-40 shadow-[_2.5px_0_3px_black] w-full text-white-color xs:hidden lg:block">
 
-            <div class="flex justify-center items-center h-10vh">
+            <div class="flex justify-center items-center h-[10%]">
                 <h2 class="font-bold text-center">MENU</h2>
+
             </div>
 
             <hr class="h-px opacity-50 bg-white-bg"/>
@@ -210,7 +213,56 @@
                
             </div>
 
-            <section id="view-details" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg w-[35%] p-8 rounded-2xl shadow-[_0_2px_5px_black] hidden flex-col gap-y-4">
+            <section id="mobile-menu" class="hidden h-full w-full bg-[#293b49]">
+                <nav>
+                    <ul class="">
+
+                        <section class="text-white-color">
+                            <li>
+                                <a>
+                                    <img class="h-12 w-12 rounded-full" id="profile-logo-href" src="../../../images/try_profile_logo.ico"/>
+                                    <span id="profile-full-name" class="ml-3"></span>
+                                </a>
+                            </li>
+                        </section>
+
+
+                        <section id="tasks-section" class="bg-gray-600 rounded-2xl text-white-color">
+                            <h3 class="p-6 pl-2 font-bold">Tasks</h3>
+                            <section class="">
+                                <li>
+                                    <a class="hover:brightness-150 hover:underline" href="/home">Home</a>
+                                </li>
+                
+                                <li>
+                                    <a class="hover:brightness-150 hover:underline" href="/todays-tasks">Today's Tasks</a>
+                                </li>
+                
+                                <li>
+                                    <a class="hover:brightness-150 hover:underline" href="/completed-tasks">Completed Tasks</a>
+                                </li>
+                
+                                <li>
+                                    <a class="hover:brightness-150 hover:underline" href="/overdue-tasks">Overdue Tasks</a>
+                                </li>
+                
+                                <li>
+                                    <a class="hover:brightness-150 hover:underline" href="/all-tasks">All Tasks</a>
+                                </li>
+                            </section>
+                        </section>
+    
+                        <section id="lists-section" class="bg-gray-600 rounded-2xl text-white-color">
+                            <h3 class="p-6 pl-2 font-bold">Lists</h3>
+                            <section>
+    
+                            </section>
+                        </section>
+                    </ul>
+                </nav>
+            </section>
+
+            <section id="view-details" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg xs:w-full md:w-[50%] xl:w-[35%] p-8 rounded-2xl shadow-[_0_2px_5px_black] hidden flex-col gap-y-4">
                 <button onmouseup="ViewDetails.removeDetails()" class="cursor-pointer relative">
                     <span class="text-2xl font-bold hover:text-red-900 absolute right-0">&times;</span>
                 </button>
@@ -239,7 +291,7 @@
                 
             </section>
 
-            <section id="main-head" class="flex flex-col justify-evenly h-10vh w-[97.5%] self-center">
+            <section id="main-head" class="flex flex-col justify-evenly h-[10%] w-[97.5%] self-center">
 
                 <section id="head-title" class="self-start flex items-center gap-4 font-bold text-2xl text-green-color">
                     <h2>Pending Tasks : </h2>
@@ -261,12 +313,12 @@
                     </section>
         
                 </section>
-                    
+
             </section>
 
             <hr class="w-[97.5%] bg-green-bg h-1 self-center"/>
 
-            <section id="main-body" class="lg:h-70vh xs:h-80vh self-center w-[97.5%] todo-section overflow-y-scroll">
+            <section id="main-body" class="lg:h-[80%] xs:h-[90%] self-center w-[97.5%] todo-section overflow-y-scroll">
 
                 <div id="no-tasks-display" class="hidden lg:h-[69vh] xs:h-[79.5vh] font-bold sm:text-5xl xs:text-3xl 2xl:text-7xl text-green-color">
                     <h1>It looks like there are no pending tasks at the moment. Check back later or add new tasks to get started!</h1>

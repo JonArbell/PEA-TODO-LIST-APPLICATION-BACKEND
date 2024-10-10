@@ -9,5 +9,6 @@ import * as Button from './uiInteraction/buttons.js';
 import * as ViewDetails from './uiInteraction/viewDetails.js';
 import * as SortBy from './uiInteraction/sorting.js';
 import * as PromptMessage from './uiInteraction/promptMessage.js';
+import * as Menu from './uiInteraction/menu.js';
 
-export {Todo,List,PageRequests,Profile,TodoContainer,ListContainer,Button,ViewDetails,CrudTodoUi,SortBy,PromptMessage};
+export {Todo,List,PageRequests,Profile,TodoContainer,ListContainer,Button,ViewDetails,CrudTodoUi,SortBy,PromptMessage,Menu};

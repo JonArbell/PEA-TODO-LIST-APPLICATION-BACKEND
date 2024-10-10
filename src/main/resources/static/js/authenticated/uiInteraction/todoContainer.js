@@ -24,7 +24,7 @@ export const createTodoContainer = async (todos) => {
         todos.forEach(todo => {
 
             const list = document.createElement('li');
-            list.classList.add('xs:w-[80%]','md:w-full')
+            list.classList.add('xs:w-[95%]','md:w-full')
 
             const todoContainer = document.createElement('div');
             todoContainer.classList.add('border-2','border-solid','border-green-color','rounded-2xl','flex','flex-col','items-center','justify-evenly','h-25vh');
@@ -32,17 +32,17 @@ export const createTodoContainer = async (todos) => {
             todoContainer.innerHTML = `
                             <h2 id="${todo.id}" class=" flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline text-xl w-[50%] m-4" onclick="ViewDetails.viewDetails(${todo.id})" role="button">View Details</h2>
             
-                            <div class="flex items-center justify-center h-10 w-[90%]">
+                            <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
                                 <h3 class="font-bold text-center w-1/3">Title</h3>
-                                <h3 class="font-bold text-center w-1/3">Completed</h3>
+                                <h3 class="font-bold text-center w-1/3 xs:hidden md:block">Completed</h3>
                                 <h3 class="font-bold text-center w-1/3">Target Date</h3>
                             </div>
         
                             <hr class="border-t-2 border-green-color w-[90%] mx-auto"/>
             
-                            <div class="flex items-center justify-center h-10 w-[90%]">
+                            <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
                                 <p class="text-center w-1/3">${todo.title}</p>
-                                <p class="text-center w-1/3">${todo.done? 'Yes' : 'No'}</p>
+                                <p class="text-center w-1/3 xs:hidden md:block">${todo.done? 'Yes' : 'No'}</p>
                                 <p class="text-center w-1/3">${todo.formattedDate}</p>
                             </div>
         
