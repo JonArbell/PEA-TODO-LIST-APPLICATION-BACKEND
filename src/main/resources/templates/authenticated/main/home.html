@@ -61,7 +61,7 @@
     </style>
 
 </head>
-<body class="overflow-y-hidden overflow-x-hidden bg-white-bg relative z-0">
+<body class="overflow-y-hidden overflow-x-hidden bg-white-bg relative z-0 h-screen">
     
     <div id="modal-view-background" class="hidden h-screen w-screen opacity-80 fixed z-[51] left-0 top-0 bg-[#000000] ">
 
@@ -71,7 +71,7 @@
 
         <ul class="h-10vh bg-green-bg shadow-top-nav relative z-50 flex items-center justify-between">
             
-            <li class="font-bold text-white-color [text-shadow:_-2px_3px_4px_black] 2xl:text-5xl xl:text-4xl ml-4 lg:text-3xl xs:text-4xl">
+            <li class="font-bold text-white-color [text-shadow:_-2px_3px_4px_black] 2xl:text-5xl xl:text-4xl ml-4 xs:text-3xl">
                 <h1>PEA</h1>
             </li>
 
@@ -163,12 +163,12 @@
 
     </header>
 
-    <main class="lg:grid lg:grid-cols-[0.25fr_1fr] xl:grid-cols-[0.20fr_1fr] 2xl:grid-cols-[0.15fr_1fr] lg:grid-rows-[1fr] h-90vh">
+    <main class="lg:grid lg:grid-cols-[0.25fr_1fr] xl:grid-cols-[0.20fr_1fr] 2xl:grid-cols-[0.15fr_1fr] lg:grid-rows-[1fr]">
 
         
         <section class="h-90vh bg-brown-bg relative z-40 shadow-[_2.5px_0_3px_black] w-full text-white-color xs:hidden lg:block">
 
-            <div class="flex justify-center items-center h-[10%]">
+            <div class="flex justify-center items-center h-10vh">
                 <h2 class="font-bold text-center">MENU</h2>
 
             </div>
@@ -291,9 +291,9 @@
                 
             </section>
 
-            <section id="main-head" class="flex flex-col justify-evenly h-[10%] w-[97.5%] self-center">
+            <section id="main-head" class="flex flex-col justify-evenly h-10vh w-[97.5%] self-center">
 
-                <section id="head-title" class="self-start flex items-center gap-4 font-bold text-2xl text-green-color">
+                <section id="head-title" class="self-start flex items-center gap-4 font-bold xs:text-base lg:text-2xl text-green-color">
                     <h2>Pending Tasks : </h2>
                     <section class="flex items-center justify-center 2xl:h-10 w-10 rounded-lg shadow-[_0_0_2px_black]">
                         <h2 id="total-tasks">0</h2>
@@ -301,11 +301,11 @@
                 </section>
         
                 <section class="flex justify-between w-full">
-                    <p class="self-center">To-do list :</p>
+                    <p class="self-center xs:text-xs lg:text-lg">To-do list :</p>
         
                     <section id="sort-container" class="flex items-center gap-4">
-                        <p>Sort By:</p>
-                        <select onchange="SortBy.sortProcess()" name="sort" class="bg-[#293b49] xs:p-2 text-xs text-white-color 2xl:p-3 xl:p-2 rounded-lg">
+                        <p class="xs:text-xs lg:text-lg">Sort By:</p>
+                        <select onchange="SortBy.sortProcess()" name="sort" class="bg-[#293b49] xs:p-2 text-[0.5rem] text-white-color 2xl:p-3 xl:p-2 rounded-lg">
                             <option value="d-m">Date Modified</option>
                             <option value="title">Title</option>
                             <option value="t-d">Target Date</option>
@@ -318,7 +318,7 @@
 
             <hr class="w-[97.5%] bg-green-bg h-1 self-center"/>
 
-            <section id="main-body" class="lg:h-70vh xs:h-80vh self-center w-[97.5%] todo-section">
+            <section id="main-body" class="xs:h-80vh lg:h-70vh self-center w-[97.5%] todo-section">
 
                 <div id="no-tasks-display" class="hidden lg:h-[69vh] xs:h-[79.5vh] font-bold sm:text-5xl xs:text-3xl 2xl:text-7xl text-green-color">
                     <h1>It looks like there are no pending tasks at the moment. Check back later or add new tasks to get started!</h1>
