@@ -19,15 +19,15 @@ export const createTodoContainer = async (todos) => {
         document.querySelector('#todos-container').classList.remove('hidden');
 
         const unorderedList = document.createElement('ul');
-        unorderedList.classList.add('grid','xl:grid-cols-3','md:gap-x-2','lg:gap-x-4','gap-y-4','py-4','md:grid-cols-2','xs:justify-items-center');
+        unorderedList.classList.add('grid','xl:grid-cols-3','md:gap-x-2','lg:gap-x-4','gap-y-4','py-4','md:grid-cols-2','xs:justify-items-center','h-80vh');
         
         todos.forEach(todo => {
 
             const list = document.createElement('li');
-            list.classList.add('xs:w-[95%]','md:w-full')
+            list.classList.add('xs:w-[95%]','md:w-full','h-25vh');
 
             const todoContainer = document.createElement('div');
-            todoContainer.classList.add('border-2','border-solid','border-green-color','rounded-2xl','flex','flex-col','items-center','justify-evenly','h-25vh');
+            todoContainer.classList.add('border-2','border-solid','border-green-color','rounded-2xl','flex','flex-col','items-center','justify-evenly','h-full');
             
             todoContainer.innerHTML = `
                             <h2 id="${todo.id}" class=" flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline text-xl w-[50%] m-4" onclick="ViewDetails.viewDetails(${todo.id})" role="button">View Details</h2>
