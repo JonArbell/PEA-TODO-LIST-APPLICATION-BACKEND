@@ -120,9 +120,9 @@
                     <div id="profile-modal" class="hidden fixed bg-white-bg min-w-[20vw] top-[8.5%] right-2 rounded-2xl shadow-[_1px_3px_5px_#2c2c2c] flex-col">
 
                         <nav class="w-[97.5%] self-center my-2">
-                            <a id="profile-modal-username" class="w-full p-4 flex items-center bg-[#293b49] hover:bg-gray-800 text-white-color rounded-2xl mb-2">
+                            <a id="profile-modal-username" class="profile-modal-username kw-full p-4 flex items-center bg-[#293b49] hover:bg-gray-800 text-white-color rounded-2xl mb-2">
                                 <img class="h-12 w-12 rounded-full" id="profile-logo-href" src="../../../images/try_profile_logo.ico"/>
-                                <span id="profile-full-name" class="ml-3"></span>
+                                <span id="profile-full-name" class="ml-3 profile-full-name"></span>
                             </a>
     
                             <a href="/settings" class="w-full flex items-center rounded-2xl p-4 hover:bg-gray-400 hover:text-white-color">
@@ -213,15 +213,15 @@
                
             </div>
 
-            <section id="mobile-menu" class="hidden h-full w-full bg-[#293b49]">
+            <section id="mobile-menu" class="hidden h-[71.5vh] w-full bg-[#293b49]">
                 <nav>
                     <ul class="">
 
-                        <section class="text-white-color">
+                        <section class="bg-gray-600 rounded-2xl text-white-color">
                             <li>
-                                <a>
+                                <a class="profile-modal-username flex items-center h-14">
                                     <img class="h-12 w-12 rounded-full" id="profile-logo-href" src="../../../images/try_profile_logo.ico"/>
-                                    <span id="profile-full-name" class="ml-3"></span>
+                                    <span class="ml-3 profile-full-name"></span>
                                 </a>
                             </li>
                         </section>
@@ -320,7 +320,7 @@
 
             <section id="main-body" class="xs:h-80vh lg:h-70vh self-center w-[97.5%] todo-section">
 
-                <div id="no-tasks-display" class="hidden lg:h-[69vh] xs:h-[79.5vh] font-bold sm:text-5xl xs:text-3xl 2xl:text-7xl text-green-color">
+                <div id="no-tasks-display" class="hidden lg:h-[69vh] xs:h-[71.5vh] font-bold sm:text-5xl xs:text-3xl 2xl:text-7xl text-green-color">
                     <h1>It looks like there are no pending tasks at the moment. Check back later or add new tasks to get started!</h1>
                 </div>
 
