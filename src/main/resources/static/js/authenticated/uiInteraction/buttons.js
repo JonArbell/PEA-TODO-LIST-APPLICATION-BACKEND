@@ -62,8 +62,8 @@ export const discardCreateEditTodo = () =>{
 }
 
 export const manageList = () => {
-
     document.querySelector('#edit-delete-list-modal-pick').style.display = 'flex';
+
     document.querySelector('#modal-view-background').style.display = 'block';
 }
 

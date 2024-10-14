@@ -61,7 +61,7 @@
     </style>
 
 </head>
-<body class="overflow-y-hidden overflow-x-hidden bg-white-bg relative z-0 h-screen">
+<body class="overflow-y-hidden overflow-x-hidden bg-white-bg xs:h-[92.75vh] lg:h-screen relative z-0">
     
     <div id="modal-view-background" class="hidden h-screen w-screen opacity-80 fixed z-[51] left-0 top-0 bg-[#000000] ">
 
@@ -71,8 +71,10 @@
 
         <ul class="h-10vh bg-green-bg shadow-top-nav relative z-50 flex items-center justify-between">
             
-            <li class="font-bold text-white-color [text-shadow:_-2px_3px_4px_black] 2xl:text-5xl xl:text-4xl ml-4 xs:text-3xl">
-                <h1>PEA</h1>
+            <li class=" text-white-color [text-shadow:_-2px_3px_4px_black] 2xl:text-5xl xl:text-4xl ml-4 xs:text-3xl">
+                <h1>
+                    <strong>PEA</strong>
+                </h1>
             </li>
 
             <div class="flex items-center 2xl:gap-20 xl:gap-12 lg:gap-10 xs:gap-7">
@@ -166,7 +168,7 @@
     <main class="lg:grid lg:grid-cols-[0.25fr_1fr] xl:grid-cols-[0.20fr_1fr] 2xl:grid-cols-[0.15fr_1fr] lg:grid-rows-[1fr]">
 
         
-        <section class="h-90vh bg-brown-bg relative z-40 shadow-[_2.5px_0_3px_black] w-full text-white-color xs:hidden lg:block">
+        <section class="xs:h-[82.75vh] lg:h-90vh bg-brown-bg relative z-40 shadow-[_2.5px_0_3px_black] w-full text-white-color xs:hidden lg:block">
 
             <div class="flex justify-center items-center h-10vh">
                 <h2 class="font-bold text-center">MENU</h2>
@@ -207,14 +209,14 @@
 
         </section>
 
-        <section id="main-section" class="h-90vh relative flex flex-col">
+        <section id="main-section" class="xs:h-[82.75vh] lg:h-90vh relative flex flex-col">
 
             <div id="prompt-message" class="hidden absolute text-white shadow-[_1px_3px_5px_#2c2c2c] z-[54] opacity-80 p-3 rounded-2xl top-[5%] right-[30%]">
                
             </div>
 
-            <section id="mobile-menu" class="hidden w-full bg-[#293b49]">
-                <nav class="overflow-y-auto p-2 min-h-[82.75vh] h-auto flex flex-col">
+            <section id="mobile-menu" class="hidden w-full bg-[#293b49] relative z-0">
+                <nav class="p-2 min-h-[82.75vh] h-auto flex flex-col">
 
                     <section class="text-white-color flex items-center justify-between mt-2">
                         <h2 class="ml-2 font-bold text-base">Menu</h2>
@@ -258,7 +260,7 @@
                         <input type="checkbox" class="hidden peer w-full" id="list-checkbox-mobile"/>
                         <label for="list-checkbox-mobile" class="w-full text-center font-bold">List</label>
                         <hr/>
-                        <ul class="hidden  peer-checked:block h-auto w-full">
+                        <ul class="hidden overflow-y-auto peer-checked:block h-auto max-h-[20vh] w-full">
                             
                         </ul>
                     </section>
@@ -371,7 +373,7 @@
                     </form>
                 </section>
 
-                <section id="edit-delete-list-modal-pick" class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg z-[54] flex-col p-4 rounded-2xl shadow-[_0_2px_3px_black] gap-y-5 w-[17%]">
+                <section id="edit-delete-list-modal-pick" class="hidden xs:fixed lg:absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg xs:z-[100] lg:z-[54] flex-col p-4 rounded-2xl shadow-[_0_2px_3px_black] gap-y-5 lg:w-[17%] xs:w-full">
 
                     <button class="cursor-pointer relative" onmouseup="Button.removeManageListModal()">
                         <span class="text-2xl font-bold hover:text-red-900 absolute right-0">&times;</span>

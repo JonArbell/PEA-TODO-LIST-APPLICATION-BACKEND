@@ -42,7 +42,10 @@ export const createListsContainer = async (data) => {
                 </a>
             `;
             displayListContainer.appendChild(li);
-            displayListContainerMenu.appendChild(li);
+
+            const liMenu = document.createElement('li');
+            liMenu.innerHTML = li.innerHTML;
+            displayListContainerMenu.appendChild(liMenu);
     
             const option = document.createElement('option');
             option.textContent = `${list.listName}`;
