@@ -1,12 +1,14 @@
 export const createListsContainer = async (data) => {
 
     const displayListContainer = document.querySelector('#lists-container > nav > ul');
+    const displayListContainerMenu = document.querySelector('#lists-section > ul');
     const editListNameSelect = document.querySelector('#edit-list-name-container > form > select');
     const deleteListSelect = document.querySelector('#delete-select-list-container > select');
     const addTodoListContainer = document.querySelector('#add-edit-todo-list');
     
-    if(displayListContainer && editListNameSelect && deleteListSelect && addTodoListContainer){
+    if(displayListContainer && displayListContainerMenu && editListNameSelect && deleteListSelect && addTodoListContainer){
         displayListContainer.innerHTML = '';
+        displayListContainerMenu.innerHTML = '';
         editListNameSelect.innerHTML = '';
         deleteListSelect.innerHTML = '';
 
@@ -36,10 +38,11 @@ export const createListsContainer = async (data) => {
             const li = document.createElement('li');
             li.innerHTML = `
                 <a href="/list/${list.id}">
-                    <p class="p-4 pl-6 hover:bg-white-bg hover:text-green-color">${list.listName}</p>
+                    <p class="xs:text-sm lg:text-base p-4 lg:pl-6 hover:bg-white-bg hover:text-green-color">${list.listName}</p>
                 </a>
             `;
             displayListContainer.appendChild(li);
+            displayListContainerMenu.appendChild(li);
     
             const option = document.createElement('option');
             option.textContent = `${list.listName}`;
