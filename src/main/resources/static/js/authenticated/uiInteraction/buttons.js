@@ -1,4 +1,4 @@
-
+import {Menu} from '../index.js';
 export const createNewItem = (event) => {
     const createNewButton = document.querySelector('#create-new-item-button');
 
@@ -62,6 +62,11 @@ export const discardCreateEditTodo = () =>{
 }
 
 export const manageList = () => {
+    const check = document.querySelector('#check');
+    if(window.innerWidth < 1024){
+        check.checked = false;
+        check.dispatchEvent(new Event('change'));
+    }
     document.querySelector('#edit-delete-list-modal-pick').style.display = 'flex';
 
     document.querySelector('#modal-view-background').style.display = 'block';

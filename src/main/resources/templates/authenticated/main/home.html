@@ -260,7 +260,7 @@
                         <input type="checkbox" class="hidden peer w-full" id="list-checkbox-mobile"/>
                         <label for="list-checkbox-mobile" class="w-full text-center font-bold">List</label>
                         <hr/>
-                        <ul class="hidden overflow-y-auto peer-checked:block h-auto max-h-[20vh] w-full">
+                        <ul class="hidden overflow-y-auto peer-checked:block h-auto max-h-[15vh] w-full">
                             
                         </ul>
                     </section>
@@ -281,31 +281,31 @@
                 </nav>
             </section>
 
-            <section id="view-details" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg xs:w-full md:w-[50%] xl:w-[35%] p-8 rounded-2xl shadow-[_0_2px_5px_black] hidden flex-col gap-y-4">
+            <section id="view-details" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg xs:w-[97%] md:w-[50%] xl:w-[35%] p-8 rounded-2xl shadow-[_0_2px_5px_black] hidden flex-col gap-y-4">
                 <button onmouseup="ViewDetails.removeDetails()" class="cursor-pointer relative">
                     <span class="text-2xl font-bold hover:text-red-900 absolute right-0">&times;</span>
                 </button>
 
-                <h2 id="view-title" class="font-bold text-center text-2xl"></h2>
+                <h2 id="view-title" class="font-bold text-center xs:text-base lg:text-2xl"></h2>
 
                 <section>
-                    <h3 class="font-bold">Completed :</h3>
-                    <p id="isCompleted"></p>
+                    <h3 class="font-bold xs:text-base lg:text-xl">Completed :</h3>
+                    <p class="xs:text-xs lg:text-sm" id="isCompleted"></p>
                 </section>
 
                 <section>
-                    <h3 class="font-bold">Description :</h3>
-                    <p id="view-description"></p>
+                    <h3 class="font-bold xs:text-base lg:text-xl">Description :</h3>
+                    <p class="xs:text-xs lg:text-sm" id="view-description"></p>
                 </section>
                 
                 <section>
-                    <h3 class="font-bold">List</h3>
-                    <p id="view-todo-list"></p>
+                    <h3 class="font-bold xs:text-base lg:text-xl">List</h3>
+                    <p class="xs:text-xs lg:text-sm" id="view-todo-list"></p>
                 </section>
 
                 <section>
-                    <h3 class="font-bold">Target Date :</h3>
-                    <p id="view-target-date">1</p>
+                    <h3 class="font-bold xs:text-base lg:text-xl">Target Date :</h3>
+                    <p class="xs:text-xs lg:text-sm" id="view-target-date">1</p>
                 </section>
                 
             </section>
@@ -373,13 +373,13 @@
                     </form>
                 </section>
 
-                <section id="edit-delete-list-modal-pick" class="hidden xs:fixed lg:absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg xs:z-[100] lg:z-[54] flex-col p-4 rounded-2xl shadow-[_0_2px_3px_black] gap-y-5 lg:w-[17%] xs:w-full">
+                <section id="edit-delete-list-modal-pick" class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg xs:z-[150] lg:z-[54] flex-col p-4 rounded-2xl shadow-[_0_2px_3px_black] gap-y-5 lg:w-[17%] xs:w-[97%] sm:w-[80%] md:w-[65%]">
 
                     <button class="cursor-pointer relative" onmouseup="Button.removeManageListModal()">
                         <span class="text-2xl font-bold hover:text-red-900 absolute right-0">&times;</span>
                     </button>
 
-                    <h2 class="text-center font-bold text-lg text-green-color">Manage your lists:</h2>
+                    <h2 class="text-center font-bold xs:text-base lg:text-lg text-green-color">Manage your lists:</h2>
 
                     <section class="flex justify-between">
                         <button class="cursor-pointer text-white-color bg-[#293b49] p-4 rounded-2xl w-[47.5%] text-xs" onmouseup="Button.editListName()">Edit List Name</button>

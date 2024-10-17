@@ -23,6 +23,8 @@ export const menuToggle = () =>{
             hr.style.display = 'block';
             createNewItemButton.style.display = 'block';
         }
-            
+
     });
+
+    
 }
