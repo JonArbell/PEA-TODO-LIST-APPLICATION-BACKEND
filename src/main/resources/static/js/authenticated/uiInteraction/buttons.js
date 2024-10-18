@@ -1,4 +1,4 @@
-import {Menu} from '../index.js';
+
 export const createNewItem = (event) => {
     const createNewButton = document.querySelector('#create-new-item-button');
 
