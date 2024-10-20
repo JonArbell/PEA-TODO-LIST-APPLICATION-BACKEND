@@ -19,7 +19,7 @@ export const createTodoContainer = async (todos) => {
         document.querySelector('#todos-container').classList.remove('hidden');
 
         const unorderedList = document.createElement('ul');
-        unorderedList.classList.add('grid','xl:grid-cols-3','md:gap-x-2','lg:gap-x-4','gap-y-4','py-4','md:grid-cols-2','xs:h-[73vh]','lg:h-70vh','overflow-y-scroll');
+        unorderedList.classList.add('grid','xl:grid-cols-3','md:gap-x-2','lg:gap-x-4','gap-y-4','py-4','md:grid-cols-2','xs:h-[73vh]','lg:h-auto', 'lg:max-h-[70vh]','overflow-y-scroll');
         
         todos.forEach(todo => {
 
