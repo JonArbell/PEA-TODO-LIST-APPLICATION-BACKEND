@@ -15,6 +15,7 @@ export const createListsContainer = async (data) => {
         addTodoListContainer.innerHTML = '';
         const none = document.createElement('option');
         none.textContent = "None";
+        none.classList.add('xs:text-sm','lg:text-base');
         none.value = "0";
         addTodoListContainer.appendChild(none);
 
@@ -50,6 +51,7 @@ export const createListsContainer = async (data) => {
             const option = document.createElement('option');
             option.textContent = `${list.listName}`;
             option.value = `${list.id}`;
+            option.classList.add('xs:text-sm','lg:text-base');
             addTodoListContainer.appendChild(option);
     
             if(window.location.pathname === `/list/${list.id}`){

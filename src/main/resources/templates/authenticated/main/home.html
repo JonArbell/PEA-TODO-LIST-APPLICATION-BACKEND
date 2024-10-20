@@ -353,25 +353,25 @@
                     -->
                 </section>
 
-                <section id="edit-list-name-container" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg w-[23%] rounded-2xl shadow-[_0_2px_5px_black] hidden text-green-color">
-                    <form class="p-8 flex flex-col gap-y-5">
+                <section id="edit-list-name-container" class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg xs:z-[156] lg:z-[54] flex-col p-4 rounded-2xl shadow-[_0_2px_3px_black] gap-y-5 lg:w-[17%] xs:w-[97%] sm:w-[80%] md:w-[65%]">
+                    <form class="p-4 flex flex-col gap-y-5">
 
                         <button class="cursor-pointer relative" onmouseup="Button.discardEditListName()">
                             <span class="text-2xl font-bold hover:text-red-900 absolute right-0">&times;</span>
                         </button>
 
-                        <h2 class="font-bold text-3xl">Select List to rename:</h2>
+                        <h2 class="text-center font-bold xs:text-base lg:text-lg text-green-color">Select List to rename:</h2>
 
-                        <select name="id" class="border-[1.5px] border-solid border-green-color p-2 rounded-2xl">
+                        <select name="id" class="w-full xs:text-xs lg:text-sm border-[1.5px] border-solid border-green-color p-2 rounded-2xl">
                             <option value="0">None</option>
                             <!--
                                 all lists of lists to rename
                             -->
                         </select>
 
-                        <input class="border-[1.5px] border-solid border-green-color p-2 rounded-2xl" required="required" minlength="1" maxlength="25" autofocus="autofocus" type="text" name="listName" placeholder="Enter new list name"/>
+                        <input class="border-[1.5px] border-solid border-green-color p-2 rounded-2xl xs:text-xs lg:text-sm" required="required" minlength="1" maxlength="25" autofocus="autofocus" type="text" name="listName" placeholder="Enter new list name"/>
 
-                        <button type="submit" class="p-2 rounded-2xl bg-green-bg border-[2px] border-solid border-green-color text-white-color">Rename</button>
+                        <button type="submit" class="p-2 rounded-2xl bg-green-bg border-[2px] border-solid border-green-color text-white-color xs:text-xs lg:text-sm">Rename</button>
 
                     </form>
                 </section>
@@ -391,59 +391,59 @@
 
                 </section>
 
-                <section id="create-todo-list-modal-pick" class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg z-[54] flex-col p-4 rounded-2xl shadow-[_0_2px_3px_black] gap-y-5 2xl:w-[17%] xl:w-[20%] lg:w-[23%]">
+                <section id="create-todo-list-modal-pick" class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg z-[54] flex-col p-4 rounded-2xl shadow-[_0_2px_3px_black] gap-y-5 xs:w-[90%] 2xl:w-[17%] xl:w-[20%] lg:w-[23%]">
 
                     <button class="cursor-pointer relative" onmouseup="Button.removeCreateNewItemModal()">
                         <span class="text-2xl font-bold hover:text-red-900 absolute right-0">&times;</span>
                     </button>
 
-                    <h2 class="text-center font-bold text-lg text-green-color">Create new item</h2>
+                    <h2 class="text-center font-bold text-lg text-green-color xs:text-base lg:text-lg">Create new item</h2>
                     <section class="flex justify-between">
-                        <button class="cursor-pointer text-white-color bg-[#293b49] p-4 rounded-2xl w-[47.5%] text-xs" id="pick-todo" onmouseup="Button.createNewTodo(event)">To-do</button>
-                        <button class="cursor-pointer text-white-color bg-[#293b49] p-4 rounded-2xl w-[47.5%] text-xs" id="pick-list" onmouseup="Button.createNewList(event)">List</button>
+                        <button class="cursor-pointer text-white-color bg-[#293b49] p-2 rounded-xl w-[47.5%] xs:text-sm lg:text-base" id="pick-todo" onmouseup="Button.createNewTodo(event)">To-do</button>
+                        <button class="cursor-pointer text-white-color bg-[#293b49] p-2 rounded-xl w-[47.5%] xs:text-sm lg:text-base" id="pick-list" onmouseup="Button.createNewList(event)">List</button>
                     </section>
                 </section>
 
-                <section id="create-edit-todo-modal-container" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg 2xl:w-[35%] xl:w-[50%] lg:w-[75%] md:w-[80%] xs:w-full p-8 rounded-2xl shadow-[_0_2px_5px_black] hidden text-green-color">
+                <section id="create-edit-todo-modal-container" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg 2xl:w-[35%] xs:w-[97%] xl:w-[50%] lg:w-[75%] md:w-[80%] xs:p-4 lg:p-8 rounded-2xl shadow-[_0_2px_5px_black] hidden text-green-color">
 
-                    <h2 id="add-edit-title" class="font-bold text-3xl">Add To-do:</h2>
+                    <h2 id="add-edit-title" class="font-bold text-3xl xs:text-base lg:text-lg">Add To-do:</h2>
 
                     <form>
 
                         <input id="todo-id" type="hidden"/>
                         
                         <section class="flex items-center my-4">
-                            <input minlength="1" maxlength="20" id="add-edit-todo-title" autofocus="autofocus" required="required" name="title" type="text" placeholder="Title" class="placeholder-gray-500 bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg w-full"/>
+                            <input minlength="1" maxlength="20" id="add-edit-todo-title" autofocus="autofocus" required="required" name="title" type="text" placeholder="Title" class="xs:text-sm lg:text-base placeholder-gray-500 bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg w-full"/>
                         </section>
 
                         <section class="flex items-center my-4">
-                            <textarea draggable="false" id="add-edit-todo-short-description" name="short-description" placeholder="Short Description" class="placeholder-gray-500 bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg w-full resize-none"></textarea>
+                            <textarea draggable="false" id="add-edit-todo-short-description" name="short-description" placeholder="Short Description" class="xs:text-sm lg:text-base placeholder-gray-500 bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg w-full resize-none"></textarea>
                         </section>
                         
                         <section id="list-section" class="flex items-center gap-[3.5%] my-4">
 
-                            <label for="add-edit-todo-list" class="w-[25%]">
+                            <label for="add-edit-todo-list" class="xs:text-sm lg:text-base w-[25%]">
                                 <h4>List [Optional]</h4>
                             </label>
 
-                            <select id="add-edit-todo-list" name="listName" class="w-[45%] bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg">
-                                <option value="0">None</option>
+                            <select id="add-edit-todo-list" name="listName" class="xs:text-sm lg:text-base w-[45%] bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg">
+                                <option value="0" class="xs:text-sm lg:text-base">None</option>
 
                             </select>
 
                         </section>
                         
                         <section id="target-date-section" class="flex items-center gap-[3.5%] my-4">
-                            <label for="add-edit-todo-target-date" class="w-[25%]">
+                            <label for="add-edit-todo-target-date" class="xs:text-sm lg:text-base w-[25%]">
                                 <h4>Target Date</h4>
                             </label>
-                            <input class="w-[45%] bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg" id="add-edit-todo-target-date" required="required" name="target-date" type="date" placeholder="MM-DD-YYYY"/>
+                            <input class="xs:text-sm lg:text-base w-[45%] bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg" id="add-edit-todo-target-date" required="required" name="target-date" type="date" placeholder="MM-DD-YYYY"/>
                         </section>
                         
                         <section id="create-edit-todo-button-section" class="flex items-center justify-evenly my-4">
 
-                            <button class="w-[40%] p-3 cursor-pointer border-[1.5px] border-solid border-green-color rounded-lg" onmouseup="Button.discardCreateEditTodo()" id="add-edit-todo-discard-button" type="reset">Discard</button>
-                            <button class="w-[40%] p-3 cursor-pointer border-[1.5px] border-solid border-green-color rounded-lg bg-green-bg text-white-color" id="add-edit-todo-save-button" type="submit">Save</button>
+                            <button class="xs:text-sm lg:text-base w-[40%] p-3 cursor-pointer border-[1.5px] border-solid border-green-color rounded-lg" onmouseup="Button.discardCreateEditTodo()" id="add-edit-todo-discard-button" type="reset">Discard</button>
+                            <button class="xs:text-sm lg:text-base w-[40%] p-3 cursor-pointer border-[1.5px] border-solid border-green-color rounded-lg bg-green-bg text-white-color" id="add-edit-todo-save-button" type="submit">Save</button>
                         </section>
 
                     </form>
@@ -452,7 +452,7 @@
 
                 <section id="create-edit-delete-list-container" class="hidden">
 
-                    <div id="add-list-modal-container" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg 2xl:w-[23%] xl:w-[25%] rounded-2xl shadow-[_0_2px_5px_black] hidden text-green-color">
+                    <div id="add-list-modal-container" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg 2xl:w-[23%] xl:w-[25%] rounded-2xl shadow-[_0_2px_5px_black] hidden text-green-color xs:w-[90%]">
                         
                         <form class="p-8 flex flex-col gap-y-5">
 
@@ -460,48 +460,48 @@
                                 <span class="text-2xl font-bold hover:text-red-900 absolute right-0">&times;</span>
                             </button>
 
-                            <h2 class="font-bold text-3xl">Add List:</h2>
+                            <h2 class="font-bold xs:text-base lg:text-lg">Add List:</h2>
 
-                            <input class="p-2 rounded-2xl border-[2px] border-solid border-green-color" required="required" maxlength="25" minlength="1" type="text" autofocus="autofocus" placeholder="List name"/>
-                            <button class="p-2 rounded-2xl bg-green-bg border-[2px] border-solid border-green-color text-white-color" type="submit">Save</button>
+                            <input class="xs:text-sm lg:text-base p-2 rounded-xl border-[2px] border-solid border-green-color" required="required" maxlength="25" minlength="1" type="text" autofocus="autofocus" placeholder="List name"/>
+                            <button class="xs:text-sm lg:text-base p-2 rounded-xl bg-green-bg border-[2px] border-solid border-green-color text-white-color" type="submit">Save</button>
                         </form>
                     </div>
 
-                    <div id="delete-list-modal-container" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg w-[23%] rounded-2xl shadow-[_0_2px_5px_black] hidden text-green-color">
+                    <div id="delete-list-modal-container" class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg xs:z-[156] lg:z-[54] flex-col p-4 rounded-2xl shadow-[_0_2px_3px_black] gap-y-5 lg:w-[17%] xs:w-[97%] sm:w-[80%] md:w-[65%]">
 
                         <form>
             
-                            <section id="delete-select-list-container" class="p-8 flex-col gap-y-5">
+                            <section id="delete-select-list-container" class="flex-col gap-y-5">
 
                                 <button onmouseup="Button.discardDeleteList()" type="reset" class="cursor-pointer relative">
                                     <span class="text-2xl font-bold hover:text-red-900 absolute right-0">&times;</span>
                                 </button>
 
-                                <h2 class="font-bold text-3xl mt-2">Select List to delete:</h2>
+                                <h2 class="text-center font-bold xs:text-base lg:text-lg text-green-color">Select List to delete:</h2>
             
-                                <select name="id" class="border-[1.5px] border-solid border-green-color p-3 rounded-xl w-full">
+                                <select name="id" class="border-[1.5px] border-solid border-green-color p-3 rounded-xl w-full xs:text-xs lg:text-sm">
                                     
                                 </select>
             
-                                <section>
+                                <section class="xs:text-xs lg:text-sm">
                                     <p>Also delete all tasks within this list:</p>
                                     <input name="deleteTasks" id="check-all-tasks" type="checkbox"/>
                                 </section>
             
-                                <button class="p-4 rounded-2xl bg-[#293b49] text-white-color w-full" onmouseup="Button.confirmDeleteList()" type="button">Delete</button>
+                                <button class="p-4 rounded-2xl bg-[#293b49] text-white-color w-full xs:text-xs lg:text-sm" onmouseup="Button.confirmDeleteList()" type="button">Delete</button>
                             </section>
 
-                            <section id="delete-list-submit-confirmation" class="hidden p-8 flex-col gap-y-5">
+                            <section id="delete-list-submit-confirmation" class="hidden flex-col gap-y-5">
 
                                 <section class="font-bold text-xl mt-2">
                                     <h3>Are you sure you want to delete this list? If 'Delete All Tasks' is checked, all tasks associated with this list will also be permanently deleted.</h3>
 
-                                    <h3>Please confirm to proceed.</h3>
+                                    <h3 class="xs:text-xs lg:text-sm">Please confirm to proceed.</h3>
                                 </section>
 
                                 <section class="flex items-center justify-evenly">
-                                    <button class="p-4 rounded-2xl text-green-color w-[45%] border-[1.5px] border-solid border-green-color" onmouseup="Button.discardDeleteList()" type="reset">Discard</button>
-                                    <button class="p-4 rounded-2xl bg-red-900 text-white-color w-[45%] border-[1.5px] border-solid border-red-950" type="submit">Delete</button>
+                                    <button class="xs:text-xs lg:text-sm p-4 rounded-2xl text-green-color w-[45%] border-[1.5px] border-solid border-green-color" onmouseup="Button.discardDeleteList()" type="reset">Discard</button>
+                                    <button class="xs:text-xs lg:text-sm p-4 rounded-2xl bg-red-900 text-white-color w-[45%] border-[1.5px] border-solid border-red-950" type="submit">Delete</button>
                                 </section>
 
                             </section>
@@ -514,7 +514,7 @@
 
             </section>
 
-            <button class="absolute text-white-color bg-[#293b49] p-4 cursor-pointer rounded-2xl bottom-28 left-4" id="create-new-item-button" onmouseup="Button.createNewItem(event)">Create New</button>
+            <button class="absolute text-white-color bg-[#293b49] p-4 cursor-pointer rounded-2xl xs:bottom-24 xs:left-2 lg:bottom-28 lg:left-4 xs:text-sm lg:text-base" id="create-new-item-button" onmouseup="Button.createNewItem(event)">Create New</button>
 
             <hr class="w-[97.5%] bg-green-bg h-1 self-center lg:block xs:hidden"/>
 
