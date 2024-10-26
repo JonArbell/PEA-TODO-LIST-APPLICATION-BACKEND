@@ -48,7 +48,7 @@ export const createTodoContainer = async (todos) => {
         
                             <hr class="border-t-2 border-green-color w-[90%] mx-auto"/>
             
-                            <div class="self-end flex items-center justify-evenly w-[90%]">
+                            <div class="flex items-center justify-evenly w-[90%]">
 
                                 <button class="delete-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-[#400707] w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.deleteTodoUi(${todo.id})">Delete</button>
 

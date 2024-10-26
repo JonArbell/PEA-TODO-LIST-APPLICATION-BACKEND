@@ -108,7 +108,7 @@
                     <div id="profile-modal" class="hidden fixed bg-white-bg min-w-[20vw] top-[8.5%] right-2 rounded-2xl shadow-[_1px_3px_5px_#2c2c2c] flex-col">
 
                         <nav class="w-[97.5%] self-center my-2">
-                            <a id="profile-modal-username" class="profile-modal-username kw-full p-4 flex items-center bg-[#293b49] hover:bg-gray-800 text-white-color rounded-2xl mb-2" href="/profile/arbell_panis">
+                            <a id="profile-modal-username" class="profile-modal-username kw-full p-4 flex items-center bg-[#293b49] hover:bg-gray-800 text-white-color rounded-2xl mb-2" href="/profile/cha">
                                 <img class="h-12 w-12 rounded-full" id="profile-logo-href" src="../../../images/try_profile_logo.ico">
                                 <span id="profile-full-name" class="ml-3 profile-full-name">Jon Arbell De Ocampo</span>
                             </a>
@@ -167,20 +167,19 @@
                 <h3 class="p-6 pl-2 font-bold">Lists</h3>
 
                 <nav>
-                    <ul class="h-40vh menu-section overflow-y-scroll">
-                        <li>
-                            <a>
-                                <p class="p-4 pl-6 hover:bg-white-bg hover:text-green-color">Personal</p>
-                            </a>
-                        </li>
-    
-                        <li>
-                            <a>
-                                <p class="p-4 pl-6 hover:bg-white-bg hover:text-green-color">Work</p>
-                            </a>
-                        </li>
-    
-                    </ul>
+                    <ul class="h-40vh menu-section overflow-y-scroll"><li>
+                <a href="/list/1">
+                    <p class="xs:text-sm lg:text-base xs:p-2 lg:p-4 lg:pl-6 hover:bg-white-bg hover:text-green-color">Personal</p>
+                </a>
+            </li><li>
+                <a href="/list/2">
+                    <p class="xs:text-sm lg:text-base xs:p-2 lg:p-4 lg:pl-6 hover:bg-white-bg hover:text-green-color">Work</p>
+                </a>
+            </li><li>
+                <a href="/list/12">
+                    <p class="xs:text-sm lg:text-base xs:p-2 lg:p-4 lg:pl-6 hover:bg-white-bg hover:text-green-color">PEA</p>
+                </a>
+            </li></ul>
                 </nav>
 
             </section>
@@ -212,7 +211,7 @@
                     </section>
                     
                     <section class="bg-gray-600 rounded-xl text-white-color p-2 my-4">
-                        <a class="profile-modal-username flex items-center h-12" href="/profile/arbell_panis">
+                        <a class="profile-modal-username flex items-center h-12" href="/profile/cha">
                             <img class="h-12 w-12 rounded-full" id="profile-logo-href" src="../../../images/try_profile_logo.ico">
                             <span class="ml-2 profile-full-name text-sm">Jon Arbell De Ocampo</span>
                         </a>
@@ -246,19 +245,29 @@
                         <input type="checkbox" class="hidden peer w-full" id="list-checkbox-mobile">
                         <label for="list-checkbox-mobile" class="w-full text-center font-bold">List</label>
                         <hr>
-                        <ul class="hidden overflow-y-auto peer-checked:block h-[25.05vh] w-full">
-                            
-                        </ul>
+                        <ul class="hidden overflow-y-auto peer-checked:block h-[25.05vh] w-full"><li>
+                <a href="/list/1">
+                    <p class="xs:text-sm lg:text-base xs:p-2 lg:p-4 lg:pl-6 hover:bg-white-bg hover:text-green-color">Personal</p>
+                </a>
+            </li><li>
+                <a href="/list/2">
+                    <p class="xs:text-sm lg:text-base xs:p-2 lg:p-4 lg:pl-6 hover:bg-white-bg hover:text-green-color">Work</p>
+                </a>
+            </li><li>
+                <a href="/list/12">
+                    <p class="xs:text-sm lg:text-base xs:p-2 lg:p-4 lg:pl-6 hover:bg-white-bg hover:text-green-color">PEA</p>
+                </a>
+            </li></ul>
                     </section>
                     
                     <section class="text-white-color mt-auto">
                         <ul class="flex flex-col text-sm mb-2 gap-4">
                             <li class="bg-gray-600 w-full p-2 flex justify-center items-center rounded-lg">
-                                <a href="/about-us">About</a>
+                                <a href="/about-us" class="w-full text-center">About</a>
                             </li>
     
                             <li class="bg-gray-600 w-full p-2 flex justify-center items-center rounded-lg">
-                                <a href="/contact-us">Contact</a>
+                                <a href="/contact-us" class="w-full text-center">Contact</a>
                             </li>
                         </ul>
                     </section>
@@ -280,64 +289,251 @@
                 </nav>
             </section>
 
-            <section class="mb-4 xs:w-full lg:w-[40%] border-2 border-green-color rounded-xl p-2">
-                <h2 class="font-bold xs:text-lg lg:text-xl mb-1">Feedback Form [Optional]</h2>
-                <form>
+            <section id="view-details" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg xs:w-[97%] md:w-[50%] xl:w-[35%] p-8 rounded-2xl shadow-[_0_2px_5px_black] hidden flex-col gap-y-4">
+                <button onmouseup="ViewDetails.removeDetails()" class="cursor-pointer relative">
+                    <span class="text-2xl font-bold hover:text-red-900 absolute right-0">×</span>
+                </button>
 
-                    <section class="xs:flex xs:flex-col lg:block">
-                        <label class="xs:text-sm lg:text-base" for="feedback-full-name">Full name:</label>
-                        <input class="xs:text-sm lg:text-base p-1 rounded-xl md:w-[70%] lg:w-auto" id="feedback-full-name" type="text" placeholder="Enter your full name"/>
+                <h2 id="view-title" class="font-bold text-center xs:text-base lg:text-2xl"></h2>
 
-                        <label class="xs:text-sm lg:text-base" for="feedback-email">Email:</label>
-                        <input class="xs:text-sm lg:text-base p-1 rounded-xl md:w-[70%] lg:w-auto" id="feedback-email" type="email" placeholder="Enter your email"/>
-                    </section>
+                <section>
+                    <h3 class="font-bold xs:text-base lg:text-xl">Completed :</h3>
+                    <p class="xs:text-xs lg:text-sm" id="isCompleted"></p>
+                </section>
 
-                    <section>
-                        <h4 class="font-bold xs:text-base lg:text-lg mb-1">Feedback Type</h4>
-                        <ul>
-                            <div class="xs:block gap-4 lg:flex">
-                                <li class="xs:text-sm lg:text-base mb-1">
-                                    <label for="user-interface">User Interface</label>
-                                    <input id="user-interface" type="checkbox">
-                                </li>
-                              
-                                <li class="xs:text-sm lg:text-base mb-1">
-                                    <label for="functionality">Functionality</label>
-                                    <input id="functionality" type="checkbox">
-                                </li>
-                              
-                                <li class="xs:text-sm lg:text-base mb-1">
-                                    <label for="performance">Performance</label>
-                                    <input id="performance" type="checkbox">
-                                </li>
- 
-                                <li class="xs:text-sm lg:text-base mb-1">
-                                    <label for="user-experience">User Experience</label>
-                                    <input id="user-experience" type="checkbox">
-                                </li>
-                            </div>
-
-                            <li class="xs:text-sm lg:text-base mb-1 flex items-center gap-2">
-                                <label for="other">Other:</label>
-                                <input class="p-1 rounded-xl" id="other" type="text" placeholder="Please specify">
-                            </li>
-                        </ul>
-                        
-                    </section>
-
-                    <section class="flex flex-col mb-1">
-                        <label for="detailed-feedback">Provide detailed feedback about the user interface:</label>
-                        <textarea class="w-full p-2 rounded-xl" id="detailed-feedback" maxlength="300" minlength="10" rows="5" placeholder="What did you like or dislike?"></textarea>
-                    </section>
-
-
-                    <section class="flex justify-center">
-                        <button class="p-4 rounded-xl border-2 border-[#0c1c23] bg-[#293b49] text-white-color" type="submit">Send Feedback</button>
-                    </section>
-                </form>
+                <section>
+                    <h3 class="font-bold xs:text-base lg:text-xl">Description :</h3>
+                    <p class="xs:text-xs lg:text-sm" id="view-description"></p>
+                </section>
                 
-                  
+                <section>
+                    <h3 class="font-bold xs:text-base lg:text-xl">List</h3>
+                    <p class="xs:text-xs lg:text-sm" id="view-todo-list"></p>
+                </section>
+
+                <section>
+                    <h3 class="font-bold xs:text-base lg:text-xl">Target Date :</h3>
+                    <p class="xs:text-xs lg:text-sm" id="view-target-date">1</p>
+                </section>
+                
             </section>
+
+            <section id="main-head" class="flex flex-col justify-evenly h-10vh w-[97.5%] self-center">
+
+                <section id="head-title" class="self-start flex items-center gap-4 font-bold xs:text-base lg:text-2xl text-green-color">
+                    <h2>Pending Tasks : </h2>
+                    <section class="flex items-center justify-center 2xl:h-10 w-10 rounded-lg shadow-[_0_0_2px_black]">
+                        <h2 id="total-tasks">1</h2>
+                    </section>
+                </section>
+        
+                <section class="flex justify-between w-full">
+                    <p class="self-center xs:text-xs lg:text-lg">To-do list :</p>
+        
+                    <section id="sort-container" class="flex items-center gap-4">
+                        <p class="xs:text-xs lg:text-lg">Sort By:</p>
+                        <select onchange="SortBy.sortProcess()" name="sort" class="bg-[#293b49] xs:p-2 text-[0.5rem] text-white-color 2xl:p-3 xl:p-2 rounded-lg">
+                            <option value="d-m">Date Modified</option>
+                            <option value="title">Title</option>
+                            <option value="t-d">Target Date</option>
+                        </select>
+                    </section>
+        
+                </section>
+
+            </section>
+
+            <hr class="w-[97.5%] bg-green-bg h-1 self-center" id="hr-mobile-menu-remove">
+
+            <section id="main-body" class="xs:h-80vh lg:h-70vh self-center w-[97.5%] todo-section">
+
+                <div id="no-tasks-display" class="hidden lg:h-[69vh] xs:h-[72.5vh] font-bold sm:text-5xl xs:text-3xl 2xl:text-7xl text-green-color" style="display: none;">
+                    <h1>It looks like there are no pending tasks at the moment. Check back later or add new tasks to get started!</h1>
+                </div>
+
+                <section id="todos-container"><ul class="grid xl:grid-cols-3 md:gap-x-2 lg:gap-x-4 gap-y-4 py-4 md:grid-cols-2 xs:h-[73vh] lg:h-auto lg:max-h-[70vh] overflow-y-scroll xs:scrollbar-hide lg:scrollbar-visible"><li class="xs:w-[95%] md:w-full justify-self-center"><div class="border-2 border-solid border-green-color rounded-2xl flex flex-col items-center justify-evenly h-25vh">
+                            <h2 id="22" class="flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline xs:text-base lg:text-xl w-[50%] m-4" onclick="ViewDetails.viewDetails(22)" role="button">View Details</h2>
+            
+                            <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
+                                <h3 class="font-bold text-center w-1/3 xs:text-xs lg:text-sm">Title</h3>
+                                <h3 class="font-bold text-center w-1/3 xs:hidden md:block xs:text-xs lg:text-sm">Completed</h3>
+                                <h3 class="font-bold text-center w-1/3 xs:text-xs lg:text-sm">Target Date</h3>
+                            </div>
+        
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto">
+            
+                            <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
+                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">Add settings design</p>
+                                <p class="text-center w-1/3 xs:hidden md:block xs:text-xs lg:text-sm">No</p>
+                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">10-26-2024</p>
+                            </div>
+        
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto">
+            
+                            <div class="flex items-center justify-evenly w-[90%]">
+
+                                <button class="delete-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-[#400707] w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.deleteTodoUi(22)">Delete</button>
+
+                                <button class="mark-as-done-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs bg-[rgb(162,157,157)] w-1/3 p-2 rounded-xl" onclick="CrudTodoUi.todoMarkAsDoneUi(22)">Mark as complete</button>
+
+                                <button class="edit-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-green-bg w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.editTodoUi(22)">Edit to-do</button>
+
+                            </div>
+                            
+                            </div></li></ul></section>
+
+                <section id="edit-list-name-container" class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg xs:z-[156] lg:z-[54] flex-col p-4 rounded-2xl shadow-[_0_2px_3px_black] gap-y-5 lg:w-[17%] xs:w-[97%] sm:w-[80%] md:w-[65%]">
+                    <form class="p-4 flex flex-col gap-y-5">
+
+                        <button class="cursor-pointer relative" onmouseup="Button.discardEditListName()">
+                            <span class="text-2xl font-bold hover:text-red-900 absolute right-0">×</span>
+                        </button>
+
+                        <h2 class="text-center font-bold xs:text-base lg:text-lg text-green-color">Select List to rename:</h2>
+
+                        <select name="id" class="w-full xs:text-xs lg:text-sm border-[1.5px] border-solid border-green-color p-2 rounded-2xl"><option value="12">PEA</option></select>
+
+                        <input class="border-[1.5px] border-solid border-green-color p-2 rounded-2xl xs:text-xs lg:text-sm" required="required" minlength="1" maxlength="25" autofocus="autofocus" type="text" name="listName" placeholder="Enter new list name">
+
+                        <button type="submit" class="p-2 rounded-2xl bg-green-bg border-[2px] border-solid border-green-color text-white-color xs:text-xs lg:text-sm">Rename</button>
+
+                    </form>
+                </section>
+
+                <section id="edit-delete-list-modal-pick" class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg xs:z-[150] lg:z-[54] flex-col p-4 rounded-2xl shadow-[_0_2px_3px_black] gap-y-5 lg:w-[17%] xs:w-[97%] sm:w-[80%] md:w-[65%]">
+
+                    <button class="cursor-pointer relative" onmouseup="Button.removeManageListModal()">
+                        <span class="text-2xl font-bold hover:text-red-900 absolute right-0">×</span>
+                    </button>
+
+                    <h2 class="text-center font-bold xs:text-base lg:text-lg text-green-color">Manage your lists:</h2>
+
+                    <section class="flex justify-between">
+                        <button class="cursor-pointer text-white-color bg-[#293b49] p-4 rounded-2xl w-[47.5%] text-xs" onmouseup="Button.editListName()">Edit List Name</button>
+                        <button class="cursor-pointer text-white-color bg-[#293b49] p-4 rounded-2xl w-[47.5%] text-xs" onmouseup="Button.deleteList()">Delete List</button>
+                    </section>
+
+                </section>
+
+                <section id="create-todo-list-modal-pick" class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg z-[54] flex-col p-4 rounded-2xl shadow-[_0_2px_3px_black] gap-y-5 xs:w-[90%] 2xl:w-[17%] xl:w-[20%] lg:w-[23%]">
+
+                    <button class="cursor-pointer relative" onmouseup="Button.removeCreateNewItemModal()">
+                        <span class="text-2xl font-bold hover:text-red-900 absolute right-0">×</span>
+                    </button>
+
+                    <h2 class="text-center font-bold text-lg text-green-color xs:text-base lg:text-lg">Create new item</h2>
+                    <section class="flex justify-between">
+                        <button class="cursor-pointer text-white-color bg-[#293b49] p-2 rounded-xl w-[47.5%] xs:text-sm lg:text-base" id="pick-todo" onmouseup="Button.createNewTodo(event)">To-do</button>
+                        <button class="cursor-pointer text-white-color bg-[#293b49] p-2 rounded-xl w-[47.5%] xs:text-sm lg:text-base" id="pick-list" onmouseup="Button.createNewList(event)">List</button>
+                    </section>
+                </section>
+
+                <section id="create-edit-todo-modal-container" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg 2xl:w-[35%] xs:w-[97%] xl:w-[50%] lg:w-[75%] md:w-[80%] xs:p-4 lg:p-8 rounded-2xl shadow-[_0_2px_5px_black] hidden text-green-color">
+
+                    <h2 id="add-edit-title" class="font-bold text-3xl xs:text-base lg:text-lg">Add To-do:</h2>
+
+                    <form>
+
+                        <input id="todo-id" type="hidden">
+                        
+                        <section class="flex items-center my-4">
+                            <input minlength="1" maxlength="20" id="add-edit-todo-title" autofocus="autofocus" required="required" name="title" type="text" placeholder="Title" class="xs:text-sm lg:text-base placeholder-gray-500 bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg w-full">
+                        </section>
+
+                        <section class="flex items-center my-4">
+                            <textarea draggable="false" id="add-edit-todo-short-description" name="short-description" placeholder="Short Description" class="xs:text-sm lg:text-base placeholder-gray-500 bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg w-full resize-none"></textarea>
+                        </section>
+                        
+                        <section id="list-section" class="flex items-center gap-[3.5%] my-4">
+
+                            <label for="add-edit-todo-list" class="xs:text-sm lg:text-base w-[25%]">
+                                <h4>List [Optional]</h4>
+                            </label>
+
+                            <select id="add-edit-todo-list" name="listName" class="xs:text-sm lg:text-base w-[45%] bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg"><option class="xs:text-sm lg:text-base" value="0">None</option><option value="1" class="xs:text-sm lg:text-base">Personal</option><option value="2" class="xs:text-sm lg:text-base">Work</option><option value="12" class="xs:text-sm lg:text-base">PEA</option></select>
+
+                        </section>
+                        
+                        <section id="target-date-section" class="flex items-center gap-[3.5%] my-4">
+                            <label for="add-edit-todo-target-date" class="xs:text-sm lg:text-base w-[25%]">
+                                <h4>Target Date</h4>
+                            </label>
+                            <input class="xs:text-sm lg:text-base w-[45%] bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg" id="add-edit-todo-target-date" required="required" name="target-date" type="date" placeholder="MM-DD-YYYY">
+                        </section>
+                        
+                        <section id="create-edit-todo-button-section" class="flex items-center justify-evenly my-4">
+
+                            <button class="xs:text-sm lg:text-base w-[40%] p-3 cursor-pointer border-[1.5px] border-solid border-green-color rounded-lg" onmouseup="Button.discardCreateEditTodo()" id="add-edit-todo-discard-button" type="reset">Discard</button>
+                            <button class="xs:text-sm lg:text-base w-[40%] p-3 cursor-pointer border-[1.5px] border-solid border-green-color rounded-lg bg-green-bg text-white-color" id="add-edit-todo-save-button" type="submit">Save</button>
+                        </section>
+
+                    </form>
+                    
+                </section>
+
+                <section id="create-edit-delete-list-container" class="hidden">
+
+                    <div id="add-list-modal-container" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg 2xl:w-[23%] xl:w-[25%] rounded-2xl shadow-[_0_2px_5px_black] hidden text-green-color xs:w-[90%]">
+                        
+                        <form class="p-8 flex flex-col gap-y-5">
+
+                            <button class="cursor-pointer relative" onmouseup="Button.discardAddList()">
+                                <span class="text-2xl font-bold hover:text-red-900 absolute right-0">×</span>
+                            </button>
+
+                            <h2 class="font-bold xs:text-base lg:text-lg">Add List:</h2>
+
+                            <input class="xs:text-sm lg:text-base p-2 rounded-xl border-[2px] border-solid border-green-color" required="required" maxlength="25" minlength="1" type="text" autofocus="autofocus" placeholder="List name">
+                            <button class="xs:text-sm lg:text-base p-2 rounded-xl bg-green-bg border-[2px] border-solid border-green-color text-white-color" type="submit">Save</button>
+                        </form>
+                    </div>
+
+                    <div id="delete-list-modal-container" class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg xs:z-[156] lg:z-[54] flex-col p-4 rounded-2xl shadow-[_0_2px_3px_black] gap-y-5 lg:w-[17%] xs:w-[97%] sm:w-[80%] md:w-[65%]">
+
+                        <form>
+            
+                            <section id="delete-select-list-container" class="flex-col gap-y-5">
+
+                                <button onmouseup="Button.discardDeleteList()" type="reset" class="cursor-pointer relative">
+                                    <span class="text-2xl font-bold hover:text-red-900 absolute right-0">×</span>
+                                </button>
+
+                                <h2 class="text-center font-bold xs:text-base lg:text-lg text-green-color">Select List to delete:</h2>
+            
+                                <select name="id" class="border-[1.5px] border-solid border-green-color p-3 rounded-xl w-full xs:text-xs lg:text-sm"><option value="12">PEA</option></select>
+            
+                                <section class="xs:text-xs lg:text-sm">
+                                    <p>Also delete all tasks within this list:</p>
+                                    <input name="deleteTasks" id="check-all-tasks" type="checkbox">
+                                </section>
+            
+                                <button class="p-4 rounded-2xl bg-[#293b49] text-white-color w-full xs:text-xs lg:text-sm" onmouseup="Button.confirmDeleteList()" type="button">Delete</button>
+                            </section>
+
+                            <section id="delete-list-submit-confirmation" class="hidden flex-col gap-y-5">
+
+                                <section class="font-bold mt-2">
+                                    <h3 class="xs:text-base lg:text-lg">Are you sure you want to delete this list? If 'Delete All Tasks' is checked, all tasks associated with this list will also be permanently deleted.</h3>
+
+                                    <h3 class="xs:text-xs lg:text-sm">Please confirm to proceed.</h3>
+                                </section>
+
+                                <section class="flex items-center justify-evenly">
+                                    <button class="xs:text-xs lg:text-sm p-4 rounded-2xl text-green-color w-[45%] border-[1.5px] border-solid border-green-color" onmouseup="Button.discardDeleteList()" type="reset">Discard</button>
+                                    <button class="xs:text-xs lg:text-sm p-4 rounded-2xl bg-red-900 text-white-color w-[45%] border-[1.5px] border-solid border-red-950" type="submit">Delete</button>
+                                </section>
+
+                            </section>
+
+                        </form>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+            <button class="absolute text-white-color bg-[#293b49] p-4 cursor-pointer rounded-2xl xs:bottom-24 xs:left-2 lg:bottom-28 lg:left-4 xs:text-sm lg:text-base" id="create-new-item-button" onmouseup="Button.createNewItem(event)">Create New</button>
 
             <hr class="w-[97.5%] bg-green-bg h-1 self-center lg:block xs:hidden">
 
