@@ -55,7 +55,11 @@ const addEditTodoRequestHandler = () =>{ // This function is for adding and edit
 }
 
 const addListRequestHandler = () =>{ // This function is for adding a list and reload home request
-    document.querySelector('#add-list-modal-container > form').addEventListener('submit',Index.List.addList);
+
+    const form = document.querySelector('#add-list-modal-container > form');
+
+    if(form) form.addEventListener('submit',Index.List.addList);
+
 }
 
 const logoutHandler = () =>{ // This function is for logout
@@ -68,16 +72,20 @@ const logoutHandler = () =>{ // This function is for logout
 }
 
 const editListNameRequestHandler = () =>{ // This function is for edit a list name and reload home request
+    const form = document.querySelector('#edit-list-name-container');
 
-    document.querySelector('#edit-list-name-container').addEventListener('submit', async (event) =>{
-        Index.List.renameList(event);
-    });
+    if(form)
+        form.addEventListener('submit', async (event) =>{
+            Index.List.renameList(event);
+        });
 
 }
 
 const deleteListRequestHandler = async () =>{ // This function is for delete list request and reload home request
 
-    document.querySelector('#delete-list-modal-container > form').addEventListener('submit',Index.List.deleteList);
+    const form = document.querySelector('#delete-list-modal-container > form');
+
+    if(form) form.addEventListener('submit',Index.List.deleteList);
 
 }
 

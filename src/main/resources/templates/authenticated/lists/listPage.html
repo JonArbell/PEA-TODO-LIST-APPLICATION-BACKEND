@@ -215,8 +215,8 @@
                
             </div>
 
-            <section id="mobile-menu" class="hidden w-full bg-[#293b49] relative z-0">
-                <nav class="p-2 min-h-[82.75vh] h-auto flex flex-col">
+            <section id="mobile-menu" class="hidden w-full bg-[#293b49] relative z-0 h-[82.75vh] overflow-y-scroll scrollbar-hide">
+                <nav class="p-2 flex flex-col min-h-[82.75vh]">
 
                     <section class="text-white-color flex items-center justify-between mt-2">
                         <h2 class="ml-2 font-bold text-base">Menu</h2>
@@ -226,12 +226,10 @@
                     </section>
                     
                     <section class="bg-gray-600 rounded-xl text-white-color p-2 my-4">
-                        <section>
-                            <a class="profile-modal-username flex items-center h-12">
-                                <img class="h-12 w-12 rounded-full" id="profile-logo-href" src="../../../images/try_profile_logo.ico"/>
-                                <span class="ml-2 profile-full-name text-sm"></span>
-                            </a>
-                        </section>
+                        <a class="profile-modal-username flex items-center h-12">
+                            <img class="h-12 w-12 rounded-full" id="profile-logo-href" src="../../../images/try_profile_logo.ico"/>
+                            <span class="ml-2 profile-full-name text-sm"></span>
+                        </a>
                     </section>
 
                     <section id="tasks-section" class=" text-white-color">
@@ -262,19 +260,31 @@
                         <input type="checkbox" class="hidden peer w-full" id="list-checkbox-mobile"/>
                         <label for="list-checkbox-mobile" class="w-full text-center font-bold">List</label>
                         <hr/>
-                        <ul class="hidden overflow-y-auto peer-checked:block h-auto max-h-[15vh] w-full">
+                        <ul class="hidden overflow-y-auto peer-checked:block h-[25.05vh] w-full">
                             
                         </ul>
                     </section>
-
+                    
                     <section class="text-white-color mt-auto">
+                        <ul class="flex flex-col text-sm mb-2 gap-4">
+                            <li class="bg-gray-600 w-full p-2 flex justify-center items-center rounded-lg">
+                                <a href="/about-us" class="w-full text-center">About</a>
+                            </li>
+    
+                            <li class="bg-gray-600 w-full p-2 flex justify-center items-center rounded-lg">
+                                <a href="/contact-us" class="w-full text-center">Contact</a>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section class="text-white-color mb-2">
                         <button class="p-2 py-4 w-full border-4 border-solid border-green-color rounded-xl bg-white-bg text-green-color" onmouseup="Button.manageList()">Manage List</button>
                     </section>
 
-                    <section class="bg-gray-600 rounded-xl m-2">
+                    <section class="bg-gray-600 rounded-xl mb-1">
 
                         <form class="logout">
-                            <button type="submit" class="flex items-center justify-center w-full rounded-2xl p-2 text-white-color">
+                            <button type="submit" class="flex items-center justify-center w-full rounded-2xl p-3 text-white-color">
                                 <span>Log out</span>
                             </button>
 

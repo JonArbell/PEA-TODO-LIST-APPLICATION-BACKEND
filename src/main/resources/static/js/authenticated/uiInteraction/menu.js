@@ -10,18 +10,38 @@ export const menuToggle = () =>{
         const createNewItemButton = document.querySelector('#create-new-item-button');
         const hr = document.querySelector('#hr-mobile-menu-remove');
         if(hamburgerButton.checked){
+
+            if(mainHead) 
+                mainHead.style.display = 'none';
+            
+            if(mainBody) 
+                mainBody.style.display = 'none';
+
+            if(hr) 
+                hr.style.display = 'none';
+
+            if(createNewItemButton) 
+                createNewItemButton.style.display = 'none';
+
             menuPage.style.display = 'block';
-            mainHead.style.display = 'none';
-            mainBody.style.display = 'none';
-            hr.style.display = 'none';
-            createNewItemButton.style.display = 'none';
+
         }
         else{
+
+            if(mainHead) 
+                mainHead.style.display = 'flex';
+
+            if(mainBody) 
+                mainBody.style.display = 'block';
+
+            if(hr) 
+                hr.style.display = 'block';
+
+            if(createNewItemButton) 
+                createNewItemButton.style.display = 'block';
+
             menuPage.style.display = 'none';
-            mainHead.style.display = 'flex';
-            mainBody.style.display = 'block';
-            hr.style.display = 'block';
-            createNewItemButton.style.display = 'block';
+            
         }
 
     });
