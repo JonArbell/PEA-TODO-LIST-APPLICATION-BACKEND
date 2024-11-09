@@ -69,7 +69,7 @@
  
                     <input class="p-4 rounded-2xl 2xl:w-80 sm:w-72 xs:w-44 lg:w-48 text-xs border border-solid border-green-color bg-white-bg" oninput="Todo.searchTodoQueryRealtime(this.value)" type="search" placeholder="Search To-do">
                     
-                    <div id="search-result-modal" class="hidden absolute bg-white-bg rounded-bl-2xl rounded-br-2xl top-[65%] border border-solid border-t-0 border-green-color min-h-[10vh] max-h-[30vh] xs:w-44 sm:w-72 2xl:w-80 shadow-[_0_3px_2px_black] overflow-y-auto">
+                    <div id="search-result-modal" class="hidden absolute bg-white-bg rounded-bl-2xl rounded-br-2xl top-[65%] border border-solid border-t-0 border-green-color min-h-[10vh] max-h-[30vh] xs:w-44 sm:w-72 2xl:w-80 shadow-[_0_3px_2px_black] overflow-y-scroll scrollbar-hide">
                         <!---
                             display all result of search
                         -->
@@ -108,7 +108,7 @@
                     <div id="profile-modal" class="hidden fixed bg-white-bg min-w-[20vw] top-[8.5%] right-2 rounded-2xl shadow-[_1px_3px_5px_#2c2c2c] flex-col">
 
                         <nav class="w-[97.5%] self-center my-2">
-                            <a id="profile-modal-username" class="profile-modal-username kw-full p-4 flex items-center bg-[#293b49] hover:bg-gray-800 text-white-color rounded-2xl mb-2" href="/profile/cha">
+                            <a id="profile-modal-username" class="profile-modal-username kw-full p-4 flex items-center bg-[#293b49] hover:bg-gray-800 text-white-color rounded-2xl mb-2" href="/profile/arbell_panis">
                                 <img class="h-12 w-12 rounded-full" id="profile-logo-href" src="../../../images/try_profile_logo.ico">
                                 <span id="profile-full-name" class="ml-3 profile-full-name">Jon Arbell De Ocampo</span>
                             </a>
@@ -175,10 +175,6 @@
                 <a href="/list/2">
                     <p class="xs:text-sm lg:text-base xs:p-2 lg:p-4 lg:pl-6 hover:bg-white-bg hover:text-green-color">Work</p>
                 </a>
-            </li><li>
-                <a href="/list/12">
-                    <p class="xs:text-sm lg:text-base xs:p-2 lg:p-4 lg:pl-6 hover:bg-white-bg hover:text-green-color">PEA</p>
-                </a>
             </li></ul>
                 </nav>
 
@@ -211,7 +207,7 @@
                     </section>
                     
                     <section class="bg-gray-600 rounded-xl text-white-color p-2 my-4">
-                        <a class="profile-modal-username flex items-center h-12" href="/profile/cha">
+                        <a class="profile-modal-username flex items-center h-12" href="/profile/arbell_panis">
                             <img class="h-12 w-12 rounded-full" id="profile-logo-href" src="../../../images/try_profile_logo.ico">
                             <span class="ml-2 profile-full-name text-sm">Jon Arbell De Ocampo</span>
                         </a>
@@ -252,10 +248,6 @@
             </li><li>
                 <a href="/list/2">
                     <p class="xs:text-sm lg:text-base xs:p-2 lg:p-4 lg:pl-6 hover:bg-white-bg hover:text-green-color">Work</p>
-                </a>
-            </li><li>
-                <a href="/list/12">
-                    <p class="xs:text-sm lg:text-base xs:p-2 lg:p-4 lg:pl-6 hover:bg-white-bg hover:text-green-color">PEA</p>
                 </a>
             </li></ul>
                     </section>
@@ -323,7 +315,7 @@
                 <section id="head-title" class="self-start flex items-center gap-4 font-bold xs:text-base lg:text-2xl text-green-color">
                     <h2>Pending Tasks : </h2>
                     <section class="flex items-center justify-center 2xl:h-10 w-10 rounded-lg shadow-[_0_0_2px_black]">
-                        <h2 id="total-tasks">1</h2>
+                        <h2 id="total-tasks">7</h2>
                     </section>
                 </section>
         
@@ -352,7 +344,7 @@
                 </div>
 
                 <section id="todos-container"><ul class="grid xl:grid-cols-3 md:gap-x-2 lg:gap-x-4 gap-y-4 py-4 md:grid-cols-2 xs:h-[73vh] lg:h-auto lg:max-h-[70vh] overflow-y-scroll xs:scrollbar-hide lg:scrollbar-visible"><li class="xs:w-[95%] md:w-full justify-self-center"><div class="border-2 border-solid border-green-color rounded-2xl flex flex-col items-center justify-evenly h-25vh">
-                            <h2 id="22" class="flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline xs:text-base lg:text-xl w-[50%] m-4" onclick="ViewDetails.viewDetails(22)" role="button">View Details</h2>
+                            <h2 id="130" class="flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline xs:text-base lg:text-xl w-[50%] m-4" onclick="ViewDetails.viewDetails(130)" role="button">View Details</h2>
             
                             <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
                                 <h3 class="font-bold text-center w-1/3 xs:text-xs lg:text-sm">Title</h3>
@@ -363,20 +355,194 @@
                             <hr class="border-t-2 border-green-color w-[90%] mx-auto">
             
                             <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
-                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">Add settings design</p>
+                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">lopit</p>
                                 <p class="text-center w-1/3 xs:hidden md:block xs:text-xs lg:text-sm">No</p>
-                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">10-26-2024</p>
+                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">10-16-2024</p>
                             </div>
         
                             <hr class="border-t-2 border-green-color w-[90%] mx-auto">
             
                             <div class="flex items-center justify-evenly w-[90%]">
 
-                                <button class="delete-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-[#400707] w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.deleteTodoUi(22)">Delete</button>
+                                <button class="delete-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-[#400707] w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.deleteTodoUi(130)">Delete</button>
 
-                                <button class="mark-as-done-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs bg-[rgb(162,157,157)] w-1/3 p-2 rounded-xl" onclick="CrudTodoUi.todoMarkAsDoneUi(22)">Mark as complete</button>
+                                <button class="mark-as-done-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs bg-[rgb(162,157,157)] w-1/3 p-2 rounded-xl" onclick="CrudTodoUi.todoMarkAsDoneUi(130)">Mark as complete</button>
 
-                                <button class="edit-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-green-bg w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.editTodoUi(22)">Edit to-do</button>
+                                <button class="edit-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-green-bg w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.editTodoUi(130)">Edit to-do</button>
+
+                            </div>
+                            
+                            </div></li><li class="xs:w-[95%] md:w-full justify-self-center"><div class="border-2 border-solid border-green-color rounded-2xl flex flex-col items-center justify-evenly h-25vh">
+                            <h2 id="132" class="flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline xs:text-base lg:text-xl w-[50%] m-4" onclick="ViewDetails.viewDetails(132)" role="button">View Details</h2>
+            
+                            <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
+                                <h3 class="font-bold text-center w-1/3 xs:text-xs lg:text-sm">Title</h3>
+                                <h3 class="font-bold text-center w-1/3 xs:hidden md:block xs:text-xs lg:text-sm">Completed</h3>
+                                <h3 class="font-bold text-center w-1/3 xs:text-xs lg:text-sm">Target Date</h3>
+                            </div>
+        
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto">
+            
+                            <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
+                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">boom panis</p>
+                                <p class="text-center w-1/3 xs:hidden md:block xs:text-xs lg:text-sm">No</p>
+                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">10-16-2024</p>
+                            </div>
+        
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto">
+            
+                            <div class="flex items-center justify-evenly w-[90%]">
+
+                                <button class="delete-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-[#400707] w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.deleteTodoUi(132)">Delete</button>
+
+                                <button class="mark-as-done-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs bg-[rgb(162,157,157)] w-1/3 p-2 rounded-xl" onclick="CrudTodoUi.todoMarkAsDoneUi(132)">Mark as complete</button>
+
+                                <button class="edit-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-green-bg w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.editTodoUi(132)">Edit to-do</button>
+
+                            </div>
+                            
+                            </div></li><li class="xs:w-[95%] md:w-full justify-self-center"><div class="border-2 border-solid border-green-color rounded-2xl flex flex-col items-center justify-evenly h-25vh">
+                            <h2 id="133" class="flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline xs:text-base lg:text-xl w-[50%] m-4" onclick="ViewDetails.viewDetails(133)" role="button">View Details</h2>
+            
+                            <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
+                                <h3 class="font-bold text-center w-1/3 xs:text-xs lg:text-sm">Title</h3>
+                                <h3 class="font-bold text-center w-1/3 xs:hidden md:block xs:text-xs lg:text-sm">Completed</h3>
+                                <h3 class="font-bold text-center w-1/3 xs:text-xs lg:text-sm">Target Date</h3>
+                            </div>
+        
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto">
+            
+                            <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
+                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">sapa</p>
+                                <p class="text-center w-1/3 xs:hidden md:block xs:text-xs lg:text-sm">No</p>
+                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">10-16-2024</p>
+                            </div>
+        
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto">
+            
+                            <div class="flex items-center justify-evenly w-[90%]">
+
+                                <button class="delete-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-[#400707] w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.deleteTodoUi(133)">Delete</button>
+
+                                <button class="mark-as-done-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs bg-[rgb(162,157,157)] w-1/3 p-2 rounded-xl" onclick="CrudTodoUi.todoMarkAsDoneUi(133)">Mark as complete</button>
+
+                                <button class="edit-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-green-bg w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.editTodoUi(133)">Edit to-do</button>
+
+                            </div>
+                            
+                            </div></li><li class="xs:w-[95%] md:w-full justify-self-center"><div class="border-2 border-solid border-green-color rounded-2xl flex flex-col items-center justify-evenly h-25vh">
+                            <h2 id="137" class="flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline xs:text-base lg:text-xl w-[50%] m-4" onclick="ViewDetails.viewDetails(137)" role="button">View Details</h2>
+            
+                            <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
+                                <h3 class="font-bold text-center w-1/3 xs:text-xs lg:text-sm">Title</h3>
+                                <h3 class="font-bold text-center w-1/3 xs:hidden md:block xs:text-xs lg:text-sm">Completed</h3>
+                                <h3 class="font-bold text-center w-1/3 xs:text-xs lg:text-sm">Target Date</h3>
+                            </div>
+        
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto">
+            
+                            <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
+                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">test again</p>
+                                <p class="text-center w-1/3 xs:hidden md:block xs:text-xs lg:text-sm">No</p>
+                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">10-16-2024</p>
+                            </div>
+        
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto">
+            
+                            <div class="flex items-center justify-evenly w-[90%]">
+
+                                <button class="delete-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-[#400707] w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.deleteTodoUi(137)">Delete</button>
+
+                                <button class="mark-as-done-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs bg-[rgb(162,157,157)] w-1/3 p-2 rounded-xl" onclick="CrudTodoUi.todoMarkAsDoneUi(137)">Mark as complete</button>
+
+                                <button class="edit-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-green-bg w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.editTodoUi(137)">Edit to-do</button>
+
+                            </div>
+                            
+                            </div></li><li class="xs:w-[95%] md:w-full justify-self-center"><div class="border-2 border-solid border-green-color rounded-2xl flex flex-col items-center justify-evenly h-25vh">
+                            <h2 id="138" class="flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline xs:text-base lg:text-xl w-[50%] m-4" onclick="ViewDetails.viewDetails(138)" role="button">View Details</h2>
+            
+                            <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
+                                <h3 class="font-bold text-center w-1/3 xs:text-xs lg:text-sm">Title</h3>
+                                <h3 class="font-bold text-center w-1/3 xs:hidden md:block xs:text-xs lg:text-sm">Completed</h3>
+                                <h3 class="font-bold text-center w-1/3 xs:text-xs lg:text-sm">Target Date</h3>
+                            </div>
+        
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto">
+            
+                            <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
+                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">test</p>
+                                <p class="text-center w-1/3 xs:hidden md:block xs:text-xs lg:text-sm">No</p>
+                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">10-16-2024</p>
+                            </div>
+        
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto">
+            
+                            <div class="flex items-center justify-evenly w-[90%]">
+
+                                <button class="delete-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-[#400707] w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.deleteTodoUi(138)">Delete</button>
+
+                                <button class="mark-as-done-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs bg-[rgb(162,157,157)] w-1/3 p-2 rounded-xl" onclick="CrudTodoUi.todoMarkAsDoneUi(138)">Mark as complete</button>
+
+                                <button class="edit-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-green-bg w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.editTodoUi(138)">Edit to-do</button>
+
+                            </div>
+                            
+                            </div></li><li class="xs:w-[95%] md:w-full justify-self-center"><div class="border-2 border-solid border-green-color rounded-2xl flex flex-col items-center justify-evenly h-25vh">
+                            <h2 id="139" class="flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline xs:text-base lg:text-xl w-[50%] m-4" onclick="ViewDetails.viewDetails(139)" role="button">View Details</h2>
+            
+                            <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
+                                <h3 class="font-bold text-center w-1/3 xs:text-xs lg:text-sm">Title</h3>
+                                <h3 class="font-bold text-center w-1/3 xs:hidden md:block xs:text-xs lg:text-sm">Completed</h3>
+                                <h3 class="font-bold text-center w-1/3 xs:text-xs lg:text-sm">Target Date</h3>
+                            </div>
+        
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto">
+            
+                            <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
+                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">sapa</p>
+                                <p class="text-center w-1/3 xs:hidden md:block xs:text-xs lg:text-sm">No</p>
+                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">10-16-2024</p>
+                            </div>
+        
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto">
+            
+                            <div class="flex items-center justify-evenly w-[90%]">
+
+                                <button class="delete-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-[#400707] w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.deleteTodoUi(139)">Delete</button>
+
+                                <button class="mark-as-done-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs bg-[rgb(162,157,157)] w-1/3 p-2 rounded-xl" onclick="CrudTodoUi.todoMarkAsDoneUi(139)">Mark as complete</button>
+
+                                <button class="edit-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-green-bg w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.editTodoUi(139)">Edit to-do</button>
+
+                            </div>
+                            
+                            </div></li><li class="xs:w-[95%] md:w-full justify-self-center"><div class="border-2 border-solid border-green-color rounded-2xl flex flex-col items-center justify-evenly h-25vh">
+                            <h2 id="141" class="flex items-center justify-center h-[2rem] cursor-pointer text-green-color font-bold underline xs:text-base lg:text-xl w-[50%] m-4" onclick="ViewDetails.viewDetails(141)" role="button">View Details</h2>
+            
+                            <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
+                                <h3 class="font-bold text-center w-1/3 xs:text-xs lg:text-sm">Title</h3>
+                                <h3 class="font-bold text-center w-1/3 xs:hidden md:block xs:text-xs lg:text-sm">Completed</h3>
+                                <h3 class="font-bold text-center w-1/3 xs:text-xs lg:text-sm">Target Date</h3>
+                            </div>
+        
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto">
+            
+                            <div class="flex items-center xs:justify-between md:justify-center h-10 w-[90%]">
+                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">angas talaga</p>
+                                <p class="text-center w-1/3 xs:hidden md:block xs:text-xs lg:text-sm">No</p>
+                                <p class="text-center w-1/3 xs:text-xs lg:text-sm">10-27-2024</p>
+                            </div>
+        
+                            <hr class="border-t-2 border-green-color w-[90%] mx-auto">
+            
+                            <div class="flex items-center justify-evenly w-[90%]">
+
+                                <button class="delete-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-[#400707] w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.deleteTodoUi(141)">Delete</button>
+
+                                <button class="mark-as-done-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs bg-[rgb(162,157,157)] w-1/3 p-2 rounded-xl" onclick="CrudTodoUi.todoMarkAsDoneUi(141)">Mark as complete</button>
+
+                                <button class="edit-todo-button xs:text-[7px] lg:text-[9px] 2xl:text-xs text-white-color bg-green-bg w-[25%] p-2 rounded-xl" onclick="CrudTodoUi.editTodoUi(141)">Edit to-do</button>
 
                             </div>
                             
@@ -391,7 +557,7 @@
 
                         <h2 class="text-center font-bold xs:text-base lg:text-lg text-green-color">Select List to rename:</h2>
 
-                        <select name="id" class="w-full xs:text-xs lg:text-sm border-[1.5px] border-solid border-green-color p-2 rounded-2xl"><option value="12">PEA</option></select>
+                        <select name="id" class="w-full xs:text-xs lg:text-sm border-[1.5px] border-solid border-green-color p-2 rounded-2xl"><option value="0">None</option></select>
 
                         <input class="border-[1.5px] border-solid border-green-color p-2 rounded-2xl xs:text-xs lg:text-sm" required="required" minlength="1" maxlength="25" autofocus="autofocus" type="text" name="listName" placeholder="Enter new list name">
 
@@ -450,7 +616,7 @@
                                 <h4>List [Optional]</h4>
                             </label>
 
-                            <select id="add-edit-todo-list" name="listName" class="xs:text-sm lg:text-base w-[45%] bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg"><option class="xs:text-sm lg:text-base" value="0">None</option><option value="1" class="xs:text-sm lg:text-base">Personal</option><option value="2" class="xs:text-sm lg:text-base">Work</option><option value="12" class="xs:text-sm lg:text-base">PEA</option></select>
+                            <select id="add-edit-todo-list" name="listName" class="xs:text-sm lg:text-base w-[45%] bg-white-bg p-2 border-[1.5px] border-solid border-green-color rounded-lg"><option class="xs:text-sm lg:text-base" value="0">None</option><option value="1" class="xs:text-sm lg:text-base">Personal</option><option value="2" class="xs:text-sm lg:text-base">Work</option></select>
 
                         </section>
                         
@@ -500,7 +666,7 @@
 
                                 <h2 class="text-center font-bold xs:text-base lg:text-lg text-green-color">Select List to delete:</h2>
             
-                                <select name="id" class="border-[1.5px] border-solid border-green-color p-3 rounded-xl w-full xs:text-xs lg:text-sm"><option value="12">PEA</option></select>
+                                <select name="id" class="border-[1.5px] border-solid border-green-color p-3 rounded-xl w-full xs:text-xs lg:text-sm"><option value="0">None</option></select>
             
                                 <section class="xs:text-xs lg:text-sm">
                                     <p>Also delete all tasks within this list:</p>

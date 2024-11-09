@@ -48,7 +48,7 @@ public class NavPagesView {
         if(!userService.isUserAuthenticated()){
             return "redirect:/";
         }
-        return "public/underConstruction";
+        return "authenticated/Nav/settings";
     }
 
 //    public void modelMap(ModelMap map){

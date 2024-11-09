@@ -83,7 +83,7 @@
  
                     <input class="p-4 rounded-2xl 2xl:w-80 sm:w-72 xs:w-44 lg:w-48 text-xs border border-solid border-green-color bg-white-bg" oninput="Todo.searchTodoQueryRealtime(this.value)" type="search" placeholder="Search To-do"/>
                     
-                    <div id="search-result-modal" class="hidden absolute bg-white-bg rounded-bl-2xl rounded-br-2xl top-[65%] border border-solid border-t-0 border-green-color min-h-[10vh] max-h-[30vh] xs:w-44 sm:w-72 2xl:w-80 shadow-[_0_3px_2px_black] overflow-y-auto">
+                    <div id="search-result-modal" class="hidden absolute bg-white-bg rounded-bl-2xl rounded-br-2xl top-[65%] border border-solid border-t-0 border-green-color min-h-[10vh] max-h-[30vh] xs:w-44 sm:w-72 2xl:w-80 shadow-[_0_3px_2px_black] overflow-y-scroll scrollbar-hide">
                         <!---
                             display all result of search
                         -->
@@ -292,6 +292,35 @@
                     </section>
 
                 </nav>
+            </section>
+
+            <section id="view-details" class="absolute z-[55] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white-bg xs:w-[97%] md:w-[50%] xl:w-[35%] p-8 rounded-2xl shadow-[_0_2px_5px_black] hidden flex-col gap-y-4">
+                <button onmouseup="ViewDetails.removeDetails()" class="cursor-pointer relative">
+                    <span class="text-2xl font-bold hover:text-red-900 absolute right-0">&times;</span>
+                </button>
+
+                <h2 id="view-title" class="font-bold text-center xs:text-base lg:text-2xl"></h2>
+
+                <section>
+                    <h3 class="font-bold xs:text-base lg:text-xl">Completed :</h3>
+                    <p class="xs:text-xs lg:text-sm" id="isCompleted"></p>
+                </section>
+
+                <section>
+                    <h3 class="font-bold xs:text-base lg:text-xl">Description :</h3>
+                    <p class="xs:text-xs lg:text-sm" id="view-description"></p>
+                </section>
+                
+                <section>
+                    <h3 class="font-bold xs:text-base lg:text-xl">List</h3>
+                    <p class="xs:text-xs lg:text-sm" id="view-todo-list"></p>
+                </section>
+
+                <section>
+                    <h3 class="font-bold xs:text-base lg:text-xl">Target Date :</h3>
+                    <p class="xs:text-xs lg:text-sm" id="view-target-date">1</p>
+                </section>
+                
             </section>
 
             <section id="main-body" class="lg:h-90vh xs:h-[82.75vh] xs:scrollbar-hide lg:scrollbar-default overflow-y-scroll p-2">

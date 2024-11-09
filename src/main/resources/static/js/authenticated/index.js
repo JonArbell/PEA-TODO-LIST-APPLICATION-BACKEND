@@ -10,5 +10,6 @@ import * as ViewDetails from './uiInteraction/viewDetails.js';
 import * as SortBy from './uiInteraction/sorting.js';
 import * as PromptMessage from './uiInteraction/promptMessage.js';
 import * as Menu from './uiInteraction/menu.js';
+import * as Email from './emailRequests/email.js';
 
-export {Todo,List,PageRequests,Profile,TodoContainer,ListContainer,Button,ViewDetails,CrudTodoUi,SortBy,PromptMessage,Menu};
+export {Todo,List,PageRequests,Profile,TodoContainer,ListContainer,Button,ViewDetails,CrudTodoUi,SortBy,PromptMessage,Menu,Email};

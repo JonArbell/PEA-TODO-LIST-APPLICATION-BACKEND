@@ -16,7 +16,7 @@ public class PeaToDoListApplication {
 * Artifact 		: 	PeaTodoListApplication
 * Name			: 	PeaTodoListApplication
 * Description	:	My First Web Application
-* JDK version	:	21.0.1
+* JDK version	:	23
 * Package name  :	com.myapp.pea
 *
 */

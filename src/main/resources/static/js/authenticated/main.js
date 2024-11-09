@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     editListNameRequestHandler(); // Call the edit list name function handler
     deleteListRequestHandler(); // Call the delete list function handler
     searchTodoUiHandler(); // Call the edit search todo ui handler function handler
+    feedback();
     
 });
 
@@ -48,7 +49,7 @@ const showProfileModalHandler = () =>{ // This function is for showing and hide 
 
 const addEditTodoRequestHandler = () =>{ // This function is for adding and editing a todo and reload home request
 
-    if(window.location.pathname !== '/about-us' && window.location.pathname !== '/contact-us'){
+    if(window.location.pathname !== '/about-us' && window.location.pathname !== '/contact-us' && window.location.pathname !== '/settings'){
         document.querySelector('#create-edit-todo-modal-container > form').addEventListener('submit',Index.Todo.addEditTodo);
     }
     
@@ -100,5 +101,17 @@ const searchTodoUiHandler = () =>{ // This function is for checking if the click
         }
 
     });    
+
+}
+
+
+const feedback = () =>{
+
+    const form = document.querySelector('#feedback-form');
+
+    if(form) {
+        form.addEventListener('submit',Index.Email.feedback);
+    }
+    
 
 }

@@ -6,6 +6,7 @@ export const loadProfile = async (userResponse) =>{
     document.querySelectorAll('.profile-modal-username').forEach(anchor =>{
         anchor.setAttribute('href',`/profile/${userResponse.username}`);
     });
+
 }
 
 export const showProfileModal = () =>{

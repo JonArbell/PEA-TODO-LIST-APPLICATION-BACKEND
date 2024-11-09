@@ -1,6 +1,6 @@
 export const createTodoContainer = async (todos) => {
     
-    if(window.location.pathname !== '/about-us' && window.location.pathname !== '/contact-us'){
+    if(window.location.pathname !== '/about-us' && window.location.pathname !== '/contact-us' && window.location.pathname !== '/settings'){
         const mainContainer = document.querySelector('#todos-container');
         mainContainer.innerHTML = '';
         

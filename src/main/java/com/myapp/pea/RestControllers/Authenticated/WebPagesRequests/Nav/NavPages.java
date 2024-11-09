@@ -59,4 +59,9 @@ public class NavPages {
         return new ResponseEntity<>(new PagesResponse(null,getAllListsResponse(),userResponse()),HttpStatus.OK);
     }
 
+    @GetMapping("/settings")
+    public ResponseEntity<?> settings(){
+        return new ResponseEntity<>(new PagesResponse(null,getAllListsResponse(),userResponse()),HttpStatus.OK);
+    }
+
 }
