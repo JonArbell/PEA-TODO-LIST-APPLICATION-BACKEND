@@ -17,7 +17,7 @@ FROM openjdk:23
 WORKDIR /app
 
 # Copy the JAR file from the build stage to the runtime stage
-COPY --from=build /app/target/PeaTodoListApplication-0.0.1-SNAPSHOT.jar  /app/PeaTodoListApplication.jar 
+COPY --from=build /app/target/PeaTodoListApplication-0.0.1-SNAPSHOT.jar  /app/PeaTodoListApplication.jar
 
 # Expose the application port
 EXPOSE 8080
