@@ -1,6 +1,7 @@
 package com.myapp.pea.Controllers;
 
-import com.myapp.pea.Model.Todo;
+import com.myapp.pea.DTO.Request.TodoRequestDTO;
+import com.myapp.pea.DTO.Response.TodoResponseDTO;
 import com.myapp.pea.Services.TodoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -20,11 +21,13 @@ public class TodoController {
     private final TodoService todoService;
 
     @PostMapping("/add-todo")
-    public ResponseEntity<Map<String,String>> testAddTodo(@Valid @RequestBody Todo todo){
+    public ResponseEntity<Map<String, TodoResponseDTO>> testAddTodo(@Valid @RequestBody TodoRequestDTO todo){
 
-        todoService.addTodo(todo);
+        var newTodo = todoService.addTodo(todo);
 
-        return new ResponseEntity<>(Map.of("200",HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+        log.info("New TODO : {}",newTodo);
+
+        return new ResponseEntity<>(Map.of("response",newTodo), HttpStatus.OK);
     }
 
 }

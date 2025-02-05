@@ -1,6 +1,6 @@
 package com.myapp.pea.Repositories;
 
-import com.myapp.pea.Model.Todo;
+import com.myapp.pea.Entities.Todo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

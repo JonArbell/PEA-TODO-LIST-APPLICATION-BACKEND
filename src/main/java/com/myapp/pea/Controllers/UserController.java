@@ -1,6 +1,7 @@
 package com.myapp.pea.Controllers;
 
-import com.myapp.pea.Model.User;
+import com.myapp.pea.DTO.Request.UserRequestDTO;
+import com.myapp.pea.DTO.Response.UserResponseDTO;
 import com.myapp.pea.Services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -20,12 +21,13 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/add-user")
-    public ResponseEntity<Map<String,String>> testAddUser(@Valid @RequestBody User user){
+    public ResponseEntity<Map<String, UserResponseDTO>> testAddUser(@Valid @RequestBody UserRequestDTO user){
 
-        userService.setUser(user);
+        var newUser = userService.setUser(user);
 
-        return new ResponseEntity<>(Map.of("200",HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+        log.info("New User : {}",newUser);
+
+        return new ResponseEntity<>(Map.of("response",newUser), HttpStatus.OK);
     }
-
 
 }

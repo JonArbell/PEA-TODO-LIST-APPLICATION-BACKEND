@@ -1,25 +1,13 @@
-package com.myapp.pea.Model;
+package com.myapp.pea.DTO.Request;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Data
-@Entity(name = "TODOS")
-public class Todo {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class TodoRequestDTO {
 
     @Size(min = 3, max = 100, message = "Task title must be between 3 and 100 characters.")
     private String title;
@@ -33,10 +21,5 @@ public class Todo {
 
     @NotNull(message = "Completion status is required.")
     private Boolean done;
-
-//    @NotNull(message = "User is required.")
-    @ManyToOne
-    @JoinColumn(name = "user_id",nullable = false)
-    private User user;
 
 }
