@@ -1,7 +1,9 @@
-# Use a base image that includes Maven
+FROM ubuntu:latest
+LABEL authors="Jon Arbell De Ocampo"
+
+# Use an official OpenJDK runtime as a parent image
 FROM maven:3.9.9-eclipse-temurin-23 AS build
 
-# Set the working directory in the container
 WORKDIR /app
 
 # Copy the project files to the container
@@ -10,18 +12,15 @@ COPY . .
 # Build the application, skipping tests
 RUN mvn clean package -DskipTests
 
-# Use a smaller base image for the runtime environment
 FROM openjdk:23
 
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the JAR file from the build stage to the runtime stage
-COPY --from=build /app/target/PeaTodoListApplication-0.0.1-SNAPSHOT.jar  /app/PeaTodoListApplication.jar
+COPY --from=build /app/target/PeaTodoListApplication-0.0.1-SNAPSHOT.jar  /app/PeaTodoListApplication-0.0.1-SNAPSHOT.jar
 
-# Expose the application port
+# Expose the port that the Spring Boot application will run on
 EXPOSE 8080
 
-# Set the command to run the JAR file
-CMD ["java", "-jar", "PeaTodoListApplication.jar"]
-
+# Run the Spring Boot application
+CMD ["java", "-jar", "PeaTodoListApplication-0.0.1-SNAPSHOT.jar"]
