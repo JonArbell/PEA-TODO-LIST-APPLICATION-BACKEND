@@ -1,0 +1,17 @@
+package com.myapp.pea.DTO.Request;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
+import java.time.LocalDateTime;
+
+@Data
+public class ListAddRequestDTO {
+
+    @NotNull(message = "List name is required. Please provide a valid list name.")
+    @Size(max = 25, message = "List name must be at most 25 characters long.")
+    private String listName;
+
+    private LocalDateTime date;
+
+}

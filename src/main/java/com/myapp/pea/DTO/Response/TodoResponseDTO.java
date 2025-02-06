@@ -21,7 +21,6 @@ public class TodoResponseDTO {
 
     private Long userId;
 
-
     public static TodoResponseDTO fromEntity(Todo todo){
 
         return TodoResponseDTO.builder()

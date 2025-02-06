@@ -7,7 +7,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class TodoRequestDTO {
+public class TodoAddRequestDTO {
 
     @Size(min = 3, max = 100, message = "Task title must be between 3 and 100 characters.")
     private String title;

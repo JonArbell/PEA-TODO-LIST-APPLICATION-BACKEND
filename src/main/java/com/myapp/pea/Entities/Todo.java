@@ -30,4 +30,8 @@ public class Todo {
     @JoinColumn(name = "user_id",nullable = false)
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "list_id")
+    private List list;
+
 }
