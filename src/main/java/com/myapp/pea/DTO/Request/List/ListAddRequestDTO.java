@@ -1,4 +1,4 @@
-package com.myapp.pea.DTO.Request;
+package com.myapp.pea.DTO.Request.List;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

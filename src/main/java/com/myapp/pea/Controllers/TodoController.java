@@ -1,6 +1,7 @@
 package com.myapp.pea.Controllers;
 
-import com.myapp.pea.DTO.Request.TodoAddRequestDTO;
+import com.myapp.pea.DTO.Request.TODO.TodoAddRequestDTO;
+import com.myapp.pea.DTO.Request.TODO.TodoUpdateRequestDTO;
 import com.myapp.pea.DTO.Response.TodoResponseDTO;
 import com.myapp.pea.Services.TodoService;
 import jakarta.validation.Valid;
@@ -9,9 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
 import java.util.Map;
 
+@RequestMapping("/api")
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -22,8 +23,6 @@ public class TodoController {
     @PostMapping("/add-todo")
     public ResponseEntity<Map<String, TodoResponseDTO>> addTodo(@Valid @RequestBody TodoAddRequestDTO todo){
 
-        log.info("Add TODO : {}",todo);
-
         var newTodo = todoService.addTodo(todo);
 
         log.info("New TODO : {}",newTodo);
@@ -31,10 +30,34 @@ public class TodoController {
         return new ResponseEntity<>(Map.of("response",newTodo), HttpStatus.OK);
     }
 
-    @GetMapping("/get-all-todo")
-    public ResponseEntity<Map<String, List<TodoResponseDTO>>> getAllTodo(){
+    @PutMapping("/update-todo")
+    public ResponseEntity<Map<String, TodoResponseDTO>> updateTodo(@Valid @RequestBody TodoUpdateRequestDTO updateTodo){
 
-        return new ResponseEntity<>(Map.of("response",todoService.getAllTodo()), HttpStatus.OK);
+        var updated = todoService.updateTodo(updateTodo);
+
+        log.info("Updated Todo: {}",updated);
+
+        return new ResponseEntity<>(Map.of("response",updated),HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete-todo/{id}")
+    public ResponseEntity<Map<String, TodoResponseDTO>> deleteTodo(@PathVariable Long id){
+
+        var deleted = todoService.deleteTodo(id);
+
+        log.info("Deleted Todo: {}",deleted);
+
+        return new ResponseEntity<>(Map.of("deleted",deleted),HttpStatus.OK);
+    }
+
+    @GetMapping("/get-todo/{id}")
+    public ResponseEntity<Map<String, TodoResponseDTO>> getTodoById(@PathVariable Long id){
+
+        var getTodo = todoService.getTodoBy(id);
+
+        log.info("Get Todo: {}",getTodo);
+
+        return new ResponseEntity<>(Map.of("deleted",getTodo),HttpStatus.OK);
     }
 
 }

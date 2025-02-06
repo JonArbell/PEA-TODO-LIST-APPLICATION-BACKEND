@@ -19,16 +19,18 @@ public class TodoResponseDTO {
 
     private Boolean done;
 
-    private Long userId;
+    private Long listId;
 
     public static TodoResponseDTO fromEntity(Todo todo){
+
+        var listId = todo.getList() != null ? todo.getList().getId() : null;
 
         return TodoResponseDTO.builder()
                 .id(todo.getId())
                 .title(todo.getTitle())
                 .done(todo.getDone())
                 .shortDescription(todo.getShortDescription())
-                .userId(todo.getUser().getId())
+                .listId(listId)
                 .dueDate(todo.getDueDate())
                 .build();
     }

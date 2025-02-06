@@ -1,4 +1,4 @@
-package com.myapp.pea.DTO.Request;
+package com.myapp.pea.DTO.Request.TODO;
 
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
@@ -7,7 +7,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class TodoAddRequestDTO {
+public class TodoBaseRequestDTO {
 
     @Size(min = 3, max = 100, message = "Task title must be between 3 and 100 characters.")
     private String title;

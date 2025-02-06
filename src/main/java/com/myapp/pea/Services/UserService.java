@@ -1,6 +1,6 @@
 package com.myapp.pea.Services;
 
-import com.myapp.pea.DTO.Request.UserRequestDTO;
+import com.myapp.pea.DTO.Request.User.UserRequestDTO;
 import com.myapp.pea.DTO.Response.UserResponseDTO;
 import com.myapp.pea.Entities.List;
 import com.myapp.pea.Entities.User;

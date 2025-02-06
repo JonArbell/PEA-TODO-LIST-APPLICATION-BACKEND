@@ -1,11 +1,9 @@
 package com.myapp.pea.Services;
 
-
-import com.myapp.pea.DTO.Request.ListAddRequestDTO;
+import com.myapp.pea.DTO.Request.List.ListAddRequestDTO;
 import com.myapp.pea.DTO.Response.ListResponseDTO;
 import com.myapp.pea.Entities.List;
 import com.myapp.pea.Repositories.ListRepo;
-import com.myapp.pea.Repositories.TodoRepo;
 import com.myapp.pea.Repositories.UserRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +16,6 @@ import java.time.LocalDateTime;
 public class ListService {
 
     private final ListRepo listRepo;
-    private final TodoRepo todoRepo;
     private final UserRepo userRepo;
 
     public ListResponseDTO addList(ListAddRequestDTO request){

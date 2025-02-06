@@ -1,4 +1,4 @@
-package com.myapp.pea.DTO.Request;
+package com.myapp.pea.DTO.Request.User;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
