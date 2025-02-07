@@ -3,7 +3,6 @@ package com.myapp.pea.DTO.Request.List;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
-import java.time.LocalDateTime;
 
 @Data
 public class ListBaseRequestDTO {
@@ -12,6 +11,5 @@ public class ListBaseRequestDTO {
     @Size(max = 25, message = "List name must be at most 25 characters long.")
     private String listName;
 
-    private LocalDateTime date;
 
 }
