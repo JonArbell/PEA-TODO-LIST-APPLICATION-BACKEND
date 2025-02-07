@@ -5,6 +5,8 @@ import com.myapp.pea.DTO.Request.List.ListUpdateRequestDTO;
 import com.myapp.pea.DTO.Response.ListResponseDTO;
 import com.myapp.pea.Entities.List;
 import com.myapp.pea.Entities.User;
+import com.myapp.pea.ExceptionErrorsHandler.CustomExceptionErrors.ListNotFoundException;
+import com.myapp.pea.ExceptionErrorsHandler.CustomExceptionErrors.UserNotFoundException;
 import com.myapp.pea.Repositories.ListRepo;
 import com.myapp.pea.Repositories.UserRepo;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +25,7 @@ public class ListService {
 
     private User getCurrentUser() {
         return userRepo.findByGoogleId(3L)
-                .orElseThrow(() -> new RuntimeException("User not found."));
+                .orElseThrow(() -> new UserNotFoundException("User not found."));
     }
 
     public ListResponseDTO addList(ListAddRequestDTO request){
@@ -43,7 +45,7 @@ public class ListService {
     public ListResponseDTO updateList(ListUpdateRequestDTO update){
 
         var currentList = listRepo.findByUser_IdAndId(getCurrentUser().getId(), update.getId())
-                .orElseThrow(() -> new RuntimeException("List item not found."));
+                .orElseThrow(() -> new ListNotFoundException("List item not found."));
 
         currentList.setListName(update.getListName());
         currentList.setDate(LocalDateTime.now());
@@ -78,7 +80,7 @@ public class ListService {
     public ListResponseDTO getListById(Long id){
 
         var searchList = listRepo.findByUser_IdAndId(getCurrentUser().getId(), id)
-                .orElseThrow(() -> new RuntimeException("List item not found."));
+                .orElseThrow(() -> new ListNotFoundException("List item not found."));
 
         return ListResponseDTO.fromEntity(searchList);
     }

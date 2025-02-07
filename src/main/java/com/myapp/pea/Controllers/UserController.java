@@ -29,7 +29,7 @@ public class UserController {
 
         log.info("New User : {}",newUser);
 
-        return new ResponseEntity<>(Map.of("new-user",newUser), HttpStatus.OK);
+        return new ResponseEntity<>(Map.of("new-user",newUser), HttpStatus.CREATED);
     }
 
 }

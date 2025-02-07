@@ -10,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
 import java.util.Map;
 
 @RequestMapping("/api")
@@ -28,7 +27,7 @@ public class ListController {
 
         log.info("New List : {}",newList);
 
-        return new ResponseEntity<>(Map.of("added-list",newList), HttpStatus.OK);
+        return new ResponseEntity<>(Map.of("added-list",newList), HttpStatus.CREATED);
     }
 
     @PatchMapping("/update-list")

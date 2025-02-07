@@ -27,7 +27,7 @@ public class TodoController {
 
         log.info("New TODO : {}",newTodo);
 
-        return new ResponseEntity<>(Map.of("added-todo",newTodo), HttpStatus.OK);
+        return new ResponseEntity<>(Map.of("added-todo",newTodo), HttpStatus.CREATED);
     }
 
     @PutMapping("/update-todo")

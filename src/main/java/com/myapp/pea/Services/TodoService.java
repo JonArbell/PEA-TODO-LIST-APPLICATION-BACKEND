@@ -5,6 +5,9 @@ import com.myapp.pea.DTO.Request.TODO.TodoUpdateRequestDTO;
 import com.myapp.pea.DTO.Response.TodoResponseDTO;
 import com.myapp.pea.Entities.Todo;
 import com.myapp.pea.Entities.User;
+import com.myapp.pea.ExceptionErrorsHandler.CustomExceptionErrors.ListNotFoundException;
+import com.myapp.pea.ExceptionErrorsHandler.CustomExceptionErrors.TodoNotFoundException;
+import com.myapp.pea.ExceptionErrorsHandler.CustomExceptionErrors.UserNotFoundException;
 import com.myapp.pea.Repositories.ListRepo;
 import com.myapp.pea.Repositories.TodoRepo;
 import com.myapp.pea.Repositories.UserRepo;
@@ -26,7 +29,7 @@ public class TodoService {
 
     private User getCurrentUser() {
         return userRepo.findByGoogleId(3L)
-                .orElseThrow(() -> new RuntimeException("User not found."));
+                .orElseThrow(() -> new UserNotFoundException("User not found."));
     }
 
     public TodoResponseDTO addTodo(TodoAddRequestDTO todoRequest){
@@ -52,11 +55,11 @@ public class TodoService {
 
         var list = listRepo
                 .findByUser_IdAndId(user.getId(), update.getListId())
-                .orElseThrow(() -> new RuntimeException("List item not found."));
+                .orElseThrow(() -> new ListNotFoundException("List item not found."));
 
         var currentTodo = todoRepo
                 .findByUser_IdAndId(user.getId(), update.getId())
-                .orElseThrow(() -> new RuntimeException("Todo item not found."));
+                .orElseThrow(() -> new TodoNotFoundException("Todo item not found."));
 
         currentTodo.setList(list);
         currentTodo.setDone(update.getDone());
@@ -72,7 +75,7 @@ public class TodoService {
     public TodoResponseDTO deleteTodoById(Long id){
 
         var checkTodo = todoRepo.findByUser_IdAndId(getCurrentUser().getId(), id)
-                .orElseThrow(() -> new RuntimeException("Todo item not found."));
+                .orElseThrow(() -> new TodoNotFoundException("Todo item not found."));
 
         todoRepo.delete(checkTodo);
 
@@ -94,7 +97,7 @@ public class TodoService {
     public TodoResponseDTO getTodoById(Long id){
 
         var checkTodo = todoRepo.findByUser_IdAndId(getCurrentUser().getId(), id)
-                .orElseThrow(() -> new RuntimeException("Todo item not found."));
+                .orElseThrow(() -> new TodoNotFoundException("Todo item not found."));
 
         return TodoResponseDTO.fromEntity(checkTodo);
 
