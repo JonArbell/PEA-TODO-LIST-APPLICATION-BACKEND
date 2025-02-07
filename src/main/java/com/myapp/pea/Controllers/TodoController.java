@@ -27,7 +27,7 @@ public class TodoController {
 
         log.info("New TODO : {}",newTodo);
 
-        return new ResponseEntity<>(Map.of("response",newTodo), HttpStatus.OK);
+        return new ResponseEntity<>(Map.of("added-todo",newTodo), HttpStatus.OK);
     }
 
     @PutMapping("/update-todo")
@@ -37,27 +37,37 @@ public class TodoController {
 
         log.info("Updated Todo: {}",updated);
 
-        return new ResponseEntity<>(Map.of("response",updated),HttpStatus.OK);
+        return new ResponseEntity<>(Map.of("updated-todo",updated),HttpStatus.OK);
     }
 
     @DeleteMapping("/delete-todo/{id}")
-    public ResponseEntity<Map<String, TodoResponseDTO>> deleteTodo(@PathVariable Long id){
+    public ResponseEntity<Map<String, String>> deleteTodoById(@PathVariable Long id){
 
-        var deleted = todoService.deleteTodo(id);
+        var deleted = todoService.deleteTodoById(id);
 
         log.info("Deleted Todo: {}",deleted);
 
-        return new ResponseEntity<>(Map.of("deleted",deleted),HttpStatus.OK);
+        return new ResponseEntity<>(Map.of("deleted-todo",deleted.getTitle() + " successfully deleted"),HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete-todo")
+    public ResponseEntity<Map<String, Integer>> deleteAllTodo(@RequestParam  boolean isDeleteAll){
+
+        var deleted = todoService.deleteAllTodos(isDeleteAll);
+
+        log.info("Deleted Todos: {}",deleted);
+
+        return new ResponseEntity<>(Map.of("deleted-todos",deleted),HttpStatus.OK);
     }
 
     @GetMapping("/get-todo/{id}")
     public ResponseEntity<Map<String, TodoResponseDTO>> getTodoById(@PathVariable Long id){
 
-        var getTodo = todoService.getTodoBy(id);
+        var getTodo = todoService.getTodoById(id);
 
         log.info("Get Todo: {}",getTodo);
 
-        return new ResponseEntity<>(Map.of("deleted",getTodo),HttpStatus.OK);
+        return new ResponseEntity<>(Map.of("get-todo-by-id",getTodo),HttpStatus.OK);
     }
 
 }

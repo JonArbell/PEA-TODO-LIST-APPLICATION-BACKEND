@@ -4,12 +4,16 @@ import com.myapp.pea.DTO.Request.TODO.TodoAddRequestDTO;
 import com.myapp.pea.DTO.Request.TODO.TodoUpdateRequestDTO;
 import com.myapp.pea.DTO.Response.TodoResponseDTO;
 import com.myapp.pea.Entities.Todo;
+import com.myapp.pea.Entities.User;
 import com.myapp.pea.Repositories.ListRepo;
 import com.myapp.pea.Repositories.TodoRepo;
 import com.myapp.pea.Repositories.UserRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 
 @Slf4j
 @Service
@@ -20,15 +24,17 @@ public class TodoService {
     private final ListRepo listRepo;
     private final UserRepo userRepo;
 
-    public TodoResponseDTO addTodo(TodoAddRequestDTO todoRequest){
-
-        var user = userRepo.findByGoogleId(3L)
+    private User getCurrentUser() {
+        return userRepo.findByGoogleId(3L)
                 .orElseThrow(() -> new RuntimeException("User not found."));
+    }
+
+    public TodoResponseDTO addTodo(TodoAddRequestDTO todoRequest){
 
         var todo = Todo.builder()
                 .title(todoRequest.getTitle())
                 .done(todoRequest.getDone())
-                .user(user)
+                .user(getCurrentUser())
                 .shortDescription(todoRequest.getShortDescription())
                 .dueDate(todoRequest.getDueDate())
                 .build();
@@ -39,10 +45,10 @@ public class TodoService {
 
     }
 
+    @Transactional
     public TodoResponseDTO updateTodo(TodoUpdateRequestDTO update){
 
-        var user = userRepo.findByGoogleId(3L)
-                .orElseThrow(() -> new RuntimeException("User not found."));
+        var user = getCurrentUser();
 
         var list = listRepo
                 .findByUser_IdAndId(user.getId(), update.getListId())
@@ -62,12 +68,10 @@ public class TodoService {
         return TodoResponseDTO.fromEntity(saveTodo);
     }
 
-    public TodoResponseDTO deleteTodo(Long id){
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public TodoResponseDTO deleteTodoById(Long id){
 
-        var user = userRepo.findByGoogleId(3L)
-                .orElseThrow(() -> new RuntimeException("User not found."));
-
-        var checkTodo = todoRepo.findByUser_IdAndId(user.getId(), id)
+        var checkTodo = todoRepo.findByUser_IdAndId(getCurrentUser().getId(), id)
                 .orElseThrow(() -> new RuntimeException("Todo item not found."));
 
         todoRepo.delete(checkTodo);
@@ -76,12 +80,20 @@ public class TodoService {
 
     }
 
-    public TodoResponseDTO getTodoBy(Long id){
+    @Transactional
+    public int deleteAllTodos(boolean isDelete){
 
-        var user = userRepo.findByGoogleId(3L)
-                .orElseThrow(() -> new RuntimeException("User not found."));
+        if(!isDelete)
+            return 0;
 
-        var checkTodo = todoRepo.findByUser_IdAndId(user.getId(), id)
+        return todoRepo.deleteAllByUser_Id(getCurrentUser().getId());
+
+    }
+
+    @Transactional(readOnly = true)
+    public TodoResponseDTO getTodoById(Long id){
+
+        var checkTodo = todoRepo.findByUser_IdAndId(getCurrentUser().getId(), id)
                 .orElseThrow(() -> new RuntimeException("Todo item not found."));
 
         return TodoResponseDTO.fromEntity(checkTodo);

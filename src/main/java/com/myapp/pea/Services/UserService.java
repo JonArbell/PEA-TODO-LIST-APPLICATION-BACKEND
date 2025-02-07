@@ -20,7 +20,7 @@ public class UserService {
     private final UserRepo userRepo;
     private final ListRepo listRepo;
 
-    public UserResponseDTO setUser(UserRequestDTO userRequest){
+    public UserResponseDTO addUser(UserRequestDTO userRequest){
 
         var user = User.builder()
                 .email(userRequest.getEmail())

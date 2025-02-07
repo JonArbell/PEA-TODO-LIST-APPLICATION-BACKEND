@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface TodoRepo extends JpaRepository<Todo,Long> {
 
     Optional<Todo> findByUser_IdAndId(Long user_Id, Long id);
-
+    int deleteAllByUser_Id(Long user_Id);
 }

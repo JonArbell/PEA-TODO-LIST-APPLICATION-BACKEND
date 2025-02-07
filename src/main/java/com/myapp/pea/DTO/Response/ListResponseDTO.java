@@ -15,15 +15,12 @@ public class ListResponseDTO {
 
     private LocalDateTime date;
 
-    private Long userId;
-
     public static ListResponseDTO fromEntity(List list){
 
         return ListResponseDTO.builder()
                 .id(list.getId())
-                .listName(list.getListName())
-                .userId(list.getUser().getId())
                 .date(list.getDate())
+                .listName(list.getListName())
                 .build();
     }
 }

@@ -7,5 +7,5 @@ import java.util.Optional;
 public interface ListRepo extends JpaRepository<List, Long> {
 
     Optional<List> findByUser_IdAndId(Long user_Id, Long id);
-
+    int deleteAllByUser_Id(Long user_Id);
 }

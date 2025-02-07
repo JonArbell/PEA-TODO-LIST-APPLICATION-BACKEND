@@ -23,13 +23,13 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/add-user")
-    public ResponseEntity<Map<String, UserResponseDTO>> testAddUser(@Valid @RequestBody UserRequestDTO user){
+    public ResponseEntity<Map<String, UserResponseDTO>> addUser(@Valid @RequestBody UserRequestDTO user){
 
-        var newUser = userService.setUser(user);
+        var newUser = userService.addUser(user);
 
         log.info("New User : {}",newUser);
 
-        return new ResponseEntity<>(Map.of("response",newUser), HttpStatus.OK);
+        return new ResponseEntity<>(Map.of("new-user",newUser), HttpStatus.OK);
     }
 
 }
