@@ -13,10 +13,10 @@ import com.myapp.pea.Repositories.TodoRepo;
 import com.myapp.pea.Repositories.UserRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 
@@ -95,6 +95,7 @@ public class TodoService {
 
     }
 
+    @Cacheable(value = "todos",key = "#id")
     @Transactional(readOnly = true)
     public TodoResponseDTO getTodoById(Long id){
 
