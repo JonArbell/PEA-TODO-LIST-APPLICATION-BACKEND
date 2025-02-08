@@ -3,13 +3,14 @@ package com.myapp.pea.Controllers;
 import com.myapp.pea.DTO.Request.List.ListAddRequestDTO;
 import com.myapp.pea.DTO.Request.List.ListUpdateRequestDTO;
 import com.myapp.pea.DTO.Response.ListResponseDTO;
-import com.myapp.pea.Services.ListService;
+import com.myapp.pea.Services.List.ListService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 import java.util.Map;
 
 @RequestMapping("/api")
@@ -43,7 +44,7 @@ public class ListController {
     @DeleteMapping("/delete-list/{id}")
     public ResponseEntity<Map<String, ListResponseDTO>> deleteListById(@PathVariable Long id){
 
-        var updated = listService.deleteListById(id);
+        var updated = listService.deleteListItem(id);
 
         log.info("Deleted List item : {}",updated);
 
@@ -63,11 +64,21 @@ public class ListController {
     @GetMapping("/get-list/{id}")
     public ResponseEntity<Map<String, ListResponseDTO>> getListById(@PathVariable Long id){
 
-        var get = listService.getListById(id);
+        var list = listService.getListItem(id);
 
-        log.info("Get List item : {}",get);
+        log.info("Get List item : {}",list);
 
-        return new ResponseEntity<>(Map.of("get-list-by-id",get), HttpStatus.OK);
+        return new ResponseEntity<>(Map.of("get-list-by-id",list), HttpStatus.OK);
+    }
+
+    @GetMapping("/get-list")
+    public ResponseEntity<Map<String, List<ListResponseDTO>>> getAllList(){
+
+        var allList = listService.getAllList();
+
+        log.info("Get all list: {}",allList);
+
+        return new ResponseEntity<>(Map.of("get-list-by-id",allList), HttpStatus.OK);
     }
 
 }

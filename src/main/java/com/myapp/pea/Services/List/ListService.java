@@ -1,16 +1,18 @@
-package com.myapp.pea.Services;
+package com.myapp.pea.Services.List;
 
 import com.myapp.pea.DTO.Request.List.ListAddRequestDTO;
 import com.myapp.pea.DTO.Request.List.ListUpdateRequestDTO;
 import com.myapp.pea.DTO.Response.ListResponseDTO;
 import com.myapp.pea.Entities.List;
-import com.myapp.pea.Entities.User;
 import com.myapp.pea.ExceptionErrorsHandler.CustomExceptionErrors.ListNotFoundException;
-import com.myapp.pea.ExceptionErrorsHandler.CustomExceptionErrors.UserNotFoundException;
 import com.myapp.pea.Repositories.ListRepo;
-import com.myapp.pea.Repositories.UserRepo;
+import com.myapp.pea.Services.User.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
@@ -21,18 +23,17 @@ import java.time.LocalDateTime;
 public class ListService {
 
     private final ListRepo listRepo;
-    private final UserRepo userRepo;
+    private final UserService userService;
 
-    private User getCurrentUser() {
-        return userRepo.findByGoogleId(3L)
-                .orElseThrow(() -> new UserNotFoundException("User not found."));
+    public Long getCurrentUserId() {
+        return userService.getCurrentUser().getId();
     }
 
     public ListResponseDTO addList(ListAddRequestDTO request){
 
         var list = List.builder()
                 .listName(request.getListName())
-                .user(getCurrentUser())
+                .user(userService.getCurrentUser())
                 .date(LocalDateTime.now())
                 .build();
 
@@ -42,9 +43,10 @@ public class ListService {
     }
 
     @Transactional
+    @CachePut(value = "lists", key = "#update.id + '-' + #root.target.getCurrentUserId()")
     public ListResponseDTO updateList(ListUpdateRequestDTO update){
 
-        var currentList = listRepo.findByUser_IdAndId(getCurrentUser().getId(), update.getId())
+        var currentList = listRepo.findByUser_IdAndId(getCurrentUserId(), update.getId())
                 .orElseThrow(() -> new ListNotFoundException("List item not found."));
 
         currentList.setListName(update.getListName());
@@ -57,22 +59,37 @@ public class ListService {
     }
 
     @Transactional
-    public ListResponseDTO deleteListById(Long id){
+    @Caching(evict = {
+            @CacheEvict(value = "lists",key = "'allLists-' + #root.target.getCurrentUserId()"),
+            @CacheEvict(value = "lists",key = "#id + '-' + #root.target.getCurrentUserId()")
+    })
+    public ListResponseDTO deleteListItem(Long id){
 
-        var searchList = getListById(id);
+        var searchList = listRepo.findByUser_IdAndId(getCurrentUserId(),id)
+                .map(list -> {
 
-        listRepo.deleteById(searchList.getId());
+                    if(list.getListName().equals("Work") || list.getListName().equals("Personal"))
+                        throw new RuntimeException("Cannot delete Personal and Work list");
 
-        return searchList;
+                    return list;
+                })
+                .orElseThrow(()-> new RuntimeException("List item not found."));
+
+        listRepo.delete(searchList);
+
+        return ListResponseDTO.fromEntity(searchList);
     }
 
     @Transactional
+    @CacheEvict(value = "lists", allEntries = true)
     public int deleteAllList(boolean isDelete){
 
         if(!isDelete)
             return 0;
 
-        var getDeletableList = getAllList()
+        var getDeletableList = listRepo.findAllByUser_Id(getCurrentUserId())
+                .stream().map(ListResponseDTO::fromEntity)
+                .toList()
                 .stream()
                 .filter(list -> !list.getListName().equals("Personal") && !list.getListName().equals("Work"))
                 .map(ListResponseDTO::getId)
@@ -90,18 +107,20 @@ public class ListService {
     }
 
     @Transactional(readOnly = true)
-    public ListResponseDTO getListById(Long id){
+    @Cacheable(value = "lists",key = "#id + '-'+#root.target.getCurrentUserId()")
+    public ListResponseDTO getListItem(Long id){
 
-        var searchList = listRepo.findByUser_IdAndId(getCurrentUser().getId(), id)
+        var searchList = listRepo.findByUser_IdAndId(getCurrentUserId(), id)
                 .orElseThrow(() -> new ListNotFoundException("List item not found."));
 
         return ListResponseDTO.fromEntity(searchList);
     }
 
     @Transactional(readOnly = true)
+    @Cacheable(value = "lists",key = "'allLists-'+#root.target.getCurrentUserId()")
     public java.util.List<ListResponseDTO> getAllList(){
 
-        return listRepo.findAllByUser_Id(getCurrentUser().getId())
+        return listRepo.findAllByUser_Id(getCurrentUserId())
                 .stream().map(ListResponseDTO::fromEntity)
                 .toList();
     }

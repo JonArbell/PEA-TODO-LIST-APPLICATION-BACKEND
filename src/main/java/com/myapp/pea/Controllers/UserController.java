@@ -2,7 +2,7 @@ package com.myapp.pea.Controllers;
 
 import com.myapp.pea.DTO.Request.User.UserRequestDTO;
 import com.myapp.pea.DTO.Response.UserResponseDTO;
-import com.myapp.pea.Services.UserService;
+import com.myapp.pea.Services.User.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -3,14 +3,13 @@ package com.myapp.pea.Controllers;
 import com.myapp.pea.DTO.Request.TODO.TodoAddRequestDTO;
 import com.myapp.pea.DTO.Request.TODO.TodoUpdateRequestDTO;
 import com.myapp.pea.DTO.Response.TodoResponseDTO;
-import com.myapp.pea.Services.TodoService;
+import com.myapp.pea.Services.Todo.TodoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Map;
 
@@ -35,7 +34,7 @@ public class TodoController {
     @PutMapping("/update-todo")
     public ResponseEntity<Map<String, TodoResponseDTO>> updateTodo(@Valid @RequestBody TodoUpdateRequestDTO updateTodo){
 
-        var updated = todoService.updateTodo(updateTodo);
+        var updated = todoService.updateTodoItem(updateTodo);
 
         log.info("Updated Todo: {}",updated);
 
@@ -43,9 +42,9 @@ public class TodoController {
     }
 
     @DeleteMapping("/delete-todo/{id}")
-    public ResponseEntity<Map<String, String>> deleteTodoById(@PathVariable Long id){
+    public ResponseEntity<Map<String, String>> deleteTodoItem(@PathVariable Long id){
 
-        var deleted = todoService.deleteTodoById(id);
+        var deleted = todoService.deleteTodoItem(id);
 
         log.info("Deleted Todo: {}",deleted);
 
@@ -63,9 +62,9 @@ public class TodoController {
     }
 
     @GetMapping("/get-todo/{id}")
-    public ResponseEntity<Map<String, TodoResponseDTO>> getTodoById(@PathVariable Long id){
+    public ResponseEntity<Map<String, TodoResponseDTO>> getTodoItem(@PathVariable Long id){
 
-        var getTodo = todoService.getTodoById(id);
+        var getTodo = todoService.getTodoItem(id);
 
         log.info("Get Todo: {}",getTodo);
 
@@ -75,7 +74,7 @@ public class TodoController {
     @GetMapping("/get-todo")
     public ResponseEntity<Map<String, List<TodoResponseDTO>>> getAllTodo(){
 
-        var allTodo = todoService.getAllTodo();
+        var allTodo = todoService.getAllTodos();
 
         log.info("Get all Todo: {}",allTodo);
 
