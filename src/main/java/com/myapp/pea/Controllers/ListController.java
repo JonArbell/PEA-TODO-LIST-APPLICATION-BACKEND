@@ -50,6 +50,16 @@ public class ListController {
         return new ResponseEntity<>(Map.of("deleted-list-by-id",updated), HttpStatus.OK);
     }
 
+    @DeleteMapping("/delete-list")
+    public ResponseEntity<Map<String, Integer>> deleteAllTodo(@RequestParam  boolean isDeleteAll){
+
+        var deleted = listService.deleteAllList(isDeleteAll);
+
+        log.info("Deleted Lists: {}",deleted);
+
+        return new ResponseEntity<>(Map.of("deleted-lists",deleted),HttpStatus.OK);
+    }
+
     @GetMapping("/get-list/{id}")
     public ResponseEntity<Map<String, ListResponseDTO>> getListById(@PathVariable Long id){
 

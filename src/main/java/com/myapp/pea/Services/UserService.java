@@ -39,7 +39,7 @@ public class UserService {
                 .build();
 
         var workList = List.builder()
-                .listName("Personal")
+                .listName("Work")
                 .user(saveUser)
                 .date(LocalDateTime.now())
                 .build();

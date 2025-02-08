@@ -72,7 +72,18 @@ public class ListService {
         if(!isDelete)
             return 0;
 
-        return listRepo.deleteAllByUser_Id(getCurrentUser().getId());
+        var getDeletableList = listRepo.findAllByUser_Id(getCurrentUser().getId())
+                .stream().filter(list -> !list.getListName().equals("Personal") && !list.getListName().equals("Work"))
+                .toList();
+
+        log.info("Deletable List : {}",getDeletableList);
+
+        if(getDeletableList.isEmpty())
+            return 0;
+
+        listRepo.deleteAll(getDeletableList);
+
+        return getDeletableList.size();
 
     }
 
