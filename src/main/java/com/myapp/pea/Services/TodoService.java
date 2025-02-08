@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 
 @Slf4j
 @Service
@@ -100,6 +102,16 @@ public class TodoService {
                 .orElseThrow(() -> new TodoNotFoundException("Todo item not found."));
 
         return TodoResponseDTO.fromEntity(checkTodo);
+
+    }
+
+    @Transactional(readOnly = true)
+    public List<TodoResponseDTO> getAllTodo(){
+
+        return todoRepo.findAllByUser_Id(getCurrentUser().getId())
+                .stream()
+                .map(TodoResponseDTO::fromEntity)
+                .toList();
 
     }
 

@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import java.util.Map;
 
 @RequestMapping("/api")
@@ -68,6 +70,16 @@ public class TodoController {
         log.info("Get Todo: {}",getTodo);
 
         return new ResponseEntity<>(Map.of("get-todo-by-id",getTodo),HttpStatus.OK);
+    }
+
+    @GetMapping("/get-todo")
+    public ResponseEntity<Map<String, List<TodoResponseDTO>>> getAllTodo(){
+
+        var allTodo = todoService.getAllTodo();
+
+        log.info("Get all Todo: {}",allTodo);
+
+        return new ResponseEntity<>(Map.of("get-all-todo",allTodo),HttpStatus.OK);
     }
 
 }

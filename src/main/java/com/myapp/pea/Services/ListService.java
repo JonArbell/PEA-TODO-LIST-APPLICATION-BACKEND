@@ -72,8 +72,10 @@ public class ListService {
         if(!isDelete)
             return 0;
 
-        var getDeletableList = listRepo.findAllByUser_Id(getCurrentUser().getId())
-                .stream().filter(list -> !list.getListName().equals("Personal") && !list.getListName().equals("Work"))
+        var getDeletableList = getAllList()
+                .stream()
+                .filter(list -> !list.getListName().equals("Personal") && !list.getListName().equals("Work"))
+                .map(ListResponseDTO::getId)
                 .toList();
 
         log.info("Deletable List : {}",getDeletableList);
@@ -81,7 +83,7 @@ public class ListService {
         if(getDeletableList.isEmpty())
             return 0;
 
-        listRepo.deleteAll(getDeletableList);
+        listRepo.deleteAllById(getDeletableList);
 
         return getDeletableList.size();
 
@@ -94,6 +96,14 @@ public class ListService {
                 .orElseThrow(() -> new ListNotFoundException("List item not found."));
 
         return ListResponseDTO.fromEntity(searchList);
+    }
+
+    @Transactional(readOnly = true)
+    public java.util.List<ListResponseDTO> getAllList(){
+
+        return listRepo.findAllByUser_Id(getCurrentUser().getId())
+                .stream().map(ListResponseDTO::fromEntity)
+                .toList();
     }
 
 }
