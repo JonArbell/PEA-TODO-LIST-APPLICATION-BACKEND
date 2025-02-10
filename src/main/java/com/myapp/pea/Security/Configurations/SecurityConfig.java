@@ -1,10 +1,12 @@
-package com.myapp.pea.Configurations;
+package com.myapp.pea.Security.Configurations;
 
 import com.myapp.pea.Security.JWT.JwtAuthenticationFilter;
 import com.myapp.pea.Security.Oauth2.Oauth2CustomSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -41,11 +43,18 @@ public class SecurityConfig{
 
                 .formLogin(AbstractHttpConfigurer::disable) // Disable form login
 
+//                .csrf(cs -> cs.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+
                 .csrf(AbstractHttpConfigurer::disable) // Disable csrf
 
                 .headers(head -> head.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)) // Disable frame options for h2-console but h2 console is still not working lol
 
                 .build();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
+        return configuration.getAuthenticationManager();
     }
 
 }

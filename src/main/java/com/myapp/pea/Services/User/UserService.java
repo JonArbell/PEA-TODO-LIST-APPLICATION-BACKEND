@@ -15,6 +15,8 @@ import com.myapp.pea.Repositories.TodoRepo;
 import com.myapp.pea.Repositories.UserRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public class UserService {
     private final UserRepo userRepo;
     private final ListRepo listRepo;
     private final TodoRepo todoRepo;
+    private final PasswordEncoder passwordEncoder;
 
     public User getCurrentUser() {
         return userRepo.findById(1L)
@@ -37,7 +40,7 @@ public class UserService {
 
         var user = User.builder()
                 .username(userRequest.getUsername())
-                .password(userRequest.getPassword())
+                .password(passwordEncoder.encode(userRequest.getPassword()))
                 .email(userRequest.getEmail())
                 .fullName(userRequest.getFullName())
                 .provider("LOCAL")
