@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Map;
 
-@RequestMapping("/api/auth")
+@RequestMapping("/api/authenticated")
 @Slf4j
 @RestController
 @RequiredArgsConstructor

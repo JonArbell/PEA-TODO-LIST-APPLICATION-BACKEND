@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -16,7 +17,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
 import org.springframework.security.web.util.matcher.OrRequestMatcher;
 
 @Configuration
@@ -31,18 +31,15 @@ public class SecurityConfig{
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         var publicEndpoints = new OrRequestMatcher(
-                new AntPathRequestMatcher("/api/auth/**"),
+                new AntPathRequestMatcher("/api/authentication/**"),
                 new AntPathRequestMatcher("/oauth2/**"),
                 new AntPathRequestMatcher("/oauth2/authorization/**"),
                 new AntPathRequestMatcher("/h2-console/**")
         );
 
-        var authenticatedEndpoints = new NegatedRequestMatcher(publicEndpoints);
-
         return http.authorizeHttpRequests(auth -> auth
-                        .requestMatchers(publicEndpoints).permitAll() // Public end points
-                        .requestMatchers("/api/**").permitAll() // For testing crud endpoints only
-//                        .requestMatchers(authenticatedEndpoints).authenticated() // Secure API endpoints
+                        .requestMatchers(publicEndpoints).permitAll() // Public endpoints
+                        .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Ensure stateless sessions for API
 
@@ -59,8 +56,13 @@ public class SecurityConfig{
 
 //                .csrf(AbstractHttpConfigurer::disable) // Disable csrf
 
-                .headers(head -> head.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)) // Disable frame options for h2-console but h2 console is still not working lol
+                .headers(head -> head.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)) // Disable frame options for h2-console but h2 console
+                // is
+                // still not working lol
 
+                .oauth2ResourceServer(resourceServer -> resourceServer
+                        .jwt(Customizer.withDefaults())
+                )
                 .build();
     }
 

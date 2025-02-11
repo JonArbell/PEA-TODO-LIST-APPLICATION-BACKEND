@@ -15,7 +15,7 @@ import com.myapp.pea.Repositories.TodoRepo;
 import com.myapp.pea.Repositories.UserRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
@@ -32,8 +32,17 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public User getCurrentUser() {
-        return userRepo.findById(1L)
+
+        var email = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        log.info("Email : {}",email);
+
+        if(email != null)
+            return userRepo.findByEmail(email)
                 .orElseThrow(() -> new UserNotFoundException("User not found."));
+
+
+        throw new UserNotFoundException("User is not authenticated.");
     }
 
     public UserResponseBaseDTO addUserTraditional(UserRequestTraditionalDTO userRequest){
@@ -89,8 +98,8 @@ public class UserService {
         }).toList();
     }
 
-    public boolean findByEmail(String id){
-        return userRepo.findByEmail(id)
+    public boolean isEmailNotRegistered(String email){
+        return userRepo.findByEmail(email)
                 .isEmpty();
     }
 

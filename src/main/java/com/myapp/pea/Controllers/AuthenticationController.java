@@ -1,5 +1,6 @@
 package com.myapp.pea.Controllers;
 
+import com.myapp.pea.DTO.Request.User.Login.UserRequestLoginDTO;
 import com.myapp.pea.DTO.Request.User.UserRequestTraditionalDTO;
 import com.myapp.pea.DTO.Response.User.UserResponseBaseDTO;
 import com.myapp.pea.Security.JWT.JwtService;
@@ -11,10 +12,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
-@RequestMapping("/api/auth")
+@RequestMapping("/api/authentication")
 @Slf4j
 @RequiredArgsConstructor
 @RestController
@@ -35,13 +37,16 @@ public class AuthenticationController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> loginTraditional(@Valid @RequestBody UserRequestTraditionalDTO user){
+    public ResponseEntity<Map<String, String>> loginTraditional(@Valid @RequestBody UserRequestLoginDTO user){
 
-        manager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+        var authentication = manager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(),
+                user.getPassword()));
 
-//        var token = jwtService.generateToken(user.getEmail());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        return new ResponseEntity<>(Map.of("logged-in-token","Panis token"), HttpStatus.CREATED);
+        var token = jwtService.generateToken(authentication);
+
+        return new ResponseEntity<>(Map.of("jwtToken",token), HttpStatus.OK);
     }
 
 }

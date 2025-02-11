@@ -8,7 +8,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -27,9 +29,11 @@ public class Oauth2CustomSuccessHandler implements AuthenticationSuccessHandler 
 
         var oauthUser = (OAuth2User) authentication.getPrincipal();
 
+        log.info("Get name : {}",oauthUser.getName());
+
         var email = (String) oauthUser.getAttribute("email");
 
-        if(!userService.findByEmail(email)){
+        if(userService.isEmailNotRegistered(email)){
 
             var googleId = (String)  oauthUser.getAttribute("sub");
 
@@ -47,11 +51,13 @@ public class Oauth2CustomSuccessHandler implements AuthenticationSuccessHandler 
             log.info("Added User Oauth2 : {}",added);
         }
 
-        var token = "Panis sobra";
+        var token = jwtService.generateToken(authentication);
 
-        // Send JWT token in response (frontend can store in localStorage/cookie)
-        response.setContentType("application/json");
-        response.getWriter().write("{\"token\": \"" + token + "\"}");
+        var authToken = new UsernamePasswordAuthenticationToken(oauthUser, null, oauthUser.getAuthorities());
+
+        SecurityContextHolder.getContext().setAuthentication(authToken);
+
+        log.info("Token : {}",token);
 
     }
 }

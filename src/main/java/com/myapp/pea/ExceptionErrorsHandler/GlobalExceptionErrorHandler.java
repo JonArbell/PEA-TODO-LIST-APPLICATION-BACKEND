@@ -10,7 +10,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,6 +55,7 @@ public class GlobalExceptionErrorHandler {
 
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<Map<String, String>> handleNotFound(NoHandlerFoundException ex) {
+
         Map<String, String> response = new HashMap<>();
         response.put("error", "Not Found");
         response.put("message", "The requested resource does not exist.");
