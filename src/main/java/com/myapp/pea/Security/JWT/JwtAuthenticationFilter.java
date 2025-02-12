@@ -1,6 +1,5 @@
 package com.myapp.pea.Security.JWT;
 
-import com.myapp.pea.Repositories.UserRepo;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,13 +20,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
-    private final UserRepo userRepo;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
         var header = request.getHeader("Authorization");
-
 
         if(header != null && header.startsWith("Bearer ")){
 
@@ -54,6 +51,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 log.error("Invalid JWT Token: {}", e.getMessage());
             }
         }
+
         filterChain.doFilter(request, response);
     }
 }

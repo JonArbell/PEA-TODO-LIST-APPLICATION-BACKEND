@@ -29,8 +29,6 @@ public class Oauth2CustomSuccessHandler implements AuthenticationSuccessHandler 
 
         var oauthUser = (OAuth2User) authentication.getPrincipal();
 
-        log.info("Get name : {}",oauthUser.getName());
-
         var email = (String) oauthUser.getAttribute("email");
 
         if(userService.isEmailNotRegistered(email)){

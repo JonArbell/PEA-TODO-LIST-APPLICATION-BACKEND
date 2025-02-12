@@ -13,8 +13,7 @@ public class CORSConfig implements WebMvcConfigurer {
                 .allowedOrigins("http://localhost:4200","https://pea-todo-list-application.netlify.app","http://127.0.0.1:5500") // Allowed
                 // Origins
                 .allowedMethods("GET", "POST", "PUT", "DELETE") // Allowed Methods
-                .allowedHeaders("Content-Type", "Authorization") // Allowed Headers
-                .allowCredentials(true)
+//                .allowedHeaders("Content-Type", "Authorization") // Allowed Headers
                 .maxAge(3600);
 
     }

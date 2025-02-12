@@ -29,6 +29,8 @@ public class JwtService {
 
         var principal = authentication.getPrincipal();
 
+        log.info("True or false : {}",principal instanceof UserDetails);
+
         if(principal instanceof OAuth2User oAuth2User){
             email = oAuth2User.getAttribute("email");
             authorities = oAuth2User.getAuthorities();
