@@ -9,13 +9,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
+import java.util.UUID;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -43,14 +42,19 @@ public class CustomOauth2SuccessHandler implements AuthenticationSuccessHandler 
             log.info("Added User Oauth2 : {}",addedUser);
         }
 
+        var tokenId = UUID.randomUUID().toString();
+
         var token = jwtService.generateToken(authentication);
 
-        var authToken = new UsernamePasswordAuthenticationToken(oauthUser, null, oauthUser.getAuthorities());
+        jwtService.setToken(tokenId, token);
 
-        SecurityContextHolder.getContext().setAuthentication(authToken);
+//        var authToken = new UsernamePasswordAuthenticationToken(oauthUser, null, oauthUser.getAuthorities());
+//
+//        SecurityContextHolder.getContext().setAuthentication(authToken);
 
         log.info("Token : {}",token);
-        response.sendRedirect("http://localhost:4200/oauth2/callback?token="+token);
+
+        response.sendRedirect("http://localhost:4200/oauth2/callback?tokenId="+tokenId);
     }
 
     private UserResponseBaseDTO addNewUser(String email, String googleId, String fullName){

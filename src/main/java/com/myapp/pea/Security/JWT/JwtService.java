@@ -1,6 +1,7 @@
 package com.myapp.pea.Security.JWT;
 
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -20,6 +23,16 @@ public class JwtService {
 
     private final JwtEncoder jwtEncoder;
     private final JwtDecoder jwtDecoder;
+
+    private Map<String, String> tokenCache = new HashMap<>();
+
+    public String getToken(String tokenId){
+        return tokenCache.remove(tokenId);
+    }
+
+    public void setToken(String tokenId, String token){
+        this.tokenCache.put(tokenId,token);
+    }
 
     public String generateToken(Authentication authentication) {
 
