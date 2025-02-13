@@ -2,7 +2,7 @@ package com.myapp.pea.Security.Configurations;
 
 import com.myapp.pea.Security.AuthenticationProviders.CustomAuthenticationProvider;
 import com.myapp.pea.Security.JWT.JwtAuthenticationFilter;
-import com.myapp.pea.Security.Oauth2.Oauth2CustomSuccessHandler;
+import com.myapp.pea.Security.SuccessHandlers.CustomOauth2SuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,8 +26,11 @@ import java.util.List;
 public class SecurityConfig{
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
     private final CustomAuthenticationProvider customAuthenticationProvider;
-    private final Oauth2CustomSuccessHandler oauth2CustomSuccessHandler;
+
+    private final CustomOauth2SuccessHandler customOauth2SuccessHandler;
+
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, AuthenticationManager authenticationManager) throws Exception {
@@ -47,7 +50,8 @@ public class SecurityConfig{
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Ensure stateless sessions for API
 
                 .oauth2Login(oauth2 -> oauth2
-                        .successHandler(oauth2CustomSuccessHandler)) // Add custom Oauth2 success handler
+                        .successHandler(customOauth2SuccessHandler) // Add custom Oauth2 success handler
+                )
 
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) // Add custom filter before default authentication filter
 
@@ -57,7 +61,7 @@ public class SecurityConfig{
 
                 .csrf(AbstractHttpConfigurer::disable) // Disable csrf
 
-                .headers(head -> head.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)) // Disable frame options for h2-console but h2 console is still not working lol
+                .headers(head -> head.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)) // Disable frame options for h2-console
 
                 .oauth2ResourceServer(resourceServer -> resourceServer
                         .jwt(Customizer.withDefaults())

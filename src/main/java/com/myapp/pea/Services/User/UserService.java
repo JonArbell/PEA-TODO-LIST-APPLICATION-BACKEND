@@ -9,6 +9,8 @@ import com.myapp.pea.DTO.Response.User.UserResponseGoogleBaseDTO;
 import com.myapp.pea.DTO.Response.User.UserResponseTraditionalDTO;
 import com.myapp.pea.Entities.List;
 import com.myapp.pea.Entities.User;
+import com.myapp.pea.ExceptionErrorsHandler.CustomExceptionErrors.EmailAlreadyExistsException;
+import com.myapp.pea.ExceptionErrorsHandler.CustomExceptionErrors.GoogleIdAlreadyExistsException;
 import com.myapp.pea.ExceptionErrorsHandler.CustomExceptionErrors.UserNotFoundException;
 import com.myapp.pea.Repositories.ListRepo;
 import com.myapp.pea.Repositories.TodoRepo;
@@ -41,11 +43,13 @@ public class UserService {
             return userRepo.findByEmail(email)
                 .orElseThrow(() -> new UserNotFoundException("User not found."));
 
-
         throw new UserNotFoundException("User is not authenticated.");
     }
 
     public UserResponseBaseDTO addUserTraditional(UserRequestTraditionalDTO userRequest){
+
+        if(!isEmailNotRegistered(userRequest.getEmail()))
+            throw new EmailAlreadyExistsException("This email is already used.");
 
         var user = User.builder()
                 .username(userRequest.getUsername())
@@ -103,7 +107,16 @@ public class UserService {
                 .isEmpty();
     }
 
+    private boolean isGoogleIdAlreadyRegistered(String id){
+        return userRepo.findByGoogleId(id)
+                .isPresent();
+    }
+
     public UserResponseBaseDTO addUserGoogleOath(UserRequestGoogleBaseDTO userRequest){
+
+        if(isGoogleIdAlreadyRegistered(userRequest.getGoogleId()))
+            throw new GoogleIdAlreadyExistsException("This google id : ("+ userRequest.getGoogleId() +") is already " +
+                    "exists.");
 
         var user = User.builder()
                 .googleId(userRequest.getGoogleId())

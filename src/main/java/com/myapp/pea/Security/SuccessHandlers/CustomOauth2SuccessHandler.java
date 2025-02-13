@@ -1,6 +1,7 @@
-package com.myapp.pea.Security.Oauth2;
+package com.myapp.pea.Security.SuccessHandlers;
 
 import com.myapp.pea.DTO.Request.User.UserRequestGoogleBaseDTO;
+import com.myapp.pea.DTO.Response.User.UserResponseBaseDTO;
 import com.myapp.pea.Security.JWT.JwtService;
 import com.myapp.pea.Services.User.UserService;
 import jakarta.servlet.ServletException;
@@ -19,7 +20,7 @@ import java.io.IOException;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class Oauth2CustomSuccessHandler implements AuthenticationSuccessHandler {
+public class CustomOauth2SuccessHandler implements AuthenticationSuccessHandler {
 
     private final UserService userService;
     private final JwtService jwtService;
@@ -37,16 +38,9 @@ public class Oauth2CustomSuccessHandler implements AuthenticationSuccessHandler 
 
             var fullName = (String) oauthUser.getAttribute("name");
 
-            var newUser = new UserRequestGoogleBaseDTO();
-            newUser.setGoogleId(googleId);
-            newUser.setFullName(fullName);
-            newUser.setEmail(email);
+            var addedUser = addNewUser(email, googleId, fullName);
 
-            log.info("New User Oauth2 : {}",newUser);
-
-            var added = userService.addUserGoogleOath(newUser);
-
-            log.info("Added User Oauth2 : {}",added);
+            log.info("Added User Oauth2 : {}",addedUser);
         }
 
         var token = jwtService.generateToken(authentication);
@@ -56,6 +50,18 @@ public class Oauth2CustomSuccessHandler implements AuthenticationSuccessHandler 
         SecurityContextHolder.getContext().setAuthentication(authToken);
 
         log.info("Token : {}",token);
-
+        response.sendRedirect("http://localhost:4200/oauth2/callback?token="+token);
     }
+
+    private UserResponseBaseDTO addNewUser(String email, String googleId, String fullName){
+        var newUser = new UserRequestGoogleBaseDTO();
+        newUser.setGoogleId(googleId);
+        newUser.setFullName(fullName);
+        newUser.setEmail(email);
+
+        log.info("New User Oauth2 : {}",newUser);
+
+        return userService.addUserGoogleOath(newUser);
+    }
+
 }
