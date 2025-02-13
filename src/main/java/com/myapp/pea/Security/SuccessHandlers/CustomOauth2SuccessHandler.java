@@ -48,10 +48,6 @@ public class CustomOauth2SuccessHandler implements AuthenticationSuccessHandler 
 
         jwtService.setToken(tokenId, token);
 
-//        var authToken = new UsernamePasswordAuthenticationToken(oauthUser, null, oauthUser.getAuthorities());
-//
-//        SecurityContextHolder.getContext().setAuthentication(authToken);
-
         log.info("Token : {}",token);
 
         response.sendRedirect("http://localhost:4200/oauth2/callback?tokenId="+tokenId);

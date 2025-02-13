@@ -10,8 +10,7 @@ public class CORSConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry){
         registry.addMapping("/api/**") // Api
-                .allowedOrigins("http://localhost:4200","https://pea-todo-list-application.netlify.app","http://127.0.0.1:5500") // Allowed
-                // Origins
+                .allowedOrigins("http://localhost:4200","https://pea-todo-list-application.netlify.app") // Allowed Origins
                 .allowedMethods("GET", "POST", "PUT", "DELETE") // Allowed Methods
 //                .allowedHeaders("Content-Type", "Authorization") // Allowed Headers
                 .maxAge(3600);
