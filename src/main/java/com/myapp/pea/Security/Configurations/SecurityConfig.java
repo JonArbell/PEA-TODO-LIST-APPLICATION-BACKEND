@@ -33,7 +33,7 @@ public class SecurityConfig{
 
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http, AuthenticationManager authenticationManager) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         var publicEndpoints = new OrRequestMatcher(
                 new AntPathRequestMatcher("/api/authentication/**"),

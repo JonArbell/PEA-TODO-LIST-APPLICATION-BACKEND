@@ -49,11 +49,11 @@ public class AuthenticationController {
     @GetMapping("/oauth2/callback")
     public ResponseEntity<Map<String, String>> sendTokenOauth2Callback(@RequestParam String tokenId){
 
-        log.info("Panis : {}",tokenId);
+        log.info("Token ID : {}",tokenId);
 
         var token = jwtService.getToken(tokenId);
 
-        log.info("Token : {}",token);
+        log.info("JWT Token : {}",token);
 
         if(token == null)
             return new ResponseEntity<>(Map.of("error","Token not found."), HttpStatus.NOT_FOUND);
