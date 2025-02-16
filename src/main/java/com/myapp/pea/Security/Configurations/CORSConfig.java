@@ -12,7 +12,7 @@ public class CORSConfig implements WebMvcConfigurer {
         registry.addMapping("/api/**") // Api
                 .allowedOrigins("http://localhost:4200","https://pea-todo-list-application.netlify.app") // Allowed Origins
                 .allowedMethods("GET", "POST", "PUT", "DELETE") // Allowed Methods
-//                .allowedHeaders("Content-Type", "Authorization") // Allowed Headers
+                .allowedHeaders("Authorization") // Allowed Headers
                 .maxAge(3600);
 
     }

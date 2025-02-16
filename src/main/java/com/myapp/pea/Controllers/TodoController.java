@@ -71,7 +71,7 @@ public class TodoController {
         return new ResponseEntity<>(Map.of("get-todo-by-id",getTodo),HttpStatus.OK);
     }
 
-    @GetMapping("/get-todo")
+    @GetMapping("/get-all-todos")
     public ResponseEntity<Map<String, List<TodoResponseDTO>>> getAllTodo(){
 
         var allTodo = todoService.getAllTodos();
@@ -79,6 +79,14 @@ public class TodoController {
         log.info("Get all Todo: {}",allTodo);
 
         return new ResponseEntity<>(Map.of("get-all-todo",allTodo),HttpStatus.OK);
+    }
+
+    @GetMapping("/pending-todos")
+    public ResponseEntity<Map<String, List<TodoResponseDTO>>> getPendingTodos(){
+
+        var pendingTodos = todoService.getPendingTodos();
+
+        return new ResponseEntity<>(Map.of("pending-todos",pendingTodos),HttpStatus.OK);
     }
 
 }

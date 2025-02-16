@@ -31,7 +31,6 @@ public class SecurityConfig{
 
     private final CustomOauth2SuccessHandler customOauth2SuccessHandler;
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
@@ -47,6 +46,8 @@ public class SecurityConfig{
                         .anyRequest().authenticated()
                 )
 
+                .cors(Customizer.withDefaults())
+
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Ensure stateless sessions for API
 
                 .oauth2Login(oauth2 -> oauth2
@@ -61,7 +62,8 @@ public class SecurityConfig{
 
                 .csrf(AbstractHttpConfigurer::disable) // Disable csrf
 
-                .headers(head -> head.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)) // Disable frame options for h2-console
+                .headers(head -> head.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)) // Same origin
+                // frame options for enable h2-console in stateless mode
 
                 .oauth2ResourceServer(resourceServer -> resourceServer
                         .jwt(Customizer.withDefaults())

@@ -121,7 +121,17 @@ public class TodoService {
                 .stream()
                 .map(TodoResponseDTO::fromEntity)
                 .toList();
+    }
 
+    @Transactional(readOnly = true)
+    @Cacheable(value = "todos",key = "'allTodos-'+ #root.target.getCurrentUserId()")
+    public List<TodoResponseDTO> getPendingTodos(){
+
+        return todoRepo.findAllByUser_Id(getCurrentUserId())
+                .stream()
+                .map(TodoResponseDTO::fromEntity)
+                .filter(todo -> !todo.getDone())
+                .toList();
     }
 
 }

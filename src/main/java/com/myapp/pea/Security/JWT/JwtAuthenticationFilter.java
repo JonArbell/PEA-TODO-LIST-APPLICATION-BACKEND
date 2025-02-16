@@ -26,6 +26,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         var header = request.getHeader("Authorization");
 
+        log.info("Header : {}",header);
+
         if(header != null && header.startsWith("Bearer ")){
 
             var token = header.substring(7);
@@ -44,7 +46,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                         var authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 
                         SecurityContextHolder.getContext().setAuthentication(authToken);
-
+                        log.info("Test");
                     }
                 }
             }catch (Exception e){

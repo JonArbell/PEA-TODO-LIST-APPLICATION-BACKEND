@@ -55,7 +55,7 @@ public class JwtService {
                 .issuer("https://pea-todo-list-application.netlify.app")
                 .subject(email)
                 .issuedAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
+                .expiresAt(Instant.now().plusSeconds(300))
                 .claim("scope",getAuthorities(authorities))
                 .build();
         var parameter = JwtEncoderParameters.from(claims);
