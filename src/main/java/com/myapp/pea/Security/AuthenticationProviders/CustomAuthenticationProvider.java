@@ -41,7 +41,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             return new UsernamePasswordAuthenticationToken(userDetails, password, authentication.getAuthorities());
 
         }catch (UsernameNotFoundException e){
-            throw new BadCredentialsException("User not found with email: " + email);
+            throw new UsernameNotFoundException("No account found with that email. Please double-check your email address or consider creating a new account.");
         }
 
     }
