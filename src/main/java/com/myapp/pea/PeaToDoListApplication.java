@@ -12,7 +12,6 @@ public class PeaToDoListApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PeaToDoListApplication.class, args);
-
 	}
 /*
 *
@@ -24,4 +23,5 @@ public class PeaToDoListApplication {
 * Package name  :	com.myapp.pea
 *
 */
+
 }

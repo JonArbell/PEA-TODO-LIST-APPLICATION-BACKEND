@@ -17,7 +17,7 @@ public class CORSConfig implements WebMvcConfigurer {
 
         registry.addMapping("/api/authentication/**") // Api
                 .allowedOrigins("http://localhost:4200","https://pea-todo-list-application.netlify.app") // Allowed Origins
-                .allowedMethods("POST") // Allowed Methods
+                .allowedMethods("POST","GET") // Allowed Methods
                 .maxAge(3600);
     }
 
