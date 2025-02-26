@@ -26,4 +26,9 @@ public class UserController {
         return new ResponseEntity<>(Map.of("panis", userService.getAllUsers()), HttpStatus.OK);
     }
 
+    @GetMapping("/profile")
+    public ResponseEntity<UserResponseBaseDTO> getProfile(){
+        return new ResponseEntity<>(userService.getUserProfile(), HttpStatus.OK);
+    }
+
 }

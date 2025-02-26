@@ -22,6 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -44,6 +45,21 @@ public class UserService {
                 .orElseThrow(() -> new UserNotFoundException("User not found."));
 
         throw new UserNotFoundException("User is not authenticated.");
+    }
+
+    public UserResponseBaseDTO getUserProfile(){
+
+        return Optional.of(getCurrentUser())
+                .map(user ->
+                        UserResponseBaseDTO
+                            .builder()
+                            .email(user.getEmail())
+                            .fullName(user.getFullName())
+                            .provider(user.getProvider())
+                            .id(user.getId())
+                            .build())
+                .orElseThrow(() -> new UserNotFoundException("User not logged in."));
+
     }
 
     public UserResponseBaseDTO addUserTraditional(UserRequestTraditionalDTO userRequest){
